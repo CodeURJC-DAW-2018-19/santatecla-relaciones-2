@@ -2,26 +2,26 @@
 
 ## GRUPO 11 ##
 
-Nombre y apellidos:**Enrique Pina Boyer**	
-Correo:*e.pina.2016@alumnos.urjc.es*	
-GitHub:*KikeAjani*
+**Enrique Pina Boyer**	
+*e.pina.2016@alumnos.urjc.es*	
+*KikeAjani*
 
-Nombre y apellidos:**Óscar Gómez Ramírez**	
-Correo:*o.gomezr.2016@alumnos.urjc.es*	
-GitHub:*ogomezr*
+**Óscar Gómez Ramírez**	
+*o.gomezr.2016@alumnos.urjc.es*	
+*ogomezr*
 
-Nombre y apellidos:**Diego Muñoz Martin**	
-Correo:*d.munozm.2016@alumnos.urjc.es*	
-GitHub:*DiegoMzmn*
+**Diego Muñoz Martin**	
+*d.munozm.2016@alumnos.urjc.es*	
+*DiegoMzmn*
 
-Nombre y apellidos:**Francisco Javier Gutiérrez Sánchez
-Correo:*fj.gutierrezs.2016@alumnos.urjc.es*	
-GitHub:*chicocoriano*
+**Francisco Javier Gutiérrez Sánchez
+*fj.gutierrezs.2016@alumnos.urjc.es*	
+*chicocoriano*
 
 
-Nombre y apellidos:**Jesús Horcajo Ortiz**	
-Correo:*j.horcajo.2016@alumnos.urjc.es*
-GitHub:*itsjach*
+**Jesús Horcajo Ortiz**	
+*j.horcajo.2016@alumnos.urjc.es*
+*itsjach*
 
 ## INFO ##
 
