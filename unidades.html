@@ -21,39 +21,8 @@
 </head>
 
 <body>
-    <img src="logo.png" id="logo">
-    <div class="text-right">
-        <p>
-            <a class="btn btn-default btn-round" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Login
-            </a>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1"><b>Usuario</b></label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca usuario">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1"><b>Contraseña</b></label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            Recuérdame
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-danger">Registrarse</button>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
 
     <div class="card card-nav-tabs card-plain">
         <div class="card-header card-header-danger">
@@ -68,7 +37,40 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sub" data-toggle="tab">HTML</a>
                         </li>
-
+                        <li class="nav-item">
+                            <div class="text-right">
+                                <p>
+                                    <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Login
+                                    </a>
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <form class="form-inline">
+                                            <div class="form-group margin-right">
+                                                <label for="exampleInputEmail1"><b>Usuario</b></label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca usuario">
+                                            </div>
+                                            <div class="form-group margin-right">
+                                                <label for="exampleInputPassword1"><b>Contraseña</b></label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña">
+                                            </div>
+                                            <div class="form-check margin-right">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    Recuérdame
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-danger">Registrarse</button>
+                                            <button type="submit" class="btn btn-primary">Entrar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
@@ -79,87 +81,83 @@
         <div class="card-body ">
             <div class="tab-content text-left">
                 <div class="tab-pane active" id="home">
-                    <div class="container text-left">
-                        <h1> UNIDADES</h1>
-                    </div>
-                    <div class="container text-left">
-                        <div class="topnav margin-bot">
-                            <input type="text" placeholder="Buscar..">
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="border border-danger margin-bot">
-                                    <table class="table">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>HTML</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>CSS</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>JAVASCRIPT</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>API REST</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>SPRING</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>ANGULAR</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="container text-left">
-                                        <p>
-                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                <i class="material-icons">add</i>
+                    <h1> UNIDADES</h1>
+
+                    <div class="topnav margin-bot">
+                        <input type="text" placeholder="Buscar..">
+                    </div>
+
+                    <div class="col-xl-12">
+                        <div class="border border-danger margin-bot">
+                            <table class="table">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>HTML</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
                                             </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CSS</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>JAVASCRIPT</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>API REST</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SPRING</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ANGULAR</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="container text-left">
+                                <p>
+                                    <button type="button" class="btn btn-success btn-round btn-sm">
+                                        <i class="material-icons">add</i>
+                                    </button>
 
 
-                                        </p>
-                                    </div>
-                                </div>
+                                </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="tab-pane" id="sub">
@@ -615,7 +613,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="container text-left">
+                                    <div class="container text-left">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="border border-danger margin-bot">
@@ -639,7 +637,7 @@
                                                                             <div class="border border-danger">
                                                                                 <div class="container">
                                                                                     <form>
-                                                                                        <div class= "sorted list (how)">
+                                                                                        <div class="sorted list (how)">
                                                                                             <section><b>Construcción de una página web HTML:</b></section>
                                                                                             <ol>
                                                                                                 <li> Crear documentos estructurados con etiquetas</li>
