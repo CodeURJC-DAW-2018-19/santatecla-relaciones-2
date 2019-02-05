@@ -22,126 +22,60 @@
 
 <body>
 
+
+
     <div class="card card-nav-tabs card-plain">
-        <div class="card-header card-header-danger" id="cabecera">
+        <div class="card-header card-header-danger">
 
             <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-            <div class="nav-tabs-navigation fixed top">
+            <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                    <ul class="nav nav-tabs justify-content-end" data-tabs="tabs">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                             <a class="nav-link active" href="#home" data-toggle="tab">UNIDADES</a>
                         </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">HTML</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#sub" data-toggle="tab">HTML</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#sub#contexto" data-toggle="tab">Contexto</a>
-                                <a class="dropdown-item" href="#detalle" data-toggle="tab">Detalle</a>
-
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sub" data-toggle="tab">HTML</a>
                         </li>
                         <li class="nav-item">
-
-                            <!-- Button trigger modal -->
-
-                            <a class="nav-link" data-toggle="modal" data-target="#login">
-                                Login
-                            </a>
-
-                            <!-- ModalLogin -->
-                            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="card card-body">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1"><b>Usuario</b></label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca usuario">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1"><b>Contraseña</b></label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña">
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="">
-                                                            Recuérdame
-                                                            <span class="form-check-sign">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
-                                                    <button type="submit" class="btn btn-primary">Entrar</button>
-                                                </form>
+                            <div class="text-right">
+                                <p>
+                                    <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Login
+                                    </a>
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <form class="form-inline">
+                                            <div class="form-group margin-right">
+                                                <label for="exampleInputEmail1"><b>Usuario</b></label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca usuario">
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Button trigger modal -->
-
-                            <a class="nav-link" data-toggle="modal" data-target="#reg">
-                                Registro
-                            </a>
-
-
-                            <!-- ModalRegistro-->
-                            <div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Registro Nuevo Usuario</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="card card-body">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1"><b>Usuario</b></label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca su nuevo nombre de usuario">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1"><b>Contraseña</b></label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca la nueva contraseña">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword2"><b>Contraseña</b></label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita la nueva contraseña">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-danger">Registrarse</button>
-                                                </form>
+                                            <div class="form-group margin-right">
+                                                <label for="exampleInputPassword1"><b>Contraseña</b></label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña">
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                        </div>
+                                            <div class="form-check margin-right">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    Recuérdame
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-danger">Registrarse</button>
+                                            <button type="submit" class="btn btn-primary">Entrar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
+
             </div>
+
         </div>
 
         <div class="card-body ">
@@ -218,6 +152,8 @@
                                     <button type="button" class="btn btn-success btn-round btn-sm">
                                         <i class="material-icons">add</i>
                                     </button>
+
+
                                 </p>
                             </div>
                         </div>
@@ -226,8 +162,8 @@
                 </div>
                 <div class="tab-pane" id="sub">
                     <div class="card2 card-nav-tabs card-plain">
-                        <!--<div class="card-header card-header-danger">
-                            
+                        <div class="card-header card-header-danger">
+                            <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                             <div class="nav-tabs-navigation2">
                                 <div class="nav-tabs-wrapper">
                                     <ul class="nav nav-tabs" data-tabs="tabs">
@@ -239,284 +175,24 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>-->
-                    </div>
-                    <div class="card-body ">
-                        <div class="tab-content text-left">
-                            <div class="tab-pane active" id="contexto">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">PADRES</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>SGML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>MAQUETACIÓN WEB</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">ASOCIADOS A</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>CSS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>XML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">USAN</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>ETIQUETAS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">COMPUESTOS</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>ETIQUETAS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ATRIBUTOS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="margin-bot">
-                                                <div class="border border-danger">
+                            </div>
+                        </div>
+                        <div class="card-body ">
+                            <div class="tab-content text-left">
+                                <div class="tab-pane active" id="contexto">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="border border-danger margin-bot">
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col">UNIDAD</th>
+                                                                <th scope="col">PADRES</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>HTML</td>
-                                                            </tr>
-                                                    </table>
-                                                </div>
-                                                <div class="container text-center">
-                                                    <button type="button" rel="tooltip" class="btn btn-rounded">
-                                                        Contexto
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="margin-bot">
-                                                <div class="border border-danger">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">PARTES</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                    </table>
-                                                    <div class="container text-left">
-                                                        <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
-
-
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="container text-center">
-                                                    <button type="button" rel="tooltip" class="btn btn-rounded">
-                                                        Jerarquía de composición
-                                                    </button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-sm">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">USA</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>IMÁGENES</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>VÍDEOS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">ASOCIADO A</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>XML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>CSS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="container text-left">
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-round btn-sm">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="margin-bot">
-                                                <div class="border border-danger">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">HIJAS</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>HTML 2.0</td>
+                                                                <td>SGML</td>
                                                                 <td class="td-actions text-right">
                                                                     <button type="button" rel="tooltip" class="btn btn-danger">
                                                                         <i class="material-icons">delete_forever</i>
@@ -524,7 +200,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>HTML 4.0</td>
+                                                                <td>MAQUETACIÓN WEB</td>
                                                                 <td class="td-actions text-right">
                                                                     <button type="button" rel="tooltip" class="btn btn-danger">
                                                                         <i class="material-icons">delete_forever</i>
@@ -543,196 +219,457 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="container text-center">
-                                                    <button type="button" rel="tooltip" class="btn btn-rounded">
-                                                        Jerarquía de clasificación
-                                                    </button>
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ASOCIADOS A</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>CSS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>XML</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container text-left">
+                                                        <p>
+                                                            <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">USAN</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>ETIQUETAS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container text-left">
+                                                        <p>
+                                                            <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">COMPUESTOS</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>ETIQUETAS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ATRIBUTOS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container text-left">
+                                                        <p>
+                                                            <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="margin-bot">
+                                                    <div class="border border-danger">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">UNIDAD</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>HTML</td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class="container text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                                            Contexto
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="margin-bot">
+                                                    <div class="border border-danger">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">PARTES</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                        </table>
+                                                        <div class="container text-left">
+                                                            <p>
+                                                                <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                    <i class="material-icons">add</i>
+                                                                </button>
+
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                                            Jerarquía de composición
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">USA</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>IMÁGENES</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>VÍDEOS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container text-left">
+                                                        <p>
+                                                            <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ASOCIADO A</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>XML</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>CSS</td>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container text-left">
+                                                        <p>
+                                                            <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="margin-bot">
+                                                    <div class="border border-danger">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">HIJAS</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>HTML 2.0</td>
+                                                                    <td class="td-actions text-right">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                            <i class="material-icons">delete_forever</i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>HTML 4.0</td>
+                                                                    <td class="td-actions text-right">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                            <i class="material-icons">delete_forever</i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="container text-left">
+                                                            <p>
+                                                                <button type="button" class="btn btn-success btn-round btn-sm">
+                                                                    <i class="material-icons">add</i>
+                                                                </button>
+
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                                            Jerarquía de clasificación
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="detalle">
-                                <div class="container text-left">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>¿POR QUÉ?</th>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                <div class="tab-pane" id="detalle">
+                                    <div class="container text-left">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>¿POR QUÉ?</th>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
 
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="container">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="border border-danger">
-                                                                            <div class="container">
-                                                                                <form>
-                                                                                    <div class="form-group">
-                                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML es un lenguaje sencillo, que además es facil de leer e interpretar, también existen numerosas aplicaciones y editores de páginas web que generan el código automáticamente y por lo tanto no es casi necesario ser un experto informático para hacer páginas basadas en HTML y esta sencillez hace que pueda diseñarse y desplegarse un sitio web en muy poco tiempo y cabe recalcar que es el lenguaje más extendido ya que todos los navegadores lo admiten y tiene la característica de que es un código visible e interpretable por los buscadores</textarea>
-                                                                                    </div>
-                                                                                </form>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="container">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="border border-danger">
+                                                                                <div class="container">
+                                                                                    <form>
+                                                                                        <div class="form-group">
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML es un lenguaje sencillo, que además es facil de leer e interpretar, también existen numerosas aplicaciones y editores de páginas web que generan el código automáticamente y por lo tanto no es casi necesario ser un experto informático para hacer páginas basadas en HTML y esta sencillez hace que pueda diseñarse y desplegarse un sitio web en muy poco tiempo y cabe recalcar que es el lenguaje más extendido ya que todos los navegadores lo admiten y tiene la característica de que es un código visible e interpretable por los buscadores</textarea>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
 
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container text-left">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>¿PARA QUÉ?</th>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                    <div class="container text-left">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>¿PARA QUÉ?</th>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
 
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="container">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="border border-danger">
-                                                                            <div class="container">
-                                                                                <form>
-                                                                                    <div class="form-group">
-                                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML surgió como lenguaje de marcado extendido de SGML para la elaboración y maquetación de páginas web</textarea>
-                                                                                    </div>
-                                                                                </form>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="container">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="border border-danger">
+                                                                                <div class="container">
+                                                                                    <form>
+                                                                                        <div class="form-group">
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML surgió como lenguaje de marcado extendido de SGML para la elaboración y maquetación de páginas web</textarea>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
 
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container text-left">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>¿QUÉ?</th>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                    <div class="container text-left">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>¿QUÉ?</th>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
 
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="container">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="border border-danger">
-                                                                            <div class="container">
-                                                                                <form>
-                                                                                    <div class="form-group">
-                                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML, sigla en inglés de HyperText Markup Language (lenguaje de marcas de hipertexto), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros. Es un estándar a cargo del World Wide Web Consortium (W3C) o Consorcio WWW, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación. Se considera el lenguaje web más importante siendo su invención crucial en la aparición, desarrollo y expansión de la World Wide Web (WWW). Es el estándar que se ha impuesto en la visualización de páginas web y es el que todos los navegadores actuales han adoptado.</textarea>
-                                                                                    </div>
-                                                                                </form>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="container">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="border border-danger">
+                                                                                <div class="container">
+                                                                                    <form>
+                                                                                        <div class="form-group">
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML, sigla en inglés de HyperText Markup Language (lenguaje de marcas de hipertexto), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros. Es un estándar a cargo del World Wide Web Consortium (W3C) o Consorcio WWW, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación. Se considera el lenguaje web más importante siendo su invención crucial en la aparición, desarrollo y expansión de la World Wide Web (WWW). Es el estándar que se ha impuesto en la visualización de páginas web y es el que todos los navegadores actuales han adoptado.</textarea>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
 
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container text-left">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="border border-danger margin-bot">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>¿CÓMO?</th>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                    <div class="container text-left">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="border border-danger margin-bot">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>¿CÓMO?</th>
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
 
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="container">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="border border-danger">
-                                                                            <div class="container">
-                                                                                <form>
-                                                                                    <div class="sorted list (how)">
-                                                                                        <section><b>Construcción de una página web HTML:</b></section>
-                                                                                        <ol>
-                                                                                            <li> Crear documentos estructurados con etiquetas</li>
-                                                                                            <li> Elegir el mejor editor para un caso concreto de creación</li>
-                                                                                            <li> Crear la estructura básica de tu página HTML: cabecera y el cuerpo</li>
-                                                                                            <li> Crear el contenido y aplicarle formato con las etiquetas HTML</li>
-                                                                                            <li> Integrar elementos interactivos si es necesario</li>
-                                                                                            <li> Implementar la lógica para responder a dichos formularios en el caso de que se integren</li>
-                                                                                            <li> Publicar la página en Internet o en local</li>
-                                                                                        </ol>
-                                                                                    </div>
-                                                                                </form>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="container">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="border border-danger">
+                                                                                <div class="container">
+                                                                                    <form>
+                                                                                        <div class="sorted list (how)">
+                                                                                            <section><b>Construcción de una página web HTML:</b></section>
+                                                                                            <ol>
+                                                                                                <li> Crear documentos estructurados con etiquetas</li>
+                                                                                                <li> Elegir el mejor editor para un caso concreto de creación</li>
+                                                                                                <li> Crear la estructura básica de tu página HTML: cabecera y el cuerpo</li>
+                                                                                                <li> Crear el contenido y aplicarle formato con las etiquetas HTML</li>
+                                                                                                <li> Integrar elementos interactivos si es necesario</li>
+                                                                                                <li> Implementar la lógica para responder a dichos formularios en el caso de que se integren</li>
+                                                                                                <li> Publicar la página en Internet o en local</li>
+                                                                                            </ol>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
 
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-right">
-                                    <p>
-                                        <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                                            <i class="material-icons">add</i>
-                                        </button>
-                                    </p>
+                                    <div class="text-right">
+                                        <p>
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -741,7 +678,15 @@
             </div>
         </div>
     </div>
-    </div>
+
+
+
+
+
+
+
+
+
 
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
@@ -801,4 +746,5 @@
     <script src="assets/js/material-dashboard.min.js?v=2.1.1" type="text/javascript"></script>
 
 </body>
+
 </html>
