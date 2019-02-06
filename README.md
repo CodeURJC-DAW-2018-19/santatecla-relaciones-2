@@ -30,9 +30,9 @@
 [Google Docs Grupo 11](https://docs.google.com/document/d/1dOFhYoHVeqbiS_8xWnMKT5sNLMF60pURrx-0x542xg8/edit)	
 
 ## CAPTURAS FASE 1 ##
-**Unidades*
+**Unidades**
 ![Screenshot](capturaunidades.png)
-**Subunidades*
+**Subunidades**
 ![Screenshot](capturasub.png)
-**Login*
+**Login**
 ![Screenshot](capturalogin.png)
