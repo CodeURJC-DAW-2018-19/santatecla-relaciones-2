@@ -31,8 +31,8 @@
 
 ## CAPTURAS FASE 1 ##
 **Unidades**
-![Screenshot](capturaunidades.png)
+![Screenshot](/capturas/capturaunidades.png)
 **Subunidades**
-![Screenshot](capturasub.png)
+![Screenshot](/capturas/capturasub.png)
 **Login**
-![Screenshot](capturalogin.png)
+![Screenshot](/capturas/capturalogin.png)
