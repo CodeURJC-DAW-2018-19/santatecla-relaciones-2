@@ -28,3 +28,11 @@
 [Trello Grupo 11](https://trello.com/b/7mBmoTZa/daw11)
 
 [Google Docs Grupo 11](https://docs.google.com/document/d/1dOFhYoHVeqbiS_8xWnMKT5sNLMF60pURrx-0x542xg8/edit)	
+
+## CAPTURAS FASE 1 ##
+**Unidades**
+![Screenshot](/capturas/capturaunidades.png)
+**Subunidades**
+![Screenshot](/capturas/capturasub.png)
+**Login**
+![Screenshot](/capturas/capturalogin.png)
