@@ -101,40 +101,25 @@
     </div>
 
     <div class="wrapper">
-       {{>heading.mustache}} 
+       {{>heading}} 
 
         <div class="content">
             <div class="container-fluid">
 
                 <div class="col-md-12">
                     <div class="card">
-                        {{>heading.html}}
-                        <div class="card-body">
+                        {{>headingIndex}}
+                        <div class="card-body">		
                             <table class="table">
                                 <thead>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>HTML</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CSS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>JAVASCRIPT</td>
-                                    </tr>
-                                    <tr>
-                                        <td>API REST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>SPRING</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ANGULAR</td>
-                                    </tr>
+                                	{{#unidades}}
+                        				<tr><td>{{nombre}}</td></tr>
+                        			{{/unidades}}
+                                 
                                 </tbody>
                             </table>
-                            
                         </div>
                     </div>
                 </div>

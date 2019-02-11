@@ -101,72 +101,23 @@
     </div>
 
     <div class="wrapper">
-        <nav class="navbar navbar-fixed-top navbar-expand bg-white">
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="unidades2.html" data-toggle="tab">UNIDADES <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="unidades3.html" data-toggle="tab">HTML</a>
-                    </li>
-                </ul>
-                <span class="navbar-item">
-                    <div class="container margin-right">
-                        <button type="button" class="btn btn-default btn-link" data-toggle="modal" data-target="#login">
-                            Login
-                        </button>
-                    </div>
-                </span>
-            </div>
-        </nav>
+               {{>heading}} 
 
         <div class="content">
             <div class="container-fluid">
 
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-danger">
-                            <h1 class="card-title">Unidades
-                                <form class="form-inline ml-auto">
-                                    <div class="form-group has-white">
-                                        <input type="text" class="form-control" placeholder="Buscar">
-                                    </div>
-                                    <button type="submit" class="btn btn-white btn-icon btn-round">
-                                        <i class="material-icons">search</i>
-                                    </button>
-                                </form>
-                            </h1>
-                        </div>
+                        {{>headingIndex}}
                         <div class="card-body">
                             <table class="table">
                                 <thead>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><a href="#sub">HTML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#sub">CSS</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#sub">JAVASCRIPT</a></td>
- 
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#sub">API REST</a></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#sub">SPRING</a></td>
-      
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#sub">ANGULAR</a></td>
-
-                                    </tr>
-
-                                </tbody>
+                                	{{#unidades}}
+                        				<tr><td><a href="">{{nombre}}</a></td></tr>
+                        			{{/unidades}}                           
+                        	   </tbody>
                             </table>
                         </div>
                     </div>
