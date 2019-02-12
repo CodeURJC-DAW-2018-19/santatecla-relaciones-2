@@ -157,22 +157,17 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>SGML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>MAQUETACIÓN WEB</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                    {{#padres}}
+                                                    <tr>
+                                                        <td>{{origin}}</td>
+                                                        <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                <i class="material-icons">delete_forever</i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    {{/padres}}
+                                                        
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -198,22 +193,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>ETIQUETAS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ATRIBUTOS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        {{#compuestos}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                     </tr>
+	                                                	{{/compuestos}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -239,22 +228,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>IMÁGENES</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>VÍDEOS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        {{#usa}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                {{/usa}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -284,22 +267,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>CSS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>XML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        {{#asociados a}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                {{/asociados a}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -324,7 +301,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="container text-center">
-                                                    <h1>HTML</h1>
+                                                    <h1>{{unidad}}</h1>
                                                 </div>
                                             </div>
 
@@ -349,22 +326,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>XML</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>CSS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                    {{#asociado a}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                {{/asociado a}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -393,14 +364,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>ETIQUETAS</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        {{#usan}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                    {{/usan}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -426,7 +399,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-
+													{{#partes}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                    {{/partes}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">
@@ -457,22 +439,16 @@
                                             <div class="card-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <td>HTML 2.0</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>HTML 4.0</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                    <i class="material-icons">delete_forever</i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+	                                                    {{#hijas}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                    </tr>
+	                                                    {{/hijas}}
                                                     </tbody>
                                                 </table>
                                                 <div class="container text-left">

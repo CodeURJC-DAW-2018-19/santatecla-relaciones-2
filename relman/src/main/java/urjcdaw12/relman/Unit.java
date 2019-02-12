@@ -12,7 +12,8 @@ public class Unit {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id;
 	
-	private String nombre;
+	
+	private String name;
 	
 	
 	
@@ -20,8 +21,8 @@ public class Unit {
 	
 	protected Unit() {}
 	
-	public Unit (String nombre) {
-		this.nombre=nombre;
+	public Unit (String name) {
+		this.name=name;
 	}
 
 	public long getId() {
@@ -32,17 +33,17 @@ public class Unit {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Unidad [id=" + id + ", nombre=" + nombre + "]";
+		return name;
 	}
 	
 	
