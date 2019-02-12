@@ -17,12 +17,12 @@ public class VisitorController {
 	
 	@PostConstruct
 	public void init() {
-		unidadRep.save(new Unidad("HTML"));
-		unidadRep.save(new Unidad("CSS"));
-		unidadRep.save(new Unidad("JAVASCRIPT"));
-		unidadRep.save(new Unidad("API REST"));
-		unidadRep.save(new Unidad("SPRING"));
-		unidadRep.save(new Unidad("ANGULAR"));
+		unidadRep.save(new Unit("HTML"));
+		unidadRep.save(new Unit("CSS"));
+		unidadRep.save(new Unit("JAVASCRIPT"));
+		unidadRep.save(new Unit("API REST"));
+		unidadRep.save(new Unit("SPRING"));
+		unidadRep.save(new Unit("ANGULAR"));
 	}
 	
 		@RequestMapping("/")

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Unidad {
+public class Unit {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,11 +14,13 @@ public class Unidad {
 	
 	private String nombre;
 	
+	
+	
 	//Supongo que todas las listas deberian ser atributos
 	
-	protected Unidad() {}
+	protected Unit() {}
 	
-	public Unidad (String nombre) {
+	public Unit (String nombre) {
 		this.nombre=nombre;
 	}
 
