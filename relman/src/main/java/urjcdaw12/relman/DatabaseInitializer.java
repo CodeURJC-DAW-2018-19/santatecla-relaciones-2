@@ -1,5 +1,8 @@
 package urjcdaw12.relman;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ public class DatabaseInitializer {
 
 	@Autowired
 	private UnidadRepository unidadRep;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@PostConstruct
 	public void init() {
@@ -74,6 +80,10 @@ public class DatabaseInitializer {
 
 		relationRep.save(new Relation("Asociación",html,asociado1));
 		relationRep.save(new Relation("Asociación",html,asociado2));
+		
+		userRepository.save(new User("user@user","12345","ROLE_USER"));
+		userRepository.save(new User("student","12345","ROLE_USER"));
+		userRepository.save(new User("teacher@teacher","adminpass","ROLE_USER","ROLE_ADMIN"));
 		
 	}
 

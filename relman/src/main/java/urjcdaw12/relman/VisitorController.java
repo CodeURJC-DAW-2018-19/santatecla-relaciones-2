@@ -1,6 +1,6 @@
 package urjcdaw12.relman;
 
-import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,11 @@ public class VisitorController {
 	@Autowired
 	private UnidadRepository unidadRep;
 	
-
-	
-		@RequestMapping("/")
-		 public String cargar(Model model) {
+		 @RequestMapping("/")
+		 public String cargar(Model model, HttpServletRequest request) {
 			model.addAttribute("unidades",unidadRep.findAll());
+			model.addAttribute("student", request.isUserInRole("USER"));
+			model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		 return "index";
 		 }
 }

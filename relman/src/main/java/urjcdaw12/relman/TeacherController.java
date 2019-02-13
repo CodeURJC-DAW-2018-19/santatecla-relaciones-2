@@ -1,5 +1,7 @@
 package urjcdaw12.relman;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +20,18 @@ public class TeacherController {
 
 	
 	@RequestMapping("/")
-	 public String cargar(Model model) {
+	 public String cargar(Model model, HttpServletRequest request) {
 		model.addAttribute("unidades",unidadRep.findAll());
-
+		model.addAttribute("student", request.isUserInRole("USER"));
+		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 	 return "teacherIndex";
 	 }
 	
 	@RequestMapping("/unit")
-	 public String openUnit(Model model) {
+	 public String openUnit(Model model, HttpServletRequest request) {
+		model.addAttribute("student", request.isUserInRole("USER"));
+		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
+		
 		model.addAttribute("unidad",unidadRep.findByName("HTML").get(0));
 		model.addAttribute("padres", relationRep.findByTypeAndDestiny("Herencia",unidadRep.findByName("HTML").get(0)));
 		model.addAttribute("hijas", relationRep.findByTypeAndOrigin("Herencia",unidadRep.findByName("HTML").get(0)));
@@ -43,7 +49,10 @@ public class TeacherController {
 	 }
 	
 	@RequestMapping("/{unit}")
-	public String openConcreteUnit(Model model, @PathVariable String unit) {
+	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
+		model.addAttribute("student", request.isUserInRole("USER"));
+		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
+		
 		model.addAttribute("unidad",unidadRep.findByName(unit).get(0));
 		model.addAttribute("padres", relationRep.findByTypeAndDestiny("Herencia",unidadRep.findByName(unit).get(0)));
 		model.addAttribute("hijas", relationRep.findByTypeAndOrigin("Herencia",unidadRep.findByName(unit).get(0)));
