@@ -1,0 +1,14 @@
+oculto {
+    display: none;
+}
+
+.margin-bot {
+    margin-bottom: 1.1em;
+}
+
+#logo {
+	width: 5em;
+	height: 5em;
+	float: left;
+	margin-bottom: 1em;
+}
