@@ -141,26 +141,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>SGML</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>MAQUETACIÓN WEB</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                        	{{#padres}}
+                                                        	<tr>
+                                                        	   	<td>{{origin}}</td>
+                                                        	   	{{#teacher}}
+                                                      		  	 <td class="td-actions text-right">
+                                                           		 <button type="button" rel="tooltip" class="btn btn-danger">
+                                                                <i class="material-icons">delete_forever</i>
+		                                                            </button>
+		                                                        </td>
+		                                                        {{/teacher}}
+		                                                    </tr>
+		                                                    {{/padres}}                 
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -188,26 +180,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>ETIQUETAS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>ATRIBUTOS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#compuestos}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}	
+	                                                     </tr>
+	                                                	{{/compuestos}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -235,26 +219,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>IMÁGENES</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>VÍDEOS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#usa}}
+	                                                   		 <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                      		  </td>
+	                                                      	 {{/teacher}}	  
+	                                                     	 </tr>
+	                                                		{{/usa}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -286,26 +262,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>CSS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>XML</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#asociados a}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>	
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}
+	                                                    </tr>
+	                                                {{/asociados a}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -332,7 +300,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="container text-center">
-                                                        <h1>HTML</h1>
+                                                        <h1>{{unidad}}</h1>
                                                     </div>
                                                 </div>
 
@@ -357,26 +325,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>XML</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>CSS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#asociado a}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}
+	                                                    </tr>
+	                                                {{/asociado a}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -407,19 +367,21 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>ETIQUETAS</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#usan}}
+	                                                    <tr>
+	                                                        <td>{{origin}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}
+	                                                    </tr>
+	                                                    {{/usan}}
                                                         </tbody>
                                                     </table>
-                                                    {{#teacher}}s
+                                                    {{#teacher}}
                                                         <div class="container text-left">
                                                             <p>
                                                                 <button type="button" class="btn btn-success btn-round btn-sm">
@@ -444,7 +406,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-
+														{{#partes}}
+	                                                    <tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}
+	                                                    </tr>
+	                                                    {{/partes}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}
@@ -477,26 +450,18 @@
                                                 <div class="card-body">
                                                     <table class="table">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>HTML 2.0</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <tr>
-                                                                <td>HTML 4.0</td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
+                                                            {{#hijas}}
+	                                                    	<tr>
+	                                                        <td>{{destiny}}</td>
+	                                                        {{#teacher}}
+	                                                        <td class="td-actions text-right">
+	                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+	                                                                <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                        </td>
+	                                                        {{/teacher}}
+	                                                    </tr>
+	                                                    {{/hijas}}
                                                         </tbody>
                                                     </table>
                                                     {{#teacher}}

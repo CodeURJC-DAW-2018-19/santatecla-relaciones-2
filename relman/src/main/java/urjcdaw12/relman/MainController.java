@@ -20,8 +20,8 @@ public class MainController {
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request) {
 		model.addAttribute("unidades", unidadRep.findAll());
-		model.addAttribute("student", request.isUserInRole("USER"));
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
+		model.addAttribute("student", request.isUserInRole("USER"));
 		return "index";
 	}
 
