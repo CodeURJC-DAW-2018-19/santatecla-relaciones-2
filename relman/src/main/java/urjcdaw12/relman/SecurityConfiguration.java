@@ -14,6 +14,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.headers().frameOptions().disable(); // Para que vaya la consola H2
+
 		
 		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/error").permitAll();
@@ -27,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.formLogin().defaultSuccessUrl("/");
 		http.formLogin().failureUrl("/error");
 		
-		//http.logout().logoutUrl("/logout"); TODO Pagina de logout
+		http.logout().logoutUrl("/logout"); 
 		http.logout().logoutSuccessUrl("/");
 		
 		http.csrf().disable(); //TODO Usar tokens

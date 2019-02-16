@@ -486,132 +486,42 @@
                             </div>
 
                             <div class="tab-pane" id="detalles">
-                                <div class="row">
+                            
+                            {{#cards}}
+                            <div class="row">
                                     <div class="col-sm">
                                         <div class="card">
                                             <div class="border border-danger">
                                                 <div class="card-header card-header-text card-header-danger">
                                                     <div class="card-text">
-                                                        <h4 class="card-title">¿Por qué?</h4>
+                                                        <h4 class="card-title">{{type}}</h4>
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
                                                     {{#teacher}}
                                                         <div class="form-group">
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML es un lenguaje sencillo, que además es facil de leer e interpretar, también existen numerosas aplicaciones y editores de páginas web que generan el código automáticamente y por lo tanto no es casi necesario ser un experto informático para hacer páginas basadas en HTML y esta sencillez hace que pueda diseñarse y desplegarse un sitio web en muy poco tiempo y cabe recalcar que es el lenguaje más extendido ya que todos los navegadores lo admiten y tiene la característica de que es un código visible e interpretable por los buscadores</textarea>
+                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{desc}}</textarea>
                                                         </div>
                                                     {{/teacher}}
                                                     {{^teacher}}
                                                         <div class="form-group">
-                                                            <p>HTML es un lenguaje sencillo, que además es facil de leer e interpretar, también existen numerosas aplicaciones y editores de páginas web que generan el código automáticamente y por lo tanto no es casi necesario ser un experto informático para hacer páginas basadas en HTML y esta sencillez hace que pueda diseñarse y desplegarse un sitio web en muy poco tiempo y cabe recalcar que es el lenguaje más extendido ya que todos los navegadores lo admiten y tiene la característica de que es un código visible e interpretable por los buscadores</p>
+                                                            <p>{{desc}}</p>
                                                         </div>
-                                                        {{/teacher}}
+                                                    {{/teacher}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-                                <div class="row">
-
-
-
-
-
-                                    <div class="col-sm">
-                                        <div class="card">
-                                            <div class="border border-danger">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">¿Para qué?</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    {{#teacher}}
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML surgió como lenguaje de marcado extendido de SGML para la elaboración y maquetación de páginas web</textarea>
-                                                        </div>
-                                                    {{/teacher}}
-                                                    {{^teacher}}
-                                                        <div class="form-group">
-                                                            <p>HTML surgió como lenguaje de marcado extendido de SGML para la elaboración y maquetación de páginas web</p>
-                                                        </div>
-                                                        {{/teacher}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-
-
-
-
-
-                                    <div class="col-sm">
-                                        <div class="card">
-                                            <div class="border border-danger">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">¿Qué?</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    {{#teacher}}
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">HTML, sigla en inglés de HyperText Markup Language (lenguaje de marcas de hipertexto), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros. Es un estándar a cargo del World Wide Web Consortium (W3C) o Consorcio WWW, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación. Se considera el lenguaje web más importante siendo su invención crucial en la aparición, desarrollo y expansión de la World Wide Web (WWW). Es el estándar que se ha impuesto en la visualización de páginas web y es el que todos los navegadores actuales han adoptado.</textarea>
-                                                        </div>
-                                                    {{/teacher}}
-                                                    {{^teacher}}
-                                                        <div class="form-group">
-                                                            <p>HTML, sigla en inglés de HyperText Markup Language (lenguaje de marcas de hipertexto), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros. Es un estándar a cargo del World Wide Web Consortium (W3C) o Consorcio WWW, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación. Se considera el lenguaje web más importante siendo su invención crucial en la aparición, desarrollo y expansión de la World Wide Web (WWW). Es el estándar que se ha impuesto en la visualización de páginas web y es el que todos los navegadores actuales han adoptado.</p>
-                                                        </div>
-                                                        {{/teacher}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <div class="card">
-                                            <div class="border border-danger">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">¿Cómo?</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    {{#teacher}}
-                                                        <div class="sorted list (how)">
-                                                            <section><b>Construcción de una página web HTML:</b></section>
-                                                            <ol>
-                                                                <li> Crear documentos estructurados con etiquetas</li>
-                                                                <li> Elegir el mejor editor para un caso concreto de creación</li>
-                                                                <li> Crear la estructura básica de tu página HTML: cabecera y el cuerpo</li>
-                                                                <li> Crear el contenido y aplicarle formato con las etiquetas HTML</li>
-                                                                <li> Integrar elementos interactivos si es necesario</li>
-                                                                <li> Implementar la lógica para responder a dichos formularios en el caso de que se integren</li>
-                                                                <li> Publicar la página en Internet o en local</li>
-                                                            </ol>
-                                                        </div>
-                                                    {{/teacher}}
-                                                    {{^teacher}}
-                                                        <p>Construcción de una página web HTML:
-                                                            Crear documentos estructurados con etiquetas
-                                                            Elegir el mejor editor para un caso concreto de creación
-                                                            Crear la estructura básica de tu página HTML: cabecera y el cuerpo
-                                                            Crear el contenido y aplicarle formato con las etiquetas HTML
-                                                            Integrar elementos interactivos si es necesario
-                                                            Implementar la lógica para responder a dichos formularios en el caso de que se integren
-                                                            Publicar la página en Internet o en local</p>
-                                                        {{/teacher}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                              {{/cards}}
+                            
+                            
+                            
+                            
+                            
+                                
                                 {{#teacher}}
                                     <div class="row">
                                         <div class="col-sm">

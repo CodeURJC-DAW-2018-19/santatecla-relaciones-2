@@ -21,9 +21,7 @@
 </head>
 
 <body>
-    {{#student}}
-        <button type="button" class="btn btn-danger">Danger</button>
-    {{/student}}
+
     {{^student}}
         <!-- ModalLogin -->
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,18 +79,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="card card-body">
-                            <form>
+                            <form action="/register" method="post">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1"><b>Usuario</b></label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca su nuevo nombre de usuario">
+                                    <label for="userInput"><b>Usuario</b></label>
+                                    <input type="text" class="form-control" name="userInput" id="userInput" aria-describedby="userHelp" placeholder="Introduzca su nuevo nombre de usuario">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1"><b>Contraseña</b></label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca la nueva contraseña">
+                                    <input type="password" class="form-control" name="pass1" id="exampleInputPassword1" placeholder="Introduzca la nueva contraseña">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword2"><b>Contraseña</b></label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Repita la nueva contraseña">
+                                    <input type="password" class="form-control" name="pass2" id="exampleInputPassword2" placeholder="Repita la nueva contraseña">
                                 </div>
                                 <button type="submit" class="btn btn-danger">Registrarse</button>
                             </form>
@@ -135,10 +133,17 @@
                                                     <td><a href="{{.}}">{{.}}</a></td>
                                                     {{#teacher}}
                                                         <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" class="btn btn-danger">
+                                                        <ul class="nav navbar-nav">
+															<li><form action="/delete/{{.}}" method="post">
+                                                            <button type="submit" rel="tooltip" class="btn btn-danger">
                                                                 <i class="material-icons">delete_forever</i>
                                                             </button>
+                                                            </form></li>
+                                                      	</ul>
+                                            
                                                         </td>
+                                                        
+       
                                                     {{/teacher}}
                                                 </tr>
                                             {{/student}}

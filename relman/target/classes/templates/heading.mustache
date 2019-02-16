@@ -13,9 +13,20 @@
         </ul>
         <span class="navbar-item">
             <div class="container margin-right">
+            	{{#student}}
+					<ul class="nav navbar-nav">
+						<li><form action="/logout" method="post">
+								<button class="btn btn-danger navbar-btn" type="submit">Log
+									Out</button>
+							</form></li>
+					</ul>
+           	
+            	{{/student}}
+            	{{^student}}
                 <button type="button" class="btn btn-default btn-link" data-toggle="modal" data-target="#login">
                     Login
                 </button>
+                {{/student}}
             </div>
         </span>
     </div>

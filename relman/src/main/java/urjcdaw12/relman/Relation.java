@@ -13,8 +13,8 @@ public class Relation {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id;
 	
-	private String type;  //Esta puesto asi porque no se puede hacer enum de Strings de forma sencilla. 
-	//Controlamos luego que no sea uno de los 4 posibles y ya
+	private String type;  /*Esta puesto asi porque no se puede hacer enum de Strings de forma sencilla. 
+	Controlamos luego que no sea uno de los 4 posibles y ya*/
 
 	
 	@ManyToOne
@@ -28,7 +28,15 @@ public class Relation {
 	public Relation(String tipo,Unit origin, Unit destiny) {
 		this.origin=origin;
 		this.destiny=destiny;
-		this.type=tipo;
+		this.setType(tipo);
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

@@ -21,6 +21,9 @@ public class DatabaseInitializer {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	CardRepository cardRepository;
 
 	@PostConstruct
 	public void init() {
@@ -84,6 +87,16 @@ public class DatabaseInitializer {
 		userRepository.save(new User("user@user","12345","ROLE_USER"));
 		userRepository.save(new User("student","12345","ROLE_USER"));
 		userRepository.save(new User("teacher@teacher","adminpass","ROLE_USER","ROLE_ADMIN"));
+		
+		cardRepository.save(new Card("Por qué","Porque...",html));
+		cardRepository.save(new Card("Cuándo","Cuando...",html));
+		cardRepository.save(new Card("Cómo","Así...",html));
+		cardRepository.save(new Card("Para qué","Para...",html));
+		cardRepository.save(new Card("Quién","Este...",html));
+		cardRepository.save(new Card("Dónde","Donde...",html));
+
+
+
 		
 	}
 
