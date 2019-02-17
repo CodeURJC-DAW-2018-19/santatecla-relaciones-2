@@ -27,6 +27,11 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request) {
+		
+		//cada vez que genero un formulario cojo el form de la request y la pongo en el modelo
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+
 		model.addAttribute("unidades", unidadRep.findAll());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
