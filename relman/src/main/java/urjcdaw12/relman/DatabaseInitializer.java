@@ -1,96 +1,102 @@
 package urjcdaw12.relman;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import urjcdaw12.relman.Cards.Card;
+import urjcdaw12.relman.Cards.CardService;
+import urjcdaw12.relman.Relations.Relation;
+import urjcdaw12.relman.Relations.RelationService;
+import urjcdaw12.relman.Units.Unit;
+import urjcdaw12.relman.Units.UnitService;
+import urjcdaw12.relman.Users.User;
+import urjcdaw12.relman.Users.UserService;
+
 @Component
 public class DatabaseInitializer {
 
 	@Autowired
-	private RelationRepository relationRep;
+	private RelationService relationServ;
 
 	@Autowired
-	private UnidadRepository unidadRep;
+	private UnitService unitServ;
 
 	@Autowired
-	UserRepository userRepository;
+	UserService userServ;
 
 	@Autowired
-	CardRepository cardRepository;
+	CardService cardServ;
 
 	@PostConstruct
 	public void init() {
 
 		// Units
-		Unit html = unidadRep.save(new Unit("HTML"));
-		Unit html2 = unidadRep.save(new Unit("HTML2.1"));
-		Unit html4 = unidadRep.save(new Unit("HTML4.0"));
+		Unit html = unitServ.save(new Unit("HTML"));
+		Unit html2 = unitServ.save(new Unit("HTML2.1"));
+		Unit html4 = unitServ.save(new Unit("HTML4.0"));
 
-		Unit css = unidadRep.save(new Unit("CSS"));
-		Unit javascript = unidadRep.save(new Unit("JAVASCRIPT"));
-		Unit apiRest = unidadRep.save(new Unit("API_REST"));
-		Unit spring = unidadRep.save(new Unit("SPRING"));
-		Unit angular = unidadRep.save(new Unit("ANGULAR"));
-		Unit sgml = unidadRep.save(new Unit("SGML"));
-		Unit maqWeb = unidadRep.save(new Unit("MAQUETACIÓN_WEB"));
+		unitServ.save(new Unit("CSS"));
+		unitServ.save(new Unit("JAVASCRIPT"));
+		unitServ.save(new Unit("API_REST"));
+		unitServ.save(new Unit("SPRING"));
+		unitServ.save(new Unit("ANGULAR"));
+		Unit sgml = unitServ.save(new Unit("SGML"));
+		Unit maqWeb = unitServ.save(new Unit("MAQUETACIÓN_WEB"));
 
-		Unit c1 = unidadRep.save(new Unit("COMP1"));
-		Unit c2 = unidadRep.save(new Unit("COMP2"));
+		Unit c1 = unitServ.save(new Unit("COMP1"));
+		Unit c2 = unitServ.save(new Unit("COMP2"));
 
-		Unit usa1 = unidadRep.save(new Unit("USA1"));
-		Unit usa2 = unidadRep.save(new Unit("USA2"));
+		Unit usa1 = unitServ.save(new Unit("USA1"));
+		Unit usa2 = unitServ.save(new Unit("USA2"));
 
-		Unit asociados1 = unidadRep.save(new Unit("ASOCIADOS1"));
-		Unit asociados2 = unidadRep.save(new Unit("ASOCIADOS2"));
+		Unit asociados1 = unitServ.save(new Unit("ASOCIADOS1"));
+		Unit asociados2 = unitServ.save(new Unit("ASOCIADOS2"));
 
-		Unit asociado1 = unidadRep.save(new Unit("ASOCIADO1"));
-		Unit asociado2 = unidadRep.save(new Unit("ASOCIADO2"));
+		Unit asociado1 = unitServ.save(new Unit("ASOCIADO1"));
+		Unit asociado2 = unitServ.save(new Unit("ASOCIADO2"));
 
-		Unit usan1 = unidadRep.save(new Unit("USAN1"));
-		Unit usan2 = unidadRep.save(new Unit("USAN2"));
+		Unit usan1 = unitServ.save(new Unit("USAN1"));
+		Unit usan2 = unitServ.save(new Unit("USAN2"));
 
-		Unit partes1 = unidadRep.save(new Unit("PARTES1"));
-		Unit partes2 = unidadRep.save(new Unit("PARTES2"));
+		Unit partes1 = unitServ.save(new Unit("PARTES1"));
+		Unit partes2 = unitServ.save(new Unit("PARTES2"));
 
-		relationRep.save(new Relation("Herencia", sgml, html));
-		relationRep.save(new Relation("Herencia", maqWeb, html));
+		relationServ.save(new Relation("Herencia", sgml, html));
+		relationServ.save(new Relation("Herencia", maqWeb, html));
 
-		relationRep.save(new Relation("Herencia", html, html2));
-		relationRep.save(new Relation("Herencia", html, html4));
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
 
-		relationRep.save(new Relation("Composición", c1, html));
-		relationRep.save(new Relation("Composición", c2, html));
+		relationServ.save(new Relation("Composición", c1, html));
+		relationServ.save(new Relation("Composición", c2, html));
 
-		relationRep.save(new Relation("Composición", html, partes1));
-		relationRep.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
 
-		relationRep.save(new Relation("Uso", usan1, html));
-		relationRep.save(new Relation("Uso", usan2, html));
+		relationServ.save(new Relation("Uso", usan1, html));
+		relationServ.save(new Relation("Uso", usan2, html));
 
-		relationRep.save(new Relation("Uso", html, usa1));
-		relationRep.save(new Relation("Uso", html, usa2));
+		relationServ.save(new Relation("Uso", html, usa1));
+		relationServ.save(new Relation("Uso", html, usa2));
 
-		relationRep.save(new Relation("Asociación", asociados1, html));
-		relationRep.save(new Relation("Asociación", asociados2, html));
+		relationServ.save(new Relation("Asociación", asociados1, html));
+		relationServ.save(new Relation("Asociación", asociados2, html));
 
-		relationRep.save(new Relation("Asociación", html, asociado1));
-		relationRep.save(new Relation("Asociación", html, asociado2));
+		relationServ.save(new Relation("Asociación", html, asociado1));
+		relationServ.save(new Relation("Asociación", html, asociado2));
 
-		userRepository.save(new User("user", "12345", "ROLE_USER"));
-		userRepository.save(new User("student", "12345", "ROLE_USER"));
-		userRepository.save(new User("teacher", "12345", "ROLE_USER", "ROLE_ADMIN"));
+		userServ.save(new User("user", "12345", "ROLE_USER"));
+		userServ.save(new User("student", "12345", "ROLE_USER"));
+		userServ.save(new User("teacher", "12345", "ROLE_USER", "ROLE_ADMIN"));
 
-		cardRepository.save(new Card("Por qué", "Porque...", html));
-		cardRepository.save(new Card("Cuándo", "Cuando...", html));
-		cardRepository.save(new Card("Cómo", "Así...", html));
-		cardRepository.save(new Card("Para qué", "Para...", html));
-		cardRepository.save(new Card("Quién", "Este...", html));
-		cardRepository.save(new Card("Dónde", "Donde...", html));
+		cardServ.save(new Card("Por qué", "Porque...", html));
+		cardServ.save(new Card("Cuándo", "Cuando...", html));
+		cardServ.save(new Card("Cómo", "Así...", html));
+		cardServ.save(new Card("Para qué", "Para...", html));
+		cardServ.save(new Card("Quién", "Este...", html));
+		cardServ.save(new Card("Dónde", "Donde...", html));
 
 	}
 

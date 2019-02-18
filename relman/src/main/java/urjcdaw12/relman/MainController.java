@@ -10,20 +10,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import urjcdaw12.relman.Cards.CardService;
+import urjcdaw12.relman.Relations.RelationService;
+import urjcdaw12.relman.Units.Unit;
+import urjcdaw12.relman.Units.UnitService;
+import urjcdaw12.relman.Users.User;
+import urjcdaw12.relman.Users.UserService;
+
 @Controller
 public class MainController {
 
 	@Autowired
-	private UnidadRepository unidadRep;
+	private UnitService unitServ;
 
 	@Autowired
-	private RelationRepository relationRep;
+	private RelationService relationServ;
 
 	@Autowired
-	private CardRepository cardRep;
+	private CardService cardServ;
 
 	@Autowired
-	private UserRepository userRep;
+	private UserService userServ;
 
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request) {
@@ -32,7 +39,7 @@ public class MainController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		model.addAttribute("unidades", unidadRep.findAll());
+		model.addAttribute("unidades", unitServ.findAll());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
 
@@ -41,35 +48,43 @@ public class MainController {
 
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
 
-		Unit unitConc = unidadRep.findByName(unit).get(0);
+		
+		Unit unitConc = unitServ.findByName(unit).get(0);
+		
+		model.addAttribute("units",unitConc);
 
 		model.addAttribute("student", request.isUserInRole("USER"));
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 
-		model.addAttribute("unidad", unidadRep.findByName(unit).get(0));
-		model.addAttribute("padres", relationRep.findByTypeAndDestiny("Herencia", unitConc));
-		model.addAttribute("hijas", relationRep.findByTypeAndOrigin("Herencia", unitConc));
+		model.addAttribute("unidad", unitServ.findByName(unit).get(0));
+		model.addAttribute("padres", relationServ.findByTypeAndDestiny("Herencia", unitConc));
+		model.addAttribute("hijas", relationServ.findByTypeAndOrigin("Herencia", unitConc));
 
-		model.addAttribute("compuestos",relationRep.findByTypeAndDestiny("Composición", unidadRep.findByName(unit).get(0)));
-		model.addAttribute("partes", relationRep.findByTypeAndOrigin("Composición", unitConc));
+		model.addAttribute("compuestos",relationServ.findByTypeAndDestiny("Composición", unitServ.findByName(unit).get(0)));
+		model.addAttribute("partes", relationServ.findByTypeAndOrigin("Composición", unitConc));
 
-		model.addAttribute("usan", relationRep.findByTypeAndDestiny("Uso", unitConc));
-		model.addAttribute("usa", relationRep.findByTypeAndOrigin("Uso", unitConc));
+		model.addAttribute("usan", relationServ.findByTypeAndDestiny("Uso", unitConc));
+		model.addAttribute("usa", relationServ.findByTypeAndOrigin("Uso", unitConc));
 
-		model.addAttribute("asociados a", relationRep.findByTypeAndDestiny("Asociación", unitConc));
-		model.addAttribute("asociado a", relationRep.findByTypeAndOrigin("Asociación", unitConc));
+		model.addAttribute("asociados a", relationServ.findByTypeAndDestiny("Asociación", unitConc));
+		model.addAttribute("asociado a", relationServ.findByTypeAndOrigin("Asociación", unitConc));
 
-		model.addAttribute("cards", cardRep.findByUnitAsoc(unitConc));
+		model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
 		return "units";
 	}
 
 	@RequestMapping("/register")
-	public String register(@RequestParam("userInput") String user, @RequestParam("pass1") String pass1,
-			@RequestParam("pass2") String pass2) {
+	public String register(Model model, @RequestParam("userInput") String user, @RequestParam("pass1") String pass1,
+			@RequestParam("pass2") String pass2, HttpServletRequest request) {
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+
 		if (pass1.equals(pass2)) {
-			userRep.save(new User(user, pass1, "ROLE_USER"));
+			userServ.save(new User(user, pass1, "ROLE_USER"));
 		}
 
 		return "redirect:/";
@@ -78,11 +93,15 @@ public class MainController {
 	// Ahora mismo funciona perfectamente, pero habría que meter un modal de
 	// confirmación de borrado, actualmente refresca la pagina actualizada
 	@RequestMapping("/delete/{unit}")
-	public String deleteUnit(Model model, @PathVariable String unit) {
-		Unit unitConc = unidadRep.findByName(unit).get(0);
+	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
+		
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+
+		Unit unitConc = unitServ.findByName(unit).get(0);
 
 		if (unitConc != null) {
-			unidadRep.delete(unitConc);
+			unitServ.delete(unitConc);
 
 		}
 

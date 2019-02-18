@@ -1,4 +1,4 @@
-package urjcdaw12.relman;
+package urjcdaw12.relman.Users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userServ;
 	
 
 	@Autowired
@@ -28,7 +28,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
-		User user = userRepository.findByName(auth.getName());
+		User user = userServ.findByName(auth.getName());
 
 		if (user == null) {
 			throw new BadCredentialsException("User not found");

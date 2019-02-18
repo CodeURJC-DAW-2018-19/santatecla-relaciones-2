@@ -1,4 +1,4 @@
-package urjcdaw12.relman;
+package urjcdaw12.relman.Users;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
