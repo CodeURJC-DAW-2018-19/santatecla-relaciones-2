@@ -51,8 +51,7 @@ public class MainController {
 		model.addAttribute("padres", relationRep.findByTypeAndDestiny("Herencia", unitConc));
 		model.addAttribute("hijas", relationRep.findByTypeAndOrigin("Herencia", unitConc));
 
-		model.addAttribute("compuestos",
-				relationRep.findByTypeAndDestiny("Composición", unidadRep.findByName(unit).get(0)));
+		model.addAttribute("compuestos",relationRep.findByTypeAndDestiny("Composición", unidadRep.findByName(unit).get(0)));
 		model.addAttribute("partes", relationRep.findByTypeAndOrigin("Composición", unitConc));
 
 		model.addAttribute("usan", relationRep.findByTypeAndDestiny("Uso", unitConc));

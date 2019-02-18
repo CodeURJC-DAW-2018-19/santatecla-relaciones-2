@@ -54,7 +54,7 @@
                                 </div>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
                                 <button type="submit" class="btn btn-primary">Entrar</button>
-                                <input type="hidden" name="_csrf" value="{{token}}" />
+                               <input type="hidden" name="_csrf" value="{{token}}" />
 
                             </form>
                         </div>
@@ -94,6 +94,7 @@
                                     <input type="password" class="form-control" name="pass2" id="exampleInputPassword2" placeholder="Repita la nueva contraseña">
                                 </div>
                                 <button type="submit" class="btn btn-danger">Registrarse</button>
+                                 <input type="hidden" name="_csrf" value="{{token}}" />
                             </form>
                         </div>
                     </div>
@@ -112,13 +113,14 @@
                         <div class="card">
                             <div class="card-header card-header-danger">
                                 <h1 class="card-title">Unidades
-                                    <form class="form-inline ml-auto">
+                                    <form action="" class="form-inline ml-auto" method="POST">
                                         <div class="form-group has-white">
                                             <input type="text" class="form-control" placeholder="Buscar">
                                         </div>
                                         <button type="submit" class="btn btn-white btn-icon btn-round">
                                             <i class="material-icons">search</i>
                                         </button>
+                                         <input type="hidden" name="_csrf" value="{{token}}" />
                                     </form>
                                 </h1>
                             </div>
@@ -137,7 +139,8 @@
 															<li><form action="/delete/{{.}}" method="post">
                                                             <button type="submit" rel="tooltip" class="btn btn-danger">
                                                                 <i class="material-icons">delete_forever</i>
-                                                            </button>
+                                                            </button>	
+                                                             <input type="hidden" name="_csrf" value="{{token}}" />
                                                             </form></li>
                                                       	</ul>
                                             
