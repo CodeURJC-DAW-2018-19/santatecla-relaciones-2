@@ -15,6 +15,7 @@ import urjcdaw12.relman.Relations.RelationService;
 import urjcdaw12.relman.Units.Unit;
 import urjcdaw12.relman.Units.UnitService;
 import urjcdaw12.relman.Users.User;
+import urjcdaw12.relman.Users.UserComponent;
 import urjcdaw12.relman.Users.UserService;
 
 @Controller
@@ -31,6 +32,9 @@ public class MainController {
 
 	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	private UserComponent userComponent;
 
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request) {
@@ -38,6 +42,8 @@ public class MainController {
 		//cada vez que genero un formulario cojo el form de la request y la pongo en el modelo
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
+		
+		model.addAttribute("units",userComponent.getTabs());
 
 		model.addAttribute("unidades", unitServ.findAll());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
@@ -51,10 +57,10 @@ public class MainController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
+		userComponent.addTab(unit);
+		model.addAttribute("units",userComponent.getTabs());
 		
 		Unit unitConc = unitServ.findByName(unit).get(0);
-		
-		model.addAttribute("units",unitConc);
 
 		model.addAttribute("student", request.isUserInRole("USER"));
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
@@ -73,7 +79,7 @@ public class MainController {
 		model.addAttribute("asociado a", relationServ.findByTypeAndOrigin("Asociación", unitConc));
 
 		model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
-
+		
 		return "units";
 	}
 
