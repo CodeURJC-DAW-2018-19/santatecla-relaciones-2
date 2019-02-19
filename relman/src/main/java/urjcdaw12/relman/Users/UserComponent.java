@@ -30,9 +30,13 @@ public class UserComponent {
 		if (tabs == null) {
 			tabs = new ArrayList<>();
 		}
-		if (!tabs.contains(tab)) {
+		if (!tabs.contains(tab) && !tab.equals("estilos.css")) {
 			tabs.add(tab);
 		}
+	}
+	
+	public void removeTab(String tab) {
+		tabs.remove(tab);
 	}
 
 	public List<String> getTabs() {
