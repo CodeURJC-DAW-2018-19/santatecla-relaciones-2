@@ -21,6 +21,33 @@
 </head>
 
 <body>
+    <!-- ModalAddRelation -->
+    <div class="modal fade" id="addRel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="/" method='POST'>
+                        <div class="form-group">
+                            <select class="custom-select" required>
+                                <option value="">Clase</option>
+                                {{#related}}
+                                <option value="{{-index}}">{{.}}</option>
+                                {{/related}}
+                            </select>
+                        </div>
+                        <div class="container text-right">
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapper">
         {{>heading}}
         <div class="content">
@@ -71,11 +98,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -110,11 +137,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -149,11 +176,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -192,11 +219,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                            <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -255,11 +282,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -297,11 +324,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -336,11 +363,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
@@ -380,11 +407,11 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                                    <div class="container text-left">
+                                                    <div class="container text-right">
                                                         <p>
-                                                            <button type="button" class="btn btn-success btn-round btn-sm">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
+                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRel">
+                                                              <i class="material-icons">add</i>
+                                                          </button>
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
