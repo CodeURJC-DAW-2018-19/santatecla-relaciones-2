@@ -43,8 +43,8 @@
                                     <label for="exampleInputPassword1"><b>Contraseña</b></label>
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña" name="password">
                                 </div>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
                                 <button type="submit" class="btn btn-primary">Entrar</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
                                <input type="hidden" name="_csrf" value="{{token}}" />
 
                             </form>
@@ -102,7 +102,7 @@
                   <div class="modal-content">
                         <div class="modal-body">
 
-                            <form action="/" method='POST'>
+                            <form action="/addUnit" method='POST'>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <span class="input-group-text">
@@ -118,44 +118,14 @@
                                         <button type="submit" class="btn btn-success">Aceptar</button>
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="_csrf" value="{{token}}" />
                             </form>
 
                         </div>
                     </div>
                 </div>
           </div>
-          <!-- ModalDeletion -->
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form action="/" method='POST'>
-                            <div class="form-row">
 
-                                <div class="container text-center">
-                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
-                                </div>
-
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <div class="container text-right">
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <div class="container text-left">
-                                        <button type="submit" class="btn">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="wrapper">
             {{>heading}}
@@ -188,18 +158,48 @@
                                                     {{#teacher}}
                                                         <td class="td-actions text-right">
                                                         <ul class="nav navbar-nav">
-															                            <li><form action="/delete/{{.}}" method="post">
-                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-                                                                <i class="material-icons">delete_forever</i>
-                                                            </button>
-                                                             <input type="hidden" name="_csrf" value="{{token}}" />
+															<li><form>
+	                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{.}}">
+	                                                            <i class="material-icons">delete_forever</i>
+	                                                            </button>
+	                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+	                                                            
                                                             </form>
                                                           </li>
                                                       	</ul>
-
+                                                      	
+												        <!-- ModalDeletion -->
+												        <div class="modal fade" id="delete{{.}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												            <div class="modal-dialog" role="document">
+												                <div class="modal-content">
+												                    <div class="modal-body">
+												                            <div class="form-row">
+												                                <div class="container text-center">
+												                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
+												                                </div>	
+												                            </div>
+												                            <div class="form-row">
+												                                <div class="form-group col-md-6">
+												                                    <div class="container text-right">
+												                                    <form action="/delete/{{.}}" method='POST'>
+												                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+												                                    	<input type="hidden" name="_csrf" value="{{token}}" />   
+												                                    </form>
+												                                        
+												                                    </div>
+												                                </div>
+												                                <div class="form-group col-md-6">
+												                                    <div class="container text-left">
+												                                        <button type="submit" class="btn"><a href="/">Cancelar</a></button>
+												                                    </div>
+												                                </div>
+												                            </div>
+												
+												                    </div>
+												                </div>
+												            </div>
+												        </div>
                                                         </td>
-
-
                                                     {{/teacher}}
                                                 </tr>
                                             {{/student}}

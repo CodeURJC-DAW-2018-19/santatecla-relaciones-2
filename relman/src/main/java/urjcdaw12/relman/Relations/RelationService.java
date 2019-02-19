@@ -31,6 +31,10 @@ public class RelationService {
 		relationRep.deleteById(id);
 	}
 	
+	public void delete(Relation relation) {
+		relationRep.delete(relation);
+	}
+	
 	public List<Relation> findByTypeAndOrigin(String type, Unit origin){
 		return relationRep.findByTypeAndOrigin(type, origin);
 	}
