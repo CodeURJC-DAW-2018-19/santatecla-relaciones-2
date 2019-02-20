@@ -1,5 +1,6 @@
 package urjcdaw12.relman.cards;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Card {
 	private long id;
 	
 	private String type;
-	private String desc;
+	@Column(columnDefinition="LONGTEXT")
+	private String description;
 	private String photoSrc;
 	
 	@ManyToOne
@@ -26,7 +28,7 @@ public class Card {
 	
 	public Card (String t, String de, Unit unit) {
 		this.type=t;
-		this.desc=de;
+		this.description=de;
 		this.unitAsoc=unit;
 	}
 
@@ -63,11 +65,11 @@ public class Card {
 	}
 
 	public String getDesc() {
-		return desc;
+		return description;
 	}
 
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.description = desc;
 	}
 	
 	
