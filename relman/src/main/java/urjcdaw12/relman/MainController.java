@@ -34,10 +34,6 @@ public class MainController {
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request, Pageable page) {
 		
-		
-		//CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		//model.addAttribute("token", token.getToken());
-		
 		model.addAttribute("units",userComponent.getTabs());
 		
 		model.addAttribute("unidades", unitServ.findAll(page));
@@ -52,8 +48,6 @@ public class MainController {
 	@RequestMapping("/page/{page}/{size}")
 	public String loadAjax(Model model,HttpServletRequest request,@PathVariable int page,@PathVariable int size) {
 		
-		//CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		//model.addAttribute("token", token.getToken());
 		model.addAttribute("units",userComponent.getTabs());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
