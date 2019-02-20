@@ -61,8 +61,6 @@ public class MainController {
 	@RequestMapping("/delete/{unit}")
 	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
 
-		
-
 		userComponent.removeTab(unit);
 		
 		Unit unitConc = unitServ.findByName(unit);
