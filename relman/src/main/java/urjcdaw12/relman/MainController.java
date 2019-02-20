@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import urjcdaw12.relman.Units.Unit;
-import urjcdaw12.relman.Units.UnitService;
-import urjcdaw12.relman.Users.User;
-import urjcdaw12.relman.Users.UserComponent;
-import urjcdaw12.relman.Users.UserService;
+import urjcdaw12.relman.units.Unit;
+import urjcdaw12.relman.units.UnitService;
+import urjcdaw12.relman.users.User;
+import urjcdaw12.relman.users.UserComponent;
+import urjcdaw12.relman.users.UserService;
 
 @Controller
 public class MainController {

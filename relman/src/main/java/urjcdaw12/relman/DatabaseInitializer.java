@@ -5,14 +5,14 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import urjcdaw12.relman.Cards.Card;
-import urjcdaw12.relman.Cards.CardService;
-import urjcdaw12.relman.Relations.Relation;
-import urjcdaw12.relman.Relations.RelationService;
-import urjcdaw12.relman.Units.Unit;
-import urjcdaw12.relman.Units.UnitService;
-import urjcdaw12.relman.Users.User;
-import urjcdaw12.relman.Users.UserService;
+import urjcdaw12.relman.cards.Card;
+import urjcdaw12.relman.cards.CardService;
+import urjcdaw12.relman.relations.Relation;
+import urjcdaw12.relman.relations.RelationService;
+import urjcdaw12.relman.units.Unit;
+import urjcdaw12.relman.units.UnitService;
+import urjcdaw12.relman.users.User;
+import urjcdaw12.relman.users.UserService;
 
 @Component
 public class DatabaseInitializer {

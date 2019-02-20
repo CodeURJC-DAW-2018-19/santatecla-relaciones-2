@@ -1,4 +1,4 @@
-package urjcdaw12.relman.Cards;
+package urjcdaw12.relman.cards;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import urjcdaw12.relman.Units.Unit;
+import urjcdaw12.relman.units.Unit;
 
 @Service
 public class CardService {

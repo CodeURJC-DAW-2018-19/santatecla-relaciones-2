@@ -1,4 +1,4 @@
-package urjcdaw12.relman.Units;
+package urjcdaw12.relman.units;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

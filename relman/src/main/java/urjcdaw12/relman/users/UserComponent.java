@@ -1,4 +1,4 @@
-package urjcdaw12.relman.Users;
+package urjcdaw12.relman.users;
 
 import java.util.ArrayList;
 import java.util.List;

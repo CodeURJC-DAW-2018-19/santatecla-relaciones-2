@@ -1,4 +1,4 @@
-package urjcdaw12.relman.Relations;
+package urjcdaw12.relman.relations;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import urjcdaw12.relman.Units.Unit;
+import urjcdaw12.relman.units.Unit;
 
 @Entity
 public class Relation {

@@ -1,4 +1,4 @@
-package urjcdaw12.relman.Units;
+package urjcdaw12.relman.units;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import urjcdaw12.relman.Cards.Card;
-import urjcdaw12.relman.Relations.Relation;
+import urjcdaw12.relman.cards.Card;
+import urjcdaw12.relman.relations.Relation;
 
 @Entity
 public class Unit {
