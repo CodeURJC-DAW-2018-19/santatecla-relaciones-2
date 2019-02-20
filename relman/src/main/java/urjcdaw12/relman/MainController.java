@@ -4,7 +4,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,9 +30,7 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request) {
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken());
-
+	
 		model.addAttribute("units", userComponent.getTabs());
 
 		model.addAttribute("unidades", unitServ.findAll());
@@ -45,9 +42,7 @@ public class MainController {
 
 	@RequestMapping("/register")
 	public String register(Model model, @RequestParam("userInput") String user, @RequestParam("pass1") String pass1, @RequestParam("pass2") String pass2, HttpServletRequest request) {
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken());
-
+		
 		if ((pass1.equals(pass2)) && (userServ.findByName(user)==null)) {
 			userServ.save(new User(user, pass1, "ROLE_USER"));
 			try {
@@ -66,8 +61,7 @@ public class MainController {
 	@RequestMapping("/delete/{unit}")
 	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
 
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken());
+		
 
 		userComponent.removeTab(unit);
 		
@@ -83,8 +77,7 @@ public class MainController {
 
 	@RequestMapping("/addUnit")
 	public String addUnit(Model model, @RequestParam String newUnit, HttpServletRequest request) {
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken());
+		
 		
 		if (unitServ.findByName(newUnit)==null) {
 			unitServ.save(new Unit(newUnit));		
@@ -95,8 +88,7 @@ public class MainController {
 	
 	@RequestMapping("/removeTab/{unit}")
 	public String removeTab(Model model, HttpServletRequest request, @PathVariable String unit) {
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken());
+		
 		
 		userComponent.removeTab(unit);
 		
