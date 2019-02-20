@@ -88,8 +88,6 @@ public class MainController {
 	
 	@RequestMapping("/removeTab/{unit}")
 	public String removeTab(Model model, HttpServletRequest request, @PathVariable String unit) {
-		
-		
 		userComponent.removeTab(unit);
 		
 		return "redirect:/";

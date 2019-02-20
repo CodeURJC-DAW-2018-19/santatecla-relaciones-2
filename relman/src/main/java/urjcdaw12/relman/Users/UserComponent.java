@@ -30,7 +30,7 @@ public class UserComponent {
 		if (tabs == null) {
 			tabs = new ArrayList<>();
 		}
-		if (!tabs.contains(tab) && !tab.equals("estilos.css")) {
+		if (!tabs.contains(tab)) {
 			tabs.add(tab);
 		}
 	}

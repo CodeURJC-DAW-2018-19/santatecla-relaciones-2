@@ -9,4 +9,5 @@ import urjcdaw12.relman.Units.Unit;
 public interface CardRepository extends JpaRepository<Card,Long>{
 	List<Card>findByType(String type);
 	List<Card>findByUnitAsoc(Unit unit);
+	Card findByUnitAsocAndType(Unit unit, String type);
 }

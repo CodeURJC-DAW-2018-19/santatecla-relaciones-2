@@ -40,6 +40,30 @@ public class Relation {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Unit getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(Unit origin) {
+		this.origin = origin;
+	}
+
+	public Unit getDestiny() {
+		return destiny;
+	}
+
+	public void setDestiny(Unit destiny) {
+		this.destiny = destiny;
+	}
 	
 	
 

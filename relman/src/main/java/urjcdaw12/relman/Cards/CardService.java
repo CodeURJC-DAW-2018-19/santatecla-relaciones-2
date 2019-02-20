@@ -39,4 +39,8 @@ public class CardService {
 		return cardRep.findByUnitAsoc(unit);
 	}
 	
+	public Card findByUnitAsocAndType(Unit unit, String type) {
+		return cardRep.findByUnitAsocAndType(unit, type);
+	}
+	
 }
