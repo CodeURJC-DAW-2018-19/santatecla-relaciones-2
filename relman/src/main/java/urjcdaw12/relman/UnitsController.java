@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +38,7 @@ public class UnitsController {
 	private UserComponent userComponent;
 
 	@RequestMapping("/{unit}")
-	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
+	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
 		userComponent.addTab(unit);
 		model.addAttribute("units", userComponent.getTabs());
@@ -64,7 +65,7 @@ public class UnitsController {
 			model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
 			
-			model.addAttribute("related", unitServ.findAll());
+			model.addAttribute("related", unitServ.findAll(page));
 
 			return "units";
 		 

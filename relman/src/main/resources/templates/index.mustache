@@ -16,7 +16,33 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
+	<script>
+			$(document).ready(function(){
+  			$("#plus").click(function(){
+  			     
+  				
+  				 var p= document.getElementById("plus").value;
+  				 
+  	 		 	 $.ajax({url: "/page/"+ p +"/10", success: function(result){
+  	 		 	 	var suma = parseInt(p) + parseInt(1);
+  	 		 	 	document.getElementById("plus").value= suma ; 
+  	 		 	 	console.log(suma);
+   	  			    var d1 = document.getElementById('unitplus');
+					d1.insertAdjacentHTML('beforeend', result);
+					var n =document.getElementById("nElement").value;
+					document.getElementById("nElement").value = parseInt(n) - parseInt(10); 
+					var c = document.getElementById("nElement").value;
+					if( c <=0 ){
+					document.getElementById("plus").disabled = true;
+					document.getElementById("plus").style.display = 'none';
+					}
+					
+				
+   	 			}});
+ 	 		});
+		});
+	</script>	
 </head>
 
 <body>
@@ -146,7 +172,7 @@
                                 </h1>
                             </div>
                             <div class="card-body">
-                                <table class="table">
+                                <table class="table" id="unitplus">
                                     <thead>
                                     </thead>
                                     <tbody>
@@ -210,6 +236,10 @@
                                         {{/unidades}}
                                     </tbody>
                                 </table>
+                                {{#plusbutton}}
+                            	 <button type="button" id="plus" class="btn btn-dark" value="1">Mas resultados</button>    
+                                {{/plusbutton}}
+                                 <input type="text" id="nElement" value="{{totalelements}}" style="display: none;>
                                 {{#teacher}}
                                     <div class="content text-left">
                                         <p>

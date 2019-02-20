@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -17,9 +19,10 @@ public class UnitService {
 		return unidadRep.findById(id);
 	}
 
-	public List<Unit> findAll() {
-		return unidadRep.findAll();
+	public Page<Unit> findAll(Pageable page) {
+		return unidadRep.findAll(page);
 	}
+
 
 	public Unit save(Unit unit) {
 		return unidadRep.save(unit);
@@ -36,5 +39,10 @@ public class UnitService {
 
 	public Unit findByName(String nombre){
 		return unidadRep.findByName(nombre);
+	}
+
+	
+	public long totalElements(){
+		return unidadRep.count();
 	}
 }
