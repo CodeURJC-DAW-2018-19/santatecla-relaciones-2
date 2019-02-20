@@ -42,18 +42,17 @@ public class UnitsController {
 		userComponent.addTab(unit);
 		model.addAttribute("units", userComponent.getTabs());
 
-		if (unitServ.findByName(unit).size() != 0) {
 
-			Unit unitConc = unitServ.findByName(unit).get(0);
+			Unit unitConc = unitServ.findByName(unit);
 
 			model.addAttribute("student", request.isUserInRole("USER"));
 			model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 
-			model.addAttribute("unidad", unitServ.findByName(unit).get(0));
+			model.addAttribute("unidad", unitServ.findByName(unit));
 			model.addAttribute("padres", relationServ.findByTypeAndDestiny("Herencia", unitConc));
 			model.addAttribute("hijas", relationServ.findByTypeAndOrigin("Herencia", unitConc));
 
-			model.addAttribute("compuestos", relationServ.findByTypeAndDestiny("Composición", unitServ.findByName(unit).get(0)));
+			model.addAttribute("compuestos", relationServ.findByTypeAndDestiny("Composición", unitServ.findByName(unit)));
 			model.addAttribute("partes", relationServ.findByTypeAndOrigin("Composición", unitConc));
 
 			model.addAttribute("usan", relationServ.findByTypeAndDestiny("Uso", unitConc));
@@ -64,12 +63,11 @@ public class UnitsController {
 
 			model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
+			
 			model.addAttribute("related", unitServ.findAll());
 
 			return "units";
-		} else {
-			return "error";
-		}
+		 
 	}
 
 	@RequestMapping("/addRelationOrigin/{type}/{unit}")
@@ -77,11 +75,11 @@ public class UnitsController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		Unit unitRelated = unitServ.findByName(unit).get(0);
+		Unit unitRelated = unitServ.findByName(unit);
 
 		String newSel = request.getParameter("selected");
 
-		Unit unitSelected = unitServ.findByName(newSel).get(0);
+		Unit unitSelected = unitServ.findByName(newSel);
 
 		relationServ.save(new Relation(type, unitSelected, unitRelated));
 
@@ -93,11 +91,11 @@ public class UnitsController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		Unit unitRelated = unitServ.findByName(unit).get(0);
+		Unit unitRelated = unitServ.findByName(unit);
 
 		String newSel = request.getParameter("selected");
 
-		Unit unitSelected = unitServ.findByName(newSel).get(0);
+		Unit unitSelected = unitServ.findByName(newSel);
 
 		relationServ.save(new Relation(type, unitRelated, unitSelected));
 
@@ -109,7 +107,7 @@ public class UnitsController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		Unit unitOrigin = unitServ.findByName(origin).get(0);
+		Unit unitOrigin = unitServ.findByName(origin);
 
 		List<Relation> unitsCand = relationServ.findByTypeAndOrigin(type, unitOrigin);
 
@@ -125,7 +123,7 @@ public class UnitsController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		Unit unitDestiny = unitServ.findByName(destiny).get(0);
+		Unit unitDestiny = unitServ.findByName(destiny);
 
 		List<Relation> unitsCand = relationServ.findByTypeAndDestiny(type, unitDestiny);
 

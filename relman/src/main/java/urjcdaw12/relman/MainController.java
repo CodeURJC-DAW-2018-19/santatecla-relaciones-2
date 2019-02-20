@@ -1,5 +1,6 @@
 package urjcdaw12.relman;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,12 +48,20 @@ public class MainController {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
 
-		if (pass1.equals(pass2)) {
+		if ((pass1.equals(pass2)) && (userServ.findByName(user)==null)) {
 			userServ.save(new User(user, pass1, "ROLE_USER"));
+			try {
+				request.login(user,pass1);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			}
+			return "redirect:/";
+		}else {
+			//model.addAttribute("desc","...");
+			return "error"; //pagina de error a implementar
 		}
-
-		return "redirect:/";
 	}
+	
 
 	@RequestMapping("/delete/{unit}")
 	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
@@ -62,7 +71,7 @@ public class MainController {
 
 		userComponent.removeTab(unit);
 		
-		Unit unitConc = unitServ.findByName(unit).get(0);
+		Unit unitConc = unitServ.findByName(unit);
 
 		if (unitConc != null) {
 			unitServ.delete(unitConc);
@@ -76,8 +85,10 @@ public class MainController {
 	public String addUnit(Model model, @RequestParam String newUnit, HttpServletRequest request) {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 		model.addAttribute("token", token.getToken());
-
-		unitServ.save(new Unit(newUnit));
+		
+		if (unitServ.findByName(newUnit)==null) {
+			unitServ.save(new Unit(newUnit));		
+		}
 
 		return "redirect:/";
 	}

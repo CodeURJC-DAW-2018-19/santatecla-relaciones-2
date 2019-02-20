@@ -34,7 +34,7 @@ public class UnitService {
 	}
 
 
-	public List<Unit> findByName(String nombre){
+	public Unit findByName(String nombre){
 		return unidadRep.findByName(nombre);
 	}
 }

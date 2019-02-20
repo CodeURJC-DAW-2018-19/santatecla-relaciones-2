@@ -17,6 +17,8 @@ public class UserService {
 	public Optional<User> findOne(long id) {
 		return userRep.findById(id);
 	}
+	
+	
 
 	public List<User> findAll() {
 		return userRep.findAll();
