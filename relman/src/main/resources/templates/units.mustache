@@ -69,23 +69,23 @@
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
-                                                            
+
                                                                 <!-- ModalDeletion -->
 															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>			
+																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -93,21 +93,52 @@
 															                                <div class="container text-left">
 															                                <form action="/{{destiny}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
 															    </div>
-															
+
                                                         {{/padres}}
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                               
+                                                <!-- ModalAddFicha -->
+                                  <div class="modal fade" id="addFicha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
+                                              </div>
+                                              <div class="modal-body">
+
+                                                  <form action="/" method='POST'>
+                                                      <div class="form-row">
+                                                          <div class="form-group col-md-3">
+                                                              <span class="input-group-text">
+                                                                  <p>Nombre:</p>
+                                                              </span>
+                                                          </div>
+                                                          <div class="form-group col-md-9">
+                                                              <input type="text" class="form-control" id="exampleInputUnit" placeholder="" name="newUnit">
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-row">
+                                                          <div class="container text-right">
+                                                              <button type="submit" class="btn btn-success">Aceptar</button>
+                                                          </div>
+                                                      </div>
+
+                                                  </form>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
                                              <!-- ModalAddRelation -->
 														    <div class="modal fade" id="addRelPadres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 														        <div class="modal-dialog" role="document">
@@ -126,10 +157,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -175,18 +206,18 @@
 															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>			
+																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -194,11 +225,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{destiny}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -225,10 +256,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -274,18 +305,18 @@
 															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>			
+																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -293,11 +324,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{origin}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -324,10 +355,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -377,18 +408,18 @@
 															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>			
+																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -396,11 +427,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{destiny}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -427,10 +458,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -500,18 +531,18 @@
 															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>			
+																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -519,11 +550,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{origin}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -550,10 +581,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -602,18 +633,18 @@
 															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>			
+																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -621,11 +652,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{destiny}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -652,10 +683,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -701,18 +732,18 @@
 															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>			
+																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -720,11 +751,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{origin}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -751,10 +782,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -805,18 +836,18 @@
 															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
-															                <div class="modal-body">															                   
-															                        <div class="form-row">															
+															                <div class="modal-body">
+															                        <div class="form-row">
 															                            <div class="container text-center">
 															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>															
+															                            </div>
 															                        </div>
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>			
+																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
 												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
@@ -824,11 +855,11 @@
 															                                <div class="container text-left">
 															                                <form action="/{{origin}}" method="POST">
 															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />                                  
+															                                    <input type="hidden" name="_csrf" value="{{token}}" />
 															                                </form>
 															                                </div>
 															                            </div>
-															                        </div>															           
+															                        </div>
 															                </div>
 															            </div>
 															        </div>
@@ -855,10 +886,10 @@
 														                            </select>
 														                        </div>
 														                        <div class="container text-right">
-														  
+
 														                            <button type="submit" class="btn btn-success">Aceptar</button>
 														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>   
+														                         </form>
 														                        </div>
 														                </div>
 														                <div class="modal-footer"></div>
@@ -899,15 +930,77 @@
                                                 </div>
                                                 <div class="card-body">
                                                     {{#teacher}}
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{desc}}</textarea>
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-9">
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{desc}}</textarea>
+                                                                <div class="container text-right">
+                                                                    <button type="submit" class="btn btn-success">Guardar</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <div class="card">
+                                                                    <div class="border border-danger">
+                                                                        <div class="card-header card-header-text card-header-danger">
+                                                                            <div class="card-text">
+                                                                                <h4 class="card-title">Imagen</h4>
+                                                                            </div>
+                                                                        </div>
+                                                                        {{#imagen}}
+                                                                        <div class="card-body">
+                                                                            <div class="container text-right">
+                                                                                <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
+                                                                            </div>
+                                                                        </div>
+                                                                        {{/imagen}}
+                                                                        {{^imagen}}
+                                                                        <div class="card-body">
+                                                                            <div class="text-center">
+                                                                                <button type="button" rel="tooltip" class="btn btn-rounded">
+                                                                                    <i class="material-icons">photo</i>
+                                                                                </button>
+                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
+                                                                                    Guardar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        {{/imagen}}
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
+                                                    </form>
                                                     {{/teacher}}
                                                     {{^teacher}}
-                                                        <div class="form-group">
+                                                        <div class="form-group col-md-9">
                                                             <p>{{desc}}</p>
                                                         </div>
-                                                        {{/teacher}}
+                                                        <div class="form-group col-md-3">
+                                                            <div class="card">
+                                                                <div class="border border-danger">
+                                                                    <div class="card-header card-header-text card-header-danger">
+                                                                        <div class="card-text">
+                                                                            <h4 class="card-title">Imagen</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{#imagen}}
+                                                                    <div class="card-body">
+                                                                        <div class="container text-right">
+                                                                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
+                                                                        </div>
+                                                                    </div>
+                                                                    {{/imagen}}
+                                                                    {{^imagen}}
+                                                                    <div class="card-body">
+                                                                    <p>No hay imagen disponible</p>
+                                                                    </div>
+                                                                    {{/imagen}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {{/teacher}}
                                                 </div>
                                             </div>
                                         </div>
@@ -916,34 +1009,10 @@
                                 </div>
 
                             {{/cards}}
-
-
-
-
-
-
                             {{#teacher}}
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <div class="card">
-                                            <div class="border border-danger">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">Añade una imagen</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-rounded btn-success">
-                                                            <i class="material-icons">photo</i>
-                                                        </button>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addFicha">
+                                <i class="material-icons">add</i>
+                            </button>
                             {{/teacher}}
                         </div>
                     </div>
