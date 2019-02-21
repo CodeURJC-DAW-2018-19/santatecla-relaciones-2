@@ -928,13 +928,15 @@
                                                 </div>
                                                 <div class="card-body">
                                                     {{#teacher}}
-                                                    <form method='POST' action="/saveCard/{{type}}/{{unidad}}">
                                                         <div class="form-row">
                                                             <div class="form-group col-md-9">
-                                                                <textarea class="form-control" id="desc" name="desc" rows="5">{{desc}}</textarea>
-                                                                <div class="container text-right">
-                                                                    <button type="submit" class="btn btn-success">Guardar</button>
-                                                                </div>
+	                                                            <form method='POST' action="/saveCard/{{type}}/{{unidad}}">
+	                                                                <textarea class="form-control" id="desc" name="desc" rows="5">{{desc}}</textarea>
+	                                                                <div class="container text-right">
+	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
+	                                                                </div>
+	                                                                <input type="hidden" name="_csrf" value="{{token}}" />  
+	                                                            </form>
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <div class="card">
@@ -944,33 +946,35 @@
                                                                                 <h4 class="card-title">Imagen</h4>
                                                                             </div>
                                                                         </div>
-                                                                        {{#imagen}}
-                                                                        <div class="card-body">
-                                                                            <div class="container text-right">
-                                                                                <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
-                                                                            </div>
-                                                                        </div>
-                                                                        {{/imagen}}
-                                                                        {{^imagen}}
-                                                                        <div class="card-body">
-                                                                            <div class="text-center">
-                                                                                <button type="button" rel="tooltip" class="btn btn-rounded">
-                                                                                    <i class="material-icons">photo</i>
-                                                                                </button>
-                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        {{/imagen}}
+                                                                        {{#image}}
+	                                                                        <div class="card-body">
+	                                                                            <div class="container text-right">
+	                                                                                <img src="image/{{unit}}/{{type}}" height="50em" alt="...">
+	                                                                            </div>
+	                                                                        </div>
+                                                                        {{/image}}
+                                                                        {{^image}}
+	                                                                        <form action="/saveImage/{{type}}/{{unidad}}" method="post" enctype="multipart/form-data">
+		                                                                        <div class="card-body">
+		                                                                            <div class="text-center">
+		                                                                            	<span class="btn btn-rounded">
+																							<span class="fileinput-new">
+																				    	   		<i class="material-icons">photo</i>
+																							</span>
+																							<input type="file" name="file" />
+																						</span>
+		                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
+		                                                                                    Guardar
+		                                                                                </button>
+		                                                                            </div>
+		                                                                        </div>
+		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />  
+		                                                                    </form>																			
+                                                                        {{/image}}
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-                                                    	<input type="hidden" name="_csrf" value="{{token}}" />  
-                                                    </form>
                                                     {{/teacher}}
                                                     {{^teacher}}
                                                         <div class="form-group col-md-9">

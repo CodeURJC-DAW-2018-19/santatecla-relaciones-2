@@ -19,7 +19,6 @@ public class Card {
 	private String type;
 	@Column(columnDefinition="LONGTEXT")
 	private String description;
-	private String photoSrc;
 	
 	@ManyToOne
 	private Unit unitAsoc;
@@ -38,14 +37,6 @@ public class Card {
 
 	public void setUnitAsoc(Unit unitAsoc) {
 		this.unitAsoc = unitAsoc;
-	}
-
-	public String getPhotoSrc() {
-		return photoSrc;
-	}
-
-	public void setPhotoSrc(String photoSrc) {
-		this.photoSrc = photoSrc;
 	}
 
 	public long getId() {

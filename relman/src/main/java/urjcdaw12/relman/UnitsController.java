@@ -1,16 +1,27 @@
 package urjcdaw12.relman;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import urjcdaw12.relman.cards.Card;
 import urjcdaw12.relman.cards.CardService;
@@ -34,7 +45,17 @@ public class UnitsController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
+	@PostConstruct
+	public void init() throws IOException {
+
+		if (!Files.exists(FILES_FOLDER)) {
+			Files.createDirectories(FILES_FOLDER);
+		}
+	}
+	
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
@@ -130,7 +151,7 @@ public class UnitsController {
 		
 		return "redirect:/{unit}";
 	}
-	
+
 	@RequestMapping("/addCard/{unit}")
 	public String addCard(Model model, @PathVariable String unit, @RequestParam String newCard) {
 		Unit unitConc = unitServ.findByName(unit);
@@ -138,5 +159,43 @@ public class UnitsController {
 		cardServ.save(card);
 		
 		return "redirect:/{unit}";
+	}
+	
+	@PostMapping("/saveImage/{type}/{unit}")
+	public String saveImage(Model model, @PathVariable String type, @PathVariable String unit, @RequestParam("file") MultipartFile file) {
+		Unit unitConc = unitServ.findByName(unit);
+		Card card = cardServ.findByUnitAsocAndType(unitConc, type);
+		
+		if (!file.isEmpty()) {
+			try {
+				File uploadedFile = new File(FILES_FOLDER.toFile(), unit+type);
+				file.transferTo(uploadedFile);
+				cardServ.save(card);
+				
+				model.addAttribute("image",true);
+				
+				return "redirect:/{unit}";
+			} catch (Exception e) {
+				//model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+				return "error";
+			}
+		} else {
+			//model.addAttribute("error", "The file is empty");
+			return "error";
+		}
+	}
+	
+	@RequestMapping("/image/{unit}/{type}")
+	public void handleFileDownload(@PathVariable String unit, @PathVariable String type, HttpServletResponse response) throws FileNotFoundException, IOException {
+
+		Path image = FILES_FOLDER.resolve(unit+type);
+
+		if (Files.exists(image)) {
+			response.setContentType("image/jpeg");
+			response.setContentLength((int) image.toFile().length());
+			FileCopyUtils.copy(Files.newInputStream(image), response.getOutputStream());
+		} else {
+			response.sendError(404, "File" + unit + type + "(" + image.toAbsolutePath() + ") does not exist");
+		}
 	}
 }
