@@ -1,6 +1,5 @@
 package urjcdaw12.relman.units;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,36 +12,39 @@ import org.springframework.stereotype.Service;
 public class UnitService {
 	
 	@Autowired
-	private UnidadRepository unidadRep;
+	private UnitRepository unitRep;
 	
 	public Optional<Unit> findOne(long id) {
-		return unidadRep.findById(id);
+		return unitRep.findById(id);
 	}
 
 	public Page<Unit> findAll(Pageable page) {
-		return unidadRep.findAll(page);
+		return unitRep.findAll(page);
+	}
+	
+	public Page<Unit> findSearch(Pageable page, String search) {
+		return unitRep.findSearch(page, search);
 	}
 
-
 	public Unit save(Unit unit) {
-		return unidadRep.save(unit);
+		return unitRep.save(unit);
 	}
 
 	public void delete(long id) {
-		unidadRep.deleteById(id);
+		unitRep.deleteById(id);
 	}
 	
 	public void delete(Unit unit) {
-		unidadRep.delete(unit);
+		unitRep.delete(unit);
 	}
 
 
 	public Unit findByName(String nombre){
-		return unidadRep.findByName(nombre);
+		return unitRep.findByName(nombre);
 	}
 
 	
 	public long totalElements(){
-		return unidadRep.count();
+		return unitRep.count();
 	}
 }

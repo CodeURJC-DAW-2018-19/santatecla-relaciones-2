@@ -39,7 +39,7 @@ public class UnitsController {
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
 		userComponent.addTab(unit);
-		model.addAttribute("units", userComponent.getTabs());
+		model.addAttribute("tabs", userComponent.getTabs());
 
 
 			Unit unitConc = unitServ.findByName(unit);

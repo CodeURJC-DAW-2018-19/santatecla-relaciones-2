@@ -3,14 +3,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">UNIDADES</a>
             </li>
-            {{#units}}
+            {{#tabs}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{.}}">
                       {{.}}
                       <a href="removeTab/{{.}}" class="btn btn-sm btn-danger" role="button">x</a>
                     </a>
                 </li>
-            {{/units}}
+            {{/tabs}}
         </ul>
         <span class="navbar-item">
             <div class="container margin-right">
