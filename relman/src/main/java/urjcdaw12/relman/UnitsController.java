@@ -76,8 +76,8 @@ public class UnitsController {
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
-		userComponent.addTab(unit);
-		model.addAttribute("tabs", userComponent.getTabs());
+			userComponent.addTab(unit);
+			model.addAttribute("tabs", userComponent.getTabs());
 
 
 			Unit unitConc = unitServ.findByName(unit);
@@ -101,6 +101,14 @@ public class UnitsController {
 			model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
 			model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
+			
+			if (relationServ.findByTypeAndOrigin("Composición", unitConc).size()!=0) {		//Generates the UML just if the unit has "Partes"	
+				compositionUML(unit,model);			
+			}
+			
+			
+			
+			model.addAttribute("photoComp","comp"+unit+".png");
 
 			return "units";
 		 
@@ -252,16 +260,19 @@ public class UnitsController {
 		}
 	}
 	
-	@RequestMapping("/comp/{unit}")
-	public String compositionUML(@PathVariable String unit, Model model) {
-		this.tree= new LinkedTree();
+	
+	
+	
+	//Methods for Composition Hierarchy, called when a user enters into a Unit page
+	
+	public void compositionUML(@PathVariable String unit, Model model) {
+		this.tree= new LinkedTree<Unit>();
 		Unit unitConc = unitServ.findByName(unit);
 		Position<Unit> root= tree.addRoot(unitConc);
-		
 		createTree(root);
  
 		
-		String path="plantuml/comp"+unit+".plantuml";
+		String path="images/comp"+unit+".plantuml";
 		
 		try {
 			PrintWriter writer = new PrintWriter(path, "UTF-8");
@@ -284,8 +295,6 @@ public class UnitsController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		return "redirect:/{unit}";
 	}
 	
 	

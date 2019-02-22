@@ -16,10 +16,10 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="/assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	function ajaxPag2(id) {
-			$(document).ready(function(){	
+			$(document).ready(function(){
   				 var p= document.getElementById(id).value;
   				 var rel =document.getElementById(id).name;
   				 var unidad =document.getElementById("unit").value;
@@ -28,29 +28,57 @@
   	 		 	 $.ajax({url: "/rel/"+unidad+"/"+rel+"/"+p+"/", success: function(result){
   	 		 	 	console.log(result);
   	 		 	 	var suma = parseInt(p) + parseInt(1);
-  	 		 	 	document.getElementById(id).value= suma ; 
+  	 		 	 	document.getElementById(id).value= suma ;
   	 		 	 	console.log(suma);
    	  			    var d1 = document.getElementById("aqui");
 					d1.insertAdjacentHTML('beforeend', result);
 					var n =document.getElementById(id).title;
-					document.getElementById(id).title = parseInt(n) - parseInt(10); 
+					document.getElementById(id).title = parseInt(n) - parseInt(10);
 					var c = document.getElementById(id).title;
 					if( c <=0 ){
 					document.getElementById(id).disabled = true;
 					document.getElementById(id).style.display = 'none';
-					}	
-   	 			}});	 		
+					}
+   	 			}});
 		});
 		}
-	</script>	
+	</script>
 
 </head>
 
 <body>
 			<input type="text" id="unit" value="{{unidad}}" style="display: none;">
-								<!-- ModalAddFicha -->
-                                  <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
+      <!-- ModalUML -->
+          <div class="modal fade" id="uml" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="card">
+                              <div class="card-header card-header-text card-header-danger">
+                                  <div class="card-text">
+                                      <h4 class="card-title">Diagrama UML</h4>
+                                  </div>
+                              </div>
+                              <div class="card-body">
+                                  <div class="container text-center margin-bot">
+                                      <img src="images/{{photoComp}}" alt="...">
+                                  </div>
+                                  <div class="container text-center">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+                <!-- ModalAddFicha -->
+      <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                               <div class="modal-header">
                                                   <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
@@ -163,7 +191,7 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                  
+
                                              <!-- ModalAddRelation -->
 														    <div class="modal fade" id="addRelPadres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 														        <div class="modal-dialog" role="document">
@@ -198,13 +226,13 @@
                                                               <i class="material-icons">add</i>
                                                           </button>
                                                         </p>
-                                                    </div>                 
+                                                    </div>
                                                 {{/teacher}}
-                                                 <div class="container text-left"> 
+                                                 <div class="container text-left">
                                                     	<p>
                                                     	<button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="2">Mas
                                                     		<i class="material-icons">add</i>
-                                                    	</button>    
+                                                    	</button>
                                                    		</p>
                                                    	</div>
                                             </div>
@@ -531,7 +559,7 @@
 
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#uml">
                                             CONTEXTO
                                         </button>
                                     </div>
@@ -836,11 +864,9 @@
                                         </div>
                                     </div>
                                     <div class="container text-center">
-                                    <a href="/comp/{{unidad}}" style="color:white"> 
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#uml">
                                             JERARQUÍA DE COMPOSICIÓN
                                         </button>
-                                     </a>   
                                     </div>
                                 </div>
 
@@ -971,7 +997,7 @@
 	                                                                <div class="container text-right">
 	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
 	                                                                </div>
-	                                                                <input type="hidden" name="_csrf" value="{{token}}" />  
+	                                                                <input type="hidden" name="_csrf" value="{{token}}" />
 	                                                            </form>
                                                             </div>
                                                             <div class="form-group col-md-3">
@@ -1004,8 +1030,8 @@
 		                                                                                </button>
 		                                                                            </div>
 		                                                                        </div>
-		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />  
-		                                                                    </form>																			
+		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+		                                                                    </form>
                                                                         {{/image}}
                                                                     </div>
                                                                 </div>
@@ -1049,7 +1075,7 @@
 
                             {{/cards}}
                             {{#teacher}}
-                    
+
                             <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addCard">
                                 <i class="material-icons">add</i>
                             </button>
