@@ -77,7 +77,6 @@ public class UnitsController {
 	@RequestMapping("/rel/{unit}/{relation}/{page}/")
 	public String loadAjaxUnit(Model model, HttpServletRequest request,@PathVariable String unit,@PathVariable String relation,@PathVariable int page, @RequestParam Optional<String> search) {
 
-		model.addAttribute("tabs", userComponent.getTabs());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
 		//model.addAttribute("origin",unit);
