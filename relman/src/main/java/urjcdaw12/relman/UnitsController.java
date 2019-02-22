@@ -60,9 +60,6 @@ public class UnitsController {
 	@Autowired
 	private UMLCreator umlCreator;
 	
-	private LinkedTree<Unit> tree;
-	
-	
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
 	@PostConstruct
@@ -71,16 +68,12 @@ public class UnitsController {
 			Files.createDirectories(FILES_FOLDER);
 		}
 	}
-	
-	
-
 
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
 			userComponent.addTab(unit);
 			model.addAttribute("tabs", userComponent.getTabs());
-
 
 			Unit unitConc = unitServ.findByName(unit);
 
@@ -118,8 +111,6 @@ public class UnitsController {
 			return "units";
 		 
 	}
-	
-
 	
 
 	//@RequestMapping("/rel/{unit}/{relation}/{page}/size/")
@@ -246,11 +237,11 @@ public class UnitsController {
 				
 				return "redirect:/{unit}";
 			} catch (Exception e) {
-				//model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 				return "error";
 			}
 		} else {
-			//model.addAttribute("error", "The file is empty");
+			model.addAttribute("error", "The file is empty");
 			return "error";
 		}
 	}

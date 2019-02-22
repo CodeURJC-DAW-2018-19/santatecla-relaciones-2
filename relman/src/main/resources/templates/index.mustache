@@ -159,7 +159,6 @@
                                 <h1 class="card-title">Unidades
                                     <form action="/"class="form-inline ml-auto" method="GET">
                                         <div class="form-group has-white">
-                                        
                                             <input type="text" class="form-control" name="search" placeholder="Buscar">
                                         </div>
                                         <button type="submit" class="btn btn-white btn-icon btn-round">
@@ -216,7 +215,6 @@
 												                                    </div>
 												                                </div>
 												                            </div>
-												
 												                    </div>
 												                </div>
 												            </div>
@@ -234,9 +232,9 @@
                                     </tbody>
                                 </table>
                                 {{#plusbutton}}
-                            	 <button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-dark" value="1" name="page" title="{{totalelements}}">Mas resultados</button>    
+									<button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-dark" value="1" name="page" title="{{totalelements}}">Mas resultados</button>    
                                 {{/plusbutton}}
-                                 <input type="text" id="nElement" value="{{totalelements}}" style="display: none;>
+                                	<input type="text" id="nElement" value="{{totalelements}}" style="display: none;>
                                 {{#teacher}}
                                     <div class="content text-left">
                                         <p>

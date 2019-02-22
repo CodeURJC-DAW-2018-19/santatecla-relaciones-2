@@ -1049,8 +1049,8 @@
 		                                                                            	<span class="btn btn-rounded">
 																							<span class="fileinput-new">
 																				    	   		<i class="material-icons">photo</i>
+																				    	   		<input type="file" name="file" />
 																							</span>
-																							<input type="file" name="file" />
 																						</span>
 		                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
 		                                                                                    Guardar
@@ -1077,18 +1077,18 @@
                                                                             <h4 class="card-title">Imagen</h4>
                                                                         </div>
                                                                     </div>
-                                                                    {{#imagen}}
-                                                                    <div class="card-body">
-                                                                        <div class="container text-right">
-                                                                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
-                                                                        </div>
-                                                                    </div>
-                                                                    {{/imagen}}
-                                                                    {{^imagen}}
-                                                                    <div class="card-body">
-                                                                    <p>No hay imagen disponible</p>
-                                                                    </div>
-                                                                    {{/imagen}}
+                                                                    {{#image}}
+	                                                                    <div class="card-body">
+	                                                                        <div class="container text-right">
+	                                                                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
+	                                                                        </div>
+	                                                                    </div>
+                                                                    {{/image}}
+                                                                    {{^image}}
+	                                                                    <div class="card-body">
+	                                                                    <p>No hay imagen disponible</p>
+	                                                                    </div>
+                                                                    {{/image}}
                                                                 </div>
                                                             </div>
                                                         </div>

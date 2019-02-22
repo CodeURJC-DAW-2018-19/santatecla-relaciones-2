@@ -1,5 +1,0 @@
-@startuml
-USA1 *-- SPRING
-USA1 *-- ASOCIADO2
-ASOCIADO2 *-- MAQUETACIÓN_WEB
-@enduml
