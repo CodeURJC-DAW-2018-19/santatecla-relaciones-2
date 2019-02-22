@@ -1,8 +1,10 @@
 package urjcdaw12.relman;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,10 +28,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.zxing.Writer;
+
+import net.sourceforge.plantuml.GeneratedImage;
+import net.sourceforge.plantuml.SourceFileReader;
 import urjcdaw12.relman.cards.Card;
 import urjcdaw12.relman.cards.CardService;
 import urjcdaw12.relman.relations.Relation;
 import urjcdaw12.relman.relations.RelationService;
+import urjcdaw12.relman.trees.LinkedTree;
+import urjcdaw12.relman.trees.Position;
 import urjcdaw12.relman.units.Unit;
 import urjcdaw12.relman.units.UnitService;
 import urjcdaw12.relman.users.UserComponent;
@@ -48,6 +56,8 @@ public class UnitsController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	private LinkedTree<Unit> tree;
 	
 	
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
@@ -239,6 +249,74 @@ public class UnitsController {
 			FileCopyUtils.copy(Files.newInputStream(image), response.getOutputStream());
 		} else {
 			response.sendError(404, "File" + unit + type + "(" + image.toAbsolutePath() + ") does not exist");
+		}
+	}
+	
+	@RequestMapping("/comp/{unit}")
+	public String compositionUML(@PathVariable String unit, Model model) {
+		this.tree= new LinkedTree();
+		Unit unitConc = unitServ.findByName(unit);
+		Position<Unit> root= tree.addRoot(unitConc);
+		
+		createTree(root);
+ 
+		
+		String path="plantuml/comp"+unit+".plantuml";
+		
+		try {
+			PrintWriter writer = new PrintWriter(path, "UTF-8");
+			writeOnPlantUML(writer);
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+	
+		
+		File source = new File(path);
+		
+		try {
+			SourceFileReader reader = new SourceFileReader(source);
+			List<GeneratedImage> list = reader.getGeneratedImages();
+			File png = list.get(0).getPngFile();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/{unit}";
+	}
+	
+	
+	public void writeOnPlantUML(PrintWriter writer) {
+		writer.println("@startuml");
+		Position<Unit> root= tree.root();
+		Unit unit=root.getElement();
+		List<Position<Unit>> sons= (List<Position<Unit>>) tree.children(root);
+		
+		for(Position<Unit> unitSon:sons) {
+			writer.println(unit.getName()+" *-- "+unitSon.getElement().getName());
+			writeOnPlantUMLRec(writer, unitSon);
+		}
+		
+		writer.println("@enduml");
+	}
+	
+	public void writeOnPlantUMLRec(PrintWriter writer, Position<Unit> unit) {
+		List<Position<Unit>> sons= (List<Position<Unit>>) tree.children(unit);
+		
+		for(Position<Unit> unitSon:sons) {
+			writer.println(unit.getElement().getName()+" *-- "+unitSon.getElement().getName());
+			writeOnPlantUMLRec(writer, unitSon);
+		}
+	}
+	
+	public void createTree(Position<Unit>unit){
+		List<Relation> list2=relationServ.findByTypeAndOrigin("Composición", unit.getElement());
+		for (Relation rel: list2) {
+			Position<Unit> son=tree.add(rel.getDestiny(), unit);
+			createTree(son);
 		}
 	}
 }
