@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -18,7 +20,9 @@ public class UserService {
 		return userRep.findById(id);
 	}
 	
-	
+	public Page<User> findAll(Pageable page) {
+		return userRep.findAll(page);
+	}
 
 	public List<User> findAll() {
 		return userRep.findAll();

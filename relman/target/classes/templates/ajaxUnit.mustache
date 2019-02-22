@@ -1,0 +1,52 @@
+ <table class="table" >
+                                                    <tbody>
+                                                        {{#ajax}}
+                                                            <tr>
+                                                                <td><a href="{{origin}}">{{origin}}</a></td>
+                                                                {{#teacher}}
+                                                                  <!-- ModalDeletion -->
+															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															        <div class="modal-dialog" role="document">
+															            <div class="modal-content">
+															                <div class="modal-body">
+															                        <div class="form-row">
+															                            <div class="container text-center">
+															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
+															                            </div>
+															                        </div>
+															                        <div class="form-row">
+															                            <div class="form-group col-md-6">
+															                                <div class="container text-right">
+																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
+												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
+															                                   <input type="hidden" name="_csrf" value="{{token}}" />
+															                                </form>
+															                                </div>
+															                            </div>
+															                            <div class="form-group col-md-6">
+															                                <div class="container text-left">
+															                                <form action="/{{destiny}}" method="POST">
+															                                    <button type="submit" class="btn">Cancelar</button>
+															                                  <input type="hidden" name="_csrf" value="{{token}}" />
+															                                </form>
+															                                </div>
+															                            </div>
+															                        </div>
+															                </div>
+															            </div>
+															        </div>
+															    </div>
+                                                                    <td class="td-actions text-right">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                            <i class="material-icons">delete_forever</i>
+                                                                        </button>
+                                                                    </td>
+                                                                  
+                                                                {{/teacher}}
+                                                            </tr>
+
+                                                                
+
+                                                        {{/ajax}}
+                                                    </tbody>
+                                                </table>

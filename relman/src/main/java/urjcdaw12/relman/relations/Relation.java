@@ -65,6 +65,10 @@ public class Relation {
 		this.destiny = destiny;
 	}
 	
+	@Override
+	public String toString() {
+		return origin.toString();
+	}
 	
 
 }

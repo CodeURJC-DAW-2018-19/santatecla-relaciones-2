@@ -50,7 +50,7 @@ public class MainController {
 		model.addAttribute("totalelements", unitServ.totalElements() - page.getPageSize());
 		return "index";
 	}
-
+	
 	@RequestMapping("/page/{page}/{size}")
 	public String loadAjax(Model model, HttpServletRequest request, @PathVariable int page, @PathVariable int size, @RequestParam Optional<String> search) {
 
@@ -59,7 +59,10 @@ public class MainController {
 		model.addAttribute("student", request.isUserInRole("USER"));
 		
 		if (!search.isPresent()) {
+			
 			model.addAttribute("units", unitServ.findAll(PageRequest.of(page, size)));
+			
+			
 		} else {
 			model.addAttribute("units", unitServ.findSearch(PageRequest.of(page, size), search.get()));
 		}
