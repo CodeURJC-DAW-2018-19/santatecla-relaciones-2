@@ -57,6 +57,9 @@ public class UnitsController {
 	@Autowired
 	private UserComponent userComponent;
 	
+	@Autowired
+	private UMLCreator umlCreator;
+	
 	private LinkedTree<Unit> tree;
 	
 	
@@ -64,7 +67,6 @@ public class UnitsController {
 
 	@PostConstruct
 	public void init() throws IOException {
-
 		if (!Files.exists(FILES_FOLDER)) {
 			Files.createDirectories(FILES_FOLDER);
 		}
@@ -103,16 +105,22 @@ public class UnitsController {
 			model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
 			
 			if (relationServ.findByTypeAndOrigin("Composición", unitConc).size()!=0) {		//Generates the UML just if the unit has "Partes"	
-				compositionUML(unit,model);			
+				umlCreator.compositionUML(unitConc,model);	
+			}	
+			
+			if (relationServ.findByTypeAndOrigin("Herencia", unitConc).size()!=0) {		//Generates the UML just if the unit has "Hijas"	
+				umlCreator.clasificationUML(unitConc,model);	
 			}
 			
-			
-			
 			model.addAttribute("photoComp","comp"+unit+".png");
+			model.addAttribute("photoClas","clas"+unit+".png");
 
 			return "units";
 		 
 	}
+	
+
+	
 
 	//@RequestMapping("/rel/{unit}/{relation}/{page}/size/")
 	@RequestMapping("/rel/{unit}/{relation}/{page}/")
@@ -210,6 +218,7 @@ public class UnitsController {
 		card.setDesc(desc);
 		cardServ.save(card);
 		
+		
 		return "redirect:/{unit}";
 	}
 	
@@ -258,74 +267,6 @@ public class UnitsController {
 		} else {
 			response.sendError(404, "File" + unit + type + "(" + image.toAbsolutePath() + ") does not exist");
 		}
-	}
-	
-	
-	
-	
-	//Methods for Composition Hierarchy, called when a user enters into a Unit page
-	
-	public void compositionUML(@PathVariable String unit, Model model) {
-		this.tree= new LinkedTree<Unit>();
-		Unit unitConc = unitServ.findByName(unit);
-		Position<Unit> root= tree.addRoot(unitConc);
-		createTree(root);
- 
-		
-		String path="images/comp"+unit+".plantuml";
-		
-		try {
-			PrintWriter writer = new PrintWriter(path, "UTF-8");
-			writeOnPlantUML(writer);
-			writer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-	
-		
-		File source = new File(path);
-		
-		try {
-			SourceFileReader reader = new SourceFileReader(source);
-			List<GeneratedImage> list = reader.getGeneratedImages();
-			File png = list.get(0).getPngFile();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	public void writeOnPlantUML(PrintWriter writer) {
-		writer.println("@startuml");
-		Position<Unit> root= tree.root();
-		Unit unit=root.getElement();
-		List<Position<Unit>> sons= (List<Position<Unit>>) tree.children(root);
-		
-		for(Position<Unit> unitSon:sons) {
-			writer.println(unit.getName()+" *-- "+unitSon.getElement().getName());
-			writeOnPlantUMLRec(writer, unitSon);
-		}
-		
-		writer.println("@enduml");
-	}
-	
-	public void writeOnPlantUMLRec(PrintWriter writer, Position<Unit> unit) {
-		List<Position<Unit>> sons= (List<Position<Unit>>) tree.children(unit);
-		
-		for(Position<Unit> unitSon:sons) {
-			writer.println(unit.getElement().getName()+" *-- "+unitSon.getElement().getName());
-			writeOnPlantUMLRec(writer, unitSon);
-		}
-	}
-	
-	public void createTree(Position<Unit>unit){
-		List<Relation> list2=relationServ.findByTypeAndOrigin("Composición", unit.getElement());
-		for (Relation rel: list2) {
-			Position<Unit> son=tree.add(rel.getDestiny(), unit);
-			createTree(son);
-		}
-	}
+	}	
+
 }

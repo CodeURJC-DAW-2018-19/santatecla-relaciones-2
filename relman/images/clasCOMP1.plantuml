@@ -1,0 +1,3 @@
+@startuml
+COMP1 <|-- SPRING
+@enduml

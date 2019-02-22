@@ -47,9 +47,9 @@
 </head>
 
 <body>
-			<input type="text" id="unit" value="{{unidad}}" style="display: none;">
-      <!-- ModalUML -->
-          <div class="modal fade" id="uml" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<input type="text" id="unit" value="{{unidad}}" style="display: none;">
+      <!-- ModalUMLComp -->
+          <div class="modal fade" id="umlComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-body">
@@ -57,12 +57,39 @@
                           <div class="card">
                               <div class="card-header card-header-text card-header-danger">
                                   <div class="card-text">
-                                      <h4 class="card-title">Diagrama UML</h4>
+                                      <h4 class="card-title">Jerarquía de Composición</h4>
                                   </div>
                               </div>
                               <div class="card-body">
                                   <div class="container text-center margin-bot">
                                       <img src="images/{{photoComp}}" alt="...">
+                                  </div>
+                                  <div class="container text-center">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <!-- ModalUMLClas -->
+          <div class="modal fade" id="umlClas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="card">
+                              <div class="card-header card-header-text card-header-danger">
+                                  <div class="card-text">
+                                      <h4 class="card-title">Jerarquía de Clasificación</h4>
+                                  </div>
+                              </div>
+                              <div class="card-body">
+                                  <div class="container text-center margin-bot">
+                                      <img src="images/{{photoClas}}" alt="...">
                                   </div>
                                   <div class="container text-center">
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -864,7 +891,7 @@
                                         </div>
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#uml">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlComp">
                                             JERARQUÍA DE COMPOSICIÓN
                                         </button>
                                     </div>
@@ -968,7 +995,7 @@
                                         </div>
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlClas">
                                             JERARQUÍA DE CLASIFICACIÓN
                                         </button>
                                     </div>
