@@ -17,18 +17,12 @@
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                   <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
+												                                    			<button type="submit" class="btn btn-danger"><a href="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" style="color:white">Eliminar</a></button>
 															                                </div>
 															                            </div>
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-left">
-															                                <form action="/{{destiny}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                  <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
+															                                    <button type="submit" class="btn"><a href="/{{destiny}}" style="color:white">Cancelar</button>
 															                                </div>
 															                            </div>
 															                        </div>
