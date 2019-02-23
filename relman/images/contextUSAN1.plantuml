@@ -1,0 +1,6 @@
+@startuml 
+ set namespaceSeparator none
+PARTES1 *-- USAN1
+USAN1 *-- ASOCIADO1
+USAN1 <-- HTML
+@enduml

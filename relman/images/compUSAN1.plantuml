@@ -1,0 +1,3 @@
+@startuml
+USAN1 *-- ASOCIADO1
+@enduml

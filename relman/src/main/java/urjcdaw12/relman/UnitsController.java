@@ -3,8 +3,6 @@ package urjcdaw12.relman;
 import java.io.File; 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,16 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.zxing.Writer;
 
-import net.sourceforge.plantuml.GeneratedImage;
-import net.sourceforge.plantuml.SourceFileReader;
 import urjcdaw12.relman.cards.Card;
 import urjcdaw12.relman.cards.CardService;
 import urjcdaw12.relman.relations.Relation;
 import urjcdaw12.relman.relations.RelationService;
-import urjcdaw12.relman.trees.LinkedTree;
-import urjcdaw12.relman.trees.Position;
 import urjcdaw12.relman.units.Unit;
 import urjcdaw12.relman.units.UnitService;
 import urjcdaw12.relman.users.UserComponent;
@@ -105,8 +98,14 @@ public class UnitsController {
 				umlCreator.clasificationUML(unitConc,model);	
 			}
 			
+			umlCreator.contextUML(unitConc);
+			
+			model.addAttribute("photoCompExists",unitConc.isPhotoComp());
+			model.addAttribute("photoClasExists",unitConc.isPhotoClas());
+
 			model.addAttribute("photoComp","comp"+unit+".png");
 			model.addAttribute("photoClas","clas"+unit+".png");
+			model.addAttribute("photoContext","context"+unit+".png");
 
 			return "units";
 		 
@@ -231,9 +230,8 @@ public class UnitsController {
 			try {
 				File uploadedFile = new File(FILES_FOLDER.toFile(), unit+type);
 				file.transferTo(uploadedFile);
+				card.setPhoto(true);
 				cardServ.save(card);
-				
-				model.addAttribute("image",true);
 				
 				return "redirect:/{unit}";
 			} catch (Exception e) {

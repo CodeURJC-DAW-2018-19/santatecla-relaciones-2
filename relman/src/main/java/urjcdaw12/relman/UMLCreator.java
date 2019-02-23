@@ -55,6 +55,7 @@ public class UMLCreator {
 	//METHODS FOR COMPOSITION HIERARCHY
 	
 	public void compositionUML(Unit unit, Model model) {
+		unit.setPhotoComp(true);
 		this.treeComp= new LinkedTree<Unit>();
 		Position<Unit> root= treeComp.addRoot(unit);
 		createTreeComp(root);
@@ -85,7 +86,7 @@ public class UMLCreator {
 		}
 	}
 	
-	public void createTreeComp(Position<Unit>unit){
+	private void createTreeComp(Position<Unit>unit){
 		List<Relation> list2=relationServ.findByTypeAndOrigin("Composición", unit.getElement());
 		for (Relation rel: list2) {
 			Position<Unit> son=treeComp.add(rel.getDestiny(), unit);
@@ -94,8 +95,8 @@ public class UMLCreator {
 	}
 	
 	
-	//Writting the PlantUML
-	public void writeOnPlantUMLComp(PrintWriter writer) {
+	//Writing the PlantUML
+	private void writeOnPlantUMLComp(PrintWriter writer) {
 		writer.println("@startuml");
 		Position<Unit> root= treeComp.root();
 		Unit unit=root.getElement();
@@ -109,7 +110,7 @@ public class UMLCreator {
 		writer.println("@enduml");
 	}
 	
-	public void writeOnPlantUMLCompRec(PrintWriter writer, Position<Unit> unit) {
+	private void writeOnPlantUMLCompRec(PrintWriter writer, Position<Unit> unit) {
 		List<Position<Unit>> sons= (List<Position<Unit>>) treeComp.children(unit);
 		
 		for(Position<Unit> unitSon:sons) {
@@ -124,6 +125,7 @@ public class UMLCreator {
 	
 	//MEHTODS to make the Classification UML
 	public void clasificationUML(Unit unit, Model model) {
+		unit.setPhotoClas(true);
 		this.treeClas= new LinkedTree<Unit>();
 		Position<Unit> root= treeClas.addRoot(unit);
 		createTreeClas(root);
@@ -154,7 +156,7 @@ public class UMLCreator {
 		}
 	}
 	
-	public void createTreeClas(Position<Unit>unit){
+	private void createTreeClas(Position<Unit>unit){
 		List<Relation> list2=relationServ.findByTypeAndOrigin("Herencia", unit.getElement());
 		for (Relation rel: list2) {
 			Position<Unit> son=treeClas.add(rel.getDestiny(), unit);
@@ -163,8 +165,8 @@ public class UMLCreator {
 	}
 	
 	
-	//Writting the PlantUML
-	public void writeOnPlantUMLClas(PrintWriter writer) {
+	//Writing the PlantUML
+	private void writeOnPlantUMLClas(PrintWriter writer) {
 		writer.println("@startuml \n set namespaceSeparator none");
 		Position<Unit> root= treeClas.root();
 		Unit unit=root.getElement();
@@ -179,7 +181,7 @@ public class UMLCreator {
 		writer.println("@enduml");
 	}
 	
-	public void writeOnPlantUMLClasRec(PrintWriter writer, Position<Unit> unit) {
+	private void writeOnPlantUMLClasRec(PrintWriter writer, Position<Unit> unit) {
 		List<Position<Unit>> sons= (List<Position<Unit>>) treeClas.children(unit);
 		
 		for(Position<Unit> unitSon:sons) {
@@ -187,6 +189,88 @@ public class UMLCreator {
 			writer.println(unit.getElement().getName()+" <|-- "+unitTitle);
 			writeOnPlantUMLClasRec(writer, unitSon);
 		}
+	}
+	
+	
+	
+	//METHODS to do the Context
+	
+	public void contextUML(Unit unit) { 
+		String path="images/context"+unit.getName()+".plantuml";
+		
+		try {
+			PrintWriter writer = new PrintWriter(path, "UTF-8");
+			writeOnPlantUMLContext(writer,unit);
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		File source = new File(path);
+		
+		try {
+			SourceFileReader reader = new SourceFileReader(source);
+			List<GeneratedImage> list = reader.getGeneratedImages();
+			File png = list.get(0).getPngFile();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void writeOnPlantUMLContext(PrintWriter writer, Unit unit) {
+		writer.println("@startuml \n set namespaceSeparator none");
+		List<Relation> fathers = relationServ.findByTypeAndDestiny("Herencia", unit);
+		List<Relation> sons = relationServ.findByTypeAndOrigin("Herencia", unit);
+		
+		List<Relation> comps =relationServ.findByTypeAndDestiny("Composición", unit);
+		List<Relation> parts =relationServ.findByTypeAndOrigin("Composición", unit);
+
+		List<Relation> useTo =relationServ.findByTypeAndDestiny("Uso", unit);
+		List<Relation> use =relationServ.findByTypeAndOrigin("Uso", unit);
+
+		List<Relation> asocsTo =relationServ.findByTypeAndDestiny("Asociación", unit);
+		List<Relation> asocs =relationServ.findByTypeAndOrigin("Asociación", unit);
+		
+		for (Relation rel: fathers) {
+			writer.println(rel.getOrigin().getName()+ " <|-- " + unit.getName());
+		}
+		
+		for (Relation rel: comps) {
+			writer.println(rel.getOrigin().getName()+ " *-- " + unit.getName());
+		}
+		
+		for (Relation rel: useTo) {
+			writer.println(rel.getOrigin().getName()+ " <-- " + unit.getName());
+		}
+		
+		for (Relation rel: asocsTo) {
+			writer.println(rel.getOrigin().getName()+ " -- " + unit.getName());
+		}
+		
+		
+		
+		for (Relation rel: sons) {
+			writer.println(unit.getName()+" <|-- " + rel.getDestiny().getName());
+		}
+		
+		for (Relation rel: parts) {
+			writer.println(unit.getName()+" *-- " + rel.getDestiny().getName());
+		}
+		
+		for (Relation rel: use) {
+			writer.println(unit.getName()+" <-- " + rel.getDestiny().getName());
+		}
+		
+		for (Relation rel: asocs) {
+			writer.println(unit.getName()+" -- " + rel.getDestiny().getName());
+		}
+		
+		writer.println("@enduml");
+
+
+		
 	}
 
 	
