@@ -23,8 +23,20 @@ public class Card {
 	@ManyToOne
 	private Unit unitAsoc;
 	
-	protected Card () {}
+	private boolean photo;
 	
+	protected Card () {
+		this.photo=false;
+	}
+	
+	public boolean isPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(boolean photo) {
+		this.photo = photo;
+	}
+
 	public Card (String t, String de, Unit unit) {
 		this.type=t;
 		this.description=de;

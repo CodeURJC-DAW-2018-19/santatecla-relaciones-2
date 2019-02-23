@@ -31,7 +31,7 @@ public class MainController {
 
 	@Autowired
 	private UserComponent userComponent;
-
+	
 	@RequestMapping("/")
 	public String cargar(Model model, HttpServletRequest request, Pageable page, @RequestParam Optional<String> search) {
 
@@ -42,30 +42,25 @@ public class MainController {
 
 		if (!search.isPresent()) {
 			model.addAttribute("units", unitServ.findAll(page));
+			boolean plusbutton = page.getPageSize() < unitServ.totalElements();
+			model.addAttribute("plusbutton", plusbutton);
+			model.addAttribute("totalelements", unitServ.totalElements() - page.getPageSize());
 		} else {
-			model.addAttribute("units", unitServ.findSearch(page, search.get()));
+			model.addAttribute("units", unitServ.findSearch(PageRequest.of(0, Integer.MAX_VALUE), search.get()));
+			model.addAttribute("plusbutton", false);
+			model.addAttribute("totalelements", 0);
 		}
-		boolean plusbutton = page.getPageSize() < unitServ.totalElements();
-		model.addAttribute("plusbutton", plusbutton);
-		model.addAttribute("totalelements", unitServ.totalElements() - page.getPageSize());
 		return "index";
 	}
 	
 	@RequestMapping("/page/{page}/{size}")
-	public String loadAjax(Model model, HttpServletRequest request, @PathVariable int page, @PathVariable int size, @RequestParam Optional<String> search) {
+	public String loadAjax(Model model, HttpServletRequest request, @PathVariable int page, @PathVariable int size) {
 
 		model.addAttribute("tabs", userComponent.getTabs());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
 		
-		if (!search.isPresent()) {
-			
-			model.addAttribute("units", unitServ.findAll(PageRequest.of(page, size)));
-			
-			
-		} else {
-			model.addAttribute("units", unitServ.findSearch(PageRequest.of(page, size), search.get()));
-		}
+		model.addAttribute("units", unitServ.findAll(PageRequest.of(page, size)));
 
 		return "ajaxIndex";
 	}
@@ -82,8 +77,8 @@ public class MainController {
 			}
 			return "redirect:/";
 		} else {
-			// model.addAttribute("desc","...");
-			return "error"; // pagina de error a implementar
+			model.addAttribute("error","Ya existe un usuario con ese nombre");
+			return "error";
 		}
 	}
 
@@ -118,5 +113,5 @@ public class MainController {
 
 		return "redirect:/";
 	}
-
+	
 }

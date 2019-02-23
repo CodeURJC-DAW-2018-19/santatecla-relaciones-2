@@ -134,12 +134,28 @@ public class DatabaseInitializer {
 
 		relationServ.save(new Relation("Asociación", html, asociado1));
 		relationServ.save(new Relation("Asociación", html, asociado2));
+<<<<<<< HEAD
 		relationServ.save(new Relation("Asociación", html, asociado1));
 		relationServ.save(new Relation("Asociación", html, asociado2));
 		relationServ.save(new Relation("Asociación", html, asociado1));
 		relationServ.save(new Relation("Asociación", html, asociado2));
 		relationServ.save(new Relation("Asociación", html, asociado1));
 		relationServ.save(new Relation("Asociación", html, asociado2));
+=======
+		
+		
+		
+		//Testing Composition Hierarchy
+		relationServ.save(new Relation("Composición", partes1, usan1));
+		relationServ.save(new Relation("Composición", partes1, usan2));
+		relationServ.save(new Relation("Composición", usan1, asociado1));
+		relationServ.save(new Relation("Composición", usan2, asociado2));
+		relationServ.save(new Relation("Composición", asociado2, maqWeb));
+
+		
+		
+		
+>>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 
 		userServ.save(new User("user", "12345", "ROLE_USER"));
 		userServ.save(new User("student", "12345", "ROLE_USER"));

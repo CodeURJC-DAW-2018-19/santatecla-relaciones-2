@@ -1,6 +1,6 @@
 package urjcdaw12.relman;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import urjcdaw12.relman.cards.Card;
 import urjcdaw12.relman.cards.CardService;
 import urjcdaw12.relman.relations.Relation;
@@ -49,28 +50,32 @@ public class UnitsController {
 	@Autowired
 	private UserComponent userComponent;
 	
+	@Autowired
+	private UMLCreator umlCreator;
 	
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
 	@PostConstruct
 	public void init() throws IOException {
-
 		if (!Files.exists(FILES_FOLDER)) {
 			Files.createDirectories(FILES_FOLDER);
 		}
 	}
-	
-	
-
 
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
+<<<<<<< HEAD
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
 
 			Pageable pageDef= PageRequest.of(0, 5);
 			
+=======
+			userComponent.addTab(unit);
+			model.addAttribute("tabs", userComponent.getTabs());
+
+>>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 			Unit unitConc = unitServ.findByName(unit);
 
 			model.addAttribute("student", request.isUserInRole("USER"));
@@ -93,6 +98,7 @@ public class UnitsController {
 
 			model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
 			
+<<<<<<< HEAD
 			int nPadres =relationServ.findByTypeAndDestiny("Herencia", unitConc).size()-pageDef.getPageSize();
 			model.addAttribute("nPadres",nPadres);
 			model.addAttribute("showPadres",nPadres>0);
@@ -127,9 +133,29 @@ public class UnitsController {
 			
 			
 			
+=======
+			if (relationServ.findByTypeAndOrigin("Composición", unitConc).size()!=0) {		//Generates the UML just if the unit has "Partes"	
+				umlCreator.compositionUML(unitConc,model);	
+			}	
+			
+			if (relationServ.findByTypeAndOrigin("Herencia", unitConc).size()!=0) {		//Generates the UML just if the unit has "Hijas"	
+				umlCreator.clasificationUML(unitConc,model);	
+			}
+			
+			umlCreator.contextUML(unitConc);
+			
+			model.addAttribute("photoCompExists",unitConc.isPhotoComp());
+			model.addAttribute("photoClasExists",unitConc.isPhotoClas());
+
+			model.addAttribute("photoComp","comp"+unit+".png");
+			model.addAttribute("photoClas","clas"+unit+".png");
+			model.addAttribute("photoContext","context"+unit+".png");
+
+>>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 			return "units";
 		 
 	}
+	
 
 	//@RequestMapping("/rel/{unit}/{relation}/{page}/size/")
 	@RequestMapping("/rel/{unit}/{relation}/{page}/")
@@ -248,6 +274,7 @@ public class UnitsController {
 		card.setDesc(desc);
 		cardServ.save(card);
 		
+		
 		return "redirect:/{unit}";
 	}
 	
@@ -269,17 +296,16 @@ public class UnitsController {
 			try {
 				File uploadedFile = new File(FILES_FOLDER.toFile(), unit+type);
 				file.transferTo(uploadedFile);
+				card.setPhoto(true);
 				cardServ.save(card);
-				
-				model.addAttribute("image",true);
 				
 				return "redirect:/{unit}";
 			} catch (Exception e) {
-				//model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 				return "error";
 			}
 		} else {
-			//model.addAttribute("error", "The file is empty");
+			model.addAttribute("error", "The file is empty");
 			return "error";
 		}
 	}
@@ -296,5 +322,6 @@ public class UnitsController {
 		} else {
 			response.sendError(404, "File" + unit + type + "(" + image.toAbsolutePath() + ") does not exist");
 		}
-	}
+	}	
+
 }

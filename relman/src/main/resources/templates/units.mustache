@@ -16,10 +16,8 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="/assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 	<script>
 	function ajaxPag2(id) {
-			$(document).ready(function(){	
   				 var p= document.getElementById(id).value;
   				 var rel =document.getElementById(id).name;
   				 var unidad =document.getElementById("unit").value;
@@ -28,29 +26,27 @@
   	 		 	 $.ajax({url: "/rel/"+unidad+"/"+rel+"/"+p+"/", success: function(result){
   	 		 	 	console.log(result);
   	 		 	 	var suma = parseInt(p) + parseInt(1);
-  	 		 	 	document.getElementById(id).value= suma ; 
   	 		 	 	console.log(suma);
    	  			    var d1 = document.getElementById(id+rel);
 					d1.insertAdjacentHTML('beforeend', result);
 					var n =document.getElementById(id).title;
+<<<<<<< HEAD
 					document.getElementById(id).title = parseInt(n) - parseInt(5); 
+=======
+					document.getElementById(id).title = parseInt(n) - parseInt(10);
+>>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 					var c = document.getElementById(id).title;
 					if( c <=0 ){
 					document.getElementById(id).disabled = true;
 					document.getElementById(id).style.display = 'none';
-					}	
-   	 			}});	 		
 		});
 		}
-	</script>	
+
+</style>  
 
 </head>
 
 <body>
-			<input type="text" id="unit" value="{{unidad}}" style="display: none;">
-								<!-- ModalAddFicha -->
-                                  <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                               <div class="modal-header">
                                                   <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
@@ -163,7 +159,7 @@
                                                     </tbody>
                                                 </table>
                                                 {{#teacher}}
-                                  
+
                                              <!-- ModalAddRelation -->
 														    <div class="modal fade" id="addRelPadres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 														        <div class="modal-dialog" role="document">
@@ -198,14 +194,18 @@
                                                               <i class="material-icons">add</i>
                                                           </button>
                                                         </p>
-                                                    </div>                 
+                                                    </div>
                                                 {{/teacher}}
+<<<<<<< HEAD
                                                 {{#showPadres}}
                                                  <div class="container text-left"> 
+=======
+                                                 <div class="container text-left">
+>>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
                                                     	<p>
                                                     	<button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="{{nPadres}}">Mas
                                                     		<i class="material-icons">add</i>
-                                                    	</button>    
+                                                    	</button>
                                                    		</p>
                                                    	</div>
                                                 {{/showPadres}}
@@ -561,7 +561,6 @@
 
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
                                             CONTEXTO
                                         </button>
                                     </div>
@@ -893,7 +892,6 @@
                                         </div>
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
                                             JERARQUÍA DE COMPOSICIÓN
                                         </button>
                                     </div>
@@ -1007,7 +1005,6 @@
                                         </div>
                                     </div>
                                     <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded">
                                             JERARQUÍA DE CLASIFICACIÓN
                                         </button>
                                     </div>
@@ -1036,7 +1033,6 @@
 	                                                                <div class="container text-right">
 	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
 	                                                                </div>
-	                                                                <input type="hidden" name="_csrf" value="{{token}}" />  
 	                                                            </form>
                                                             </div>
                                                             <div class="form-group col-md-3">
@@ -1047,14 +1043,11 @@
                                                                                 <h4 class="card-title">Imagen</h4>
                                                                             </div>
                                                                         </div>
-                                                                        {{#image}}
+                                                                        {{#photo}}
 	                                                                        <div class="card-body">
 	                                                                            <div class="container text-right">
-	                                                                                <img src="image/{{unit}}/{{type}}" height="50em" alt="...">
 	                                                                            </div>
 	                                                                        </div>
-                                                                        {{/image}}
-                                                                        {{^image}}
 	                                                                        <form action="/saveImage/{{type}}/{{unidad}}" method="post" enctype="multipart/form-data">
 		                                                                        <div class="card-body">
 		                                                                            <div class="text-center">
@@ -1062,16 +1055,12 @@
 																							<span class="fileinput-new">
 																				    	   		<i class="material-icons">photo</i>
 																							</span>
-																							<input type="file" name="file" />
 																						</span>
 		                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
 		                                                                                    Guardar
 		                                                                                </button>
 		                                                                            </div>
 		                                                                        </div>
-		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />  
-		                                                                    </form>																			
-                                                                        {{/image}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1089,18 +1078,6 @@
                                                                             <h4 class="card-title">Imagen</h4>
                                                                         </div>
                                                                     </div>
-                                                                    {{#imagen}}
-                                                                    <div class="card-body">
-                                                                        <div class="container text-right">
-                                                                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" height="50em" alt="...">
-                                                                        </div>
-                                                                    </div>
-                                                                    {{/imagen}}
-                                                                    {{^imagen}}
-                                                                    <div class="card-body">
-                                                                    <p>No hay imagen disponible</p>
-                                                                    </div>
-                                                                    {{/imagen}}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1114,7 +1091,7 @@
 
                             {{/cards}}
                             {{#teacher}}
-                    
+
                             <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addCard">
                                 <i class="material-icons">add</i>
                             </button>
