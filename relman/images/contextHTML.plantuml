@@ -2,10 +2,6 @@
  set namespaceSeparator none
 SGML <|-- HTML
 MAQUETACIÓN_WEB <|-- HTML
-SPRING <|-- HTML
-ANGULAR <|-- HTML
-JAVASCRIPT <|-- HTML
-CSS <|-- HTML
 COMP1 *-- HTML
 COMP2 *-- HTML
 USAN1 <-- HTML
