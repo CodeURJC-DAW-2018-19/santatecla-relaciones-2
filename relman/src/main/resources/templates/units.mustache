@@ -16,37 +16,135 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="/assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-	function ajaxPag2(id) {
-  				 var p= document.getElementById(id).value;
-  				 var rel =document.getElementById(id).name;
-  				 var unidad =document.getElementById("unit").value;
-  				 console.log(rel);
-  				 console.log(unidad);
-  	 		 	 $.ajax({url: "/rel/"+unidad+"/"+rel+"/"+p+"/", success: function(result){
-  	 		 	 	console.log(result);
-  	 		 	 	var suma = parseInt(p) + parseInt(1);
-  	 		 	 	console.log(suma);
-   	  			    var d1 = document.getElementById(id+rel);
-					d1.insertAdjacentHTML('beforeend', result);
-					var n =document.getElementById(id).title;
-<<<<<<< HEAD
-					document.getElementById(id).title = parseInt(n) - parseInt(5); 
-=======
-					document.getElementById(id).title = parseInt(n) - parseInt(10);
->>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
-					var c = document.getElementById(id).title;
-					if( c <=0 ){
-					document.getElementById(id).disabled = true;
-					document.getElementById(id).style.display = 'none';
-		});
-		}
-
+    function ajaxPag2(id) {
+            $(document).ready(function(){
+                   var p= document.getElementById(id).value;
+                   var rel =document.getElementById(id).name;
+                   var unidad =document.getElementById("unit").value;
+                   console.log(rel);
+                   console.log(unidad);
+                     $.ajax({url: "/rel/"+unidad+"/"+rel+"/"+p+"/", success: function(result){
+                         console.log(result);
+                         var suma = parseInt(p) + parseInt(1);
+                         document.getElementById(id).value= suma ; 
+                         console.log(suma);
+                         var d1 = document.getElementById(id+rel);
+                    d1.insertAdjacentHTML('beforeend', result);
+                    var n =document.getElementById(id).title;
+                    document.getElementById(id).title = parseInt(n) - parseInt(5); 
+                    var c = document.getElementById(id).title;
+                    if( c <=0 ){
+                    document.getElementById(id).disabled = true;
+                    document.getElementById(id).style.display = 'none';
+                    }
+                    }});
+        });
+        }
+    </script>
 </style>  
 
 </head>
 
 <body>
+	<input type="text" id="unit" value="{{unidad}}" style="display: none;">
+      <!-- ModalUMLComp -->
+          <div class="modal fade" id="umlComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="card">
+                              <div class="card-header card-header-text card-header-danger">
+                                  <div class="card-text">
+                                      <h4 class="card-title">Jerarquía de Composición</h4>
+                                  </div>
+                              </div>
+                              <div class="card-body">
+                              	  {{#photoCompExists}}
+                                  <div class="container text-center margin-bot">
+                                      <img src="images/{{photoComp}}" alt="...">
+                                  </div>
+                                  {{/photoCompExists}}
+                                  {{^photoCompExists}}
+                                  <p>La unidad no tiene "Partes", por lo que no se puede mostrar su Jerarquía.</p>
+                                  {{/photoCompExists}}
+                                  <div class="container text-center">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <!-- ModalUMLClas -->
+          <div class="modal fade" id="umlClas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="card">
+                              <div class="card-header card-header-text card-header-danger">
+                                  <div class="card-text">
+                                      <h4 class="card-title">Jerarquía de Clasificación</h4>
+                                  </div>
+                              </div>
+                              <div class="card-body">
+                              	  {{#photoClasExists}}
+                                  <div class="container text-center margin-bot">
+                                      <img src="images/{{photoClas}}" alt="...">
+                                  </div>
+                                  {{/photoClasExists}}
+                                  {{^photoClasExists}}
+                                  	<p>La unidad no tiene "Hijas", por lo que no se puede mostrar su Jerarquía.</p>
+                                  {{/photoClasExists}}	
+                                  <div class="container text-center">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          
+          <!-- ModalUMLContext -->
+          <div class="modal fade" id="umlContext" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="card">
+                              <div class="card-header card-header-text card-header-danger">
+                                  <div class="card-text">
+                                      <h4 class="card-title">Contexto</h4>
+                                  </div>
+                              </div>
+                              <div class="card-body">
+                                  <div class="container text-center margin-bot">
+                                      <img src="images/{{photoContext}}" alt="...">
+                                  </div>
+                                  <div class="container text-center">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+                <!-- ModalAddFicha -->
+      <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                               <div class="modal-header">
                                                   <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
@@ -116,7 +214,7 @@
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
@@ -124,7 +222,7 @@
                                                             </tr>
 
                                                                 <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -196,18 +294,14 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
-<<<<<<< HEAD
-                                                {{#showPadres}}
+                                                 {{#showPadres}}
                                                  <div class="container text-left"> 
-=======
-                                                 <div class="container text-left">
->>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="{{nPadres}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="{{nPadres}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showPadres}}
                                             </div>
                                         </div>
@@ -230,14 +324,14 @@
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -308,14 +402,14 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
-                                                 {{#showCompuestos}}
+                                                {{#showCompuestos}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus2" class="btn btn-dark" value="1" name="compuestos" title="{{nCompuestos}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus2" class="btn btn-dark" value="1" name="compuestos" title="{{nCompuestos}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showCompuestos}}
                                             </div>
                                         </div>
@@ -338,14 +432,14 @@
                                                                 <td><a href="{{destiny}}">{{destiny}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -418,14 +512,13 @@
                                                 {{/teacher}}
                                                 {{#showUsa}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus3" class="btn btn-dark" value="1" name="usa" title="{{nUsa}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus3" class="btn btn-dark" value="1" name="usa" title="{{nUsa}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showUsa}}
-                                        
                                             </div>
                                         </div>
                                     </div>
@@ -451,14 +544,14 @@
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -531,12 +624,12 @@
                                                 {{/teacher}}
                                                 {{#showAsociados}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus4" class="btn btn-dark" value="1" name="asociados" title="{{nAsociados}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus4" class="btn btn-dark" value="1" name="asociados" title="{{nAsociados}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showAsociados}}
                                             </div>
                                         </div>
@@ -561,6 +654,7 @@
 
                                     </div>
                                     <div class="container text-center">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlContext">
                                             CONTEXTO
                                         </button>
                                     </div>
@@ -582,14 +676,14 @@
                                                                 <td><a href="{{destiny}}">{{destiny}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -662,12 +756,12 @@
                                                 {{/teacher}}
                                                 {{#showAsociado}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus5" class="btn btn-dark" value="1" name="asociado" title="{{nAsociado}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus5" class="btn btn-dark" value="1" name="asociado" title="{{nAsociado}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showAsociado}}
                                             </div>
                                         </div>
@@ -693,14 +787,14 @@
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{origin}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete2{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -773,12 +867,12 @@
                                                 {{/teacher}}
                                                 {{#showUsan}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus6" class="btn btn-dark" value="1" name="usan" title="{{nUsan}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus6" class="btn btn-dark" value="1" name="usan" title="{{nUsan}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showUsan}}
                                             </div>
                                         </div>
@@ -801,14 +895,14 @@
                                                                 <td><a href="{{destiny}}">{{destiny}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -881,17 +975,18 @@
                                                 {{/teacher}}
                                                 {{#showPartes}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus7" class="btn btn-dark" value="1" name="partes" title="{{nPartes}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus7" class="btn btn-dark" value="1" name="partes" title="{{nPartes}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showPartes}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="container text-center">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlComp">
                                             JERARQUÍA DE COMPOSICIÓN
                                         </button>
                                     </div>
@@ -913,14 +1008,14 @@
                                                                 <td><a href="{{destiny}}">{{destiny}}</a></td>
                                                                 {{#teacher}}
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>
                                                                 {{/teacher}}
                                                             </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -991,20 +1086,20 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
-                                                  {{#showHijas}}
+                                                {{#showHijas}}
                                                  <div class="container text-left"> 
-                                                    	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus8" class="btn btn-dark" value="1" name="hijas" title="{{nHijas}}">Mas
-                                                    		<i class="material-icons">add</i>
-                                                    	</button>    
-                                                   		</p>
-                                                   	</div>
+                                                        <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus8" class="btn btn-dark" value="1" name="hijas" title="{{nHijas}}">Mas
+                                                            <i class="material-icons">add</i>
+                                                        </button>
+                                                           </p>
+                                                       </div>
                                                 {{/showHijas}}
-                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="container text-center">
+                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlClas">
                                             JERARQUÍA DE CLASIFICACIÓN
                                         </button>
                                     </div>
@@ -1033,6 +1128,7 @@
 	                                                                <div class="container text-right">
 	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
 	                                                                </div>
+	                                                                <input type="hidden" name="_csrf" value="{{token}}" />
 	                                                            </form>
                                                             </div>
                                                             <div class="form-group col-md-3">
@@ -1046,14 +1142,18 @@
                                                                         {{#photo}}
 	                                                                        <div class="card-body">
 	                                                                            <div class="container text-right">
+	                                                                                <img src="image/{{unit}}/{{type}}" height="150em" alt="...">
 	                                                                            </div>
 	                                                                        </div>
+                                                                        {{/photo}}
+                                                                        {{^photo}}
 	                                                                        <form action="/saveImage/{{type}}/{{unidad}}" method="post" enctype="multipart/form-data">
 		                                                                        <div class="card-body">
 		                                                                            <div class="text-center">
 		                                                                            	<span class="btn btn-rounded">
 																							<span class="fileinput-new">
 																				    	   		<i class="material-icons">photo</i>
+																				    	   		<input type="file" name="file" />
 																							</span>
 																						</span>
 		                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
@@ -1061,6 +1161,9 @@
 		                                                                                </button>
 		                                                                            </div>
 		                                                                        </div>
+		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+		                                                                    </form>
+                                                                        {{/photo}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1078,6 +1181,18 @@
                                                                             <h4 class="card-title">Imagen</h4>
                                                                         </div>
                                                                     </div>
+                                                                    {{#photo}}
+	                                                                    <div class="card-body">
+	                                                                        <div class="container text-right">
+	                                                                            <img src="image/{{unit}}/{{type}}" height="150em" alt="...">
+	                                                                        </div>
+	                                                                    </div>
+                                                                    {{/photo}}
+                                                                    {{^photo}}
+	                                                                    <div class="card-body">
+	                                                                    <p>No hay imagen disponible</p>
+	                                                                    </div>
+                                                                    {{/photo}}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1096,7 +1211,6 @@
                                 <i class="material-icons">add</i>
                             </button>
                             {{/teacher}}
-                            
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,11 @@
-                                       
- <table class="table" >
+                                     <table class="table" >
                                                     <tbody>
                                                         {{#ajax}}
                                                             <tr>
                                                                 <td><a href="{{destiny}}">{{destiny}}</a></td>
                                                                 {{#teacher}}
                                                                   <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -18,12 +17,12 @@
 															                        <div class="form-row">
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-right">
-												                                    			<button type="submit" class="btn btn-danger"><a href="/deleteRelation/{{type}}/{{destiny}}/{{origin}}" style="color:white">Eliminar</a></button>
+												                                    			<a href="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" style="color:white"><button type="submit" class="btn btn-danger">Eliminar2</button></a>
 															                                </div>
 															                            </div>
 															                            <div class="form-group col-md-6">
 															                                <div class="container text-left">
-															                                    <button type="submit" class="btn"><a href="/{{origin}}" style="color:white">Cancelar</button>
+															                                    <a href="/{{origin}}" style="color:white"><button type="submit" class="btn">Cancelar</button></a>
 															                                </div>
 															                            </div>
 															                        </div>
@@ -32,7 +31,7 @@
 															        </div>
 															    </div>
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>

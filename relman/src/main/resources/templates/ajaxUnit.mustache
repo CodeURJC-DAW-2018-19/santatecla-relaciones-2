@@ -1,11 +1,11 @@
- <table class="table" >
+							 <table class="table" >
                                                     <tbody>
                                                         {{#ajax}}
                                                             <tr>
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
                                                                   <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															        <div class="modal-dialog" role="document">
 															            <div class="modal-content">
 															                <div class="modal-body">
@@ -31,7 +31,7 @@
 															        </div>
 															    </div>
                                                                     <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
                                                                             <i class="material-icons">delete_forever</i>
                                                                         </button>
                                                                     </td>

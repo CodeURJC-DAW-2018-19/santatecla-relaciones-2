@@ -65,17 +65,14 @@ public class UnitsController {
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request,Pageable page) {
 
-<<<<<<< HEAD
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
 
 			Pageable pageDef= PageRequest.of(0, 5);
 			
-=======
 			userComponent.addTab(unit);
 			model.addAttribute("tabs", userComponent.getTabs());
 
->>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 			Unit unitConc = unitServ.findByName(unit);
 
 			model.addAttribute("student", request.isUserInRole("USER"));
@@ -98,7 +95,6 @@ public class UnitsController {
 
 			model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
 			
-<<<<<<< HEAD
 			int nPadres =relationServ.findByTypeAndDestiny("Herencia", unitConc).size()-pageDef.getPageSize();
 			model.addAttribute("nPadres",nPadres);
 			model.addAttribute("showPadres",nPadres>0);
@@ -133,7 +129,6 @@ public class UnitsController {
 			
 			
 			
-=======
 			if (relationServ.findByTypeAndOrigin("Composición", unitConc).size()!=0) {		//Generates the UML just if the unit has "Partes"	
 				umlCreator.compositionUML(unitConc,model);	
 			}	
@@ -151,7 +146,6 @@ public class UnitsController {
 			model.addAttribute("photoClas","clas"+unit+".png");
 			model.addAttribute("photoContext","context"+unit+".png");
 
->>>>>>> 413894736eeb471d243179a34b02280b1e1575f2
 			return "units";
 		 
 	}

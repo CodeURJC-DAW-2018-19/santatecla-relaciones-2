@@ -1,0 +1,7 @@
+@startuml 
+ set namespaceSeparator none
+HTML *-- MAQUETACIÓN_WEB
+ASOCIADO2 *-- MAQUETACIÓN_WEB
+MAQUETACIÓN_WEB <|-- HTML
+MAQUETACIÓN_WEB -- HTML
+@enduml
