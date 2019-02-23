@@ -64,26 +64,80 @@ public class DatabaseInitializer {
 		Unit partes2 = unitServ.save(new Unit("PARTES2"));
 
 		relationServ.save(new Relation("Herencia", sgml, html));
+		relationServ.save(new Relation("Herencia", c1, html));
+		relationServ.save(new Relation("Herencia", c2, html));
 		relationServ.save(new Relation("Herencia", maqWeb, html));
+		relationServ.save(new Relation("Herencia", usan1, html));
+		relationServ.save(new Relation("Herencia", usan2, html));
+		relationServ.save(new Relation("Herencia", partes2, html));
 
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
+		relationServ.save(new Relation("Herencia", html, html2));
+		relationServ.save(new Relation("Herencia", html, html4));
 		relationServ.save(new Relation("Herencia", html, html2));
 		relationServ.save(new Relation("Herencia", html, html4));
 
 		relationServ.save(new Relation("Composición", c1, html));
 		relationServ.save(new Relation("Composición", c2, html));
-
+		relationServ.save(new Relation("Composición", partes1, html));
+		relationServ.save(new Relation("Composición", partes2, html));
+		relationServ.save(new Relation("Composición", usa1, html));
+		relationServ.save(new Relation("Composición", usa2, html));
+		relationServ.save(new Relation("Composición", sgml, html));
+		
+		
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
+		relationServ.save(new Relation("Composición", html, partes1));
+		relationServ.save(new Relation("Composición", html, partes2));
 		relationServ.save(new Relation("Composición", html, partes1));
 		relationServ.save(new Relation("Composición", html, partes2));
 
 		relationServ.save(new Relation("Uso", usan1, html));
 		relationServ.save(new Relation("Uso", usan2, html));
+		relationServ.save(new Relation("Uso", usan1, html));
+		relationServ.save(new Relation("Uso", usan2, html));
+		relationServ.save(new Relation("Uso", usan1, html));
+		relationServ.save(new Relation("Uso", usan2, html));
+		relationServ.save(new Relation("Uso", usan1, html));
+		relationServ.save(new Relation("Uso", usan2, html));
 
 		relationServ.save(new Relation("Uso", html, usa1));
 		relationServ.save(new Relation("Uso", html, usa2));
+		relationServ.save(new Relation("Uso", html, sgml));
+		relationServ.save(new Relation("Uso", html, c1));
+		relationServ.save(new Relation("Uso", html, c2));
+		relationServ.save(new Relation("Uso", html, partes2));
+		relationServ.save(new Relation("Uso", html, partes1));
 
 		relationServ.save(new Relation("Asociación", asociados1, html));
 		relationServ.save(new Relation("Asociación", asociados2, html));
+		relationServ.save(new Relation("Asociación", asociados1, html));
+		relationServ.save(new Relation("Asociación", asociados2, html));
+		relationServ.save(new Relation("Asociación", asociados1, html));
+		relationServ.save(new Relation("Asociación", asociados2, html));
 
+		relationServ.save(new Relation("Asociación", html, asociado1));
+		relationServ.save(new Relation("Asociación", html, asociado2));
+		relationServ.save(new Relation("Asociación", html, asociado1));
+		relationServ.save(new Relation("Asociación", html, asociado2));
+		relationServ.save(new Relation("Asociación", html, asociado1));
+		relationServ.save(new Relation("Asociación", html, asociado2));
 		relationServ.save(new Relation("Asociación", html, asociado1));
 		relationServ.save(new Relation("Asociación", html, asociado2));
 

@@ -69,29 +69,64 @@ public class UnitsController {
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
 
-
+			Pageable pageDef= PageRequest.of(0, 5);
+			
 			Unit unitConc = unitServ.findByName(unit);
 
 			model.addAttribute("student", request.isUserInRole("USER"));
 			model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 
 			model.addAttribute("unidad", unitServ.findByName(unit));
-			model.addAttribute("padres", relationServ.findByTypeAndDestiny("Herencia", unitConc,page));
-			model.addAttribute("hijas", relationServ.findByTypeAndOrigin("Herencia", unitConc,page));
+			model.addAttribute("padres", relationServ.findByTypeAndDestiny("Herencia", unitConc,pageDef));
+			model.addAttribute("hijas", relationServ.findByTypeAndOrigin("Herencia", unitConc,pageDef));
 
-			model.addAttribute("compuestos", relationServ.findByTypeAndDestiny("Composición", unitServ.findByName(unit),page));
-			model.addAttribute("partes", relationServ.findByTypeAndOrigin("Composición", unitConc,page));
+			model.addAttribute("compuestos", relationServ.findByTypeAndDestiny("Composición",unitConc,pageDef));
+			model.addAttribute("partes", relationServ.findByTypeAndOrigin("Composición", unitConc,pageDef));
 
-			model.addAttribute("usan", relationServ.findByTypeAndDestiny("Uso", unitConc,page));
-			model.addAttribute("usa", relationServ.findByTypeAndOrigin("Uso", unitConc,page));
+			model.addAttribute("usan", relationServ.findByTypeAndDestiny("Uso", unitConc,pageDef));
+			model.addAttribute("usa", relationServ.findByTypeAndOrigin("Uso", unitConc,pageDef));
 
-			model.addAttribute("asociados a", relationServ.findByTypeAndDestiny("Asociación", unitConc,page));
-			model.addAttribute("asociado a", relationServ.findByTypeAndOrigin("Asociación", unitConc,page));
+			model.addAttribute("asociados a", relationServ.findByTypeAndDestiny("Asociación", unitConc,pageDef));
+			model.addAttribute("asociado a", relationServ.findByTypeAndOrigin("Asociación", unitConc,pageDef));
 
 			model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
 			model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
-
+			
+			int nPadres =relationServ.findByTypeAndDestiny("Herencia", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nPadres",nPadres);
+			model.addAttribute("showPadres",nPadres>0);
+			
+			int nHijas =relationServ.findByTypeAndOrigin("Herencia", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nHijas",nHijas);
+			model.addAttribute("showHijas",nHijas>0);
+			
+			int nCompuestos = relationServ.findByTypeAndDestiny("Composición",unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nCompuestos",nCompuestos);
+			model.addAttribute("showCompuestos",nCompuestos>0);
+			
+			int nPartes = relationServ.findByTypeAndOrigin("Composición",unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nPartes",nPartes);
+			model.addAttribute("showPartes",nPartes>0);
+			
+			int nUsan =relationServ.findByTypeAndDestiny("Uso", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nUsan",nUsan);
+			model.addAttribute("showUsan",nUsan>0);
+			
+			int nUsa =relationServ.findByTypeAndOrigin("Uso", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nUsa",nUsa);
+			model.addAttribute("showUsa",nUsa>0);
+			
+			int nAsociados=relationServ.findByTypeAndDestiny("Asociación", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nAsociados",nAsociados);
+			model.addAttribute("showAsociados",nAsociados>0);
+			
+			int nAsociado =relationServ.findByTypeAndOrigin("Asociación", unitConc).size()-pageDef.getPageSize();
+			model.addAttribute("nAsociado",nAsociado);
+			model.addAttribute("showAsociado",nAsociado>0);
+			
+			
+			
 			return "units";
 		 
 	}
@@ -104,25 +139,46 @@ public class UnitsController {
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
 		//model.addAttribute("origin",unit);
-		
-		if (!search.isPresent()) {
+	
 			
 			Unit unitConc = unitServ.findByName(unit);
-			//if (relation.compareTo("padres")==0){
-			Page<Relation> ok = relationServ.findByTypeAndDestiny("Herencia", unitConc,PageRequest.of(page, 1));
-			for (Relation i:ok) {
-				
-				System.out.println(i.getOrigin());
-				System.out.println(i.getDestiny());
+			if (relation.equals("padres") ){
+				Page<Relation> ok = relationServ.findByTypeAndDestiny("Herencia", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);		
 			}
-			model.addAttribute("ajax",ok);
-				
-			//}
-		
-		} else {
-			model.addAttribute("units", unitServ.findSearch(PageRequest.of(page, 10), search.get()));
-		}
-
+			if (relation.equals("hijas") ){
+				Page<Relation> ok = relationServ.findByTypeAndOrigin("Herencia", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);	
+				return "ajaxUnit2";
+			}
+			if (relation.equals("compuestos") ){
+				Page<Relation> ok = relationServ.findByTypeAndDestiny("Composición", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);			
+			}
+			if (relation.equals("partes") ){
+				Page<Relation> ok = relationServ.findByTypeAndOrigin("Composición", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);	
+				return "ajaxUnit2";
+			}
+			if (relation.equals("usan") ){
+				Page<Relation> ok = relationServ.findByTypeAndDestiny("Uso", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);			
+			}
+			if (relation.equals("usa") ){
+				Page<Relation> ok = relationServ.findByTypeAndOrigin("Uso", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);	
+				return "ajaxUnit2";
+			}
+			if (relation.equals("asociados") ){
+				Page<Relation> ok = relationServ.findByTypeAndDestiny("Asociación", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);			
+			}
+			if (relation.equals("asociado") ){
+				Page<Relation> ok = relationServ.findByTypeAndOrigin("Asociación", unitConc,PageRequest.of(page, 5));
+				model.addAttribute("ajax",ok);	
+				return "ajaxUnit2";
+			}
+	
 		return "ajaxUnit";
 	}
 	

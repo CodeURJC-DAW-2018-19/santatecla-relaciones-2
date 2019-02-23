@@ -1,0 +1,47 @@
+                                       
+ <table class="table" >
+                                                    <tbody>
+                                                        {{#ajax}}
+                                                            <tr>
+                                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
+                                                                {{#teacher}}
+                                                                  <!-- ModalDeletion -->
+															    <div class="modal fade" id="delete{{destiny}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															        <div class="modal-dialog" role="document">
+															            <div class="modal-content">
+															                <div class="modal-body">
+															                        <div class="form-row">
+															                            <div class="container text-center">
+															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
+															                            </div>
+															                        </div>
+															                        <div class="form-row">
+															                            <div class="form-group col-md-6">
+															                                <div class="container text-right">
+												                                    			<button type="submit" class="btn btn-danger"><a href="/deleteRelation/{{type}}/{{destiny}}/{{origin}}" style="color:white">Eliminar</a></button>
+															                                </div>
+															                            </div>
+															                            <div class="form-group col-md-6">
+															                                <div class="container text-left">
+															                                    <button type="submit" class="btn"><a href="/{{origin}}" style="color:white">Cancelar</button>
+															                                </div>
+															                            </div>
+															                        </div>
+															                </div>
+															            </div>
+															        </div>
+															    </div>
+                                                                    <td class="td-actions text-right">
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}">
+                                                                            <i class="material-icons">delete_forever</i>
+                                                                        </button>
+                                                                    </td>
+                                                                  
+                                                                {{/teacher}}
+                                                            </tr>
+
+                                                                
+
+                                                        {{/ajax}}
+                                                    </tbody>
+                                                </table>

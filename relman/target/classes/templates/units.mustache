@@ -30,10 +30,10 @@
   	 		 	 	var suma = parseInt(p) + parseInt(1);
   	 		 	 	document.getElementById(id).value= suma ; 
   	 		 	 	console.log(suma);
-   	  			    var d1 = document.getElementById("aqui");
+   	  			    var d1 = document.getElementById(id+rel);
 					d1.insertAdjacentHTML('beforeend', result);
 					var n =document.getElementById(id).title;
-					document.getElementById(id).title = parseInt(n) - parseInt(10); 
+					document.getElementById(id).title = parseInt(n) - parseInt(5); 
 					var c = document.getElementById(id).title;
 					if( c <=0 ){
 					document.getElementById(id).disabled = true;
@@ -113,7 +113,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table" id="aqui">
+                                                <table class="table" id="plus1padres">
                                                     <tbody>
                                                         {{#padres}}
                                                             <tr>
@@ -200,13 +200,15 @@
                                                         </p>
                                                     </div>                 
                                                 {{/teacher}}
+                                                {{#showPadres}}
                                                  <div class="container text-left"> 
                                                     	<p>
-                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="2">Mas
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="{{nPadres}}">Mas
                                                     		<i class="material-icons">add</i>
                                                     	</button>    
                                                    		</p>
                                                    	</div>
+                                                {{/showPadres}}
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +223,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus2compuestos">
                                                     <tbody>
                                                         {{#compuestos}}
                                                             <tr>
@@ -306,6 +308,15 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                 {{#showCompuestos}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus2" class="btn btn-dark" value="1" name="compuestos" title="{{nCompuestos}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showCompuestos}}
                                             </div>
                                         </div>
                                     </div>
@@ -320,7 +331,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus3usa">
                                                     <tbody>
                                                         {{#usa}}
                                                             <tr>
@@ -405,6 +416,16 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                {{#showUsa}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus3" class="btn btn-dark" value="1" name="usa" title="{{nUsa}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showUsa}}
+                                        
                                             </div>
                                         </div>
                                     </div>
@@ -423,7 +444,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus4asociados">
                                                     <tbody>
                                                         {{#asociados a}}
                                                             <tr>
@@ -508,6 +529,15 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                {{#showAsociados}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus4" class="btn btn-dark" value="1" name="asociados" title="{{nAsociados}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showAsociados}}
                                             </div>
                                         </div>
                                     </div>
@@ -546,7 +576,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus5asociado">
                                                     <tbody>
                                                         {{#asociado a}}
                                                             <tr>
@@ -631,6 +661,15 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                {{#showAsociado}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus5" class="btn btn-dark" value="1" name="asociado" title="{{nAsociado}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showAsociado}}
                                             </div>
                                         </div>
                                     </div>
@@ -648,7 +687,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus6usan">
                                                     <tbody>
                                                         {{#usan}}
                                                             <tr>
@@ -733,6 +772,15 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                {{#showUsan}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus6" class="btn btn-dark" value="1" name="usan" title="{{nUsan}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showUsan}}
                                             </div>
                                         </div>
                                     </div>
@@ -747,7 +795,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus7partes">
                                                     <tbody>
                                                         {{#partes}}
                                                             <tr>
@@ -832,6 +880,15 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                {{#showPartes}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus7" class="btn btn-dark" value="1" name="partes" title="{{nPartes}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showPartes}}
                                             </div>
                                         </div>
                                     </div>
@@ -851,7 +908,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table" id="plus8hijas">
                                                     <tbody>
                                                         {{#hijas}}
                                                             <tr>
@@ -936,6 +993,16 @@
                                                         </p>
                                                     </div>
                                                 {{/teacher}}
+                                                  {{#showHijas}}
+                                                 <div class="container text-left"> 
+                                                    	<p>
+                                                    	<button onclick="ajaxPag2(this.id)" type="button" id="plus8" class="btn btn-dark" value="1" name="hijas" title="{{nHijas}}">Mas
+                                                    		<i class="material-icons">add</i>
+                                                    	</button>    
+                                                   		</p>
+                                                   	</div>
+                                                {{/showHijas}}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1052,6 +1119,7 @@
                                 <i class="material-icons">add</i>
                             </button>
                             {{/teacher}}
+                            
                         </div>
                     </div>
                 </div>
