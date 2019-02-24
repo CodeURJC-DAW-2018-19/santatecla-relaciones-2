@@ -15,20 +15,20 @@ public class Card {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String type;
-	@Column(columnDefinition="LONGTEXT")
+	@Column(columnDefinition = "LONGTEXT")
 	private String description;
-	
+
 	@ManyToOne
 	private Unit unitAsoc;
-	
+
 	private boolean photo;
-	
-	protected Card () {
-		this.photo=false;
+
+	protected Card() {
+		this.photo = false;
 	}
-	
+
 	public boolean isPhoto() {
 		return photo;
 	}
@@ -37,10 +37,10 @@ public class Card {
 		this.photo = photo;
 	}
 
-	public Card (String t, String de, Unit unit) {
-		this.type=t;
-		this.description=de;
-		this.unitAsoc=unit;
+	public Card(String t, String de, Unit unit) {
+		this.type = t;
+		this.description = de;
+		this.unitAsoc = unit;
 	}
 
 	public Unit getUnitAsoc() {
@@ -74,6 +74,5 @@ public class Card {
 	public void setDesc(String desc) {
 		this.description = desc;
 	}
-	
-	
+
 }

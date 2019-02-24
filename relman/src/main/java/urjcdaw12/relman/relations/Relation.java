@@ -10,27 +10,25 @@ import urjcdaw12.relman.units.Unit;
 
 @Entity
 public class Relation {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private long id;
-	
-	private String type;  /*Esta puesto asi porque no se puede hacer enum de Strings de forma sencilla. 
-	Controlamos luego que no sea uno de los 4 posibles y ya*/
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	private String type;
+
 	@ManyToOne
 	private Unit origin;
-	
+
 	@ManyToOne
 	private Unit destiny;
-	
+
 	protected Relation() {}
-	
-	public Relation(String tipo,Unit origin, Unit destiny) {
-		this.origin=origin;
-		this.destiny=destiny;
-		this.setType(tipo);
+
+	public Relation(String type, Unit origin, Unit destiny) {
+		this.origin = origin;
+		this.destiny = destiny;
+		this.setType(type);
 	}
 
 	public String getType() {
@@ -64,11 +62,10 @@ public class Relation {
 	public void setDestiny(Unit destiny) {
 		this.destiny = destiny;
 	}
-	
+
 	@Override
 	public String toString() {
 		return origin.toString();
 	}
-	
 
 }

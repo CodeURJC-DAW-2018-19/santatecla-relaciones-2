@@ -28,7 +28,7 @@ public class User {
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
-	
+
 	protected User() {}
 
 	public Long getId() {

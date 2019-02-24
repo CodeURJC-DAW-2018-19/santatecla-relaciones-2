@@ -13,9 +13,9 @@ public class UserComponent {
 	private User user;
 
 	private List<String> tabs;
-	
+
 	protected UserComponent() {
-		tabs= new ArrayList<>();
+		tabs = new ArrayList<>();
 	}
 
 	public User getLoggedUser() {
@@ -31,18 +31,17 @@ public class UserComponent {
 	}
 
 	public void addTab(String tab) {
-
 		if (!tabs.contains(tab)) {
 			tabs.add(tab);
 		}
 	}
-	
+
 	public void removeTab(String tab) {
 		tabs.remove(tab);
 	}
 
 	public List<String> getTabs() {
-		if(tabs == null) {
+		if (tabs == null) {
 			return new ArrayList<>();
 		}
 		return tabs;

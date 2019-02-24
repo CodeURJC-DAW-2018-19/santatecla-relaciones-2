@@ -8,9 +8,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import urjcdaw12.relman.units.Unit;
 
-public interface RelationRepository extends JpaRepository<Relation,Long>{
+public interface RelationRepository extends JpaRepository<Relation, Long> {
 	List<Relation> findByTypeAndOrigin(String type, Unit origin);
+
 	List<Relation> findByTypeAndDestiny(String type, Unit destiny);
-	Page<Relation> findByTypeAndOrigin(String type, Unit origin,Pageable page);
-	Page<Relation> findByTypeAndDestiny(String type, Unit destiny,Pageable page);
+
+	Page<Relation> findByTypeAndOrigin(String type, Unit origin, Pageable page);
+
+	Page<Relation> findByTypeAndDestiny(String type, Unit destiny, Pageable page);
 }

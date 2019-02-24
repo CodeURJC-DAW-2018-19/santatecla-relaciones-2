@@ -1,5 +1,0 @@
-@startuml 
- set namespaceSeparator none
-HTML <|-- HTML2.1
-HTML2.1 <|-- ANGULAR
-@enduml

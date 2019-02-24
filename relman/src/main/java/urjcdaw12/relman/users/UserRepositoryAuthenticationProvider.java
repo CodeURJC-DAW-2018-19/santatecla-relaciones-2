@@ -14,17 +14,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	private UserService userServ;
-	
 
 	@Autowired
 	private UserComponent userComponent;
-	
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {

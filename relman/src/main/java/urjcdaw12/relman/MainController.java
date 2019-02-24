@@ -31,9 +31,10 @@ public class MainController {
 
 	@Autowired
 	private UserComponent userComponent;
-	
+
 	@RequestMapping("/")
-	public String cargar(Model model, HttpServletRequest request, Pageable page, @RequestParam Optional<String> search) {
+	public String cargar(Model model, HttpServletRequest request, Pageable page,
+			@RequestParam Optional<String> search) {
 
 		model.addAttribute("tabs", userComponent.getTabs());
 
@@ -52,21 +53,22 @@ public class MainController {
 		}
 		return "index";
 	}
-	
+
 	@RequestMapping("/page/{page}/{size}")
 	public String loadAjax(Model model, HttpServletRequest request, @PathVariable int page, @PathVariable int size) {
 
 		model.addAttribute("tabs", userComponent.getTabs());
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 		model.addAttribute("student", request.isUserInRole("USER"));
-		
+
 		model.addAttribute("units", unitServ.findAll(PageRequest.of(page, size)));
 
 		return "ajaxIndex";
 	}
 
 	@RequestMapping("/register")
-	public String register(Model model, @RequestParam("userInput") String user, @RequestParam("pass1") String pass1, @RequestParam("pass2") String pass2, HttpServletRequest request) {
+	public String register(Model model, @RequestParam("userInput") String user, @RequestParam("pass1") String pass1,
+			@RequestParam("pass2") String pass2, HttpServletRequest request) {
 
 		if ((pass1.equals(pass2)) && (userServ.findByName(user) == null)) {
 			userServ.save(new User(user, pass1, "ROLE_USER"));
@@ -77,7 +79,7 @@ public class MainController {
 			}
 			return "redirect:/";
 		} else {
-			model.addAttribute("error","Ya existe un usuario con ese nombre");
+			model.addAttribute("error", "Ya existe un usuario con ese nombre");
 			return "error";
 		}
 	}
@@ -113,5 +115,5 @@ public class MainController {
 
 		return "redirect:/";
 	}
-	
+
 }

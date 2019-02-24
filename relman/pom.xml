@@ -11,9 +11,9 @@
 	</parent>
 	<groupId>urjc-daw-12</groupId>
 	<artifactId>relman</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>relman</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Project for relation management</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -53,9 +53,9 @@
 			<version>8.0.13</version>
 		</dependency>
 		<dependency>
-		 	<groupId>net.sourceforge.plantuml</groupId>
-    		<artifactId>plantuml</artifactId>
-    		<version>8031</version>
+			<groupId>net.sourceforge.plantuml</groupId>
+			<artifactId>plantuml</artifactId>
+			<version>8031</version>
 		</dependency>
 	</dependencies>
 

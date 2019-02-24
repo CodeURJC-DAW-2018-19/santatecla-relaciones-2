@@ -8,18 +8,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class UserService {
 
-	
 	@Autowired
 	private UserRepository userRep;
-	
+
 	public Optional<User> findOne(long id) {
 		return userRep.findById(id);
 	}
-	
+
 	public Page<User> findAll(Pageable page) {
 		return userRep.findAll(page);
 	}
@@ -35,7 +33,7 @@ public class UserService {
 	public void delete(long id) {
 		userRep.deleteById(id);
 	}
-	
+
 	public User findByName(String name) {
 		return userRep.findByName(name);
 	}

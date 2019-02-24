@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import urjcdaw12.relman.users.UserRepositoryAuthenticationProvider;
 
@@ -22,11 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/error").permitAll();
 		http.authorizeRequests().antMatchers("/logout").permitAll();
 		http.authorizeRequests().antMatchers("/register").permitAll();
-		
-		
 
-		// http.authorizeRequests().antMatchers("/*").hasAnyRole("USER");
-		
 		http.authorizeRequests().antMatchers("/*").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/rel/**").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/addRelationOrigin/*").hasAnyRole("ADMIN");
@@ -41,11 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/addUnit").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/removeTab/*").hasAnyRole("ADMIN");
 
-
-		
-
-		http.authorizeRequests().antMatchers("/assets/**").permitAll();	
-		http.authorizeRequests().anyRequest().permitAll();// TODO Solo para pruebas
+		http.authorizeRequests().antMatchers("/assets/**").permitAll();
+		http.authorizeRequests().anyRequest().permitAll();
 
 		http.formLogin().loginPage("/");
 		http.formLogin().usernameParameter("username");
@@ -55,8 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.logout().logoutUrl("/logout");
 		http.logout().logoutSuccessUrl("/");
-
-		//http.csrf().disable(); // TODO Usar tokens
 	}
 
 	@Override

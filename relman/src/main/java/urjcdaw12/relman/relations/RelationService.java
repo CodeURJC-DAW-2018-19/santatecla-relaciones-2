@@ -13,10 +13,9 @@ import urjcdaw12.relman.units.Unit;
 @Service
 public class RelationService {
 
-	
 	@Autowired
 	private RelationRepository relationRep;
-	
+
 	public Optional<Relation> findOne(long id) {
 		return relationRep.findById(id);
 	}
@@ -32,24 +31,24 @@ public class RelationService {
 	public void delete(long id) {
 		relationRep.deleteById(id);
 	}
-	
+
 	public void delete(Relation relation) {
 		relationRep.delete(relation);
 	}
-	
-	public List<Relation> findByTypeAndOrigin(String type, Unit origin){
+
+	public List<Relation> findByTypeAndOrigin(String type, Unit origin) {
 		return relationRep.findByTypeAndOrigin(type, origin);
 	}
-	
-	public List<Relation> findByTypeAndDestiny(String type, Unit destiny){
+
+	public List<Relation> findByTypeAndDestiny(String type, Unit destiny) {
 		return relationRep.findByTypeAndDestiny(type, destiny);
 	}
-	
-	public Page<Relation> findByTypeAndOrigin(String type, Unit origin,Pageable page){
-		return relationRep.findByTypeAndOrigin(type, origin,page);
+
+	public Page<Relation> findByTypeAndOrigin(String type, Unit origin, Pageable page) {
+		return relationRep.findByTypeAndOrigin(type, origin, page);
 	}
-	
-	public Page<Relation> findByTypeAndDestiny(String type, Unit destiny,Pageable page){
-		return relationRep.findByTypeAndDestiny(type, destiny,page);
+
+	public Page<Relation> findByTypeAndDestiny(String type, Unit destiny, Pageable page) {
+		return relationRep.findByTypeAndDestiny(type, destiny, page);
 	}
 }

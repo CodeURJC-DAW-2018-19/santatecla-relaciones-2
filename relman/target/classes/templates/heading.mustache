@@ -1,34 +1,34 @@
 <nav class="navbar navbar-fixed-top navbar-expand bg-white">
-        <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/">UNIDADES</a>
+        </li>
+        {{#tabs}}
             <li class="nav-item">
-                <a class="nav-link" href="/">UNIDADES</a>
+                <a class="nav-link" href="{{.}}">
+                    {{.}}
+                    <a href="removeTab/{{.}}" class="btn btn-sm btn-danger" role="button">x</a>
+                </a>
             </li>
-            {{#tabs}}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{.}}">
-                      {{.}}
-                      <a href="removeTab/{{.}}" class="btn btn-sm btn-danger" role="button">x</a>
-                    </a>
-                </li>
-            {{/tabs}}
-        </ul>
-        <span class="navbar-item">
-            <div class="container margin-right">
-                {{#student}}
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <form action="/logout" method="post">
-                                <button class="btn btn-danger navbar-btn" type="submit">Log Out</button>
-                                <input type="hidden" name="_csrf" value="{{token}}" />
-                            </form>
-                        </li>
-                    </ul>
+        {{/tabs}}
+    </ul>
+    <span class="navbar-item">
+        <div class="container margin-right">
+            {{#student}}
+                <ul class="nav navbar-nav">
+                    <li>
+                        <form action="/logout" method="post">
+                            <button class="btn btn-danger navbar-btn" type="submit">Log Out</button>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
+                        </form>
+                    </li>
+                </ul>
+            {{/student}}
+            {{^student}}
+                <button type="button" class="btn btn-default btn-link" data-toggle="modal" data-target="#login">
+                    Login
+                </button>
                 {{/student}}
-                {{^student}}
-                    <button type="button" class="btn btn-default btn-link" data-toggle="modal" data-target="#login">
-                        Login
-                    </button>
-                    {{/student}}
-            </div>
-        </span>
+        </div>
+    </span>
 </nav>

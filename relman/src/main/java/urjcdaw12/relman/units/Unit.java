@@ -14,34 +14,30 @@ import urjcdaw12.relman.relations.Relation;
 
 @Entity
 public class Unit {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String name;
-	
+
 	private boolean photoContext, photoComp, photoClas;
-	
-	@OneToMany(mappedBy="unitAsoc",cascade=CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(mappedBy = "unitAsoc", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Card> cards;
-	
-	@OneToMany(mappedBy="origin",cascade=CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(mappedBy = "origin", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Relation> relationsOrig;
-	
-	@OneToMany(mappedBy="destiny",cascade=CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(mappedBy = "destiny", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Relation> relationsDest;
-	
-	
-	
-	//Supongo que todas las listas deberian ser atributos
-	
+
 	protected Unit() {
-		this.photoClas=false;
-		this.photoComp=false;
-		this.photoContext=false;
+		this.photoClas = false;
+		this.photoComp = false;
+		this.photoContext = false;
 	}
-	
+
 	public boolean isPhotoContext() {
 		return photoContext;
 	}
@@ -66,8 +62,8 @@ public class Unit {
 		this.photoClas = photoClas;
 	}
 
-	public Unit (String name) {
-		this.name=name;
+	public Unit(String name) {
+		this.name = name;
 	}
 
 	public long getId() {
@@ -115,7 +111,5 @@ public class Unit {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

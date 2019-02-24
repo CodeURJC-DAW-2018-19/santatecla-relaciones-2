@@ -16,8 +16,8 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
-	<script src="assets/js/ajaxPag.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/ajaxPag.js"></script>
 
 
 </head>
@@ -47,7 +47,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Entrar</button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
-                               <input type="hidden" name="_csrf" value="{{token}}" />
+                                <input type="hidden" name="_csrf" value="{{token}}" />
 
                             </form>
                         </div>
@@ -80,14 +80,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1"><b>Contraseña</b></label>
-                                    <input type="password" class="form-control" name="pass1" id="exampleInputPassword1" placeholder="Introduzca la nueva contraseña">
+                                    <input type="password" class="form-control" name="pass1" placeholder="Introduzca la nueva contraseña">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword2"><b>Contraseña</b></label>
-                                    <input type="password" class="form-control" name="pass2" id="exampleInputPassword2" placeholder="Repita la nueva contraseña">
+                                    <input type="password" class="form-control" name="pass2" placeholder="Repita la nueva contraseña">
                                 </div>
                                 <button type="submit" class="btn btn-danger">Registrarse</button>
-                                 <input type="hidden" name="_csrf" value="{{token}}" />
+                                <input type="hidden" name="_csrf" value="{{token}}" />
                             </form>
                         </div>
                     </div>
@@ -101,32 +101,32 @@
         <!-- ModalAddUnit -->
         <div class="modal fade" id="addUnit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                        <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-body">
 
-                            <form action="/addUnit" method='POST'>
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <span class="input-group-text">
-                                            <p>Nombre:</p>
-                                        </span>
-                                    </div>
-                                    <div class="form-group col-md-9">
-                                        <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputUnit" placeholder="" name="newUnit">
-                                    </div>
+                        <form action="/addUnit" method='POST'>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <span class="input-group-text">
+                                        <p>Nombre:</p>
+                                    </span>
                                 </div>
-                                <div class="form-row">
-                                    <div class="container text-right">
-                                        <button type="submit" class="btn btn-success">Aceptar</button>
-                                    </div>
+                                <div class="form-group col-md-9">
+                                    <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputUnit" placeholder="" name="newUnit">
                                 </div>
-                                <input type="hidden" name="_csrf" value="{{token}}" />
-                            </form>
+                            </div>
+                            <div class="form-row">
+                                <div class="container text-right">
+                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
+                        </form>
 
-                        </div>
                     </div>
                 </div>
-          </div>
+            </div>
+        </div>
 
 
         <div class="wrapper">
@@ -137,7 +137,7 @@
                         <div class="card">
                             <div class="card-header card-header-danger">
                                 <h1 class="card-title">Unidades
-                                    <form action="/"class="form-inline ml-auto" method="GET">
+                                    <form action="/" class="form-inline ml-auto" method="GET">
                                         <div class="form-group has-white">
                                             <input type="text" class="form-control" name="search" placeholder="Buscar">
                                         </div>
@@ -159,46 +159,46 @@
                                                     <td><a href="{{.}}">{{.}}</a></td>
                                                     {{#teacher}}
                                                         <td class="td-actions text-right">
-                                                        <ul class="nav navbar-nav">
-															<li>
-															<form>
-	                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{.}}">
-	                                                            	<i class="material-icons">delete_forever</i>
-	                                                            </button>
-	                                                            <input type="hidden" name="_csrf" value="{{token}}" />
-                                                            </form>
-                                                          </li>
-                                                      	</ul>
-                                                      	
-												        <!-- ModalDeletion -->
-												        <div class="modal fade" id="delete{{.}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												            <div class="modal-dialog" role="document">
-												                <div class="modal-content">
-												                    <div class="modal-body">
-												                            <div class="form-row">
-												                                <div class="container text-center">
-												                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
-												                                </div>	
-												                            </div>
-												                            <div class="form-row">
-												                                <div class="form-group col-md-6">
-												                                    <div class="container text-right">
-													                                    <form action="/delete/{{.}}" method='POST'>
-													                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-													                                    	<input type="hidden" name="_csrf" value="{{token}}" />   
-													                                    </form>
-												                                    </div>
-												                                </div>
-												                                <div class="form-group col-md-6">
-												                                    <div class="container text-left">
-												                                        <button type="submit" class="btn"><a href="/">Cancelar</a></button>
-												                                    </div>
-												                                </div>
-												                            </div>
-												                    </div>
-												                </div>
-												            </div>
-												        </div>
+                                                            <ul class="nav navbar-nav">
+                                                                <li>
+                                                                    <form>
+                                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{.}}">
+                                                                            <i class="material-icons">delete_forever</i>
+                                                                        </button>
+                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                    </form>
+                                                                </li>
+                                                            </ul>
+
+                                                            <!-- ModalDeletion -->
+                                                            <div class="modal fade" id="delete{{.}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-row">
+                                                                                <div class="container text-center">
+                                                                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-6">
+                                                                                    <div class="container text-right">
+                                                                                        <form action="/delete/{{.}}" method='POST'>
+                                                                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group col-md-6">
+                                                                                    <div class="container text-left">
+                                                                                        <button type="submit" class="btn"><a href="/">Cancelar</a></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                     {{/teacher}}
                                                 </tr>
@@ -212,15 +212,15 @@
                                     </tbody>
                                 </table>
                                 {{#plusbutton}}
-									<button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-dark" value="1" name="page" title="{{totalelements}}">Mas resultados</button>    
+                                    <button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-dark" value="1" name="page" title="{{totalelements}}">Mas resultados</button>
                                 {{/plusbutton}}
-                                	<input type="text" id="nElement" value="{{totalelements}}" style="display: none;>
+                                <input type="text" id="nElement" value="{{totalelements}}" style="display: none;">
                                 {{#teacher}}
                                     <div class="content text-left">
                                         <p>
-                                          <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addUnit">
-                                              <i class="material-icons">add</i>
-                                          </button>
+                                            <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addUnit">
+                                                <i class="material-icons">add</i>
+                                            </button>
                                         </p>
                                     </div>
                                 {{/teacher}}

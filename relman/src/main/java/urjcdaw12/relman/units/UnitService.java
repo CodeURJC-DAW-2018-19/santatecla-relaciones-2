@@ -7,24 +7,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import antlr.collections.List;
-
-
 @Service
 public class UnitService {
-	
+
 	@Autowired
 	private UnitRepository unitRep;
-	
+
 	public Optional<Unit> findOne(long id) {
 		return unitRep.findById(id);
 	}
-	
-	
+
 	public Page<Unit> findAll(Pageable page) {
 		return unitRep.findAll(page);
 	}
-	
+
 	public Page<Unit> findSearch(Pageable page, String search) {
 		return unitRep.findSearch(page, search);
 	}
@@ -36,18 +32,16 @@ public class UnitService {
 	public void delete(long id) {
 		unitRep.deleteById(id);
 	}
-	
+
 	public void delete(Unit unit) {
 		unitRep.delete(unit);
 	}
 
-
-	public Unit findByName(String nombre){
+	public Unit findByName(String nombre) {
 		return unitRep.findByName(nombre);
 	}
 
-	
-	public long totalElements(){
+	public long totalElements() {
 		return unitRep.count();
 	}
 }

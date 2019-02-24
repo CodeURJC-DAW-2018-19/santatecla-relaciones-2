@@ -1,4 +1,0 @@
-@startuml
-USAN2 *-- ASOCIADO2
-ASOCIADO2 *-- MAQUETACIÓN_WEB
-@enduml
