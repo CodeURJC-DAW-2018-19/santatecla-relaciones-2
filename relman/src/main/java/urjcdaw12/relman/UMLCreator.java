@@ -58,23 +58,27 @@ public class UMLCreator {
 		String path = "images/comp" + unit.getName() + ".plantuml";
 
 		try {
-			PrintWriter writer = new PrintWriter(path, "UTF-8");
-			writeOnPlantUMLComp(writer);
-			writer.close();
+			if(treeComp.size()!=1) {
+				PrintWriter writer = new PrintWriter(path, "UTF-8");
+				writeOnPlantUMLComp(writer);
+				writer.close();
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-		File source = new File(path);
-
-		try {
-			SourceFileReader reader = new SourceFileReader(source);
-			List<GeneratedImage> list = reader.getGeneratedImages();
-			File png = list.get(0).getPngFile();
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		if(treeComp.size()!=1) {
+			File source = new File(path);
+	
+			try {
+				SourceFileReader reader = new SourceFileReader(source);
+				List<GeneratedImage> list = reader.getGeneratedImages();
+				File png = list.get(0).getPngFile();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -122,23 +126,28 @@ public class UMLCreator {
 		String path = "images/clas" + unit.getName() + ".plantuml";
 
 		try {
-			PrintWriter writer = new PrintWriter(path, "UTF-8");
-			writeOnPlantUMLClas(writer);
-			writer.close();
+			if(treeClas.size()!=1) {
+				PrintWriter writer = new PrintWriter(path, "UTF-8");
+				writeOnPlantUMLClas(writer);
+				writer.close();
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 
-		File source = new File(path);
+		if(treeClas.size()!=1) {
 
-		try {
-			SourceFileReader reader = new SourceFileReader(source);
-			List<GeneratedImage> list = reader.getGeneratedImages();
-			File png = list.get(0).getPngFile();
-		} catch (Exception e) {
-			e.printStackTrace();
+			File source = new File(path);
+	
+			try {
+				SourceFileReader reader = new SourceFileReader(source);
+				List<GeneratedImage> list = reader.getGeneratedImages();
+				File png = list.get(0).getPngFile();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

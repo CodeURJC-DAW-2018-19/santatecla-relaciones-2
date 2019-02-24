@@ -1,0 +1,3 @@
+@startuml
+ANGULAR *-- CSS
+@enduml

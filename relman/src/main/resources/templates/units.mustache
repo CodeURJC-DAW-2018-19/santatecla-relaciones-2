@@ -17,127 +17,127 @@
     <link rel="stylesheet" href="/assets/css/material-dashboard.css">
     <link href="/assets/css/.min.css?v=2.1.1" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="assets/js/ajaxPag2.js"></script>
-</style>  
+    <script src="assets/js/ajaxPag2.js"></script>
+    </style>
 
 </head>
 
 <body>
-	<input type="text" id="unit" value="{{unit}}" style="display: none;">
-      <!-- ModalUMLComp -->
-          <div class="modal fade" id="umlComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-body">
-                          <div class="card">
-                              <div class="card-header card-header-text card-header-danger">
-                                  <div class="card-text">
-                                      <h4 class="card-title">Jerarquía de Composición</h4>
-                                  </div>
-                              </div>
-                              <div class="card-body">
-                              	  {{#photoCompExists}}
-                                  <div class="container text-center margin-bot">
-                                      <img src="images/{{photoComp}}" alt="...">
-                                  </div>
-                                  {{/photoCompExists}}
-                                  {{^photoCompExists}}
-                                  <p>La unidad no tiene "Partes", por lo que no se puede mostrar su Jerarquía.</p>
-                                  {{/photoCompExists}}
-                                  <div class="container text-center">
-                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ModalUMLClas -->
-          <div class="modal fade" id="umlClas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-body">
-                          <div class="card">
-                              <div class="card-header card-header-text card-header-danger">
-                                  <div class="card-text">
-                                      <h4 class="card-title">Jerarquía de Clasificación</h4>
-                                  </div>
-                              </div>
-                              <div class="card-body">
-                              	  {{#photoClasExists}}
-                                  <div class="container text-center margin-bot">
-                                      <img src="images/{{photoClas}}" alt="...">
-                                  </div>
-                                  {{/photoClasExists}}
-                                  {{^photoClasExists}}
-                                  	<p>La unidad no tiene "Hijas", por lo que no se puede mostrar su Jerarquía.</p>
-                                  {{/photoClasExists}}	
-                                  <div class="container text-center">
-                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
-          <!-- ModalUMLContext -->
-          <div class="modal fade" id="umlContext" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-body">
-                          <div class="card">
-                              <div class="card-header card-header-text card-header-danger">
-                                  <div class="card-text">
-                                      <h4 class="card-title">Contexto</h4>
-                                  </div>
-                              </div>
-                              <div class="card-body">
-                                  <div class="container text-center margin-bot">
-                                      <img src="images/{{photoContext}}" alt="...">
-                                  </div>
-                                  <div class="container text-center">
-                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    <input type="text" id="unit" value="{{unit}}" style="display: none;">
+    <!-- ModalUMLComp -->
+    <div class="modal fade" id="umlComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header card-header-text card-header-danger">
+                            <div class="card-text">
+                                <h4 class="card-title">Jerarquía de Composición</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {{#photoCompExists}}
+                                <div class="container text-center margin-bot">
+                                    <img src="images/{{photoComp}}" class="img-fluid" alt="Responsive image">
+                                </div>
+                            {{/photoCompExists}}
+                            {{^photoCompExists}}
+                                <p>La unidad no tiene "Partes", por lo que no se puede mostrar su Jerarquía.</p>
+                                {{/photoCompExists}}
+                                <div class="container text-center">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ModalUMLClas -->
+    <div class="modal fade" id="umlClas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header card-header-text card-header-danger">
+                            <div class="card-text">
+                                <h4 class="card-title">Jerarquía de Clasificación</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {{#photoClasExists}}
+                                <div class="container text-center margin-bot">
+                                    <img src="images/{{photoClas}}" class="img-fluid" alt="Responsive image">
+                                </div>
+                            {{/photoClasExists}}
+                            {{^photoClasExists}}
+                                <p>La unidad no tiene "Hijas", por lo que no se puede mostrar su Jerarquía.</p>
+                                {{/photoClasExists}}
+                                <div class="container text-center">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <!-- ModalAddFicha -->
-      <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                                          <div class="modal-content">
-                                              <div class="modal-header">
-                                                  <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
-                                              </div>
-                                              <div class="modal-body">
-                                                  <form action="/addCard/{{unit}}" method='POST'>
-                                                      <div class="form-row">
-                                                          <div class="form-group col-md-3">
-                                                              <span class="input-group-text">
-                                                                  <p>Nombre:</p>
-                                                              </span>
-                                                          </div>
-                                                          <div class="form-group col-md-9">
-                                                              <input type="text" class="form-control" id="exampleInputUnit" placeholder="" name="newCard">
-                                                          </div>
-                                                      </div>
-                                                      <div class="form-row">
-                                                          <div class="container text-right">
-                                                              <button type="submit" class="btn btn-success">Aceptar</button>
-                                                          </div>
-                                                      </div>
-													<input type="hidden" name="_csrf" value="{{token}}" />
-                                                  </form>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+    <!-- ModalUMLContext -->
+    <div class="modal fade" id="umlContext" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header card-header-text card-header-danger">
+                            <div class="card-text">
+                                <h4 class="card-title">Contexto</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="container text-center margin-bot">
+                                <img src="images/{{photoContext}}" class="img-fluid" alt="Responsive image">
+                            </div>
+                            <div class="container text-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ModalAddFicha -->
+    <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="/addCard/{{unit}}" method='POST'>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <span class="input-group-text">
+                                    <p>Nombre:</p>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-9">
+                                <input type="text" class="form-control" id="exampleInputUnit" placeholder="" name="newCard">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="container text-right">
+                                <button type="submit" class="btn btn-success">Aceptar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{token}}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="wrapper">
         {{>heading}}
@@ -171,9 +171,9 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table class="table" id="plus1padres">
+                                                <table class="table" id="plus1parents">
                                                     <tbody>
-                                                        {{#padres}}
+                                                        {{#parents}}
                                                             <tr>
                                                                 <td><a href="{{origin}}">{{origin}}</a></td>
                                                                 {{#teacher}}
@@ -185,1001 +185,1016 @@
                                                                 {{/teacher}}
                                                             </tr>
 
-                                                                <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger"><a href="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" style="color:white">Eliminar</a></button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{destiny}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/padres}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
-
-                                             <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelPadres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/inheritance/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelPadres">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                 {{#showPadres}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="padres" title="{{nPadres}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showPadres}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">COMPUESTOS</h4>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus2compuestos">
-                                                    <tbody>
-                                                        {{#compuestos}}
-                                                            <tr>
-                                                                <td><a href="{{origin}}">{{origin}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
                                                             <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{destiny}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/compuestos}}
+                                                            <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-row">
+                                                                                <div class="container text-center">
+                                                                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="form-group col-md-6">
+                                                                                    <div class="container text-right">
+                                                                                        <form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
+                                                                                            <button type="submit" class="btn btn-danger"><a href="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" style="color:white">Eliminar</a></button>
+                                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group col-md-6">
+                                                                                    <div class="container text-left">
+                                                                                        <form action="/{{destiny}}" method="POST">
+                                                                                            <button type="submit" class="btn">Cancelar</button>
+                                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {{/parents}}
                                                     </tbody>
                                                 </table>
-                                                {{#teacher}}
-                                                <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/association/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelComp">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                {{#showCompuestos}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus2" class="btn btn-dark" value="1" name="compuestos" title="{{nCompuestos}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showCompuestos}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">USA</h4>
+                                                <div id="plus1spinner">
                                                 </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus3usa">
-                                                    <tbody>
-                                                        {{#usa}}
-                                                            <tr>
-                                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{origin}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/usa}}
-                                                    </tbody>
-                                                </table>
                                                 {{#teacher}}
-                                                <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelUse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/use/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
 
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelUse">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
+                                                    <!-- ModalAddRelation -->
+                                                    <div class="modal fade" id="addRelPadres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="/addRelationOrigin/inheritance/{{unit}}" method='POST'>
+                                                                        <div class="form-group">
+                                                                            <select id="selected" name="selected" class="custom-select" required>
+                                                                                <option value="">Clase</option>
+                                                                                {{#related}}
+                                                                                    <option value="{{.}}">{{.}}</option>
+                                                                                {{/related}}
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="container text-right">
+
+                                                                            <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer"></div>
+                                                        </div>
                                                     </div>
-                                                {{/teacher}}
-                                                {{#showUsa}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus3" class="btn btn-dark" value="1" name="usa" title="{{nUsa}}">Mas
+                                            </div>
+                                            <div class="container text-right">
+                                                <p>
+                                                    <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelPadres">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                </p>
+                                            </div>
+                                            {{/teacher}}
+                                            {{#showParents}}
+                                                <div class="container text-left">
+                                                    <p>
+                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus1" class="btn btn-dark" value="1" name="parents" title="{{nParents}}">Mas
                                                             <i class="material-icons">add</i>
                                                         </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showUsa}}
-                                            </div>
+                                                    </p>
+                                                </div>
+                                            {{/showParents}}
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="row">
 
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">ASOCIADOS A
-                                                    </h4>
-                                                </div>
+                            <div class="col-sm">
+                                <div class="card">
+                                    <div class="border border-danger">
+                                        <div class="card-header card-header-text card-header-danger">
+                                            <div class="card-text">
+                                                <h4 class="card-title">COMPUESTOS</h4>
                                             </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus4asociados">
-                                                    <tbody>
-                                                        {{#asociados a}}
-                                                            <tr>
-                                                                <td><a href="{{origin}}">{{origin}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{destiny}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/asociados a}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table" id="plus2components">
+                                                <tbody>
+                                                    {{#components}}
+                                                        <tr>
+                                                            <td><a href="{{origin}}">{{origin}}</a></td>
+                                                            {{#teacher}}
+                                                                <td class="td-actions text-right">
+                                                                    <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
+                                                                        <i class="material-icons">delete_forever</i>
+                                                                    </button>
+                                                                </td>
+                                                            {{/teacher}}
+                                                        </tr>
+                                                        <!-- ModalDeletion -->
+                                                        <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <div class="form-row">
+                                                                            <div class="container text-center">
+                                                                                <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <div class="container text-right">
+                                                                                    <form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
+                                                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <div class="container text-left">
+                                                                                    <form action="/{{destiny}}" method="POST">
+                                                                                        <button type="submit" class="btn">Cancelar</button>
+                                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {{/components}}
+                                                </tbody>
+                                            </table>
+                                            <div id="plus2spinner">
+                                            </div>
+                                            {{#teacher}}
                                                 <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelAsoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/association/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
+                                                <div class="modal fade" id="addRelComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/addRelationOrigin/composition/{{unit}}" method='POST'>
+                                                                    <div class="form-group">
+                                                                        <select id="selected" name="selected" class="custom-select" required>
+                                                                            <option value="">Clase</option>
+                                                                            {{#related}}
+                                                                                <option value="{{.}}">{{.}}</option>
+                                                                            {{/related}}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="container text-right">
 
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelAsoc">
-                                                            <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
+                                                                        <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer"></div>
                                                     </div>
-                                                {{/teacher}}
-                                                {{#showAsociados}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus4" class="btn btn-dark" value="1" name="asociados" title="{{nAsociados}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showAsociados}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">UNIDAD</h4>
                                                 </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="container text-center">
-                                                    <h1>{{unit}}</h1>
-                                                </div>
-                                            </div>
-
                                         </div>
-
-                                    </div>
-                                    <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlContext">
-                                            CONTEXTO
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">ASOCIADO A</h4>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus5asociado">
-                                                    <tbody>
-                                                        {{#asociado a}}
-                                                            <tr>
-                                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                           <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{origin}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/asociado a}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
-                                                            <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelAsoci" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/association/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelAsoci">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                {{#showAsociado}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus5" class="btn btn-dark" value="1" name="asociado" title="{{nAsociado}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showAsociado}}
-                                            </div>
+                                        <div class="container text-right">
+                                            <p>
+                                                <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelComp">
+                                                    <i class="material-icons">add</i>
+                                                </button>
+                                            </p>
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">USAN</h4>
-                                                </div>
+                                        {{/teacher}}
+                                        {{#showComponents}}
+                                            <div class="container text-left">
+                                                <p>
+                                                    <button onclick="ajaxPag2(this.id)" type="button" id="plus2" class="btn btn-dark" value="1" name="components" title="{{nComponents}}">Mas
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                </p>
                                             </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus6usan">
-                                                    <tbody>
-                                                        {{#usan}}
-                                                            <tr>
-                                                                <td><a href="{{origin}}">{{origin}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{origin}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete2{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{destiny}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/usan}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
-                                                <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelUse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/use/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelUse">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                {{#showUsan}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus6" class="btn btn-dark" value="1" name="usan" title="{{nUsan}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showUsan}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">PARTES</h4>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus7partes">
-                                                    <tbody>
-                                                        {{#partes}}
-                                                            <tr>
-                                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{origin}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/partes}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
-                                                            <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelParts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/association/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelParts">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                {{#showPartes}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus7" class="btn btn-dark" value="1" name="partes" title="{{nPartes}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showPartes}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlComp">
-                                            JERARQUÍA DE COMPOSICIÓN
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm">
-                                    <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
-                                                <div class="card-text">
-                                                    <h4 class="card-title">HIJAS</h4>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table" id="plus8hijas">
-                                                    <tbody>
-                                                        {{#hijas}}
-                                                            <tr>
-                                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
-                                                                {{#teacher}}
-                                                                    <td class="td-actions text-right">
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
-                                                                            <i class="material-icons">delete_forever</i>
-                                                                        </button>
-                                                                    </td>
-                                                                {{/teacher}}
-                                                            </tr>
-                                                            <!-- ModalDeletion -->
-															    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															        <div class="modal-dialog" role="document">
-															            <div class="modal-content">
-															                <div class="modal-body">
-															                        <div class="form-row">
-															                            <div class="container text-center">
-															                                <p>¿Estás seguro de querer eliminar este elemento?</p>
-															                            </div>
-															                        </div>
-															                        <div class="form-row">
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-right">
-																							<form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
-												                                    			<button type="submit" class="btn btn-danger">Eliminar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                            <div class="form-group col-md-6">
-															                                <div class="container text-left">
-															                                <form action="/{{origin}}" method="POST">
-															                                    <button type="submit" class="btn">Cancelar</button>
-															                                    <input type="hidden" name="_csrf" value="{{token}}" />
-															                                </form>
-															                                </div>
-															                            </div>
-															                        </div>
-															                </div>
-															            </div>
-															        </div>
-															    </div>
-                                                        {{/hijas}}
-                                                    </tbody>
-                                                </table>
-                                                {{#teacher}}
-                                                            <!-- ModalAddRelation -->
-														    <div class="modal fade" id="addRelSons" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														        <div class="modal-dialog" role="document">
-														            <div class="modal-content">
-														                <div class="modal-header">
-														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
-														                </div>
-														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/inheritance/{{unit}}" method='POST'>
-														                        <div class="form-group">
-														                            <select id="selected" name="selected" class="custom-select" required>
-														                                <option value="">Clase</option>
-														                                {{#related}}
-														                                <option value="{{.}}">{{.}}</option>
-														                                {{/related}}
-														                            </select>
-														                        </div>
-														                        <div class="container text-right">
-
-														                            <button type="submit" class="btn btn-success">Aceptar</button>
-														                            <input type="hidden" name="_csrf" value="{{token}}" />
-														                         </form>
-														                        </div>
-														                </div>
-														                <div class="modal-footer"></div>
-														            </div>
-														        </div>
-														    </div>
-                                                    <div class="container text-right">
-                                                        <p>
-                                                          <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelSons">
-                                                              <i class="material-icons">add</i>
-                                                          </button>
-                                                        </p>
-                                                    </div>
-                                                {{/teacher}}
-                                                {{#showHijas}}
-                                                 <div class="container text-left"> 
-                                                        <p>
-                                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus8" class="btn btn-dark" value="1" name="hijas" title="{{nHijas}}">Mas
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                           </p>
-                                                       </div>
-                                                {{/showHijas}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlClas">
-                                            JERARQUÍA DE CLASIFICACIÓN
-                                        </button>
+                                        {{/showComponents}}
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="details">
-
-                            {{#cards}}
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <div class="card">
-                                            <div class="border border-danger">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">{{type}}</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    {{#teacher}}
-                                                        <div class="form-row">
-                                                            <div class="form-group col-md-9">
-	                                                            <form method='POST' action="/saveCard/{{type}}/{{unit}}">
-	                                                                <textarea class="form-control" id="desc" name="desc" rows="5">{{desc}}</textarea>
-	                                                                <div class="container text-right">
-	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
-	                                                                </div>
-	                                                                <input type="hidden" name="_csrf" value="{{token}}" />
-	                                                            </form>
-                                                            </div>
-                                                            <div class="form-group col-md-3">
-                                                                <div class="card">
-                                                                    <div class="border border-danger">
-                                                                        <div class="card-header card-header-text card-header-danger">
-                                                                            <div class="card-text">
-                                                                                <h4 class="card-title">Imagen</h4>
-                                                                            </div>
-                                                                        </div>
-                                                                        {{#photo}}
-	                                                                        <div class="card-body">
-	                                                                            <div class="container text-right">
-	                                                                                <img src="image/{{unit}}/{{type}}" height="150em" alt="...">
-	                                                                            </div>
-	                                                                        </div>
-                                                                        {{/photo}}
-                                                                        {{^photo}}
-	                                                                        <form action="/saveImage/{{type}}/{{unit}}" method="post" enctype="multipart/form-data">
-		                                                                        <div class="card-body">
-		                                                                            <div class="text-center">
-		                                                                            	<span class="btn btn-rounded">
-																							<span class="fileinput-new">
-																				    	   		<i class="material-icons">photo</i>
-																				    	   		<input type="file" name="file" />
-																							</span>
-																						</span>
-		                                                                                <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
-		                                                                                    Guardar
-		                                                                                </button>
-		                                                                            </div>
-		                                                                        </div>
-		                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
-		                                                                    </form>
-                                                                        {{/photo}}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {{/teacher}}
-                                                    {{^teacher}}
-                                                        <div class="form-group col-md-9">
-                                                            <p>{{desc}}</p>
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <div class="card">
-                                                                <div class="border border-danger">
-                                                                    <div class="card-header card-header-text card-header-danger">
-                                                                        <div class="card-text">
-                                                                            <h4 class="card-title">Imagen</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                    {{#photo}}
-	                                                                    <div class="card-body">
-	                                                                        <div class="container text-right">
-	                                                                            <img src="image/{{unit}}/{{type}}" height="150em" alt="...">
-	                                                                        </div>
-	                                                                    </div>
-                                                                    {{/photo}}
-                                                                    {{^photo}}
-	                                                                    <div class="card-body">
-	                                                                    <p>No hay imagen disponible</p>
-	                                                                    </div>
-                                                                    {{/photo}}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {{/teacher}}
-                                                </div>
-                                            </div>
+                        <div class="col-sm">
+                            <div class="card">
+                                <div class="border border-danger">
+                                    <div class="card-header card-header-text card-header-danger">
+                                        <div class="card-text">
+                                            <h4 class="card-title">USA</h4>
                                         </div>
                                     </div>
+                                    <div class="card-body">
+                                        <table class="table" id="plus3use">
+                                            <tbody>
+                                                {{#use}}
+                                                    <tr>
+                                                        <td><a href="{{destiny}}">{{destiny}}</a></td>
+                                                        {{#teacher}}
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{destiny}}{{type}}">
+                                                                    <i class="material-icons">delete_forever</i>
+                                                                </button>
+                                                            </td>
+                                                        {{/teacher}}
+                                                    </tr>
+                                                    <!-- ModalDeletion -->
+                                                    <div class="modal fade" id="delete{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="form-row">
+                                                                        <div class="container text-center">
+                                                                            <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <div class="container text-right">
+                                                                                <form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
+                                                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <div class="container text-left">
+                                                                                <form action="/{{origin}}" method="POST">
+                                                                                    <button type="submit" class="btn">Cancelar</button>
+                                                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {{/use}}
+                                            </tbody>
+                                        </table>
+                                        <div id="plus3spinner">
+                                        </div>
+                                        {{#teacher}}
+                                            <!-- ModalAddRelation -->
+                                            <div class="modal fade" id="addRelUse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/addRelationDestiny/use/{{unit}}" method='POST'>
+                                                                <div class="form-group">
+                                                                    <select id="selected" name="selected" class="custom-select" required>
+                                                                        <option value="">Clase</option>
+                                                                        {{#related}}
+                                                                            <option value="{{.}}">{{.}}</option>
+                                                                        {{/related}}
+                                                                    </select>
+                                                                </div>
+                                                                <div class="container text-right">
 
+                                                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer"></div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="container text-right">
+                                        <p>
+                                            <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelUse">
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                        </p>
+                                    </div>
+                                    {{/teacher}}
+                                    {{#showUse}}
+                                        <div class="container text-left">
+                                            <p>
+                                                <button onclick="ajaxPag2(this.id)" type="button" id="plus3" class="btn btn-dark" value="1" name="use" title="{{nUse}}">Mas
+                                                    <i class="material-icons">add</i>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    {{/showUse}}
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            {{/cards}}
-                            {{#teacher}}
+                </div>
+                <div class="row">
 
-                            <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addCard">
-                                <i class="material-icons">add</i>
-                            </button>
+                    <div class="col-sm">
+                        <div class="card">
+                            <div class="border border-danger">
+                                <div class="card-header card-header-text card-header-danger">
+                                    <div class="card-text">
+                                        <h4 class="card-title">ASOCIADOS A
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table" id="plus4associatedDestiny">
+                                        <tbody>
+                                            {{#associatedDestiny}}
+                                                <tr>
+                                                    <td><a href="{{origin}}">{{origin}}</a></td>
+                                                    {{#teacher}}
+                                                        <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete{{origin}}{{type}}">
+                                                                <i class="material-icons">delete_forever</i>
+                                                            </button>
+                                                        </td>
+                                                    {{/teacher}}
+                                                </tr>
+                                                <!-- ModalDeletion -->
+                                                <div class="modal fade" id="delete{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="form-row">
+                                                                    <div class="container text-center">
+                                                                        <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="container text-right">
+                                                                            <form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
+                                                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="container text-left">
+                                                                            <form action="/{{destiny}}" method="POST">
+                                                                                <button type="submit" class="btn">Cancelar</button>
+                                                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/associatedDestiny}}
+                                        </tbody>
+                                    </table>
+                                    <div id="plus4spinner">
+                                    </div>
+                                    {{#teacher}}
+                                        <!-- ModalAddRelation -->
+                                        <div class="modal fade" id="addRelAsoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="/addRelationOrigin/association/{{unit}}" method='POST'>
+                                                            <div class="form-group">
+                                                                <select id="selected" name="selected" class="custom-select" required>
+                                                                    <option value="">Clase</option>
+                                                                    {{#related}}
+                                                                        <option value="{{.}}">{{.}}</option>
+                                                                    {{/related}}
+                                                                </select>
+                                                            </div>
+                                                            <div class="container text-right">
+
+                                                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer"></div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="container text-right">
+                                    <p>
+                                        <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelAsoc">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                    </p>
+                                </div>
+                                {{/teacher}}
+                                {{#showAssociatedDestiny}}
+                                    <div class="container text-left">
+                                        <p>
+                                            <button onclick="ajaxPag2(this.id)" type="button" id="plus4" class="btn btn-dark" value="1" name="associatedDestiny" title="{{nAssociatedDestiny}}">Mas
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                        </p>
+                                    </div>
+                                {{/showAssociatedDestiny}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card">
+                        <div class="border border-danger">
+                            <div class="card-header card-header-text card-header-danger">
+                                <div class="card-text">
+                                    <h4 class="card-title">UNIDAD</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="container text-center">
+                                    <h1>{{unit}}</h1>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="container text-center">
+                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlContext">
+                            CONTEXTO
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card">
+                        <div class="border border-danger">
+                            <div class="card-header card-header-text card-header-danger">
+                                <div class="card-text">
+                                    <h4 class="card-title">ASOCIADO A</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table" id="plus5associatedOrigin">
+                                    <tbody>
+                                        {{#associatedOrigin}}
+                                            <tr>
+                                                <td><a href="{{destiny}}">{{destiny}}</a></td>
+                                                {{#teacher}}
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
+                                                            <i class="material-icons">delete_forever</i>
+                                                        </button>
+                                                    </td>
+                                                {{/teacher}}
+                                            </tr>
+                                            <!-- ModalDeletion -->
+                                            <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="container text-center">
+                                                                    <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="container text-right">
+                                                                        <form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
+                                                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="container text-left">
+                                                                        <form action="/{{origin}}" method="POST">
+                                                                            <button type="submit" class="btn">Cancelar</button>
+                                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{/associatedOrigin}}
+                                    </tbody>
+                                </table>
+                                <div id="plus5spinner">
+                                </div>
+                                {{#teacher}}
+                                    <!-- ModalAddRelation -->
+                                    <div class="modal fade" id="addRelAsoci" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/addRelationDestiny/association/{{unit}}" method='POST'>
+                                                        <div class="form-group">
+                                                            <select id="selected" name="selected" class="custom-select" required>
+                                                                <option value="">Clase</option>
+                                                                {{#related}}
+                                                                    <option value="{{.}}">{{.}}</option>
+                                                                {{/related}}
+                                                            </select>
+                                                        </div>
+                                                        <div class="container text-right">
+
+                                                            <button type="submit" class="btn btn-success">Aceptar</button>
+                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"></div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="container text-right">
+                                <p>
+                                    <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelAsoci">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </p>
+                            </div>
                             {{/teacher}}
+                            {{#showAssociatedOrigin}}
+                                <div class="container text-left">
+                                    <p>
+                                        <button onclick="ajaxPag2(this.id)" type="button" id="plus5" class="btn btn-dark" value="1" name="associatedOrigin" title="{{nAssociatedOrigin}}">Mas
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                    </p>
+                                </div>
+                            {{/showAssociatedOrigin}}
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div class="card">
+                    <div class="border border-danger">
+                        <div class="card-header card-header-text card-header-danger">
+                            <div class="card-text">
+                                <h4 class="card-title">USAN</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table" id="plus6useDestiny">
+                                <tbody>
+                                    {{#useDestiny}}
+                                        <tr>
+                                            <td><a href="{{origin}}">{{origin}}</a></td>
+                                            {{#teacher}}
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{origin}}{{type}}">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </td>
+                                            {{/teacher}}
+                                        </tr>
+                                        <!-- ModalDeletion -->
+                                        <div class="modal fade" id="delete2{{origin}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="form-row">
+                                                            <div class="container text-center">
+                                                                <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <div class="container text-right">
+                                                                    <form action="/deleteRelation/{{type}}/{{origin}}/{{destiny}}" method='POST'>
+                                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <div class="container text-left">
+                                                                    <form action="/{{destiny}}" method="POST">
+                                                                        <button type="submit" class="btn">Cancelar</button>
+                                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/useDestiny}}
+                                </tbody>
+                            </table>
+                            <div id="plus6spinner">
+                            </div>
+                            {{#teacher}}
+                                <!-- ModalAddRelation -->
+                                <div class="modal fade" id="addRelUseDestiny" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/addRelationOrigin/use/{{unit}}" method='POST'>
+                                                    <div class="form-group">
+                                                        <select id="selected" name="selected" class="custom-select" required>
+                                                            <option value="">Clase</option>
+                                                            {{#related}}
+                                                                <option value="{{.}}">{{.}}</option>
+                                                            {{/related}}
+                                                        </select>
+                                                    </div>
+                                                    <div class="container text-right">
+
+                                                        <button type="submit" class="btn btn-success">Aceptar</button>
+                                                        <input type="hidden" name="_csrf" value="{{token}}" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer"></div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="container text-right">
+                            <p>
+                                <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelUseDestiny">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </p>
+                        </div>
+                        {{/teacher}}
+                        {{#showUseDestiny}}
+                            <div class="container text-left">
+                                <p>
+                                    <button onclick="ajaxPag2(this.id)" type="button" id="plus6" class="btn btn-dark" value="1" name="useDestiny" title="{{nUseDestiny}}">Mas
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </p>
+                            </div>
+                        {{/showUseDestiny}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="card">
+                <div class="border border-danger">
+                    <div class="card-header card-header-text card-header-danger">
+                        <div class="card-text">
+                            <h4 class="card-title">PARTES</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="plus7parts">
+                            <tbody>
+                                {{#parts}}
+                                    <tr>
+                                        <td><a href="{{destiny}}">{{destiny}}</a></td>
+                                        {{#teacher}}
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </button>
+                                            </td>
+                                        {{/teacher}}
+                                    </tr>
+                                    <!-- ModalDeletion -->
+                                    <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div class="form-row">
+                                                        <div class="container text-center">
+                                                            <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <div class="container text-right">
+                                                                <form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
+                                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <div class="container text-left">
+                                                                <form action="/{{origin}}" method="POST">
+                                                                    <button type="submit" class="btn">Cancelar</button>
+                                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/parts}}
+                            </tbody>
+                        </table>
+                        <div id="plus7spinner">
+                        </div>
+                        {{#teacher}}
+                            <!-- ModalAddRelation -->
+                            <div class="modal fade" id="addRelParts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/addRelationDestiny/composition/{{unit}}" method='POST'>
+                                                <div class="form-group">
+                                                    <select id="selected" name="selected" class="custom-select" required>
+                                                        <option value="">Clase</option>
+                                                        {{#related}}
+                                                            <option value="{{.}}">{{.}}</option>
+                                                        {{/related}}
+                                                    </select>
+                                                </div>
+                                                <div class="container text-right">
+
+                                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"></div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="container text-right">
+                        <p>
+                            <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelParts">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </p>
+                    </div>
+                    {{/teacher}}
+                    {{#showParts}}
+                        <div class="container text-left">
+                            <p>
+                                <button onclick="ajaxPag2(this.id)" type="button" id="plus7" class="btn btn-dark" value="1" name="parts" title="{{nParts}}">Mas
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </p>
+                        </div>
+                    {{/showParts}}
+                </div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlComp">
+                JERARQUÍA DE COMPOSICIÓN
+            </button>
+        </div>
+    </div>
+
+    <div class="col-sm">
+        <div class="card">
+            <div class="border border-danger">
+                <div class="card-header card-header-text card-header-danger">
+                    <div class="card-text">
+                        <h4 class="card-title">HIJAS</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table" id="plus8children">
+                        <tbody>
+                            {{#children}}
+                                <tr>
+                                    <td><a href="{{destiny}}">{{destiny}}</a></td>
+                                    {{#teacher}}
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#delete2{{destiny}}{{type}}">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    {{/teacher}}
+                                </tr>
+                                <!-- ModalDeletion -->
+                                <div class="modal fade" id="delete2{{destiny}}{{type}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="form-row">
+                                                    <div class="container text-center">
+                                                        <p>¿Estás seguro de querer eliminar este elemento?</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <div class="container text-right">
+                                                            <form action="/deleteRelationDestiny/{{type}}/{{destiny}}/{{origin}}" method='POST'>
+                                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="container text-left">
+                                                            <form action="/{{origin}}" method="POST">
+                                                                <button type="submit" class="btn">Cancelar</button>
+                                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/children}}
+                        </tbody>
+                    </table>
+                    <div id="plus8spinner">
+                    </div>
+                    {{#teacher}}
+                        <!-- ModalAddRelation -->
+                        <div class="modal fade" id="addRelSons" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/addRelationDestiny/inheritance/{{unit}}" method='POST'>
+                                            <div class="form-group">
+                                                <select id="selected" name="selected" class="custom-select" required>
+                                                    <option value="">Clase</option>
+                                                    {{#related}}
+                                                        <option value="{{.}}">{{.}}</option>
+                                                    {{/related}}
+                                                </select>
+                                            </div>
+                                            <div class="container text-right">
+
+                                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="container text-right">
+                    <p>
+                        <button type="button" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#addRelSons">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </p>
+                </div>
+                {{/teacher}}
+                {{#showChildren}}
+                    <div class="container text-left">
+                        <p>
+                            <button onclick="ajaxPag2(this.id)" type="button" id="plus8" class="btn btn-dark" value="1" name="children" title="{{nChildren}}">Mas
+                                <i class="material-icons">add</i>
+                            </button>
+                        </p>
+                    </div>
+                {{/showChildren}}
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlClas">
+            JERARQUÍA DE CLASIFICACIÓN
+        </button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="tab-pane" id="details">
+
+        {{#cards}}
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <div class="border border-danger">
+                            <div class="card-header card-header-text card-header-danger">
+                                <div class="card-text">
+                                    <h4 class="card-title">{{type}}</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                {{#teacher}}
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <form method='POST' action="/saveCard/{{type}}/{{unit}}">
+                                                <textarea class="form-control" id="desc" name="desc" rows="5">{{desc}}</textarea>
+                                                <div class="container text-right">
+                                                    <button type="submit" class="btn btn-success">Guardar</button>
+                                                </div>
+                                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                            </form>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <div class="card">
+                                                <div class="border border-danger">
+                                                    <div class="card-header card-header-text card-header-danger">
+                                                        <div class="card-text">
+                                                            <h4 class="card-title">Imagen</h4>
+                                                        </div>
+                                                    </div>
+                                                    {{#photo}}
+                                                        <div class="card-body">
+                                                            <div class="container text-right">
+                                                                <img src="image/{{unit}}/{{type}}" height="150em" alt="Responsive image">
+                                                            </div>
+                                                        </div>
+                                                    {{/photo}}
+                                                    {{^photo}}
+                                                        <form action="/saveImage/{{type}}/{{unit}}" method="post" enctype="multipart/form-data">
+                                                            <div class="card-body">
+                                                                <div class="text-left">
+                                                                    <span class="btn btn-rounded btn-file">
+                                                                        <input type="file" name="file">
+
+                                                                        <i class="material-icons">photo</i>
+                                                                    </span>
+                                                                    <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="_csrf" value="{{token}}" />
+                                                        </form>
+                                                        {{/photo}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/teacher}}
+                                {{^teacher}}
+                                    <div class="form-group col-md-9">
+                                        <p>{{desc}}</p>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="card">
+                                            <div class="border border-danger">
+                                                <div class="card-header card-header-text card-header-danger">
+                                                    <div class="card-text">
+                                                        <h4 class="card-title">Imagen</h4>
+                                                    </div>
+                                                </div>
+                                                {{#photo}}
+                                                    <div class="card-body">
+                                                        <div class="container text-right">
+                                                            <img src="image/{{unit}}/{{type}}" height="150em" alt="Responsive image">
+                                                        </div>
+                                                    </div>
+                                                {{/photo}}
+                                                {{^photo}}
+                                                    <div class=" card-body">
+                                                        <p>No hay imagen disponible</p>
+                                                    </div>
+                                                    {{/photo}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/teacher}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        {{/cards}}
+        {{#teacher}}
+
+            <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#addCard">
+                <i class="material-icons">add</i>
+            </button>
+        {{/teacher}}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 

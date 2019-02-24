@@ -60,9 +60,13 @@ public class UnitsController {
 			Files.createDirectories(FILES_FOLDER);
 		}
 	}
+	
+	public void loadUnit(Model model, Unit unit) {
+		
+	}
 
 	@RequestMapping("/{unit}")
-	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request, Pageable page) {
+	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
 
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
@@ -78,53 +82,53 @@ public class UnitsController {
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 
 		model.addAttribute("unit", unitServ.findByName(unit));
-		model.addAttribute("padres", relationServ.findByTypeAndDestiny("inheritance", unitConc, pageDef));
-		model.addAttribute("hijas", relationServ.findByTypeAndOrigin("inheritance", unitConc, pageDef));
+		model.addAttribute("parents", relationServ.findByTypeAndDestiny("inheritance", unitConc, pageDef));
+		model.addAttribute("children", relationServ.findByTypeAndOrigin("inheritance", unitConc, pageDef));
 
-		model.addAttribute("compuestos", relationServ.findByTypeAndDestiny("composition", unitConc, pageDef));
-		model.addAttribute("partes", relationServ.findByTypeAndOrigin("composition", unitConc, pageDef));
+		model.addAttribute("components", relationServ.findByTypeAndDestiny("composition", unitConc, pageDef));
+		model.addAttribute("parts", relationServ.findByTypeAndOrigin("composition", unitConc, pageDef));
 
-		model.addAttribute("usan", relationServ.findByTypeAndDestiny("use", unitConc, pageDef));
-		model.addAttribute("usa", relationServ.findByTypeAndOrigin("use", unitConc, pageDef));
+		model.addAttribute("useDestiny", relationServ.findByTypeAndDestiny("use", unitConc, pageDef));
+		model.addAttribute("use", relationServ.findByTypeAndOrigin("use", unitConc, pageDef));
 
-		model.addAttribute("asociados a", relationServ.findByTypeAndDestiny("association", unitConc, pageDef));
-		model.addAttribute("asociado a", relationServ.findByTypeAndOrigin("association", unitConc, pageDef));
+		model.addAttribute("associatedDestiny", relationServ.findByTypeAndDestiny("association", unitConc, pageDef));
+		model.addAttribute("associatedOrigin", relationServ.findByTypeAndOrigin("association", unitConc, pageDef));
 
 		model.addAttribute("cards", cardServ.findByUnitAsoc(unitConc));
 
 		model.addAttribute("related", unitServ.findAll(PageRequest.of(0, Integer.MAX_VALUE)));
 
-		int nPadres = relationServ.findByTypeAndDestiny("inheritance", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nPadres", nPadres);
-		model.addAttribute("showPadres", nPadres > 0);
+		int nParents = relationServ.findByTypeAndDestiny("inheritance", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nParents", nParents);
+		model.addAttribute("showParents", nParents > 0);
 
-		int nHijas = relationServ.findByTypeAndOrigin("inheritance", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nHijas", nHijas);
-		model.addAttribute("showHijas", nHijas > 0);
+		int nChildren = relationServ.findByTypeAndOrigin("inheritance", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nChildren", nChildren);
+		model.addAttribute("showChildren", nChildren > 0);
 
-		int nCompuestos = relationServ.findByTypeAndDestiny("composition", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nCompuestos", nCompuestos);
-		model.addAttribute("showCompuestos", nCompuestos > 0);
+		int nComponents = relationServ.findByTypeAndDestiny("composition", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nComponents", nComponents);
+		model.addAttribute("showComponents", nComponents > 0);
 
-		int nPartes = relationServ.findByTypeAndOrigin("composition", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nPartes", nPartes);
-		model.addAttribute("showPartes", nPartes > 0);
+		int nParts = relationServ.findByTypeAndOrigin("composition", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nParts", nParts);
+		model.addAttribute("showParts", nParts > 0);
 
-		int nUsan = relationServ.findByTypeAndDestiny("use", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nUsan", nUsan);
-		model.addAttribute("showUsan", nUsan > 0);
+		int nUseDestiny = relationServ.findByTypeAndDestiny("use", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nUseDestiny", nUseDestiny);
+		model.addAttribute("showUseDestiny", nUseDestiny > 0);
 
-		int nUsa = relationServ.findByTypeAndOrigin("use", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nUsa", nUsa);
-		model.addAttribute("showUsa", nUsa > 0);
+		int nUse = relationServ.findByTypeAndOrigin("use", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nUse", nUse);
+		model.addAttribute("showUse", nUse > 0);
 
-		int nAsociados = relationServ.findByTypeAndDestiny("association", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nAsociados", nAsociados);
-		model.addAttribute("showAsociados", nAsociados > 0);
+		int nAssociatedDestiny = relationServ.findByTypeAndDestiny("association", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nAssociatedDestiny", nAssociatedDestiny);
+		model.addAttribute("showAssociatedDestiny", nAssociatedDestiny > 0);
 
-		int nAsociado = relationServ.findByTypeAndOrigin("association", unitConc).size() - pageDef.getPageSize();
-		model.addAttribute("nAsociado", nAsociado);
-		model.addAttribute("showAsociado", nAsociado > 0);
+		int nAssociatedOrigin = relationServ.findByTypeAndOrigin("association", unitConc).size() - pageDef.getPageSize();
+		model.addAttribute("nAssociatedOrigin", nAssociatedOrigin);
+		model.addAttribute("showAssociatedOrigin", nAssociatedOrigin > 0);
 
 		if (relationServ.findByTypeAndOrigin("composition", unitConc).size() != 0) { // Generates the UML just if the
 																						// unit has "Partes"
@@ -157,38 +161,38 @@ public class UnitsController {
 		model.addAttribute("student", request.isUserInRole("USER"));
 
 		Unit unitConc = unitServ.findByName(unit);
-		if (relation.equals("padres")) {
+		if (relation.equals("parents")) {
 			Page<Relation> ok = relationServ.findByTypeAndDestiny("inheritance", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 		}
-		if (relation.equals("hijas")) {
+		if (relation.equals("children")) {
 			Page<Relation> ok = relationServ.findByTypeAndOrigin("inheritance", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 			return "ajaxUnit2";
 		}
-		if (relation.equals("compuestos")) {
+		if (relation.equals("components")) {
 			Page<Relation> ok = relationServ.findByTypeAndDestiny("composition", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 		}
-		if (relation.equals("partes")) {
+		if (relation.equals("parts")) {
 			Page<Relation> ok = relationServ.findByTypeAndOrigin("composition", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 			return "ajaxUnit2";
 		}
-		if (relation.equals("usan")) {
+		if (relation.equals("useDestiny")) {
 			Page<Relation> ok = relationServ.findByTypeAndDestiny("use", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 		}
-		if (relation.equals("usa")) {
+		if (relation.equals("use")) {
 			Page<Relation> ok = relationServ.findByTypeAndOrigin("use", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 			return "ajaxUnit2";
 		}
-		if (relation.equals("asociados")) {
+		if (relation.equals("associatedDestiny")) {
 			Page<Relation> ok = relationServ.findByTypeAndDestiny("association", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 		}
-		if (relation.equals("asociado")) {
+		if (relation.equals("associatedOrigin")) {
 			Page<Relation> ok = relationServ.findByTypeAndOrigin("association", unitConc, PageRequest.of(page, 5));
 			model.addAttribute("ajax", ok);
 			return "ajaxUnit2";
@@ -199,7 +203,7 @@ public class UnitsController {
 
 	@RequestMapping("/addRelationOrigin/{type}/{unit}")
 	public String addRelationOrigin(Model model, @RequestParam String selected, HttpServletRequest request,
-			@PathVariable String unit, @PathVariable String type) {
+			@PathVariable String unit, @PathVariable String type, HttpServletResponse httpServletResponse) {
 		Unit unitRelated = unitServ.findByName(unit);
 
 		String newSel = request.getParameter("selected");
@@ -207,8 +211,13 @@ public class UnitsController {
 		Unit unitSelected = unitServ.findByName(newSel);
 
 		relationServ.save(new Relation(type, unitSelected, unitRelated));
-
-		return "redirect:/" + unit;
+		try {
+			httpServletResponse.sendRedirect("/"+unit);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 	@RequestMapping("/addRelationDestiny/{type}/{unit}")
