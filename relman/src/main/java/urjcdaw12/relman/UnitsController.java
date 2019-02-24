@@ -77,7 +77,7 @@ public class UnitsController {
 		model.addAttribute("student", request.isUserInRole("USER"));
 		model.addAttribute("teacher", request.isUserInRole("ADMIN"));
 
-		model.addAttribute("unidad", unitServ.findByName(unit));
+		model.addAttribute("unit", unitServ.findByName(unit));
 		model.addAttribute("padres", relationServ.findByTypeAndDestiny("inheritance", unitConc, pageDef));
 		model.addAttribute("hijas", relationServ.findByTypeAndOrigin("inheritance", unitConc, pageDef));
 

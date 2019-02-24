@@ -105,6 +105,8 @@ public class DatabaseInitializer {
 		cardServ.save(new Card("Quién", "Este...", html));
 		cardServ.save(new Card("Dónde", "Donde...", html));
 
+		
+		
 	}
 
 }

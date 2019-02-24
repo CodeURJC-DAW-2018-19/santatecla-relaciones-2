@@ -81,8 +81,10 @@ public class UMLCreator {
 	private void createTreeComp(Position<Unit> unit) {
 		List<Relation> list2 = relationServ.findByTypeAndOrigin("composition", unit.getElement());
 		for (Relation rel : list2) {
-			Position<Unit> child = treeComp.add(rel.getDestiny(), unit);
-			createTreeComp(child);
+			if(!treeComp.contains(rel.getDestiny())) {
+				Position<Unit> child = treeComp.add(rel.getDestiny(), unit);
+				createTreeComp(child);
+			}
 		}
 	}
 
@@ -143,8 +145,10 @@ public class UMLCreator {
 	private void createTreeClas(Position<Unit> unit) {
 		List<Relation> list2 = relationServ.findByTypeAndOrigin("inheritance", unit.getElement());
 		for (Relation rel : list2) {
-			Position<Unit> child = treeClas.add(rel.getDestiny(), unit);
-			createTreeClas(child);
+			if(!treeClas.contains(rel.getDestiny())) {
+				Position<Unit> child = treeClas.add(rel.getDestiny(), unit);
+				createTreeClas(child);
+			}
 		}
 	}
 

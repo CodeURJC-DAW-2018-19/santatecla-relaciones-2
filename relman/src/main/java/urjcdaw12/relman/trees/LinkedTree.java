@@ -236,6 +236,18 @@ public class LinkedTree<E> implements NAryTree<E> {
 		}
 		node.setMyTree(null);
 	}
+	
+	public boolean contains(E p) {
+		Iterator<Position<E>> it= this.iterator();
+		
+		while(it.hasNext()) {
+			E conc = it.next().getElement();
+			if (conc.equals(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public Iterator<Position<E>> iterator() {

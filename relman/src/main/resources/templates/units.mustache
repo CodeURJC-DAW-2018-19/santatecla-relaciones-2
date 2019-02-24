@@ -23,13 +23,12 @@
 </head>
 
 <body>
-	<input type="text" id="unit" value="{{unidad}}" style="display: none;">
+	<input type="text" id="unit" value="{{unit}}" style="display: none;">
       <!-- ModalUMLComp -->
           <div class="modal fade" id="umlComp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-body">
-
                           <div class="card">
                               <div class="card-header card-header-text card-header-danger">
                                   <div class="card-text">
@@ -49,10 +48,8 @@
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   </div>
                               </div>
-
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
@@ -61,7 +58,6 @@
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-body">
-
                           <div class="card">
                               <div class="card-header card-header-text card-header-danger">
                                   <div class="card-text">
@@ -81,10 +77,8 @@
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   </div>
                               </div>
-
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
@@ -94,7 +88,6 @@
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-body">
-
                           <div class="card">
                               <div class="card-header card-header-text card-header-danger">
                                   <div class="card-text">
@@ -109,15 +102,13 @@
                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   </div>
                               </div>
-
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
 
-                <!-- ModalAddFicha -->
+      <!-- ModalAddFicha -->
       <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                                           <div class="modal-content">
@@ -125,8 +116,7 @@
                                                   <h5 class="modal-title" id="exampleModalLabel">Nueva ficha</h5>
                                               </div>
                                               <div class="modal-body">
-
-                                                  <form action="/addCard/{{unidad}}" method='POST'>
+                                                  <form action="/addCard/{{unit}}" method='POST'>
                                                       <div class="form-row">
                                                           <div class="form-group col-md-3">
                                                               <span class="input-group-text">
@@ -159,19 +149,18 @@
                         <div class="nav-tabs-wrapper">
                             <ul class="nav nav-pills" data-tabs="tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#contexto" data-toggle="tab">Contexto</a>
+                                    <a class="nav-link active" href="#context" data-toggle="tab">Contexto</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#detalles" data-toggle="tab">Detalles</a>
+                                    <a class="nav-link" href="#details" data-toggle="tab">Detalles</a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="tab-content text-left">
-                        <div class="tab-pane active" id="contexto">
+                        <div class="tab-pane active" id="context">
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card">
@@ -241,7 +230,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/Herencia/{{unidad}}" method='POST'>
+														                        <form action="/addRelationOrigin/inheritance/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -349,7 +338,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/Composición/{{unidad}}" method='POST'>
+														                        <form action="/addRelationOrigin/association/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -457,7 +446,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/Uso/{{unidad}}" method='POST'>
+														                        <form action="/addRelationDestiny/use/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -569,7 +558,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/Asociación/{{unidad}}" method='POST'>
+														                        <form action="/addRelationOrigin/association/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -621,7 +610,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="container text-center">
-                                                    <h1>{{unidad}}</h1>
+                                                    <h1>{{unit}}</h1>
                                                 </div>
                                             </div>
 
@@ -701,7 +690,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/Asociación/{{unidad}}" method='POST'>
+														                        <form action="/addRelationDestiny/association/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -812,7 +801,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationOrigin/Uso/{{unidad}}" method='POST'>
+														                        <form action="/addRelationOrigin/use/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -920,7 +909,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/Composición/{{unidad}}" method='POST'>
+														                        <form action="/addRelationDestiny/association/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -1033,7 +1022,7 @@
 														                    <h5 class="modal-title" id="exampleModalLabel">Selección de Clase</h5>
 														                </div>
 														                <div class="modal-body">
-														                        <form action="/addRelationDestiny/Herencia/{{unidad}}" method='POST'>
+														                        <form action="/addRelationDestiny/inheritance/{{unit}}" method='POST'>
 														                        <div class="form-group">
 														                            <select id="selected" name="selected" class="custom-select" required>
 														                                <option value="">Clase</option>
@@ -1082,7 +1071,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="detalles">
+                        <div class="tab-pane" id="details">
 
                             {{#cards}}
                                 <div class="row">
@@ -1098,7 +1087,7 @@
                                                     {{#teacher}}
                                                         <div class="form-row">
                                                             <div class="form-group col-md-9">
-	                                                            <form method='POST' action="/saveCard/{{type}}/{{unidad}}">
+	                                                            <form method='POST' action="/saveCard/{{type}}/{{unit}}">
 	                                                                <textarea class="form-control" id="desc" name="desc" rows="5">{{desc}}</textarea>
 	                                                                <div class="container text-right">
 	                                                                    <button type="submit" class="btn btn-success">Guardar</button>
@@ -1122,7 +1111,7 @@
 	                                                                        </div>
                                                                         {{/photo}}
                                                                         {{^photo}}
-	                                                                        <form action="/saveImage/{{type}}/{{unidad}}" method="post" enctype="multipart/form-data">
+	                                                                        <form action="/saveImage/{{type}}/{{unit}}" method="post" enctype="multipart/form-data">
 		                                                                        <div class="card-body">
 		                                                                            <div class="text-center">
 		                                                                            	<span class="btn btn-rounded">

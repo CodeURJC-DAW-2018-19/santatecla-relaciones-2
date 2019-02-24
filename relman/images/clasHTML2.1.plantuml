@@ -1,0 +1,4 @@
+@startuml 
+ set namespaceSeparator none
+HTML2.1 <|-- CSS
+@enduml

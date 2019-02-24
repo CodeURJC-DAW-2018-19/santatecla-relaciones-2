@@ -2,6 +2,8 @@
  set namespaceSeparator none
 SGML <|-- HTML
 MAQUETACIÓN_WEB <|-- HTML
+HTML <|-- HTML
+HTML2.1 <|-- HTML
 COMP1 *-- HTML
 COMP2 *-- HTML
 USAN1 <-- HTML
@@ -10,6 +12,7 @@ ASOCIADOS1 -- HTML
 ASOCIADOS2 -- HTML
 HTML <|-- HTML2.1
 HTML <|-- HTML4.0
+HTML <|-- HTML
 HTML *-- PARTES1
 HTML *-- PARTES2
 HTML <-- USA1
