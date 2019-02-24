@@ -1,9 +1,11 @@
 package urjcdaw12.relman;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -32,8 +34,18 @@ public class MainController {
 	@Autowired
 	private UserComponent userComponent;
 
+	public String redirect(Model model, String redirection, HttpServletResponse httpServletResponse) {
+		try {
+			httpServletResponse.sendRedirect("/" + redirection);
+		} catch (IOException e) {
+			model.addAttribute("error", "Error en la redirección");
+			return "error";
+		}
+		return null;
+	}
+	
 	@RequestMapping("/")
-	public String cargar(Model model, HttpServletRequest request, Pageable page,
+	public String load(Model model, HttpServletRequest request, Pageable page,
 			@RequestParam Optional<String> search) {
 
 		model.addAttribute("tabs", userComponent.getTabs());
@@ -68,7 +80,7 @@ public class MainController {
 
 	@RequestMapping("/register")
 	public String register(Model model, @RequestParam("userInput") String user, @RequestParam("pass1") String pass1,
-			@RequestParam("pass2") String pass2, HttpServletRequest request) {
+			@RequestParam("pass2") String pass2, HttpServletRequest request, HttpServletResponse httpServletResponse) {
 
 		if ((pass1.equals(pass2)) && (userServ.findByName(user) == null)) {
 			userServ.save(new User(user, pass1, "ROLE_USER"));
@@ -77,7 +89,7 @@ public class MainController {
 			} catch (ServletException e) {
 				e.printStackTrace();
 			}
-			return "redirect:/";
+			return redirect(model, "", httpServletResponse);
 		} else {
 			model.addAttribute("error", "Ya existe un usuario con ese nombre");
 			return "error";
@@ -85,7 +97,7 @@ public class MainController {
 	}
 
 	@RequestMapping("/delete/{unit}")
-	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
+	public String deleteUnit(Model model, @PathVariable String unit, HttpServletRequest request, HttpServletResponse httpServletResponse) {
 
 		userComponent.removeTab(unit);
 
@@ -95,25 +107,25 @@ public class MainController {
 			unitServ.delete(unitConc);
 
 		}
-		return "redirect:/";
+		return redirect(model, "", httpServletResponse);
 
 	}
 
 	@RequestMapping("/addUnit")
-	public String addUnit(Model model, @RequestParam String newUnit, HttpServletRequest request) {
+	public String addUnit(Model model, @RequestParam String newUnit, HttpServletRequest request, HttpServletResponse httpServletResponse) {
 
 		if (unitServ.findByName(newUnit) == null) {
 			unitServ.save(new Unit(newUnit));
 		}
 
-		return "redirect:/";
+		return redirect(model, "", httpServletResponse);
 	}
 
 	@RequestMapping("/removeTab/{unit}")
-	public String removeTab(Model model, HttpServletRequest request, @PathVariable String unit) {
+	public String removeTab(Model model, HttpServletRequest request, @PathVariable String unit, HttpServletResponse httpServletResponse) {
 		userComponent.removeTab(unit);
 
-		return "redirect:/";
+		return redirect(model, "", httpServletResponse);
 	}
 
 }

@@ -60,9 +60,15 @@ public class UnitsController {
 			Files.createDirectories(FILES_FOLDER);
 		}
 	}
-	
-	public void loadUnit(Model model, Unit unit) {
-		
+
+	public String redirect(Model model, String redirection, HttpServletResponse httpServletResponse) {
+		try {
+			httpServletResponse.sendRedirect("/" + redirection);
+		} catch (IOException e) {
+			model.addAttribute("error", "Error en la redirección");
+			return "error";
+		}
+		return null;
 	}
 
 	@RequestMapping("/{unit}")
@@ -122,11 +128,13 @@ public class UnitsController {
 		model.addAttribute("nUse", nUse);
 		model.addAttribute("showUse", nUse > 0);
 
-		int nAssociatedDestiny = relationServ.findByTypeAndDestiny("association", unitConc).size() - pageDef.getPageSize();
+		int nAssociatedDestiny = relationServ.findByTypeAndDestiny("association", unitConc).size()
+				- pageDef.getPageSize();
 		model.addAttribute("nAssociatedDestiny", nAssociatedDestiny);
 		model.addAttribute("showAssociatedDestiny", nAssociatedDestiny > 0);
 
-		int nAssociatedOrigin = relationServ.findByTypeAndOrigin("association", unitConc).size() - pageDef.getPageSize();
+		int nAssociatedOrigin = relationServ.findByTypeAndOrigin("association", unitConc).size()
+				- pageDef.getPageSize();
 		model.addAttribute("nAssociatedOrigin", nAssociatedOrigin);
 		model.addAttribute("showAssociatedOrigin", nAssociatedOrigin > 0);
 
@@ -211,18 +219,13 @@ public class UnitsController {
 		Unit unitSelected = unitServ.findByName(newSel);
 
 		relationServ.save(new Relation(type, unitSelected, unitRelated));
-		try {
-			httpServletResponse.sendRedirect("/"+unit);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-		
+
+		return redirect(model, unit, httpServletResponse);
 	}
 
 	@RequestMapping("/addRelationDestiny/{type}/{unit}")
 	public String addRelationDestiny(Model model, @RequestParam String selected, HttpServletRequest request,
-			@PathVariable String unit, @PathVariable String type) {
+			@PathVariable String unit, @PathVariable String type, HttpServletResponse httpServletResponse) {
 		Unit unitRelated = unitServ.findByName(unit);
 
 		String newSel = request.getParameter("selected");
@@ -231,12 +234,13 @@ public class UnitsController {
 
 		relationServ.save(new Relation(type, unitRelated, unitSelected));
 
-		return "redirect:/" + unit;
+		return redirect(model, unit, httpServletResponse);
+
 	}
 
 	@RequestMapping("/deleteRelation/{type}/{origin}/{destiny}")
 	public String deleteRelationOrigin(Model model, @PathVariable String type, @PathVariable String origin,
-			@PathVariable String destiny, HttpServletRequest request) {
+			@PathVariable String destiny, HttpServletRequest request, HttpServletResponse httpServletResponse) {
 		Unit unitOrigin = unitServ.findByName(origin);
 
 		List<Relation> unitsCand = relationServ.findByTypeAndOrigin(type, unitOrigin);
@@ -245,12 +249,12 @@ public class UnitsController {
 
 		relationServ.delete(relationToRemove);
 
-		return "redirect:/" + destiny;
+		return redirect(model, destiny, httpServletResponse);
 	}
 
 	@RequestMapping("/deleteRelationDestiny/{type}/{destiny}/{origin}")
 	public String deleteRelationDestiny(Model model, @PathVariable String type, @PathVariable String origin,
-			@PathVariable String destiny, HttpServletRequest request) {
+			@PathVariable String destiny, HttpServletRequest request, HttpServletResponse httpServletResponse) {
 		Unit unitDestiny = unitServ.findByName(destiny);
 
 		List<Relation> unitsCand = relationServ.findByTypeAndDestiny(type, unitDestiny);
@@ -259,32 +263,33 @@ public class UnitsController {
 
 		relationServ.delete(relationToRemove);
 
-		return "redirect:/" + origin;
+		return redirect(model, origin, httpServletResponse);
 	}
 
 	@RequestMapping("/saveCard/{type}/{unit}")
 	public String saveCard(Model model, @PathVariable String type, @PathVariable String unit,
-			@RequestParam String desc) {
+			@RequestParam String desc, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = cardServ.findByUnitAsocAndType(unitConc, type);
 		card.setDesc(desc);
 		cardServ.save(card);
 
-		return "redirect:/{unit}";
+		return redirect(model, unit, httpServletResponse);
 	}
 
 	@RequestMapping("/addCard/{unit}")
-	public String addCard(Model model, @PathVariable String unit, @RequestParam String newCard) {
+	public String addCard(Model model, @PathVariable String unit, @RequestParam String newCard, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = new Card(newCard, "", unitConc);
 		cardServ.save(card);
 
-		return "redirect:/{unit}";
+		return redirect(model, unit, httpServletResponse);
+
 	}
 
 	@PostMapping("/saveImage/{type}/{unit}")
 	public String saveImage(Model model, @PathVariable String type, @PathVariable String unit,
-			@RequestParam("file") MultipartFile file) {
+			@RequestParam("file") MultipartFile file, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = cardServ.findByUnitAsocAndType(unitConc, type);
 
@@ -295,7 +300,7 @@ public class UnitsController {
 				card.setPhoto(true);
 				cardServ.save(card);
 
-				return "redirect:/{unit}";
+				return redirect(model, unit, httpServletResponse);
 			} catch (Exception e) {
 				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 				return "error";
