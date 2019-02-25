@@ -1,0 +1,4 @@
+@startuml 
+ set namespaceSeparator none
+HTML <|-- HTML4.0
+@enduml

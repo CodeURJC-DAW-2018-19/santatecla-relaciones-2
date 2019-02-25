@@ -1,0 +1,7 @@
+@startuml 
+ set namespaceSeparator none
+MAQUETACIÓN_WEB <|-- HTML
+HTML <|-- HTML2.1
+HTML <|-- HTML4.0
+MAQUETACIÓN_WEB <|-- CSS
+@enduml

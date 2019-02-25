@@ -1,0 +1,5 @@
+@startuml 
+ set namespaceSeparator none
+USAN1 *-- ASOCIADO1
+HTML -- ASOCIADO1
+@enduml

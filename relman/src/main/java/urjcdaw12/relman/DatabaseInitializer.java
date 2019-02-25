@@ -35,75 +35,96 @@ public class DatabaseInitializer {
 		// Units
 		Unit html = unitServ.save(new Unit("HTML"));
 		Unit html2 = unitServ.save(new Unit("HTML2.1"));
-		Unit html4 = unitServ.save(new Unit("HTML4.0"));
-
-		unitServ.save(new Unit("CSS"));
-		unitServ.save(new Unit("JAVASCRIPT"));
-		unitServ.save(new Unit("API_REST"));
-		unitServ.save(new Unit("SPRING"));
-		unitServ.save(new Unit("ANGULAR"));
+		Unit html4 = unitServ.save(new Unit("HTML4.0"));	
+		Unit css = unitServ.save(new Unit("CSS"));
+		Unit js = unitServ.save(new Unit("JAVASCRIPT"));
+		Unit apirest = unitServ.save(new Unit("API_REST"));
+		Unit spring = unitServ.save(new Unit("SPRING"));
+		Unit angular = unitServ.save(new Unit("ANGULAR"));
+		Unit xml = unitServ.save(new Unit("XML"));
 		Unit sgml = unitServ.save(new Unit("SGML"));
 		Unit maqWeb = unitServ.save(new Unit("MAQUETACIÓN_WEB"));
-
-		Unit c1 = unitServ.save(new Unit("COMP1"));
-		Unit c2 = unitServ.save(new Unit("COMP2"));
-
-		Unit usa1 = unitServ.save(new Unit("USA1"));
-		Unit usa2 = unitServ.save(new Unit("USA2"));
-
-		Unit asociados1 = unitServ.save(new Unit("ASOCIADOS1"));
-		Unit asociados2 = unitServ.save(new Unit("ASOCIADOS2"));
-
-		Unit asociado1 = unitServ.save(new Unit("ASOCIADO1"));
-		Unit asociado2 = unitServ.save(new Unit("ASOCIADO2"));
-
-		Unit usan1 = unitServ.save(new Unit("USAN1"));
-		Unit usan2 = unitServ.save(new Unit("USAN2"));
-
-		Unit partes1 = unitServ.save(new Unit("PARTES1"));
-		Unit partes2 = unitServ.save(new Unit("PARTES2"));
+		Unit etiq = unitServ.save(new Unit("ETIQUETAS"));
+		Unit disWeb = unitServ.save(new Unit("DISEÑO_WEB"));
+		Unit estCss = unitServ.save(new Unit("ESTILOS_CSS"));
+		Unit java = unitServ.save(new Unit("JAVA"));
+		Unit segSpring = unitServ.save(new Unit("SEGURIDAD_SPRING"));
+		Unit docker = unitServ.save(new Unit("DOCKER_SPRING"));
+		Unit imag = unitServ.save(new Unit("IMAGENES"));
+		Unit videos = unitServ.save(new Unit("VIDEOS"));
+		Unit attr = unitServ.save(new Unit("ATRIBUTOS"));
+		Unit bootstrap = unitServ.save(new Unit("BOOTSTRAP"));
+		Unit nodejs = unitServ.save(new Unit("NODE_JS"));
+		Unit backend = unitServ.save(new Unit("BACKEND"));
+		Unit jquery = unitServ.save(new Unit("JQUERY"));
+		Unit ecmaSc = unitServ.save(new Unit("ECMA_SCRIPT"));
+		
+		
+		//// units relations
 
 		relationServ.save(new Relation("inheritance", sgml, html));
 		relationServ.save(new Relation("inheritance", maqWeb, html));
+		relationServ.save(new Relation("inheritance", maqWeb, css));
+		relationServ.save(new Relation("inheritance", backend, js));
 
 		relationServ.save(new Relation("inheritance", html, html2));
 		relationServ.save(new Relation("inheritance", html, html4));
+		relationServ.save(new Relation("inheritance", js, ecmaSc));
+		relationServ.save(new Relation("inheritance", ecmaSc, nodejs));
 
-		relationServ.save(new Relation("composition", c1, html));
-		relationServ.save(new Relation("composition", c2, html));
+		relationServ.save(new Relation("composition",css, html));
+		relationServ.save(new Relation("composition",etiq, html));
+		relationServ.save(new Relation("composition",attr, html));
 
-		relationServ.save(new Relation("composition", html, partes1));
-		relationServ.save(new Relation("composition", html, partes2));
+		relationServ.save(new Relation("composition", html, disWeb));
+		relationServ.save(new Relation("composition", html, etiq));
+		relationServ.save(new Relation("composition", spring, segSpring));
+		relationServ.save(new Relation("composition", spring, docker));
+		relationServ.save(new Relation("composition", spring, imag));
+		relationServ.save(new Relation("composition", css, bootstrap));
+		relationServ.save(new Relation("composition", html, videos));
+	
+		relationServ.save(new Relation("use", js, html));
+		relationServ.save(new Relation("use", angular, html));
+		relationServ.save(new Relation("use", estCss, css));
+		relationServ.save(new Relation("use", java, spring));
+		relationServ.save(new Relation("use", apirest, spring));
+		
+		relationServ.save(new Relation("use", html, css));
+		relationServ.save(new Relation("use", html, xml));
+		relationServ.save(new Relation("use", spring, java));
 
-		relationServ.save(new Relation("use", usan1, html));
-		relationServ.save(new Relation("use", usan2, html));
+		relationServ.save(new Relation("association", css, html));
+		relationServ.save(new Relation("association", xml, html));
+		relationServ.save(new Relation("association", jquery, js));
 
-		relationServ.save(new Relation("use", html, usa1));
-		relationServ.save(new Relation("use", html, usa2));
-
-		relationServ.save(new Relation("association", asociados1, html));
-		relationServ.save(new Relation("association", asociados2, html));
-
-		relationServ.save(new Relation("association", html, asociado1));
-		relationServ.save(new Relation("association", html, asociado2));
-
-		// Testing Composition Hierarchy
-		relationServ.save(new Relation("composition", partes1, usan1));
-		relationServ.save(new Relation("composition", partes1, usan2));
-		relationServ.save(new Relation("composition", usan1, asociado1));
-		relationServ.save(new Relation("composition", usan2, asociado2));
-		relationServ.save(new Relation("composition", asociado2, maqWeb));
+		relationServ.save(new Relation("association", html, css));
+		relationServ.save(new Relation("association", html, xml));
+		relationServ.save(new Relation("association", spring, java));
+		
+		// users
 
 		userServ.save(new User("user", "12345", "ROLE_USER"));
 		userServ.save(new User("student", "12345", "ROLE_USER"));
 		userServ.save(new User("teacher", "12345", "ROLE_USER", "ROLE_ADMIN"));
+		
+		
+		//cards
 
-		cardServ.save(new Card("Por qué", "Porque...", html));
-		cardServ.save(new Card("Cuándo", "Cuando...", html));
-		cardServ.save(new Card("Cómo", "Así...", html));
-		cardServ.save(new Card("Para qué", "Para...", html));
-		cardServ.save(new Card("Quién", "Este...", html));
-		cardServ.save(new Card("Dónde", "Donde...", html));
+		cardServ.save(new Card("Por qué", "Porque es facil de aprender y de usar", html));
+		cardServ.save(new Card("Cuándo", "Html se lanzó inicialmente en 1993", html));
+		cardServ.save(new Card("Cómo", "En internet hay muchos tutoriales para aprender a como usar html", html));
+		cardServ.save(new Card("Para qué", "Para representar informacion de manera estatica", html));
+		cardServ.save(new Card("Quién", "Ampliación de SGML", html));
+		cardServ.save(new Card("Dónde", "World Wide Web Consortium", html));
+		
+		cardServ.save(new Card("Por qué", "Porque es facil de aprender y de usar", css));
+		cardServ.save(new Card("Cuándo", "CSS se lanzó inicialmente en 1996", css));
+		cardServ.save(new Card("Cómo", "En internet hay muchos tutoriales para aprender a como usar css", css));
+		cardServ.save(new Card("Para qué", "Para representar informacion de manera usando estilos", css));
+		cardServ.save(new Card("Quién", "Lenguaje de hoja de estilos", css));
+		cardServ.save(new Card("Dónde", "World Wide Web Consortium", css));
+		
 
 		
 		

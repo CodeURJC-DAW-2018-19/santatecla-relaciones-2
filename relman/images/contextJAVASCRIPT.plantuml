@@ -1,0 +1,7 @@
+@startuml 
+ set namespaceSeparator none
+BACKEND <|-- JAVASCRIPT
+JQUERY -- JAVASCRIPT
+JAVASCRIPT <|-- ECMA_SCRIPT
+JAVASCRIPT <-- HTML
+@enduml

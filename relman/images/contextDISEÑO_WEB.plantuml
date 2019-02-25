@@ -1,0 +1,4 @@
+@startuml 
+ set namespaceSeparator none
+HTML *-- DISEÑO_WEB
+@enduml

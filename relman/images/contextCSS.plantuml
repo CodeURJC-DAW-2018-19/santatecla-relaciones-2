@@ -1,0 +1,10 @@
+@startuml 
+ set namespaceSeparator none
+MAQUETACIÓN_WEB <|-- CSS
+ESTILOS_CSS <-- CSS
+HTML <-- CSS
+HTML -- CSS
+CSS *-- HTML
+CSS *-- BOOTSTRAP
+CSS -- HTML
+@enduml

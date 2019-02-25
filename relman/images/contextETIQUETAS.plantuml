@@ -1,0 +1,5 @@
+@startuml 
+ set namespaceSeparator none
+HTML *-- ETIQUETAS
+ETIQUETAS *-- HTML
+@enduml
