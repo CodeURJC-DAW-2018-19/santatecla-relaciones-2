@@ -93,7 +93,7 @@ Descargar mysql para la migración de h2 a mysql https://dev.mysql.com/downloads
  + A partir del cuarto nivel, solo los usuarios que son profesores podrán tener acceso a los formularios de adicción de contenido
  
 
-[Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaNavegaci%C3%B3n.png?raw=true)
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaNavegaci%C3%B3n.png?raw=true)
 
 
 
