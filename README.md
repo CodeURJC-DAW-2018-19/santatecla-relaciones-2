@@ -47,6 +47,10 @@
 
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/loginteacher.PNG?raw=true)
 
+**Registro**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/registroUsuario.PNG?raw=true)
+
 **Unidad Contexto**
 
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/unidades.PNG?raw=true)
@@ -90,7 +94,7 @@ Descargar mysql para la migración de h2 a mysql https://dev.mysql.com/downloads
  **Diagrama de Navegación**
  
  - A partir del tercer nivel solo podrán acceder los usuarios, o los visitantes que quieran registrarse como usuarios
- + A partir del cuarto nivel, solo los usuarios que son profesores podrán tener acceso a los formularios de adicción de contenido
+ + A partir del cuarto nivel, solo los usuarios que son profesores podrán tener acceso a los formularios de adición de contenido
  
 
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaNavegaci%C3%B3n.png?raw=true)
