@@ -30,7 +30,35 @@
 [Google Docs Grupo 11](https://docs.google.com/document/d/1dOFhYoHVeqbiS_8xWnMKT5sNLMF60pURrx-0x542xg8/edit)	
 
 ## CAPTURAS FASE 2 ##
-**Menú Principal**
+
+**Comunicación HTTP (Certificado Propio)**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/httpscertificate.PNG?raw=true)
+
+**Menú Principal 1**
+
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/menuprincipal1.PNG/)
+
+**Menú Principal 2 (Páginado)**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/menuprincipal2.PNG?raw=true)
+
+**Login**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/menuprincipal2.PNG?raw=true)
+
+**Unidad Contexto**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/unidades.PNG?raw=true)
+
+**Unidad Detalle**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/unidadesDetalle.PNG?raw=true)
+
+
+
+
+
+
 
 
