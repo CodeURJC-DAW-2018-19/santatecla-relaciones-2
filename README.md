@@ -73,16 +73,16 @@
 **CONFIGURACIÓN DEL ENTORNO DE DESARROLLO**
 
 -Descargar e Instalar Spring Boot https://spring.io/projects/spring-boot
-  * Una vez instalado el Spring Boot habrá que crear un proyecto Spring Starter Project (File >> New >> Spring Starter Project)
-  * Y ahí podrás darle el nombre que quieras al proyecto, que la URL del servicio sea https://start.spring.io, que sea de tipo Maven, que se compartimente con paquetes .jar y que se implemente en lenguaje Java
-  *Dándole a finalizar, ya tendrás tu proyecto Spring creado
-  *Ya creado el proyecto, a grandes rasgos, tendrás por un lado los paquetes de java en donde se almacenarán las clases controller, repositorios, etc.. que se utilizarán posteriormente, por otro,  los templates que compondrán las diferentes plantillas de la aplicación
+  - Una vez instalado el Spring Boot habrá que crear un proyecto Spring Starter Project (File >> New >> Spring Starter Project)
+  - Y ahí podrás darle el nombre que quieras al proyecto, que la URL del servicio sea https://start.spring.io, que sea de tipo Maven, que se compartimente con paquetes .jar y que se implemente en lenguaje Java
+  -Dándole a finalizar, ya tendrás tu proyecto Spring creado
+  -Ya creado el proyecto, a grandes rasgos, tendrás por un lado los paquetes de java en donde se almacenarán las clases controller, repositorios, etc.. que se utilizarán posteriormente, por otro,  los templates que compondrán las diferentes plantillas de la aplicación
 resultado de las peticiones realizadas por los usuarios a los diferentes controladores, y por otro, el fichero pom.xml que estará compuesto por las dependencias (librerias) que se importarán a la app para usarlas
-  *Y para ejecutar un proyecto Spring, habrá que irse a la clase application y lanzarlo como una Spring Boot App. a la hora de ejecutarse, las peticiones se escucharán por el puerto 8080 por defecto, pero se podrá cambiar en las application properties de la app.
+  -Y para ejecutar un proyecto Spring, habrá que irse a la clase application y lanzarlo como una Spring Boot App. a la hora de ejecutarse, las peticiones se escucharán por el puerto 8080 por defecto, pero se podrá cambiar en las application properties de la app.
   
 -Descargar mysql para la migración de h2 a mysql https://dev.mysql.com/downloads/mysql/
-  *Para ello hay que pulsar sobre el Windows msi installer
-  * Y una vez instalado y ya en Spring, habrá que cambiar la dependencia correspondiente a h2 por la de mysql
+  -Para ello hay que pulsar sobre el Windows msi installer
+  - Y una vez instalado y ya en Spring, habrá que cambiar la dependencia correspondiente a h2 por la de mysql
   
 -Descargar Graphviz para visualizar correctamente los uml correspondientes al contexto y jerarquías de las entidades de la aplicación
  https://www.graphviz.org/
