@@ -80,7 +80,7 @@ Descargar e Instalar Spring Boot https://spring.io/projects/spring-boot
 resultado de las peticiones realizadas por los usuarios a los diferentes controladores, y por otro, el fichero pom.xml que estará compuesto por las dependencias (librerias) que se importarán a la app para usarlas.
   - Y para ejecutar un proyecto Spring, habrá que irse a la clase application y lanzarlo como una Spring Boot App. a la hora de ejecutarse, las peticiones se escucharán por el puerto 8080 por defecto, pero se podrá cambiar en las application properties de la app.
   
-+ Descargar mysql para la migración de h2 a mysql https://dev.mysql.com/downloads/mysql/
+Descargar mysql para la migración de h2 a mysql https://dev.mysql.com/downloads/mysql/
   * Para ello hay que pulsar sobre el Windows msi installer
   - Y una vez instalado y ya en Spring, habrá que cambiar la dependencia correspondiente a h2 por la de mysql
   
