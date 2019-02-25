@@ -45,7 +45,7 @@
 
 **Login**
 
-![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/menuprincipal2.PNG?raw=true)
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/loginteacher.PNG?raw=true)
 
 **Unidad Contexto**
 
@@ -55,6 +55,19 @@
 
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/unidadesDetalle.PNG?raw=true)
 
+**DIAGRAMAS UML**
+
+**Diagrama de Clases BDD**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaBDDF.PNG?raw=true)
+
+**Diagrama de Clases App**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/diagramaClass.PNG?raw=true)
+
+**Relaciones de Templates con sus Controllers**
+
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/diagramaTemplates.PNG?raw=true)
 
 
 
