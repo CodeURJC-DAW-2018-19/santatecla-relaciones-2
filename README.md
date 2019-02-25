@@ -31,6 +31,6 @@
 
 ## CAPTURAS FASE 2 ##
 **Menú Principal**
-![Screenshot](/capturas/menuprincipal1.png)
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/menuprincipal1.PNG/)
 
 
