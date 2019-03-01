@@ -1,5 +1,0 @@
-@startuml 
- set namespaceSeparator none
-JAVASCRIPT <|-- ECMA_SCRIPT
-ECMA_SCRIPT <|-- NODE_JS
-@enduml

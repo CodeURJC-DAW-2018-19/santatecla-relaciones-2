@@ -1,5 +1,0 @@
-@startuml
-HTML *-- DISEÑO_WEB
-HTML *-- ETIQUETAS
-HTML *-- VIDEOS
-@enduml

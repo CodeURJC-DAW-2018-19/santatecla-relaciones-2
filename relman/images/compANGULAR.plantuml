@@ -1,5 +1,0 @@
-@startuml
-ANGULAR *-- HTML
-HTML *-- DISEÑO_WEB
-HTML *-- ETIQUETAS
-@enduml

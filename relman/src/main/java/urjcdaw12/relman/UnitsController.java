@@ -267,8 +267,8 @@ public class UnitsController {
 	}
 
 	@RequestMapping("/saveCard/{type}/{unit}")
-	public String saveCard(Model model, @PathVariable String type, @PathVariable String unit,
-			@RequestParam String desc, HttpServletResponse httpServletResponse) {
+	public String saveCard(Model model, @PathVariable String type, @PathVariable String unit, @RequestParam String desc,
+			HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = cardServ.findByUnitAsocAndType(unitConc, type);
 		card.setDesc(desc);
@@ -278,7 +278,8 @@ public class UnitsController {
 	}
 
 	@RequestMapping("/addCard/{unit}")
-	public String addCard(Model model, @PathVariable String unit, @RequestParam String newCard, HttpServletResponse httpServletResponse) {
+	public String addCard(Model model, @PathVariable String unit, @RequestParam String newCard,
+			HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = new Card(newCard, "", unitConc);
 		cardServ.save(card);

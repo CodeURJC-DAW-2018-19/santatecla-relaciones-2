@@ -1,5 +1,0 @@
-@startuml 
- set namespaceSeparator none
-JAVA <-- SPRING
-SPRING *-- SEGURIDAD_SPRING
-@enduml

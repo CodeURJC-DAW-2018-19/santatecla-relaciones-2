@@ -1,3 +1,0 @@
-@startuml
-SPRING *-- SEGURIDAD_SPRING
-@enduml

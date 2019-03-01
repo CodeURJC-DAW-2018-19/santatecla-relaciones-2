@@ -105,7 +105,6 @@ public class MainController {
 
 		if (unitConc != null) {
 			unitServ.delete(unitConc);
-
 		}
 		return redirect(model, "", httpServletResponse);
 
