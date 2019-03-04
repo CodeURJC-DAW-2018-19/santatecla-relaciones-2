@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import urjcdaw12.relman.units.Unit;
@@ -20,6 +22,10 @@ public class CardService {
 
 	public List<Card> findAll() {
 		return cardRep.findAll();
+	}
+	
+	public Page<Card>findByUnitAsoc(Unit unit, Pageable page) {
+		return cardRep.findByUnitAsoc(unit, page);
 	}
 
 	public Card save(Card card) {

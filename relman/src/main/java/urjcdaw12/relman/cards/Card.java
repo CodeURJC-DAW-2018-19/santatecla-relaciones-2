@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import urjcdaw12.relman.units.Unit;
 
 @Entity
@@ -20,8 +22,9 @@ public class Card {
 	@Column(columnDefinition = "LONGTEXT")
 	private String description;
 
+
 	@ManyToOne
-	private Unit unitAsoc;
+	private Unit unitAsoc; 
 
 	private boolean photo;
 

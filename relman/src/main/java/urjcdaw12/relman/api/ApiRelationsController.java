@@ -39,8 +39,8 @@ public class ApiRelationsController {
 		return relationServ.findContextByName(unit, page);
 	}
 
-	@GetMapping(value = "/{type}")
-	public ResponseEntity<Page<Relation>> getUnit(@PathVariable String type, @PathVariable String unitName, Pageable page) {
+	@GetMapping(value = "/relation/{type}")
+	public ResponseEntity<Page<Relation>> getRelation(@PathVariable String type, @PathVariable String unitName, Pageable page) {
 		Unit unit = unitServ.findByName(unitName);
 		if (unit != null) {
 			return new ResponseEntity<>(relationServ.findByNameAndConcreteType(unit, type, page), HttpStatus.OK);
@@ -50,8 +50,8 @@ public class ApiRelationsController {
 	}
 
 	//EL TYPE NO SIRVE PARA NADA NO? METES LA RELACION YA CON SU TIPO ENTRE SUS ATRIBUTOS
-	@PostMapping(value = "/{type}")
-	public ResponseEntity<Relation> postUnit(@RequestBody Relation relation, @PathVariable String type, @PathVariable String unitName, Pageable page) {
+	@PostMapping(value = "/relation/{type}")
+	public ResponseEntity<Relation> postRelation(@RequestBody Relation relation, @PathVariable String type, @PathVariable String unitName, Pageable page) {
 		Unit unit = unitServ.findByName(unitName);
 		//if (relationServ.findByNameAndConcreteType(unit, type, page) == null) { //EN LA WEB TENEMOS QUE SE PUEDEN DUPLICADOS...
 			relationServ.save(relation);
@@ -84,8 +84,8 @@ public class ApiRelationsController {
 		
 	}*/
 	
-	@DeleteMapping(value = "/{type}/{unitRelated}")
-	public ResponseEntity<Relation> deleteUnit(@PathVariable String unitName, @PathVariable String type, @PathVariable String unitRelated) {
+	@DeleteMapping(value = "/relation/{type}/{unitRelated}")
+	public ResponseEntity<Relation> deleteRelation(@PathVariable String unitName, @PathVariable String type, @PathVariable String unitRelated) {
 		Unit unit = unitServ.findByName(unitName);
 		Unit uRelated = unitServ.findByName(unitRelated);
 

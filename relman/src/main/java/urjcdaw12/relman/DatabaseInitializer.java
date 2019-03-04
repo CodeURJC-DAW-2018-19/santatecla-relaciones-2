@@ -116,7 +116,7 @@ public class DatabaseInitializer {
 		cardServ.save(new Card("Cómo", "En internet hay muchos tutoriales para aprender a como usar html", html));
 		cardServ.save(new Card("Para qué", "Para representar informacion de manera estatica", html));
 		cardServ.save(new Card("Quién", "Ampliación de SGML", html));
-		cardServ.save(new Card("Dónde", "World Wide Web Consortium", html));
+		cardServ.save(new Card("Donde", "World Wide Web Consortium", html));
 		
 		cardServ.save(new Card("Por qué", "Porque es facil de aprender y de usar", css));
 		cardServ.save(new Card("Cuándo", "CSS se lanzó inicialmente en 1996", css));
