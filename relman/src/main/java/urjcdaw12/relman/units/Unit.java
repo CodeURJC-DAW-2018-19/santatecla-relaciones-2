@@ -21,7 +21,7 @@ public class Unit {
 
 	private String name;
 
-	private boolean photoContext, photoComp, photoClas;
+	private boolean photoComp, photoClas;
 
 	@OneToMany(mappedBy = "unitAsoc", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Card> cards;
@@ -35,16 +35,9 @@ public class Unit {
 	protected Unit() {
 		this.photoClas = false;
 		this.photoComp = false;
-		this.photoContext = false;
 	}
 
-	public boolean isPhotoContext() {
-		return photoContext;
-	}
 
-	public void setPhotoContext(boolean photoContext) {
-		this.photoContext = photoContext;
-	}
 
 	public boolean isPhotoComp() {
 		return photoComp;

@@ -17,6 +17,7 @@ import urjcdaw12.relman.relations.RelationService;
 import urjcdaw12.relman.trees.LinkedTree;
 import urjcdaw12.relman.trees.Position;
 import urjcdaw12.relman.units.Unit;
+import urjcdaw12.relman.units.UnitService;
 
 @Component
 public class UMLCreator {
@@ -27,6 +28,9 @@ public class UMLCreator {
 
 	@Autowired
 	private RelationService relationServ;
+	
+	@Autowired
+	private UnitService unitServ;
 
 	public LinkedTree<Unit> getTreeComp() {
 		return treeComp;
@@ -51,6 +55,7 @@ public class UMLCreator {
 
 	public void compositionUML(Unit unit, Model model) {
 		unit.setPhotoComp(true);
+		unitServ.save(unit);
 		this.treeComp = new LinkedTree<Unit>();
 		Position<Unit> root = treeComp.addRoot(unit);
 		createTreeComp(root);
@@ -119,6 +124,7 @@ public class UMLCreator {
 	// MEHTODS to make the Classification UML
 	public void clasificationUML(Unit unit, Model model) {
 		unit.setPhotoClas(true);
+		unitServ.save(unit);
 		this.treeClas = new LinkedTree<Unit>();
 		Position<Unit> root = treeClas.addRoot(unit);
 		createTreeClas(root);
