@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import urjcdaw12.relman.relations.Relation;
 import urjcdaw12.relman.relations.RelationService;
 import urjcdaw12.relman.units.Unit;
@@ -31,7 +33,7 @@ public class ApiRelationsController {
 	@Autowired
 	private UnitService unitServ;
 
-	@GetMapping(value = "/relations")
+	@GetMapping(value = "/context")
 	@ResponseStatus(HttpStatus.OK)
 	public List<Page<Relation>> getRelations(Pageable page, @PathVariable String unitName) {
 		Unit unit = unitServ.findByName(unitName);
@@ -82,7 +84,8 @@ public class ApiRelationsController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-	}*/
+	}
+*/
 	
 	@DeleteMapping(value = "/relation/{type}/{unitRelated}")
 	public ResponseEntity<Relation> deleteRelation(@PathVariable String unitName, @PathVariable String type, @PathVariable String unitRelated) {

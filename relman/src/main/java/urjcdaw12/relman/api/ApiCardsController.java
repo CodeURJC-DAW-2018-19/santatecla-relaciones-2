@@ -22,7 +22,7 @@ import urjcdaw12.relman.units.UnitService;
 @RestController
 @RequestMapping(value = "/api/unit/{unitName}")
 public class ApiCardsController {
-	
+
 	@Autowired
 	private CardService cardServ;
 
@@ -33,44 +33,44 @@ public class ApiCardsController {
 	@ResponseStatus(HttpStatus.OK)
 	public Page<Card> getCards(Pageable page, @PathVariable String unitName) {
 		Unit unit = unitServ.findByName(unitName);
-		return cardServ.findByUnitAsoc(unit,page);
+		return cardServ.findByUnitAsoc(unit, page);
 	}
-	
+
 	@GetMapping(value = "/card/{type}")
-	public ResponseEntity<Card> getCard(@PathVariable String unitName, @PathVariable String type){
+	public ResponseEntity<Card> getCard(@PathVariable String unitName, @PathVariable String type) {
 		Unit unit = unitServ.findByName(unitName);
-		Card card =cardServ.findByUnitAsocAndType(unit, type);
-		
-		if (card!=null) {
+		Card card = cardServ.findByUnitAsocAndType(unit, type);
+
+		if (card != null) {
 			return new ResponseEntity<>(card, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@PostMapping(value = "/card/{type}")
-	public ResponseEntity<Card> postCard(@RequestBody Card card,@PathVariable String unitName, @PathVariable String type){
+	public ResponseEntity<Card> postCard(@RequestBody Card card, @PathVariable String unitName,
+			@PathVariable String type) {
 		Unit unit = unitServ.findByName(unitName);
-		
-		if (cardServ.findByUnitAsocAndType(unit, type)==null) {
+
+		if (cardServ.findByUnitAsocAndType(unit, type) == null) {
 			cardServ.save(card);
 			return new ResponseEntity<>(card, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 	}
-	
-	@DeleteMapping(value ="/card/{type}")
-	public ResponseEntity<Card> deleteCard(@PathVariable String unitName, @PathVariable String type){
+
+	@DeleteMapping(value = "/card/{type}")
+	public ResponseEntity<Card> deleteCard(@PathVariable String unitName, @PathVariable String type) {
 		Unit unit = unitServ.findByName(unitName);
 		Card card = cardServ.findByUnitAsocAndType(unit, type);
-		if (card !=null) {
+		if (card != null) {
 			cardServ.delete(card.getId());
 			return new ResponseEntity<>(card, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
+
 }

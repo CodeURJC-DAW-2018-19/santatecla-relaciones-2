@@ -7,8 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import urjcdaw12.relman.units.Unit;
@@ -24,7 +22,7 @@ public class RelationService {
 	}
 	
 	public List<Page<Relation>> findContextByName(Unit unit, Pageable page){
-		List list = new LinkedList();
+		List<Page<Relation>> list = new LinkedList<>();
 		list.add(this.findByTypeAndDestiny("inheritance", unit, page));
 		list.add(this.findByTypeAndOrigin("inheritance", unit, page));
 		list.add(this.findByTypeAndDestiny("composition", unit, page));

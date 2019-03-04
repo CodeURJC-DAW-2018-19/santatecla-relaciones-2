@@ -14,6 +14,7 @@ import urjcdaw12.relman.units.Unit;
 @Entity
 public class Card {
 
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
