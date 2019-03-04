@@ -16,4 +16,6 @@ public interface RelationRepository extends JpaRepository<Relation, Long> {
 	Page<Relation> findByTypeAndOrigin(String type, Unit origin, Pageable page);
 
 	Page<Relation> findByTypeAndDestiny(String type, Unit destiny, Pageable page);
+	
+	Relation findByTypeAndOriginAndDestiny(String type, Unit origin, Unit destiny);
 }

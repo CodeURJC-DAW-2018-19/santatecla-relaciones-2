@@ -1,5 +1,6 @@
 package urjcdaw12.relman.relations;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,20 @@ public class RelationService {
 
 	public Optional<Relation> findOne(long id) {
 		return relationRep.findById(id);
+	}
+	
+	public List<Page<Relation>> findContextByName(Unit unit, Pageable page){
+		List list = new LinkedList();
+		list.add(this.findByTypeAndDestiny("inheritance", unit, page));
+		list.add(this.findByTypeAndOrigin("inheritance", unit, page));
+		list.add(this.findByTypeAndDestiny("composition", unit, page));
+		list.add(this.findByTypeAndOrigin("composition", unit, page));
+		list.add(this.findByTypeAndDestiny("use", unit, page));
+		list.add(this.findByTypeAndOrigin("use", unit, page));
+		list.add(this.findByTypeAndDestiny("association", unit, page));
+		list.add(this.findByTypeAndOrigin("association", unit, page));
+
+		return list;
 	}
 
 	public List<Relation> findAll() {
@@ -61,6 +76,20 @@ public class RelationService {
 	
 	//@return the concrete part of a relation (Inheritance->Children||Parents)
 	public Page<Relation> findByNameAndConcreteType(Unit unit, String type,Pageable page){
+		String relType=translateTypeRelation(type);
+		String decide = this.decideOriginOrDestiny(type);
+		
+		
+		if (decide.equals("destiny")) {
+			return this.findByTypeAndDestiny (relType,unit, page);
+		} else if (decide.equals("origin")) {
+			return this.findByTypeAndOrigin (relType,unit, page);
+		} else {
+			return null;
+		}
+	}
+		
+	public String translateTypeRelation(String type) {
 		String relType = "";
 		if (type.equals("parents") || type.equals("children")) {
 			relType = "inheritance";
@@ -74,19 +103,27 @@ public class RelationService {
 		if (type.equals("uses") || type.equals("usedBy")) {
 			relType = "use";
 		}
-		
-		
+		return relType;
+	}
+	
+	
+	//Method to decide the search by origin or destiny
+	public String decideOriginOrDestiny(String type) {
 		if (type.equals("parents") || type.equals("composites") || type.equals("associatedBy")
 				|| type.equals("usedBy")) {
-			return this.findByTypeAndDestiny (relType,unit, page);
+			return "destiny";
 		} else if (type.equals("uses") || type.equals("parts") || type.equals("children")
 				|| type.equals("associatedTo")) {
-			return this.findByTypeAndOrigin (relType,unit, page);
+			return "origin";
 		} else {
 			return null;
 		}
 	}
-		
+	
+	
+	public Relation findByTypeAndOriginAndDestiny(String type, Unit origin, Unit destiny){
+		return relationRep.findByTypeAndOriginAndDestiny(type, origin, destiny);
+	}
 		
 		
 	
