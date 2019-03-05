@@ -41,6 +41,7 @@ public class ApiRelationsController {
 		return relationServ.findContextByName(unit, page);
 	}
 
+	@JsonView(Relation.Basic.class)
 	@GetMapping(value = "/relation/{type}")
 	public ResponseEntity<Page<Relation>> getRelation(@PathVariable String type, @PathVariable String unitName, Pageable page) {
 		Unit unit = unitServ.findByName(unitName);

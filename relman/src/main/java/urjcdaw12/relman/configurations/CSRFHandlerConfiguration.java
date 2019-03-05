@@ -1,9 +1,10 @@
-package urjcdaw12.relman;
+package urjcdaw12.relman.configurations;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -27,7 +28,9 @@ class CSRFHandlerInterceptor extends HandlerInterceptorAdapter {
 
 		if (modelAndView != null) {
 			CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-			modelAndView.addObject("token", token.getToken());
+			if (token != null) {
+				modelAndView.addObject("token", token.getToken());
+			}
 		}
 	}
 }

@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,15 +52,6 @@ public class UnitsController {
 
 	@Autowired
 	private UMLCreator umlCreator;
-
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
-
-	@PostConstruct
-	public void init() throws IOException {
-		if (!Files.exists(FILES_FOLDER)) {
-			Files.createDirectories(FILES_FOLDER);
-		}
-	}
 
 	public String redirect(Model model, String redirection, HttpServletResponse httpServletResponse) {
 		try {
@@ -288,19 +280,15 @@ public class UnitsController {
 
 	}
 
-	@PostMapping("/saveImage/{type}/{unit}")
+	@PostMapping("/image/{type}/{unit}")
 	public String saveImage(Model model, @PathVariable String type, @PathVariable String unit,
 			@RequestParam("file") MultipartFile file, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
 		Card card = cardServ.findByUnitAsocAndType(unitConc, type);
-
+		
 		if (!file.isEmpty()) {
 			try {
-				File uploadedFile = new File(FILES_FOLDER.toFile(), unit + type);
-				file.transferTo(uploadedFile);
-				card.setPhoto(true);
-				cardServ.save(card);
-
+				cardServ.saveImage(file, unit, card, type);
 				return redirect(model, unit, httpServletResponse);
 			} catch (Exception e) {
 				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
@@ -312,11 +300,10 @@ public class UnitsController {
 		}
 	}
 
-	@RequestMapping("/image/{unit}/{type}")
-	public void handleFileDownload(@PathVariable String unit, @PathVariable String type, HttpServletResponse response)
-			throws FileNotFoundException, IOException {
+	@GetMapping("/image/{unit}/{type}")
+	public void handleFileDownload(@PathVariable String unit, @PathVariable String type, HttpServletResponse response) throws FileNotFoundException, IOException {
 
-		Path image = FILES_FOLDER.resolve(unit + type);
+		Path image = cardServ.getImage(unit, type);
 
 		if (Files.exists(image)) {
 			response.setContentType("image/jpeg");

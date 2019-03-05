@@ -1,4 +1,4 @@
-package urjcdaw12.relman;
+package urjcdaw12.relman.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -14,6 +14,7 @@ public class SecurityConfigRest extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.antMatcher("/api/**");
 		http.csrf().disable();
 	}
 }

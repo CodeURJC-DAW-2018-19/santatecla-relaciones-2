@@ -1,4 +1,4 @@
-package urjcdaw12.relman;
+package urjcdaw12.relman.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 import urjcdaw12.relman.users.UserRepositoryAuthenticationProvider;
 
-@Order(2)
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
