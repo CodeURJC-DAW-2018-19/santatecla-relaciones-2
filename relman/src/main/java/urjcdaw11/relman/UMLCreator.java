@@ -53,7 +53,7 @@ public class UMLCreator {
 
 	// METHODS FOR COMPOSITION HIERARCHY
 
-	public void compositionUML(Unit unit, Model model) {
+	public void compositionUML(Unit unit) {
 		unit.setPhotoComp(true);
 		unitServ.save(unit);
 		this.treeComp = new LinkedTree<Unit>();
@@ -122,7 +122,7 @@ public class UMLCreator {
 	}
 
 	// MEHTODS to make the Classification UML
-	public void clasificationUML(Unit unit, Model model) {
+	public void clasificationUML(Unit unit) {
 		unit.setPhotoClas(true);
 		unitServ.save(unit);
 		this.treeClas = new LinkedTree<Unit>();

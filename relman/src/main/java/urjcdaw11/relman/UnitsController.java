@@ -47,8 +47,6 @@ public class UnitsController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@Autowired
-	private UMLCreator umlCreator;
 
 	public String redirect(Model model, String redirection, HttpServletResponse httpServletResponse) {
 		try {
@@ -128,16 +126,16 @@ public class UnitsController {
 		model.addAttribute("showAssociatedOrigin", nAssociatedOrigin > 0);
 
 		if (relationServ.findByTypeAndOrigin("composition", unitConc).size() != 0) { // Generates the UML just if the
-																						// unit has "Partes"
-			umlCreator.compositionUML(unitConc, model);
+																					// unit has "Partes"
+			unitServ.createCompUML(unitConc);
 		}
 
 		if (relationServ.findByTypeAndOrigin("inheritance", unitConc).size() != 0) { // Generates the UML just if the
 																						// unit has "Hijas"
-			umlCreator.clasificationUML(unitConc, model);
+			unitServ.createClasUML(unitConc);
 		}
 
-		umlCreator.contextUML(unitConc);
+		unitServ.createContextUML(unitConc);
 
 		model.addAttribute("photoCompExists", unitConc.isPhotoComp());
 		model.addAttribute("photoClasExists", unitConc.isPhotoClas());
