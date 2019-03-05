@@ -1,12 +1,14 @@
 @startuml 
  set namespaceSeparator none
-SGML <|-- HTML
+ANGULAR <|-- HTML
 MAQUETACIÓN_WEB <|-- HTML
 CSS *-- HTML
 ETIQUETAS *-- HTML
 ATRIBUTOS *-- HTML
 JAVASCRIPT <-- HTML
 ANGULAR <-- HTML
+DOCKER_SPRING <-- HTML
+HTML <-- HTML
 CSS -- HTML
 XML -- HTML
 HTML <|-- HTML2.1
@@ -16,6 +18,7 @@ HTML *-- ETIQUETAS
 HTML *-- VIDEOS
 HTML <-- CSS
 HTML <-- XML
+HTML <-- HTML
 HTML -- CSS
 HTML -- XML
 @enduml
