@@ -9,9 +9,9 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>urjc-daw-12</groupId>
+	<groupId>urjc-daw-11</groupId>
 	<artifactId>relman</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<name>relman</name>
 	<description>Spring Project for relation management</description>
 
@@ -48,9 +48,12 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.13</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.plantuml</groupId>
@@ -64,6 +67,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+				<encoding> UTF-8 </encoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

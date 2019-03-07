@@ -140,9 +140,10 @@ public class UnitsController {
 		model.addAttribute("photoCompExists", unitConc.isPhotoComp());
 		model.addAttribute("photoClasExists", unitConc.isPhotoClas());
 
-		model.addAttribute("photoComp", "comp" + unit + ".png");
-		model.addAttribute("photoClas", "clas" + unit + ".png");
-		model.addAttribute("photoContext", "context" + unit + ".png");
+
+		model.addAttribute("photoComp", "imageUML/comp/" + unit);
+		model.addAttribute("photoClas", "imageUML/clas/" + unit);
+		model.addAttribute("photoContext", "imageUML/context/"+ unit);
 
 		return "units";
 
@@ -275,7 +276,7 @@ public class UnitsController {
 
 	}
 
-	@PostMapping("/image/{type}/{unit}")
+	@PostMapping("/saveImage/{type}/{unit}")
 	public String saveImage(Model model, @PathVariable String type, @PathVariable String unit,
 			@RequestParam("file") MultipartFile file, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);
@@ -299,6 +300,22 @@ public class UnitsController {
 	public void handleFileDownload(@PathVariable String unit, @PathVariable String type, HttpServletResponse response) throws FileNotFoundException, IOException {
 
 		Path image = cardServ.getImage(unit, type);
+
+		if (Files.exists(image)) {
+			response.setContentType("image/jpeg");
+			response.setContentLength((int) image.toFile().length());
+			FileCopyUtils.copy(Files.newInputStream(image), response.getOutputStream());
+		} else {
+			response.sendError(404, "File" + unit + type + "(" + image.toAbsolutePath() + ") does not exist");
+		}
+	}
+
+
+
+	@GetMapping("/imageUML/{type}/{unit}")
+	public void getUMLimage(@PathVariable String unit, @PathVariable String type, HttpServletResponse response) throws FileNotFoundException, IOException {
+
+		Path image = unitServ.getImage(unit, type);
 
 		if (Files.exists(image)) {
 			response.setContentType("image/jpeg");

@@ -1,6 +1,0 @@
-@startuml
-ATRIBUTOS *-- HTML
-HTML *-- DISEÑO_WEB
-HTML *-- ETIQUETAS
-HTML *-- VIDEOS
-@enduml

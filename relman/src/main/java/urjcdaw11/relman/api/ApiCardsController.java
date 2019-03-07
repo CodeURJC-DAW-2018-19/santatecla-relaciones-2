@@ -85,6 +85,9 @@ public class ApiCardsController {
 		Card card = cardServ.findByUnitAsocAndType(unit, type);
 
 		if (card != null) {
+			if (!card.isPhoto()){
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
 			byte[] bytes = Files.readAllBytes(cardServ.getImage(unitName, type));
 			final HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);
