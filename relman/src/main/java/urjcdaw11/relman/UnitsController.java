@@ -275,7 +275,7 @@ public class UnitsController {
 
 	}
 
-	@PostMapping("/image/{type}/{unit}")
+	@PostMapping("/saveImage/{type}/{unit}")
 	public String saveImage(Model model, @PathVariable String type, @PathVariable String unit,
 			@RequestParam("file") MultipartFile file, HttpServletResponse httpServletResponse) {
 		Unit unitConc = unitServ.findByName(unit);

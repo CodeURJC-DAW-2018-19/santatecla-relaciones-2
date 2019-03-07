@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +26,10 @@ public class ApiUnitsController {
 
 	@Autowired
 	private UnitService unitServ;
-	
+
 	@Autowired
 	private CardService cardServ;
-	
+
 	@Autowired
 	private RelationService relationServ;
 
@@ -49,57 +48,52 @@ public class ApiUnitsController {
 		Unit unit = unitServ.findByName(unitName);
 
 		if (unit != null) {
-			if (relationServ.findByTypeAndOrigin("composition", unit).size() != 0) { 
+			if (relationServ.findByTypeAndOrigin("composition", unit).size() != 0) {
 				unitServ.createCompUML(unit);
 			}
 
 			if (relationServ.findByTypeAndOrigin("inheritance", unit).size() != 0) {
 				unitServ.createClasUML(unit);
 			}
-			
+
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
-	@GetMapping(value="/unit/{unitName}/image/{typeImage}")
-	public ResponseEntity<byte[]> getImage(@PathVariable String unitName, @PathVariable String typeImage) throws IOException {
+
+	@GetMapping(value = "/unit/{unitName}/image/{typeImage}")
+	public ResponseEntity<byte[]> getImage(@PathVariable String unitName, @PathVariable String typeImage)
+			throws IOException {
 		Unit unit = unitServ.findByName(unitName);
-		
-		if(unit!=null) {
-			byte[] bytes=null;
-			
-			if (typeImage.equals("context")){
+
+		if (unit != null) {
+			byte[] bytes = null;
+
+			if (typeImage.equals("context")) {
 				unitServ.createContextUML(unit);
 				bytes = Files.readAllBytes(unitServ.getImage(unitName, "context"));
-			}
-			else if (typeImage.equals("classification") && relationServ.findByTypeAndOrigin("inheritance", unit).size() != 0) {
-					unitServ.createClasUML(unit);
-					bytes = Files.readAllBytes(unitServ.getImage(unitName, "clas"));
-			}
-			else if(typeImage.equals("composition") && relationServ.findByTypeAndOrigin("composition", unit).size() != 0) {
+			} else if (typeImage.equals("classification")
+					&& relationServ.findByTypeAndOrigin("inheritance", unit).size() != 0) {
+				unitServ.createClasUML(unit);
+				bytes = Files.readAllBytes(unitServ.getImage(unitName, "clas"));
+			} else if (typeImage.equals("composition")
+					&& relationServ.findByTypeAndOrigin("composition", unit).size() != 0) {
 				unitServ.createCompUML(unit);
 				bytes = Files.readAllBytes(unitServ.getImage(unitName, "comp"));
 			}
-	
-			
-			if (bytes!=null) {
+
+			if (bytes != null) {
 				final HttpHeaders headers = new HttpHeaders();
 				headers.setContentType(MediaType.IMAGE_JPEG);
 				return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.OK);
-			}else {
+			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
-			
-		
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		 
 	}
-	
 
 	@PostMapping(value = "/unit")
 	public ResponseEntity<Unit> postUnit(@RequestBody Unit unit) {

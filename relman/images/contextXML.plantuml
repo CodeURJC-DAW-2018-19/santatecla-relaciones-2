@@ -1,6 +1,0 @@
-@startuml 
- set namespaceSeparator none
-HTML <-- XML
-HTML -- XML
-XML -- HTML
-@enduml

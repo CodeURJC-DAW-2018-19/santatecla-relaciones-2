@@ -1,4 +1,0 @@
-@startuml 
- set namespaceSeparator none
-ATRIBUTOS *-- HTML
-@enduml
