@@ -86,7 +86,6 @@ public class ApiCardsController {
 
 		if (card != null) {
 			if (!card.isPhoto()){
-			if(!card.isPhoto()) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 			byte[] bytes = Files.readAllBytes(cardServ.getImage(unitName, type));
