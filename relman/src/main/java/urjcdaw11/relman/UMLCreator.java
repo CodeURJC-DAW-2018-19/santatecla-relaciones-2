@@ -1,14 +1,18 @@
 package urjcdaw11.relman;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
@@ -62,6 +66,7 @@ public class UMLCreator {
 
 		String path = "images/comp" + unit.getName() + ".plantuml";
 
+
 		try {
 			if(treeComp.size()!=1) {
 				PrintWriter writer = new PrintWriter(path, "UTF-8");
@@ -75,12 +80,17 @@ public class UMLCreator {
 		}
 		
 		if(treeComp.size()!=1) {
-			File source = new File(path);
+			File file = new File(path);
+
 	
 			try {
-				SourceFileReader reader = new SourceFileReader(source);
+				SourceFileReader reader = new SourceFileReader(file);
 				List<GeneratedImage> list = reader.getGeneratedImages();
 				File png = list.get(0).getPngFile();
+				
+			    MultipartFile multipartFile = new MockMultipartFile(png.getName(), new FileInputStream(new File(png.getAbsolutePath())));
+				unitServ.saveImageUML(multipartFile, unit.getName(), "comp");
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -151,6 +161,9 @@ public class UMLCreator {
 				SourceFileReader reader = new SourceFileReader(source);
 				List<GeneratedImage> list = reader.getGeneratedImages();
 				File png = list.get(0).getPngFile();
+				
+				MultipartFile multipartFile = new MockMultipartFile(png.getName(), new FileInputStream(new File(png.getAbsolutePath())));
+				unitServ.saveImageUML(multipartFile, unit.getName(), "clas");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -214,6 +227,9 @@ public class UMLCreator {
 			SourceFileReader reader = new SourceFileReader(source);
 			List<GeneratedImage> list = reader.getGeneratedImages();
 			File png = list.get(0).getPngFile();
+			
+			MultipartFile multipartFile = new MockMultipartFile(png.getName(), new FileInputStream(new File(png.getAbsolutePath())));
+			unitServ.saveImageUML(multipartFile, unit.getName(), "context");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,6 @@
 package urjcdaw11.relman.units;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import urjcdaw11.relman.UMLCreator;
+import urjcdaw11.relman.cards.Card;
 
 @Service
 public class UnitService {
@@ -67,9 +70,14 @@ public class UnitService {
 	
 	
 	public Path getImage(String unit, String type) {
-		return FILES_FOLDER.resolve(type + unit + ".png");
+		return FILES_FOLDER.resolve(type + unit);
 	}
 
+	
+	public void saveImageUML(MultipartFile file, String unit, String type) throws Exception{
+		File uploadedFile = new File(FILES_FOLDER.toFile(), type + unit);
+		file.transferTo(uploadedFile);
+	}
 	
 	public void createCompUML(Unit unitConc) {
 		 umlCreator.compositionUML(unitConc);
