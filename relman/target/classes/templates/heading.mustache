@@ -1,14 +1,20 @@
-<nav class="navbar navbar-fixed-top navbar-expand bg-white">
+<nav class="navbar navbar-fixed-top navbar-expand bg-primary">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="/">UNIDADES</a>
+            <a class="nav-link" href="/"><i class="material-icons">home</i></a>
         </li>
         {{#tabs}}
             <li class="nav-item">
-                <a class="nav-link" href="{{.}}">
-                    {{.}}
-                    <a href="removeTab/{{.}}"><button class="btn btn-sm btn-danger" role="button">x</button></a>
-                </a>
+            	<table>
+	            	<tbody>      	
+		            	<tr>
+				            <td class="text-center"><a class="nav-link" href="{{.}}">{{.}}</a></td>
+				            <td class="td-actions text-right">
+				                <a href="removeTab/{{.}}"><button class="btn btn-sm btn-primary" role="button">x</button></a>
+				            </td>
+			       		</tr>
+		       		</tbody>
+                </table>
             </li>
         {{/tabs}}
     </ul>
@@ -18,7 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <form action="/logout" method="post">
-                            <button class="btn btn-danger navbar-btn" type="submit">Log Out</button>
+                            <button class="btn btn-primary navbar-btn" type="submit">Log Out</button>
                             <input type="hidden" name="_csrf" value="{{token}}" />
                         </form>
                     </li>

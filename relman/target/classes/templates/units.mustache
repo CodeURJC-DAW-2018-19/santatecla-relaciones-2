@@ -30,7 +30,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="card">
-                        <div class="card-header card-header-text card-header-danger">
+                        <div class="card-header card-header-text card-header-primary">
                             <div class="card-text">
                                 <h4 class="card-title">Jerarquía de Composición</h4>
                             </div>
@@ -59,7 +59,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="card">
-                        <div class="card-header card-header-text card-header-danger">
+                        <div class="card-header card-header-text card-header-primary">
                             <div class="card-text">
                                 <h4 class="card-title">Jerarquía de Clasificación</h4>
                             </div>
@@ -89,7 +89,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="card">
-                        <div class="card-header card-header-text card-header-danger">
+                        <div class="card-header card-header-text card-header-primary">
                             <div class="card-text">
                                 <h4 class="card-title">Contexto</h4>
                             </div>
@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-row">
                             <div class="container text-right">
-                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
                             </div>
                         </div>
                         <input type="hidden" name="_csrf" value="{{token}}" />
@@ -143,8 +143,7 @@
         {{>heading}}
         <div class="content">
             <div class="card card-nav-pills">
-                <div class="card-header card-header-danger">
-                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                <div class="card-header">
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
                             <ul class="nav nav-pills" data-tabs="tabs">
@@ -164,8 +163,8 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card">
-                                        <div class="border border-danger">
-                                            <div class="card-header card-header-text card-header-danger">
+                                        <div class="border">
+                                            <div class="card-header card-header-text card-header-primary">
                                                 <div class="card-text">
                                                     <h4 class="card-title">PADRES</h4>
                                                 </div>
@@ -276,8 +275,8 @@
 
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="border border-danger">
-                                        <div class="card-header card-header-text card-header-danger">
+                                    <div class="border">
+                                        <div class="card-header card-header-text card-header-primary">
                                             <div class="card-text">
                                                 <h4 class="card-title">COMPUESTOS</h4>
                                             </div>
@@ -386,8 +385,8 @@
 
                         <div class="col-sm">
                             <div class="card">
-                                <div class="border border-danger">
-                                    <div class="card-header card-header-text card-header-danger">
+                                <div class="border">
+                                    <div class="card-header card-header-text card-header-primary">
                                         <div class="card-text">
                                             <h4 class="card-title">USA</h4>
                                         </div>
@@ -428,7 +427,7 @@
                                                                         <div class="form-group col-md-6">
                                                                             <div class="container text-left">
                                                                                 <form action="/{{origin}}" method="POST">
-                                                                                    <button type="submit" class="btn">Cancelar</button>
+                                                                                    <button type="submit" class="btn btn-primary">Cancelar</button>
                                                                                     <input type="hidden" name="_csrf" value="{{token}}" />
                                                                                 </form>
                                                                             </div>
@@ -499,8 +498,8 @@
 
                     <div class="col-sm">
                         <div class="card">
-                            <div class="border border-danger">
-                                <div class="card-header card-header-text card-header-danger">
+                            <div class="border">
+                                <div class="card-header card-header-text card-header-primary">
                                     <div class="card-text">
                                         <h4 class="card-title">ASOCIADOS A
                                         </h4>
@@ -610,8 +609,8 @@
 
                 <div class="col-sm">
                     <div class="card">
-                        <div class="border border-danger">
-                            <div class="card-header card-header-text card-header-danger">
+                        <div class="border">
+                            <div class="card-header card-header-text card-header-primary">
                                 <div class="card-text">
                                     <h4 class="card-title">UNIDAD</h4>
                                 </div>
@@ -626,7 +625,7 @@
 
                     </div>
                     <div class="container text-center">
-                        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlContext">
+                        <button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#umlContext">
                             CONTEXTO
                         </button>
                     </div>
@@ -634,8 +633,8 @@
 
                 <div class="col-sm">
                     <div class="card">
-                        <div class="border border-danger">
-                            <div class="card-header card-header-text card-header-danger">
+                        <div class="border">
+                            <div class="card-header card-header-text card-header-primary">
                                 <div class="card-text">
                                     <h4 class="card-title">ASOCIADO A</h4>
                                 </div>
@@ -747,8 +746,8 @@
 
             <div class="col-sm">
                 <div class="card">
-                    <div class="border border-danger">
-                        <div class="card-header card-header-text card-header-danger">
+                    <div class="border">
+                        <div class="card-header card-header-text card-header-primary">
                             <div class="card-text">
                                 <h4 class="card-title">USAN</h4>
                             </div>
@@ -857,8 +856,8 @@
 
         <div class="col-sm">
             <div class="card">
-                <div class="border border-danger">
-                    <div class="card-header card-header-text card-header-danger">
+                <div class="border">
+                    <div class="card-header card-header-text card-header-primary">
                         <div class="card-text">
                             <h4 class="card-title">PARTES</h4>
                         </div>
@@ -964,7 +963,7 @@
             </div>
         </div>
         <div class="container text-center">
-            <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlComp">
+            <button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#umlComp">
                 JERARQUÍA DE COMPOSICIÓN
             </button>
         </div>
@@ -972,8 +971,8 @@
 
     <div class="col-sm">
         <div class="card">
-            <div class="border border-danger">
-                <div class="card-header card-header-text card-header-danger">
+            <div class="border">
+                <div class="card-header card-header-text card-header-primary">
                     <div class="card-text">
                         <h4 class="card-title">HIJAS</h4>
                     </div>
@@ -1079,7 +1078,7 @@
         </div>
     </div>
     <div class="container text-center">
-        <button type="button" rel="tooltip" class="btn btn-rounded" data-toggle="modal" data-target="#umlClas">
+        <button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#umlClas">
             JERARQUÍA DE CLASIFICACIÓN
         </button>
     </div>
@@ -1093,8 +1092,8 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="card">
-                        <div class="border border-danger">
-                            <div class="card-header card-header-text card-header-danger">
+                        <div class="border">
+                            <div class="card-header card-header-text card-header-primary">
                                 <div class="card-text">
                                     <h4 class="card-title">{{type}}</h4>
                                 </div>
@@ -1113,8 +1112,8 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <div class="card">
-                                                <div class="border border-danger">
-                                                    <div class="card-header card-header-text card-header-danger">
+                                                <div class="border">
+                                                    <div class="card-header card-header-text">
                                                         <div class="card-text">
                                                             <h4 class="card-title">Imagen</h4>
                                                         </div>
@@ -1130,12 +1129,12 @@
                                                         <form action="/saveImage/{{type}}/{{unit}}" method="post" enctype="multipart/form-data">
                                                             <div class="card-body">
                                                                 <div class="text-left">
-                                                                    <span class="btn btn-rounded btn-file">
+                                                                    <span class="btn btn-primary btn-file">
                                                                         <input type="file" name="file">
 
                                                                         <i class="material-icons">photo</i>
                                                                     </span>
-                                                                    <button type="submit" rel="tooltip" class="btn btn-rounded btn-success">
+                                                                    <button type="submit" rel="tooltip" class="btn btn-success">
                                                                         Guardar
                                                                     </button>
                                                                 </div>
@@ -1154,7 +1153,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <div class="card">
-                                            <div class="border border-danger">
+                                            <div class="border">
                                                 <div class="card-header card-header-text card-header-danger">
                                                     <div class="card-text">
                                                         <h4 class="card-title">Imagen</h4>

@@ -46,7 +46,7 @@
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Introduzca contraseña" name="password">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Entrar</button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reg">Registrarse</button>
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reg">Registrarse</button>
                                 <input type="hidden" name="_csrf" value="{{token}}" />
 
                             </form>
@@ -86,7 +86,7 @@
                                     <label for="exampleInputPassword2"><b>Contraseña</b></label>
                                     <input type="password" class="form-control" name="pass2" placeholder="Repita la nueva contraseña">
                                 </div>
-                                <button type="submit" class="btn btn-danger">Registrarse</button>
+                                <button type="submit" class="btn btn-primary">Registrarse</button>
                                 <input type="hidden" name="_csrf" value="{{token}}" />
                             </form>
                         </div>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="container text-right">
-                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
                                 </div>
                             </div>
                             <input type="hidden" name="_csrf" value="{{token}}" />
@@ -135,7 +135,7 @@
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-primary">
                                 <h1 class="card-title">Unidades
                                     <form action="/" class="form-inline ml-auto" method="GET">
                                         <div class="form-group has-white">
@@ -191,7 +191,7 @@
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
                                                                                     <div class="container text-left">
-                                                                                        <button type="submit" class="btn"><a href="/">Cancelar</a></button>
+                                                                                        <button type="submit" class="btn btn-primary"><a href="/">Cancelar</a></button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -213,10 +213,12 @@
                                 </table>
                                 <div id="spinner">
                                 </div>
+                                <div class="container text-right">
                                 {{#plusbutton}}
-                                    <button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-dark" value="1" name="page" title="{{totalelements}}">Mas resultados</button>
+                                    <button onclick="ajaxPag(this.id)" type="button" id="plus" class="btn btn-primary" value="1" name="page" title="{{totalelements}}">Mas resultados</button>
                                 {{/plusbutton}}
                                 <input type="text" id="nElement" value="{{totalelements}}" style="display: none;">
+                                </div>
                                 {{#teacher}}
                                     <div class="content text-left">
                                         <p>
