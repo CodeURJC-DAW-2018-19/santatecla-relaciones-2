@@ -1,7 +1,0 @@
-@startuml
-CSS *-- HTML
-HTML *-- DISEÑO_WEB
-HTML *-- ETIQUETAS
-HTML *-- VIDEOS
-CSS *-- BOOTSTRAP
-@enduml

@@ -54,12 +54,12 @@ public class ApiCardsController {
 		}
 	}
 
-	@PostMapping(value = "/card/{type}")
-	public ResponseEntity<Card> postCard(@RequestBody Card card, @PathVariable String unitName, @PathVariable String type) {
+	@PostMapping(value = "/card")
+	public ResponseEntity<Card> postCard(@RequestBody Card card, @PathVariable String unitName) {
 		Unit unit = unitServ.findByName(unitName);
 
-		if (cardServ.findByUnitAsocAndType(unit, type) == null) {
-			cardServ.save(card);
+		if (cardServ.findByUnitAsocAndType(unit, card.getType()) == null) {
+			cardServ.save(new Card(card.getType(), card.getDesc(), unit));
 			return new ResponseEntity<>(card, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -100,8 +100,14 @@ public class ApiCardsController {
 	@PostMapping(value = "/card/{type}/image")
 	public ResponseEntity<byte[]> postImage(@RequestBody MultipartFile file, @PathVariable String unitName,
 			@PathVariable String type) throws Exception {
+		if(file == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		Unit unit = unitServ.findByName(unitName);
 		Card card = cardServ.findByUnitAsocAndType(unit, type);
+		if(unit == null || card == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 		cardServ.saveImage(file, unitName, card, type);
 		byte[] bytes = Files.readAllBytes(cardServ.getImage(unitName, type));
 		final HttpHeaders headers = new HttpHeaders();

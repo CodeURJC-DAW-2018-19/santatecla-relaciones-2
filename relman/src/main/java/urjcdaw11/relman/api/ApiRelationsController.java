@@ -50,9 +50,12 @@ public class ApiRelationsController {
 		}
 	}
 
-	@PostMapping(value = "/relations/{type}")
-	public ResponseEntity<Relation> postRelation(@RequestBody Relation relation, @PathVariable String type, @PathVariable String unitName, Pageable page) {
-		relationServ.save(relation);
+	@PostMapping(value = "/relations")
+	public ResponseEntity<Relation> postRelation(@RequestBody Relation relation, @PathVariable String unitName, Pageable page) {
+		String type = relation.getType();
+		Unit destination = unitServ.findByName((relation.getDestiny().getName()));
+		Unit origin = unitServ.findByName((relation.getOrigin().getName()));
+		relationServ.save(new Relation(type, origin, destination));
 		return new ResponseEntity<>(relation, HttpStatus.CREATED);
 	}
 
