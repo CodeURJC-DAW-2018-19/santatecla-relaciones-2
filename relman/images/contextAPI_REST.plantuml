@@ -1,0 +1,4 @@
+@startuml 
+ set namespaceSeparator none
+API_REST <-- SPRING
+@enduml

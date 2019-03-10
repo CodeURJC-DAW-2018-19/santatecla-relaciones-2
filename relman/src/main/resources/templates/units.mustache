@@ -44,10 +44,13 @@
                             {{^photoCompExists}}
                                 <p>La unidad no tiene "Partes", por lo que no se puede mostrar su Jerarquía.</p>
                             {{/photoCompExists}}
-                                <div class="container text-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
+                                
                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                	<div class="container text-right">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -73,10 +76,13 @@
                             {{^photoClasExists}}
                                 <p>La unidad no tiene "Hijas", por lo que no se puede mostrar su Jerarquía.</p>
                                 {{/photoClasExists}}
-                                <div class="container text-center">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
+                                
                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                	<div class="container text-right">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -98,10 +104,12 @@
                             <div class="container text-center margin-bot">
                                 <img src="{{photoContext}}" class="img-fluid" alt="Responsive image">
                             </div>
-                            <div class="container text-center">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                	<div class="container text-right">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -1148,33 +1156,35 @@
                                     </div>
                                 {{/teacher}}
                                 {{^teacher}}
-                                    <div class="form-group col-md-9">
-                                        <p>{{desc}}</p>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <div class="card">
-                                            <div class="border">
-                                                <div class="card-header card-header-text card-header-danger">
-                                                    <div class="card-text">
-                                                        <h4 class="card-title">Imagen</h4>
-                                                    </div>
-                                                </div>
-                                                {{#photo}}
-                                                    <div class="card-body">
-                                                        <div class="container text-right">
-                                                            <img src="image/{{unit}}/{{type}}" height="150em" alt="Responsive image">
-                                                        </div>
-                                                    </div>
-                                                {{/photo}}
-                                                {{^photo}}
-                                                    <div class=" card-body">
-                                                        <p>No hay imagen disponible</p>
-                                                    </div>
-                                                    {{/photo}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{/teacher}}
+                                    <div class="form-row">
+	                                    <div class="form-group col-md-9">
+	                                        <p>{{desc}}</p>
+	                                    </div>
+	                                    <div class="form-group col-md-3">
+	                                        <div class="card">
+	                                            <div class="border">
+	                                                <div class="card-header card-header-text">
+	                                                    <div class="card-text">
+	                                                        <h4 class="card-title">Imagen</h4>
+	                                                    </div>
+	                                                </div>
+	                                                {{#photo}}
+	                                                    <div class="card-body">
+	                                                        <div class="container text-right">
+	                                                            <img src="image/{{unit}}/{{type}}" height="150em" alt="Responsive image">
+	                                                        </div>
+	                                                    </div>
+	                                                {{/photo}}
+	                                                {{^photo}}
+	                                                    <div class=" card-body">
+	                                                        <p>No hay imagen disponible</p>
+	                                                    </div>
+	                                                {{/photo}}
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                  {{/teacher}}
                             </div>
                         </div>
                     </div>
