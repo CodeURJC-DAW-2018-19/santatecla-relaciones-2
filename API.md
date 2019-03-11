@@ -392,7 +392,7 @@ Esta operación nos permite obtener una ficha dentro de la unidad
 * ##### Descripción
 Esta operación nos permite crear una ficha dentro de una unidad
 * ##### URL:
-		< /card/{type} >
+		< /card >
 * ##### Operaciones: 
 		POST
 * ##### Parámetros de la URL
@@ -428,7 +428,7 @@ Esta operación nos permite crear una ficha dentro de una unidad
 }
 	
 * ##### Respuesta en caso de error:
-	  Código de Error : 409 CONFLICT (Para cuando no se intenta crear una ficha que ya está creada)
+	  Código de Error : 409 CONFLICT (Para cuando se intenta crear una ficha que ya está creada)
 		
 		
 ### Borrar Ficha
@@ -497,7 +497,7 @@ Esta operación nos permite subir la imagen a la ficha especificada
 		Sube la imagen a la ficha correspondiente, en el postman, habrá que irse al apartado body y adjuntar el archivo que se vaya a subir
 * ##### Respuesta en caso de error:
 	  Código de Error : 409 CONFLICT (Para cuando se sube una imagen a una ficha en la que ya hay una imagen subida)
-		
+	  		    400 BAD_REQUEST (Para cuando hay algún error con el archivo subido)
 
 		
 
@@ -1125,6 +1125,7 @@ Esta operación permite eliminar una relación entre dos unidades
 * ##### Parámetros de la URL:
 		unitName = String
 		type = String (que describe el tipo de relación que se pide)
+		unitRelated = String (el otro extremos de la relación)
 * ##### Consulta:
 		api/unit/HTML/relations/parents/related/SGML
 * ##### Respuesta en caso de éxito
