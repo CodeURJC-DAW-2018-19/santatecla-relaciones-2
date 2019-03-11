@@ -97,7 +97,9 @@
 
 ![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaNavegaci%C3%B3n.png?raw=true)
 
+**API**
 
+[API.md](API.md)
 
 
 
