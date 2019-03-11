@@ -1078,8 +1078,39 @@ Esta operación permite crear una relación
 		type = String (que describe el tipo de relación que se pide)
 * ##### Consulta:
 		/api/unit/HTML/relations/
+
+* ##### Formulario Postman:
+  ```
+  {
+            "type": "inheritance",
+            "origin": {
+                "name": "CSS",
+                "photoComp": false,
+                "photoClas": false
+            },
+            "destiny": {
+                "name": "HTML",
+                "photoComp": true,
+                "photoClas": true
+            }
+        }
+
 * ##### Respuesta en caso de éxito
-		
+  ```
+
+		{
+    "type": "inheritance",
+    "origin": {
+        "name": "CSS",
+        "photoComp": false,
+        "photoClas": false
+    },
+    "destiny": {
+        "name": "HTML",
+        "photoComp": true,
+        "photoClas": true
+    }
+}
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 409 CONFLICT (En caso de que se cree una relación que ya estaba creada)
