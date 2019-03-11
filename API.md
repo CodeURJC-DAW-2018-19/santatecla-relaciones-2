@@ -16,7 +16,7 @@ Conjunto de solicitudes que tendrán que ver con la autenticación del usuario e
 Esta operación permite al usuario iniciar la sesión
 * ##### URL:
 	< /login >
-* ##### Operaciones: 
+* ##### Operaciones:
 	GET
 * ##### Consulta:
 		/api/logIn
@@ -28,19 +28,19 @@ Esta operación permite al usuario iniciar la sesión
 		"passwordHash":"$2a$10$3ZpGinZjKryIXd0GvPvd1.uFM9E1TUnXkKB.UUoUhi5BzO0JM9fXK",
 		"roles":["ROLE_USER","ROLE_ADMIN"]
 	}
-	
+
 	```
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 401 No Autorizado
-			
-		
+
+
 ### Logout
 * ##### Descripción
-Esta operación permite al usuario desconectar su cuenta 
+Esta operación permite al usuario desconectar su cuenta
 * ##### URL:
 	< /logOut >
-* ##### Operaciones: 
+* ##### Operaciones:
 	GET
 * ##### Consulta:
 		/api/logOut
@@ -49,25 +49,25 @@ Esta operación permite al usuario desconectar su cuenta
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 401 No Autorizado
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
 ## Solicitudes de Unidades
 Conjunto de solicitudes que tendrán que ver con los recursos de las unidades que se manejan en la aplicación
 
 ### Mostrar todas las unidades
 * ##### Descripción
-Esta operación permite mostrar todas las unidades que se tienen
+Esta operación permite mostrar todas las unidades que se tienen, o solo algunas si se hace la búsqueda con el parámetro search
 * ##### URL:
-		< /units >
-* ##### Operaciones: 
+		< /units [?search={search}] >
+* ##### Operaciones:
 		GET
 * ##### Consulta:
 		/api/units
@@ -152,15 +152,64 @@ Esta operación permite mostrar todas las unidades que se tienen
     "first": true,
     "empty": false
 }
-		
+
+* ##### Consulta:
+		/api/units?search=HTML
+* ##### Respuesta en caso de éxito
+	```
+	{
+	    "content": [
+	        {
+	            "name": "HTML",
+	            "photoComp": false,
+	            "photoClas": false
+	        },
+	        {
+	            "name": "HTML2.1",
+	            "photoComp": false,
+	            "photoClas": false
+	        },
+	        {
+	            "name": "HTML4.0",
+	            "photoComp": false,
+	            "photoClas": false
+	        }
+	    ],
+	    "pageable": {
+	        "sort": {
+	            "sorted": false,
+	            "unsorted": true,
+	            "empty": true
+	        },
+	        "offset": 0,
+	        "pageSize": 10,
+	        "pageNumber": 0,
+	        "unpaged": false,
+	        "paged": true
+	    },
+	    "totalPages": 1,
+	    "last": true,
+	    "totalElements": 3,
+	    "size": 10,
+	    "number": 0,
+	    "first": true,
+	    "numberOfElements": 3,
+	    "sort": {
+	        "sorted": false,
+	        "unsorted": true,
+	        "empty": true
+	    },
+	    "empty": false
+	}
+
 ### Mostrar una unidad
 * ##### Descripción
 Esta operación nos permite mostrar una unidad en concreto
 * ##### URL:
 	< /unit/{unitName} >
-* ##### Parámetros de la URL: 
+* ##### Parámetros de la URL:
 	unitName = String
-* ##### Operaciones: 
+* ##### Operaciones:
 	GET
 * ##### Consulta:
 		/api/unit/HTML
@@ -174,16 +223,16 @@ Esta operación nos permite mostrar una unidad en concreto
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se puede encontrar la unidad que se pide)
-		
+
 ### Mostrar la imagen de una unidad
 * ##### Descripción
 Esta operación nos permite mostrar el diagrama uml que se quiera de una unidad en concreto
 * ##### URL:
 	< /unit/{unitName}/image/{typeImage} >
-* ##### Parámetros de la URL: 
+* ##### Parámetros de la URL:
 	unitName = String
 	typeImage = String (describe el diagrama uml que querramos de la unidad)
-* ##### Operaciones: 
+* ##### Operaciones:
 	GET
 * ##### Consulta:
 		/api/unit/HTML/image/context
@@ -193,13 +242,13 @@ Esta operación nos permite mostrar el diagrama uml que se quiera de una unidad 
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se puede encontrar la unidad que se pide o cuando no se pueda encontrar el tipo
 		de diagrama uml que se pide)
-		
+
 ### Creación de una Unidad
 * ##### Descripción
 Esta operación nos permite crear una unidad
 * ##### URL:
 	< /unit >
-* ##### Operaciones: 
+* ##### Operaciones:
 	POST
 * ##### Consulta:
 		/api/unit
@@ -221,13 +270,13 @@ Esta operación nos permite crear una unidad
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 409 CONFLICT (Para cuando se quiere crear una unidad que está creada)
-		
+
 ### Borrar Unidad
 * ##### Descripción
 Esta operación nos permite borrar una unidad
 * ##### URL:
 	< /unit/{unitName} >
-* ##### Operaciones: 
+* ##### Operaciones:
 	DELETE
 * ##### Consulta:
 		/api/unit/HTML
@@ -242,13 +291,13 @@ Esta operación nos permite borrar una unidad
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se puede encontrar la unidad que se quiere borrar)
-		
-		
-		
-		
-		
-		
-			
+
+
+
+
+
+
+
 ## Solicitudes de Fichas
 Todas las consultas realizadas en este apartado vienen precedidas de /api/unit/{unitName} mencionados anteriormente
 
@@ -259,10 +308,10 @@ Esta operación nos permite mostrar todas las fichas
 
 * ##### URL:
 		< /cards >
-	
+
 * ##### Parámetros de la URL
 		unitName = String
-* ##### Operaciones: 
+* ##### Operaciones:
 		GET
 * ##### Consulta:
 		/api/unit/CSS/cards
@@ -357,14 +406,14 @@ Esta operación nos permite mostrar todas las fichas
     "first": true,
     "empty": false
 }
-	
-				
+
+
 ### Obtener Ficha
 * ##### Descripción
 Esta operación nos permite obtener una ficha dentro de la unidad
 * ##### URL:
 		< /card/{type} >
-* ##### Operaciones: 
+* ##### Operaciones:
 		POST
 * ##### Parámetros de la URL
 		unitName = String
@@ -383,24 +432,24 @@ Esta operación nos permite obtener una ficha dentro de la unidad
     "photo": false,
     "desc": "En internet hay muchos tutoriales para aprender a como usar css"
 }
-	
+
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se encuentra la ficha que se quiere devolver de la unidad que se ha
 		especificado)
-		
+
 ### Crear Ficha
 * ##### Descripción
 Esta operación nos permite crear una ficha dentro de una unidad
 * ##### URL:
 		< /card >
-* ##### Operaciones: 
+* ##### Operaciones:
 		POST
 * ##### Parámetros de la URL
 		unitName = String
 		type = String (describe el tipo de ficha que le pasemos)
 * ##### Consulta:
 		/api/unit/CSS/card
-		
+
 * ##### Formulario Postman:
 	```
 	{
@@ -426,24 +475,24 @@ Esta operación nos permite crear una ficha dentro de una unidad
     "photo": false,
     "desc": "Hacer el desarrollo web mas facil"
 }
-	
+
 * ##### Respuesta en caso de error:
 	  Código de Error : 409 CONFLICT (Para cuando se intenta crear una ficha que ya está creada)
-		
-		
+
+
 ### Borrar Ficha
 * ##### Descripción
 Esta operación nos permite borrar una ficha de la unidad especificada
 * ##### URL:
 		< /card/{type} >
-* ##### Operaciones: 
+* ##### Operaciones:
 		GET
 * ##### Parámetros de la URL
 		unitName = String
 		type = String (describe el tipo de ficha que le pasemos)
 * ##### Consulta:
 		/api/unit/CSS/card/Como
-		
+
 * ##### Respuesta en caso de éxito
 	```
 		{
@@ -456,37 +505,37 @@ Esta operación nos permite borrar una ficha de la unidad especificada
     "photo": false,
     "desc": "En internet hay muchos tutoriales para aprender a como usar css"
 }
-	
+
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se encuentra la ficha)
-		
+
 ### Obtener Imagen de Ficha
 * ##### Descripción
 Esta operación nos permite obtener la imagen de la ficha de la unidad especificada
 * ##### URL:
 		< /card/{type}/image >
-* ##### Operaciones: 
+* ##### Operaciones:
 		GET
 * ##### Parámetros de la URL
 		unitName = String
 		type = String (describe el tipo de ficha que le pasemos)
 * ##### Consulta:
 		/api/unit/CSS/card/Quien/image
-		
+
 * ##### Respuesta en caso de éxito
-		
+
 		En postman muestra la imagen solicitada por pantalla
-		
+
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (Para cuando no se encuentra la imagen en la ficha)
-		
-		
+
+
 ### Subir Imagen
 * ##### Descripción
 Esta operación nos permite subir la imagen a la ficha especificada
 * ##### URL:
 		< /card/{type}/image >
-* ##### Operaciones: 
+* ##### Operaciones:
 		POST
 * ##### Parámetros de la URL
 		unitName = String
@@ -499,16 +548,16 @@ Esta operación nos permite subir la imagen a la ficha especificada
 	  Código de Error : 409 CONFLICT (Para cuando se sube una imagen a una ficha en la que ya hay una imagen subida)
 	  		    400 BAD_REQUEST (Para cuando hay algún error con el archivo subido)
 
-		
 
-		
-		
-		
-		
-		
-		
-		
-	
+
+
+
+
+
+
+
+
+
 ## Solicitudes de Relaciones
 Todas las consultas realizadas en este apartado vendrán precedidas por /api/unit/{unitName} mencionadas anteriormente
 
@@ -517,7 +566,7 @@ Todas las consultas realizadas en este apartado vendrán precedidas por /api/uni
 Esta operación permite mostrar todas las relaciones que se tienen
 * ##### URL:
 	< /context >
-* ##### Operaciones: 
+* ##### Operaciones:
 		GET
 * ##### Consulta:
 		/api/unit/HTML/context
@@ -995,10 +1044,10 @@ Esta operación permite mostrar todas las relaciones que se tienen
 
 ### Obtener Relación
 * ##### Descripción
-Esta operación permite obtener una relacíon de una unidad 
+Esta operación permite obtener una relacíon de una unidad
 * ##### URL:
 		< /relations/{type} >
-* ##### Operaciones: 
+* ##### Operaciones:
 		GET
 * ##### Parámetros de la URL:
 		unitName = String
@@ -1061,17 +1110,17 @@ Esta operación permite obtener una relacíon de una unidad
     "numberOfElements": 2,
     "first": true,
     "empty": false
-}	
+}
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (En caso de que no se encuentre la relación pedida)
-		
+
 ### Crear Relación
 * ##### Descripción
-Esta operación permite crear una relación 
+Esta operación permite crear una relación
 * ##### URL:
 		< /relations >
-* ##### Operaciones: 
+* ##### Operaciones:
 		POST
 * ##### Parámetros de la URL:
 		unitName = String
@@ -1114,13 +1163,13 @@ Esta operación permite crear una relación
 
 * ##### Respuesta en caso de error:
 	  Código de Error : 409 CONFLICT (En caso de que se cree una relación que ya estaba creada)
-		
+
 ### Eliminación Relación
 * ##### Descripción
 Esta operación permite eliminar una relación entre dos unidades
 * ##### URL:
 		< /relations/{type}/related/{unitRelated} >
-* ##### Operaciones: 
+* ##### Operaciones:
 		DELETE
 * ##### Parámetros de la URL:
 		unitName = String
@@ -1143,15 +1192,6 @@ Esta operación permite eliminar una relación entre dos unidades
         "photoClas": true
     }
 }
-	
+
 * ##### Respuesta en caso de error:
 	  Código de Error : 404 NOT FOUND (En caso de que no se encuentre la relación pedida)
-	
-	
-	
-
-
-  
-
-
-
