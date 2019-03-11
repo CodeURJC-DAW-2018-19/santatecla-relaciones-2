@@ -67,7 +67,7 @@
 
 **Diagrama de Clases App**
 
-![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/diagramaClass.PNG?raw=true)
+![Screenshot](https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/diagramaClass.png?raw=true)
 
 **Relaciones de Templates con sus Controllers**
 
