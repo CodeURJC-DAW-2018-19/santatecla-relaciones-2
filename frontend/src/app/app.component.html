@@ -1,0 +1,415 @@
+<td-layout
+    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '240px' : '100%'"
+    [class]="activeTheme"
+>
+    <td-navigation-drawer flex [sidenavTitle]="name" logo="assets:covalent">
+        <mat-nav-list [tdLayoutClose]="!media.query('gt-sm')">
+            <a *ngFor="let item of routes" mat-list-item
+                ><mat-icon matListIcon>{{ item.icon }}</mat-icon
+                >{{ item.title }}</a
+            >
+        </mat-nav-list>
+        <div td-navigation-drawer-menu>
+            <mat-nav-list>
+                <a *ngFor="let item of usermenu" mat-list-item
+                    ><mat-icon matListIcon>{{ item.icon }}</mat-icon
+                    >{{ item.title }}</a
+                >
+            </mat-nav-list>
+        </div>
+    </td-navigation-drawer>
+    <td-layout-nav
+        [toolbarTitle]="(media.registerQuery('gt-xs') | async) ? 'Dashboard' : ''"
+        logo="assets:covalent"
+        navigationRoute="/"
+    >
+        <button mat-icon-button td-menu-button tdLayoutToggle>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <span flex *ngIf="!searchBox.searchVisible"></span>
+            <td-search-box
+                hide-xs
+                flex
+                #searchBox
+                [ngClass]="{ 'push-left push-right mat-whiteframe-z1 bgc-white tc-black': searchBox.searchVisible }"
+                placeholder="search"
+            ></td-search-box>
+            <span>
+                <button mat-icon-button matTooltip="Alerts" [matMenuTriggerFor]="notificationsMenu">
+                    <td-notification-count color="accent" [notifications]="4">
+                        <mat-icon>notifications</mat-icon>
+                    </td-notification-count>
+                </button>
+                <mat-menu #notificationsMenu="matMenu">
+                    <td-menu>
+                        <div td-menu-header class="mat-subhead">Notifications</div>
+                        <mat-nav-list dense>
+                            <ng-template let-last="last" ngFor [ngForOf]="[0, 1, 2]">
+                                <a mat-list-item>
+                                    <mat-icon matListAvatar>today</mat-icon>
+                                    <h4 mat-line><span class="text-wrap">Candy sales are on the rise!</span></h4>
+                                    <p mat-line>22 minutes ago</p>
+                                </a>
+                                <mat-divider *ngIf="!last"></mat-divider>
+                            </ng-template>
+                        </mat-nav-list>
+                        <button mat-button color="accent" td-menu-footer>
+                            See All Notifications
+                        </button>
+                    </td-menu>
+                </mat-menu>
+            </span>
+            <span>
+                <button mat-icon-button matTooltip="More" [mat-menu-trigger-for]="more">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu xPosition="before" #more="matMenu">
+                    <button mat-menu-item *ngIf="activeTheme === 'theme-dark'" (click)="theme('theme-light')">
+                        <mat-icon>brightness_high</mat-icon>
+                        <span>Light Mode</span>
+                    </button>
+                    <button mat-menu-item *ngIf="activeTheme != 'theme-dark'" (click)="theme('theme-dark')">
+                        <mat-icon>brightness_low</mat-icon>
+                        <span>Dark Mode</span>
+                    </button>
+                </mat-menu>
+            </span>
+        </div>
+        <td-layout-manage-list
+            #manageList
+            [opened]="media.registerQuery('gt-sm') | async"
+            [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
+            [sidenavWidth]="!miniNav ? '257px' : '64px'"
+        >
+            <div td-sidenav-content layout="column" layout-fill>
+                <mat-toolbar>
+                    <mat-icon class="push-left-xs" [matTooltip]="!miniNav ? '' : 'Dashboards'" matTooltipPosition="after"
+                        >dashboard</mat-icon
+                    >
+                    <span *ngIf="!miniNav" class="push-left-sm">Dashboards</span>
+                </mat-toolbar>
+                <mat-nav-list flex [tdLayoutManageListClose]="!media.query('gt-sm')">
+                    <ng-template let-item let-index="index" let-last="last" ngFor [ngForOf]="[0, 1, 2, 3]">
+                        <a mat-list-item>
+                            <mat-icon matListIcon [matTooltip]="!miniNav ? '' : 'Dashboard ' + index" matTooltipPosition="after"
+                                >dashboard</mat-icon
+                            >
+                            <span *ngIf="!miniNav">Dashboard {{ index }}</span>
+                        </a>
+                    </ng-template>
+                    <mat-divider></mat-divider>
+                    <a mat-list-item>
+                        <mat-icon matListIcon [matTooltip]="!miniNav ? '' : 'Add Dashboard'" matTooltipPosition="after"
+                            >add</mat-icon
+                        >
+                        <span *ngIf="!miniNav">Add Dashboard</span>
+                    </a>
+                </mat-nav-list>
+                <div class="td-layout-footer pad-sm" layout="row" layout-align="space-between center">
+                    <button type="button" mat-icon-button (click)="toggleMiniNav()">
+                        <mat-icon [@tdRotate]="miniNav">keyboard_arrow_left</mat-icon>
+                    </button>
+                    <span *ngIf="!miniNav" class="mat-caption">&copy; 2019 CodeURJC.</span>
+                </div>
+            </div>
+
+            <mat-sidenav-container flex>
+                <mat-sidenav #sidenav align="end">
+                    <div layout="column" layout-fill>
+                        <mat-toolbar>Settings</mat-toolbar>
+                        <div flex class="mat-content"></div>
+                    </div>
+                </mat-sidenav>
+                <td-layout-nav color="none">
+                    <div td-toolbar-content flex layout="row" layout-align="start center">
+                        <button mat-icon-button tdLayoutManageListToggle>
+                            <mat-icon>menu</mat-icon>
+                        </button>
+                        <span hide-xs>Dashboard 1</span>
+                        <span flex></span>
+                        <span layout="row" class="push-left-sm push-right mat-body-1">
+                            <mat-form-field floatPlaceholder="never" flex>
+                                <input
+                                    matInput
+                                    [max]="maxFromDate"
+                                    readonly
+                                    [(ngModel)]="dateFrom"
+                                    [matDatepicker]="pickerFrom"
+                                />
+                                <mat-datepicker-toggle
+                                    matSuffix
+                                    matTooltip="Start date"
+                                    [for]="pickerFrom"
+                                ></mat-datepicker-toggle>
+                                <mat-datepicker #pickerFrom [startAt]="dateFrom"></mat-datepicker>
+                            </mat-form-field>
+                        </span>
+                        <span hide-xs class="mat-body-2 push-right"> to </span>
+                        <span layout="row" class="mat-body-1">
+                            <mat-form-field floatPlaceholder="never" flex>
+                                <input matInput [max]="maxToDate" readonly [(ngModel)]="dateTo" [matDatepicker]="pickerTo" />
+                                <mat-datepicker-toggle matSuffix matTooltip="End date" [for]="pickerTo"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerTo [startAt]="dateTo"></mat-datepicker>
+                            </mat-form-field>
+                        </span>
+                        <button
+                            matTooltip="Dashboard Settings"
+                            matTooltipPosition="before"
+                            type="button"
+                            mat-icon-button
+                            (click)="sidenav.open()"
+                        >
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                    </div>
+                    <div flex layout-gt-sm="row" tdMediaToggle="gt-xs" layout-wrap [mediaClasses]="['push-sm']">
+                        <div flex-gt-sm="50">
+                            <mat-card>
+                                <mat-card-title>
+                                    <div layout="row" layout-align="start center">
+                                        <span flex>Card title</span>
+                                        <span>
+                                            <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings1">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu xPosition="before" #settings1="matMenu">
+                                                <button mat-menu-item (click)="openTemplate()">Settings</button>
+                                                <mat-divider></mat-divider>
+                                                <button mat-menu-item>Remove</button>
+                                            </mat-menu>
+                                        </span>
+                                    </div>
+                                </mat-card-title>
+                                <mat-divider></mat-divider>
+                                <div [style.height.px]="280" class="push-top-sm">
+                                    <ngx-charts-line-chart
+                                        [scheme]="{ domain: ['#4DD0E1', '#BA68C8', '#FF7043'] }"
+                                        [results]="times"
+                                        [gradient]="gradient"
+                                        [autoScale]="false"
+                                        [xAxis]="true"
+                                        [yAxis]="true"
+                                        [legend]="true"
+                                        [showXAxisLabel]="true"
+                                        [showYAxisLabel]="true"
+                                        [xAxisLabel]="xAxisLabel"
+                                        [yAxisLabel]="yAxisLabel"
+                                        [xAxisTickFormatting]="axisDate"
+                                    >
+                                    </ngx-charts-line-chart>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div flex-gt-sm="50">
+                            <mat-card>
+                                <mat-card-title>
+                                    <div layout="row" layout-align="start center">
+                                        <span flex>Card title</span>
+                                        <span>
+                                            <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings2">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu xPosition="before" #settings2="matMenu">
+                                                <button mat-menu-item>Settings</button>
+                                                <mat-divider></mat-divider>
+                                                <button mat-menu-item>Remove</button>
+                                            </mat-menu>
+                                        </span>
+                                    </div>
+                                </mat-card-title>
+                                <mat-divider></mat-divider>
+                                <div class="pad">
+                                    <div [style.height.px]="250">
+                                        <ngx-charts-bar-vertical-2d
+                                            [scheme]="{ domain: ['#4DD0E1', '#BA68C8', '#FF7043'] }"
+                                            [results]="multi"
+                                            [barPadding]="18"
+                                            [groupPadding]="28"
+                                            [gradient]="true"
+                                            [xAxis]="true"
+                                            [yAxis]="true"
+                                            [legend]="false"
+                                            [showXAxisLabel]="false"
+                                            [showYAxisLabel]="false"
+                                        >
+                                        </ngx-charts-bar-vertical-2d>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div flex-gt-sm="50">
+                            <mat-card>
+                                <mat-card-title>
+                                    <div layout="row" layout-align="start center">
+                                        <span flex>Card title</span>
+                                        <span>
+                                            <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings3">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu xPosition="before" #settings3="matMenu">
+                                                <button mat-menu-item>Settings</button>
+                                                <mat-divider></mat-divider>
+                                                <button mat-menu-item>Remove</button>
+                                            </mat-menu>
+                                        </span>
+                                    </div>
+                                </mat-card-title>
+                                <mat-divider></mat-divider>
+                                <div class="pad-top pad-bottom">
+                                    <div class="overflow-hidden" [style.height.px]="250">
+                                        <div [style.height.px]="270">
+                                            <ngx-charts-area-chart-stacked
+                                                [scheme]="{ domain: ['#4DD0E1', '#BA68C8', '#FF7043'] }"
+                                                [results]="times"
+                                                [gradient]="true"
+                                                [xAxis]="true"
+                                                [yAxis]="true"
+                                                [legend]="false"
+                                                [showXAxisLabel]="true"
+                                                [showYAxisLabel]="true"
+                                                [xAxisLabel]="xAxisLabel"
+                                                [yAxisLabel]="yAxisLabel"
+                                                [xAxisTickFormatting]="axisDate"
+                                            >
+                                            </ngx-charts-area-chart-stacked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div flex-gt-sm="50">
+                            <mat-card>
+                                <mat-card-title>
+                                    <div layout="row" layout-align="start center">
+                                        <span flex>Card title</span>
+                                        <span>
+                                            <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings4">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu xPosition="before" #settings4="matMenu">
+                                                <button mat-menu-item>Settings</button>
+                                                <mat-divider></mat-divider>
+                                                <button mat-menu-item>Remove</button>
+                                            </mat-menu>
+                                        </span>
+                                    </div>
+                                </mat-card-title>
+                                <mat-divider></mat-divider>
+                                <td-data-table [data]="data" [style.height.px]="290"> </td-data-table>
+                            </mat-card>
+                        </div>
+                        <div flex-gt-sm="50">
+                            <mat-card>
+                                <mat-card-title>
+                                    <div layout="row" layout-align="start center">
+                                        <span flex>Card title</span>
+                                        <span>
+                                            <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings5">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu xPosition="before" #settings5="matMenu">
+                                                <button mat-menu-item>Settings</button>
+                                                <mat-divider></mat-divider>
+                                                <button mat-menu-item>Remove</button>
+                                            </mat-menu>
+                                        </span>
+                                    </div>
+                                </mat-card-title>
+                                <mat-divider></mat-divider>
+                                <mat-nav-list>
+                                    <a mat-list-item>
+                                        <mat-icon matListAvatar color="primary">mood</mat-icon>
+                                        <h3 mat-line>Candy</h3>
+                                        <p mat-line>exceeding goal!</p>
+                                        <div flex="100">
+                                            <ngx-charts-linear-gauge
+                                                [scheme]="{ domain: ['#4DD0E1'] }"
+                                                [value]="90"
+                                                [previousValue]="80"
+                                                [min]="0"
+                                                [max]="100"
+                                                [units]="'alerts'"
+                                            >
+                                            </ngx-charts-linear-gauge>
+                                        </div>
+                                    </a>
+                                    <mat-divider mat-inset></mat-divider>
+                                    <a mat-list-item>
+                                        <mat-icon matListAvatar color="accent">sentiment_satisfied</mat-icon>
+                                        <h3 mat-line>Ice Cream</h3>
+                                        <p mat-line>goal almost achieved!</p>
+                                        <div flex="100">
+                                            <ngx-charts-linear-gauge
+                                                [scheme]="{ domain: ['#BA68C8'] }"
+                                                [value]="60"
+                                                [previousValue]="70"
+                                                [min]="0"
+                                                [max]="100"
+                                                [units]="'alerts'"
+                                            >
+                                            </ngx-charts-linear-gauge>
+                                        </div>
+                                    </a>
+                                    <mat-divider mat-inset></mat-divider>
+                                    <a mat-list-item>
+                                        <mat-icon matListAvatar color="warn">sentiment_very_dissatisfied</mat-icon>
+                                        <h3 mat-line>Pastry</h3>
+                                        <p mat-line>falling short of goal!</p>
+                                        <div flex="100">
+                                            <ngx-charts-linear-gauge
+                                                [scheme]="{ domain: ['#FF7043'] }"
+                                                [value]="40"
+                                                [previousValue]="60"
+                                                [min]="0"
+                                                [max]="100"
+                                                [units]="'alerts'"
+                                            >
+                                            </ngx-charts-linear-gauge>
+                                        </div>
+                                    </a>
+                                </mat-nav-list>
+                            </mat-card>
+                        </div>
+                    </div>
+                </td-layout-nav>
+            </mat-sidenav-container>
+        </td-layout-manage-list>
+        <td-layout-footer>
+            <div layout="row" layout-align="start center">
+                <span class="mat-caption"
+                    >Made with <mat-icon class="text-md">favorite</mat-icon> using
+                    <a href="http://getcovalent.com" class="text-nodecoration tc-teal-600">Covalent</a>, built on Angular v7 +
+                    Angular Material + NGX-Charts.</span
+                >
+            </div>
+        </td-layout-footer>
+    </td-layout-nav>
+</td-layout>
+
+<ng-template #dialogContent let-dialogRef="dialogRef">
+    <div layout="column" layout-fill>
+        <h2 mat-dialog-title>
+            Card Settings
+        </h2>
+        <mat-divider></mat-divider>
+        <mat-dialog-content flex>
+            <form class="pad">
+                <div layout="row" layout-margin>
+                    <mat-form-field flex>
+                        <input matInput placeholder="Card order" value="1" type="number" />
+                    </mat-form-field>
+                    <mat-form-field flex>
+                        <input matInput placeholder="Card width" value="100" type="number" />
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-dialog-content>
+        <mat-divider></mat-divider>
+        <mat-dialog-actions align="end">
+            <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Close</button>
+            <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Save</button>
+        </mat-dialog-actions>
+    </div>
+</ng-template>
