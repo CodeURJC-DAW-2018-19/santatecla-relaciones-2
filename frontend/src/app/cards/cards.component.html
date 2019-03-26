@@ -1,3 +1,22 @@
-<p>
-  cards works!
-</p>
+<mat-card class="card" >
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Relaciones">
+      <div>
+        <mat-chip-list>
+          <mat-chip [routerLink]="['/formTheme']" color="primary" selected>Añadir</mat-chip>
+        </mat-chip-list>
+        <!--<div *ngFor = "let theme of themes" >
+        <mat-card class="card" [routerLink]="['/']">
+            {{theme.name}}
+          <button mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" [routerLink]="['/formTheme']">
+            <mat-icon>border_color</mat-icon>
+          </button>
+        </mat-card>
+      </div>-->
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

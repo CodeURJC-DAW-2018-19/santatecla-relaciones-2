@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import {
+    MatChipsModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,
@@ -59,9 +60,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { IndexComponent } from './index/index.component';
 import { UnitsComponent } from './units/units.component';
 import { CardsComponent } from './cards/cards.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
     imports: [
+        MatChipsModule,
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -91,6 +95,7 @@ import { CardsComponent } from './cards/cards.component';
         MatDatepickerModule,
         MatNativeDateModule,
         MatSliderModule,
+        MatInputModule,
         MatAutocompleteModule,
         /** Covalent Modules */
         CovalentCommonModule,
@@ -110,7 +115,7 @@ import { CardsComponent } from './cards/cards.component';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent],
+    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent, LoginComponent],
     bootstrap: [AppComponent],
 })
 export class AppModule {

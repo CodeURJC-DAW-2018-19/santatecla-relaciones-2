@@ -1,0 +1,40 @@
+<div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+  <div flex-gt-sm="100">
+       <mat-card>
+          <mat-card-title layout>                       
+              <!--<mat-form-field class="text-sm" flex>
+                  <input matInput placeholder="Buscar..." />
+                  <span matSuffix><mat-icon>search</mat-icon></span>
+              </mat-form-field>-->
+          </mat-card-title>
+                  <mat-list class="pull-top">
+                      <mat-list-item>  
+                      <mat-form-field class="text-md">
+                          <input matInput placeholder="Buscar..." />
+                          <span matSuffix><mat-icon>search</mat-icon></span>
+                      </mat-form-field>
+                      <span flex></span>
+                      </mat-list-item>
+                      <mat-list-item>
+                          <mat-icon matListAvatar>apps</mat-icon>
+                          <h3 matLine>LOGIN</h3>
+                          <span flex></span>
+                         
+                      </mat-list-item>
+                          <!--<a mat-list-item *ngFor="let item of routes">
+                              <mat-icon matListAvatar>delete</mat-icon>
+                              <h3 matLine><a href= "./units/units.">{{item.title}}</a></h3>
+                              <p matLine> Item Description </p>
+                              <span flex></span>
+                            
+                          
+                          </a>-->
+                  </mat-list>
+                  <mat-card-actions>
+                          <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
+                            <span>View More</span>
+                          </a>
+                        </mat-card-actions>
+              </mat-card>
+  </div>
+</div>

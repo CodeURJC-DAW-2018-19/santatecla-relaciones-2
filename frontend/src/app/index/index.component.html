@@ -1,3 +1,42 @@
-<p>
-  index works!
-</p>
+<div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+  <div flex-gt-sm="100">
+       <mat-card>
+          <mat-card-title layout>                       
+                <span><h1>RelMan</h1></span> 
+                
+          </mat-card-title>
+          <mat-list>
+            <mat-list-item>
+                <mat-icon matListAvatar>apps</mat-icon>
+                <h2 matLine>Unidades</h2>
+                <span flex></span> 
+                        
+                                               
+            </mat-list-item>
+            </mat-list>
+            <mat-divider></mat-divider>
+            
+            <mat-list>
+                <mat-list-item>
+                    <a matListAvatar mat-icon-button matTooltip="Delete" color="primary"[routerLink]="['/login']"><mat-icon>delete</mat-icon></a>
+                    <h3 matLine><a href= "./units/units.">{{item.title}}</a></h3>
+                    <p matLine> Item Description </p>
+                </mat-list-item>
+
+                 <!--<a mat-list-item *ngFor="let item of routes">
+                      <mat-icon matListAvatar>delete</mat-icon>
+                      <h3 matLine><a href= "./units/units.">{{item.title}}</a></h3>
+                      <p matLine> Item Description </p>
+                      <span flex></span>
+                    
+                  
+                  </a>-->
+            </mat-list>
+            <mat-card-actions>
+                    <a mat-button color="primary" class="text-upper" [routerLink]="['/login']">
+                        <span>Ver más</span>
+                    </a>
+                </mat-card-actions>
+        </mat-card>
+  </div>
+</div>

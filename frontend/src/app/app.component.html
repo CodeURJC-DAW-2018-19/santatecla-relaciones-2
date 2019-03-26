@@ -1,7 +1,7 @@
 <td-layout>
-  <td-layout-nav class="bgc-dark-purple-B15">
-    <div class="bgc-dark-purple-B15" td-toolbar-content layout="row" layout-align="start center" flex >
-      <span [routerLink]="['/']" class="cursor-pointer"><mat-icon>home</mat-icon></span>
+  <td-layout-nav >
+    <div  td-toolbar-content layout="row" layout-align="start center" flex >
+      <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan" target="_blank"><mat-icon>home</mat-icon></a>
       
       <mat-list>
               <mat-list-item >
@@ -14,40 +14,8 @@
               </mat-list-item>
       </mat-list>
       <span flex></span>
-      <a mat-icon-button matTooltip="Login" href="https://teradata.github.io/covalent/" target="_blank"><mat-icon>person</mat-icon></a>
-    </div>
-    <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
-      <div flex-gt-sm="100">
-           <mat-card>
-              <mat-card-title layout>                       
-                  <mat-form-field class="text-sm" flex>
-                      <input matInput placeholder="Buscar..." />
-                      <span matSuffix><mat-icon>search</mat-icon></span>
-                  </mat-form-field>
-              </mat-card-title>
-                      <mat-list class="pull-top">
-                          <mat-list-item>
-                              <mat-icon matListAvatar>apps</mat-icon>
-                              <h3 matLine>Unidades</h3>
-                              <span flex></span>
-                             
-                          </mat-list-item>
-                              <a mat-list-item *ngFor="let item of routes">
-                                  <mat-icon matListAvatar>delete</mat-icon>
-                                  <h3 matLine><a href= "./units/units."{{item.title}} </h3>
-                                  <p matLine> Item Description </p>
-                                  <span flex></span>
-                                
-                              
-                              </a>
-                      </mat-list>
-                      <mat-card-actions>
-                              <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
-                                <span class="tc-purple-900">View More</span>
-                              </a>
-                            </mat-card-actions>
-                  </mat-card>
-      </div>
+      <a mat-icon-button matTooltip="Login" [routerLink]="['/login']"><mat-icon>person</mat-icon></a>
+    
     </div>
     <router-outlet></router-outlet>
   </td-layout-nav>
