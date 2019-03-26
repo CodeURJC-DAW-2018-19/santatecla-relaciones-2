@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 
 import {
     MatButtonModule,
@@ -52,9 +51,14 @@ import {
     CovalentDataTableModule,
     CovalentMessageModule,
 } from '@covalent/core';
+import { routing } from './app.routing';
+
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DomSanitizer } from '@angular/platform-browser';
+import { IndexComponent } from './index/index.component';
+import { UnitsComponent } from './units/units.component';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
     imports: [
@@ -104,8 +108,9 @@ import { DomSanitizer } from '@angular/platform-browser';
         CovalentMessageModule,
         /** Additional **/
         NgxChartsModule,
+        routing,
     ],
-    declarations: [AppComponent, HelloComponent],
+    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent],
     bootstrap: [AppComponent],
 })
 export class AppModule {
