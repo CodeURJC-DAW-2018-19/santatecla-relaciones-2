@@ -5,6 +5,8 @@ import { JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
@@ -35,6 +37,7 @@ import {
     MatNativeDateModule,
     MatSliderModule,
     MatAutocompleteModule,
+    MatSnackBar,
 } from '@angular/material';
 
 import {
@@ -49,8 +52,10 @@ import {
     CovalentPagingModule,
     CovalentNotificationsModule,
     CovalentMenuModule,
+    CovalentVirtualScrollModule,
     CovalentDataTableModule,
     CovalentMessageModule,
+    CovalentTabSelectModule,
 } from '@covalent/core';
 import { routing } from './app.routing';
 
@@ -61,10 +66,12 @@ import { IndexComponent } from './index/index.component';
 import { UnitsComponent } from './units/units.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
     imports: [
+        CovalentVirtualScrollModule,
         MatChipsModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -72,6 +79,8 @@ import { LoginComponent } from './login/login.component';
         RouterModule.forRoot([]),
         HttpClientModule,
         JsonpModule,
+        MatSnackBarModule,
+        CovalentTabSelectModule,
         /** Material Modules */
         MatButtonModule,
         MatListModule,
@@ -115,7 +124,7 @@ import { LoginComponent } from './login/login.component';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent, LoginComponent],
+    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -5,15 +5,17 @@
   <title>RelMan</title>
   <base href="/">
   <link rel="icon" type="image/x-icon" href="assets/logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="@angular/material/prebuilt-themes/pink-bluegrey.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   </head>
-<body>
+  <body class="mat-app-background">
   <my-app>
     <div style="padding: 20%;text-align:center;height:100%;">
       <img alt="Logo de RelMan" src="assets/logo.png" width="100">
       <h3>Bienvenido a RelMan</h3>
+      <mat-progress-spinner mode="indeterminate"></mat-spinner>
+
     </div>
   </my-app>
 </body>
