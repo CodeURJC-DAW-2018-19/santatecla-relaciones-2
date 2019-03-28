@@ -66,7 +66,7 @@ import { UnitsComponent } from './units/units.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { UnitService } from './unit.service';
+import { UnitService } from './index/unit.service';
 
 
 @NgModule({

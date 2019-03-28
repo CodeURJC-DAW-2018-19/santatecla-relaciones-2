@@ -7,8 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import urjcdaw11.relman.cards.Card;
-import urjcdaw11.relman.cards.CardService;
 import urjcdaw11.relman.relations.RelationService;
 import urjcdaw11.relman.units.Unit;
 import urjcdaw11.relman.units.UnitService;
@@ -26,9 +24,6 @@ public class ApiUnitsController {
 
 	@Autowired
 	private UnitService unitServ;
-
-	@Autowired
-	private CardService cardServ;
 
 	@Autowired
 	private RelationService relationServ;

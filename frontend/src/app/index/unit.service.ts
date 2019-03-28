@@ -3,9 +3,9 @@ import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 import { Unit } from './unit.model';
+import { Page } from '../page.module';
 
 const BASE_URL = '/api/';
 
@@ -14,14 +14,13 @@ export class UnitService {
 
 	constructor(private http: Http, private httpC:HttpClient) { }
 
-
-	getUnits(search: string, page: number | string): Observable<Unit[]> {
+	getUnits(search: string, page: number | string): Observable<Page> {
 		let url: string = BASE_URL + "units?page=" + page;
 		if(search != null){
 			url += "&search=" + search;
 		}
 		return this.http.get(url)
-			.map(response => response.json().content)
+			.map(response => response.json())
 			.catch(error => this.handleError(error));
 
 	}

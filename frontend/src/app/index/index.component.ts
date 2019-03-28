@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Unit } from '../unit.model';
-import { UnitService } from '../unit.service';
+import { Unit } from './unit.model';
+import { UnitService } from './unit.service';
 
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { Page } from '../page.module';
 
 @Component({
   selector: 'app-index',
@@ -13,16 +13,38 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class IndexComponent implements OnInit {
-    units:Unit[];
-  
-    constructor(private router: Router, private service: UnitService) { }
-  
-    ngOnInit() {
-      this.service.getUnits(null,0).subscribe(
-        units => this.units = units,
-        error => console.log(error)
-      );
+  units:Unit[];
+  lastRequestedPage:Page;
+  pageNumber:number;
+  search:string;
+
+  constructor(private router: Router, private service: UnitService) { }
+
+  ngOnInit() {
+    this.pageNumber = 0;
+    this.getPage();
+  }
+
+  requestNextPage() {
+    this.pageNumber++;
+    this.getPage();
+  }
+
+  getPage() {
+    this.service.getUnits(this.search,this.pageNumber).subscribe(
+      page => this.addToPage(page),
+      error => console.log(error)
+    );
+  }
+
+  addToPage(page: Page): void {
+    this.lastRequestedPage = page;
+    if(this.pageNumber === 0) {
+      this.units = page.content;
+    } else {
+      this.units = this.units.concat(page.content);
     }
+  }
 
 }
   /*
