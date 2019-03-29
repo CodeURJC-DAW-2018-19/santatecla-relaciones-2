@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
   units:Unit[];
   lastRequestedPage:Page;
   pageNumber:number;
-  search:string;
+  searchInputTerm:string;
 
   constructor(private router: Router, private service: UnitService) { }
 
@@ -31,7 +31,7 @@ export class IndexComponent implements OnInit {
   }
 
   getPage() {
-    this.service.getUnits(this.search,this.pageNumber).subscribe(
+    this.service.getUnits(this.searchInputTerm,this.pageNumber).subscribe(
       page => this.addToPage(page),
       error => console.log(error)
     );
@@ -45,6 +45,8 @@ export class IndexComponent implements OnInit {
       this.units = this.units.concat(page.content);
     }
   }
+
+
 
 }
   /*
