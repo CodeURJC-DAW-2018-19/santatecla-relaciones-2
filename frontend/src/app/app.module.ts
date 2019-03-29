@@ -63,7 +63,6 @@ import { routing } from './app.routing';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IndexComponent } from './index/index.component';
-import { UnitsComponent } from './units/units.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -124,7 +123,7 @@ import { RegisterComponent } from './register/register.component';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, UnitsComponent, CardsComponent, LoginComponent, RegisterComponent],
+    declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
 })
 export class AppModule {
