@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { JsonpModule } from '@angular/http';
+import { JsonpModule, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
-
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,10 +65,12 @@ import { IndexComponent } from './index/index.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UnitService } from './index/unit.service';
 
 
 @NgModule({
     imports: [
+        HttpModule,
         CovalentVirtualScrollModule,
         MatChipsModule,
         BrowserModule,
@@ -125,6 +126,7 @@ import { RegisterComponent } from './register/register.component';
     ],
     declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
+    providers:[UnitService]
 })
 export class AppModule {
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {

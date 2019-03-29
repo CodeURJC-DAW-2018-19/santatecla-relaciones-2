@@ -1,4 +1,4 @@
-import { Unit } from './unit.model';
+import { Unit } from '../index/unit.model';
 
 export interface Card {
 	type: string;

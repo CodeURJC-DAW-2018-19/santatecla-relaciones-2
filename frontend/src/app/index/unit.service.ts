@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Unit } from './unit.model';
+import { Page } from '../page.module';
 
-const BASE_URL = 'https://localhost:8080/api/';
+const BASE_URL = '/api/';
 
 @Injectable()
 export class UnitService {
 
-	constructor(private http: Http) { }
+	constructor(private http: Http, private httpC:HttpClient) { }
 
-	getUnits(search: string, page: number | string) {
+	getUnits(search: string, page: number | string): Observable<Page> {
 		let url: string = BASE_URL + "units?page=" + page;
 		if(search != null){
 			url += "&search=" + search;
@@ -20,6 +22,7 @@ export class UnitService {
 		return this.http.get(url)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
+
 	}
 
 	getUnit(name: string) {
