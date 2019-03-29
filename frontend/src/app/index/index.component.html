@@ -3,7 +3,7 @@
       <mat-card >
           <mat-card-title >
             <div layout="row" layout-align="start center">
-              <span flex>Card title</span>
+              <span flex>UNIDADES</span>
               <span>
                 <td-search-box backIcon="clear" placeholder="Buscar" [showUnderline]="false" [alwaysVisible]="false">
                   </td-search-box>
@@ -11,16 +11,6 @@
             </div>
           </mat-card-title>
           <mat-card-content layout="row" layout-align="space-between">
-              <mat-list>
-
-
-                      <mat-list-item>
-                          <a matListAvatar mat-icon-button matTooltip="Delete" color="primary"><mat-icon>delete</mat-icon></a>
-                          <h3 matLine><a  [routerLink]="['/cards']">Elemento</a></h3>
-
-                      </mat-list-item>
-
-                </mat-list>
 
               <!--<mat-list>
                   <mat-list-item>
@@ -38,13 +28,19 @@
 
                     </a>
               </mat-list>-->
-              <div></div>
+          <mat-divider></mat-divider>
+               <mat-nav-list>
+                  <mat-list-item [ngStyle]="{ cursor: 'auto' }" *ngFor="let unit of units">
+                    <a matListAvatar mat-icon-button matTooltip="Delete" color="primary"><mat-icon>delete</mat-icon></a>
+                    <h3 matLine><a  [routerLink]="['/cards']">{{ unit.name }}</a></h3>
+                  </mat-list-item>
+               </mat-nav-list>
               <mat-card-actions>
-                  <a mat-button color="primary" class="text-upper" [routerLink]="['/login']">
+                  <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
                       <span>Ver más</span>
                   </a>
               </mat-card-actions>
-            </mat-card-content>
+          </mat-card-content>
 
         </mat-card>
   </div>
