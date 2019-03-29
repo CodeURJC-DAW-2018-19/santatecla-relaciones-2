@@ -46,37 +46,11 @@ export class IndexComponent implements OnInit {
     }
   }
 
+  removeUnit(unit: Unit){
+    console.log(unit);
+    this.service.removeUnit(unit)
+    .subscribe((_) => this.getPage(), (error) => console.error(error));
+  }
 
 
 }
-  /*
-  implements OnInit
-  _asyncService: any;
-  _loadingService: any;
-
-  constructor() { }
-  
-  data: any[] = [];
-  page: number = 0;
-
-  ngOnInit(): void {
-    this.fetch();
-  }
-
-  fetchMore(): void {
-    this.page++;
-    this.fetch();
-  }
-
-  private fetch(): void {
-    this._loadingService.register('loading');
-    this._asyncService.get(this.page)
-      .pipe(
-        finalize(() => this._loadingService.resolve('loading')),
-      )
-      .subscribe((results: any[]) => {
-        this.data = this.data.concat(results);
-      });
-  }*/
-
-

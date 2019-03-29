@@ -6,14 +6,17 @@ import { Observable } from 'rxjs';
 
 import { Unit } from './unit.model';
 import { Page } from '../page.module';
+import { catchError } from 'rxjs/operators';
 
 const BASE_URL = '/api/';
 
 @Injectable()
 export class UnitService {
 
+	
 	constructor(private http: Http, private httpC:HttpClient) { }
 
+	
 	getUnits(search: string, page: number | string): Observable<Page> {
 		let url: string = BASE_URL + "units?page=" + page;
 		if(search != null){
@@ -37,10 +40,9 @@ export class UnitService {
 			.catch(error => this.handleError(error));
 	}
 
-	removeUnit(name: string) {
-		return this.http.delete(BASE_URL + "unit/" + name)
-			.map(response => response.json())
-			.catch(error => this.handleError(error));
+	removeUnit(unit: Unit) {
+		return this.httpC.delete<Unit>(BASE_URL + "unit/" + unit.name)
+			.pipe(catchError((error) => this.handleError(error)));
 	}
 
 	getUMLImage(name: string, typeImage: string) {
