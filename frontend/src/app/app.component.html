@@ -2,17 +2,15 @@
   <td-layout-nav>
     <div  td-toolbar-content layout="row" layout-align="start center" flex >
       <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan"><mat-icon>home</mat-icon></a>
-      
-      <mat-list>
-              <mat-list-item >
-                <p matLine>
-                  <span *ngFor="let item of routes"> 
-                      <a  href="{{item.route}}" class="tc-white">{{ item.title }}</a>
-                  </span>
-                  
-                </p>
-              </mat-list-item>
-      </mat-list>
+      <div layout="row" layout-align="space-between" flex>
+        <mat-list-item>
+          HTML 
+        </mat-list-item>
+        
+        <mat-list-item>
+         CSS 
+        </mat-list-item>
+      </div>
       <span flex></span>
       <a mat-icon-button matTooltip="Login" [routerLink]="['/login']"><mat-icon>people</mat-icon></a>
     </div>

@@ -2,24 +2,6 @@
   <mat-tab-group dynamicHeight>
     <mat-tab label="Relaciones">
       <div  flex="95" layout-wrap >
-          <!--<mat-grid-list cols="2" rowHeight="1:1.4"    gutterSize="10px"  >
-              <mat-grid-tile
-                  *ngFor="let tile of tiles">
-                  <mat-card  >
-                    <mat-card-header>
-                      <mat-card-title>My Card</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      {{tile.text}}
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                  </mat-card>
-              </mat-grid-tile>
-            </mat-grid-list>-->
         <mat-grid-list cols="3" gutterSize="1">
           <mat-grid-tile>
               <div class="mycard" flex-gt-sm="95">
@@ -34,9 +16,7 @@
                               <mat-icon>add</mat-icon>
                             </button>
                             <mat-menu xPosition="before" #settings1="matMenu">
-                              <button mat-menu-item (click)="openTemplate()"> Settings </button>
-                              <mat-divider></mat-divider>
-                              <button mat-menu-item> Remove </button>
+                              <button mat-menu-item (click)="openTemplate()">Añadir</button>
                             </mat-menu>
                           </span>
                         </div>
@@ -53,27 +33,11 @@
                                 
                             </mat-list>
                             
-                          <!--<mat-list>
-                              <mat-list-item>
-                                  <a matListAvatar mat-icon-button matTooltip="Delete" color="primary"[routerLink]="['/login']"><mat-icon>delete</mat-icon></a>
-                                  <h3 matLine><a href= "./units/units.">{{item.title}}</a></h3>
-                                  <p matLine> Item Description </p>
-                              </mat-list-item>-->
-              
-                               <!--<a mat-list-item *ngFor="let item of routes">
-                                    <mat-icon matListAvatar>delete</mat-icon>
-                                    <h3 matLine><a href= "./units/units.">{{item.title}}</a></h3>
-                                    <p matLine> Item Description </p>
-                                    <span flex></span>
-                                  
-                                
-                                </a>
-                          </mat-list>-->
                           <div></div>
                           <mat-card-actions >
                             <div layout="row" LayoutAlign="center">
                               <a mat-raised-button class="text-upper" color="primary">
-                                Crear usuario
+                                Cargar Diagrama
                             </a>
                             </div>
                           </mat-card-actions>
@@ -93,7 +57,7 @@
                     <div></div>
                     <mat-card-actions layout="column">
                         <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
-                          <span>Crear usuario</span>
+                          <span>Cargar diagrama</span>
                       </a>
                     </mat-card-actions>
                   </mat-card-content>
@@ -104,104 +68,42 @@
       </div>
     </mat-tab>
     <mat-tab label="Unidades">
-        <div >
-            <mat-grid-list cols="1" rowHeight="7:1">
+        <div>
+            <mat-grid-list cols="1" rowHeight="5:1">
               <mat-grid-tile>
-                  <div flex="98">
-                      <mat-card>
-                          <mat-card-title>
-                            <div layout="row" layout-align="start center">
-                              <span flex>Card title</span>
-                              <span>
-                                <button mat-icon-button
-                                        matTooltip="Card settings"
-                                        [mat-menu-trigger-for]="settings1">
-                                  <mat-icon>more_vert</mat-icon>
-                                </button>
-                                <mat-menu xPosition="before" #settings1="matMenu">
-                                  <button mat-menu-item (click)="openTemplate()"> Settings </button>
-                                  <mat-divider></mat-divider>
-                                  <button mat-menu-item> Remove </button>
-                                </mat-menu>
-                              </span>
-                            </div>
-                          </mat-card-title>
-                          <mat-divider></mat-divider>
-                          <mat-card-content layout="row" layout-align="space-between">
-                              <div></div>
-                              <mat-card-actions layout="column">
-                                  <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
-                                    <span>Crear usuario</span>
-                                </a>
-                              </mat-card-actions>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                  <div  flex="98">
-                      <mat-card>
-                          <mat-card-title>
-                            <div layout="row" layout-align="start center">
-                              <span flex>Card title</span>
-                              <span>
-                                <button mat-icon-button
-                                        matTooltip="Card settings"
-                                        [mat-menu-trigger-for]="settings1">
-                                  <mat-icon>more_vert</mat-icon>
-                                </button>
-                                <mat-menu xPosition="before" #settings1="matMenu">
-                                  <button mat-menu-item (click)="openTemplate()"> Settings </button>
-                                  <mat-divider></mat-divider>
-                                  <button mat-menu-item> Remove </button>
-                                </mat-menu>
-                              </span>
-                            </div>
-                          </mat-card-title>
-                          <mat-divider></mat-divider>
-                          <mat-card-content layout="row" layout-align="space-between">
-                              <div></div>
-                              <mat-card-actions layout="column">
-                                  <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
-                                    <span>Crear usuario</span>
-                                </a>
-                              </mat-card-actions>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                  <div flex="98">
-                      <mat-card>
-                          <mat-card-title>
-                            <div layout="row" layout-align="start center">
-                              <span flex>Card title</span>
-                              <span>
-                                <button mat-icon-button
-                                        matTooltip="Card settings"
-                                        [mat-menu-trigger-for]="settings1">
-                                  <mat-icon>more_vert</mat-icon>
-                                </button>
-                                <mat-menu xPosition="before" #settings1="matMenu">
-                                  <button mat-menu-item (click)="openTemplate()"> Settings </button>
-                                  <mat-divider></mat-divider>
-                                  <button mat-menu-item> Remove </button>
-                                </mat-menu>
-                              </span>
-                            </div>
-                          </mat-card-title>
-                          <mat-divider></mat-divider>
-                          <mat-card-content layout="row" layout-align="space-between">
-                              <div></div>
-                              <mat-card-actions layout="column">
-                                  <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
-                                    <span>Crear usuario</span>
-                                </a>
-                              </mat-card-actions>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-              </mat-grid-tile>
+                <div class="mycard" flex-gt-sm="95">
+                    <mat-card >
+                        <mat-card-title >
+                          <div layout="row" layout-align="start center">
+                            <span flex>Card title</span>
+                            <span>
+                              <button mat-icon-button
+                                      matTooltip="Card settings"
+                                      [mat-menu-trigger-for]="settings1">
+                                <mat-icon>add</mat-icon>
+                              </button>
+                              <mat-menu xPosition="before" #settings1="matMenu">
+                                <button mat-menu-item (click)="openTemplate()">Añadir</button>
+                              </mat-menu>
+                            </span>
+                          </div>
+                        </mat-card-title>
+                        <mat-card-content layout="row" layout-align="space-between">
+                            
+                              
+                            <div></div>
+                            <mat-card-actions >
+                              <div layout="row" LayoutAlign="center">
+                                <a mat-raised-button class="text-upper" color="primary">
+                                  Añadir imagen
+                              </a>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+            </mat-grid-tile>
+          
              
             </mat-grid-list>   
           </div>
@@ -209,3 +111,49 @@
   </mat-tab-group>
 </mat-card>
 
+<ng-template #dialogContent let-dialogRef="dialogRef">
+  <div layout="column" layout-fill>
+    <h2 mat-dialog-title>
+      Añadir
+    </h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content flex>
+      <form class="pad">
+        <div layout="row" layout-margin>
+          <mat-form-field flex>
+            <input matInput placeholder="Nombre" value="" type="text">
+          </mat-form-field>
+         
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions>
+      <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
+      <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Guardar</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
+<ng-template #close let-dialogRef="close">
+  <div layout="column" layout-fill>
+    <h2 mat-dialog-title>
+      Card Settings
+    </h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content flex>
+      <form class="pad">
+        <div layout="row" layout-margin>
+          
+          <mat-form-field flex>
+            <input matInput placeholder="Card width" value="100" type="number">
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions>
+      <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Close</button>
+      <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Save</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
