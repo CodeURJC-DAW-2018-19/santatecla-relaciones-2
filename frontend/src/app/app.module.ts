@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TemplateRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { JsonpModule, HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+
+import { ErrorInterceptor } from './login/error.interceptor';
+import { BasicAuthInterceptor } from './login/auth.interceptor';
 
 import { AppComponent } from './app.component';
 
@@ -66,6 +69,7 @@ import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UnitService } from './index/unit.service';
+import { LoginService } from './login/login.service';
 
 
 @NgModule({
@@ -126,7 +130,8 @@ import { UnitService } from './index/unit.service';
     ],
     declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
-    providers:[UnitService]
+    providers:[UnitService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },]
 })
 export class AppModule {
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {

@@ -1,3 +1,23 @@
+<ng-container *ngIf="!loginService.isLogged">
+    	<span>
+                <button mat-button (click)='openLoginDialog()'>
+                    Login
+                </button>
+        </span>     
+ </ng-container>
+
+ <ng-container *ngIf="loginService.isLogged">
+        <span>
+            {{loginService.user.name}}
+        </span>
+        <span>
+            <button mat-button (click)='logOut()'>
+                Logout
+            </button>
+        </span>
+    </ng-container>
+
+ <ng-template #loginDialog let-dialogRef="dialogRef">
 <div>
   <div>
        <mat-card>
@@ -7,14 +27,13 @@
                         <h4>Introduce tu usuario</h4>
                         <mat-form-field>
                             <mat-label>Usuario</mat-label>
-                                <input matInput placeholder="Usuario">
+                                <input #user matInput placeholder="Usuario">
                         </mat-form-field>
                         <h4>Introduce tu contraseña</h4>
                         <mat-form-field>
                             <mat-label>Contraseña</mat-label>
-                                <input matInput placeholder="Contraseña">
+                                <input #pass matInput placeholder="Contraseña" type="password">
                         </mat-form-field>
-                        
                         
                         <div layout="column">
                                 <a mat-stroked-button class="text-upper" color="primary" [routerLink]="['/register']">
@@ -23,12 +42,10 @@
                         </div>
                     </div> 
                     </form>
-                    
-                        
                     </mat-card-content>        
             <mat-card-actions>
                 <div layout="column">
-                        <a mat-raised-button (click)="openSnackBar('Bienvenido','Cerrar')" class="text-upper" color="primary" [routerLink]="['/']">
+                        <a mat-raised-button (click)="logIn($event, user.value, pass.value)" class="text-upper" color="primary" [routerLink]="['/']">
                             <span>Acceder</span>
                         </a>
                 </div>
@@ -36,3 +53,4 @@
         </mat-card>
   </div>
 </div>
+</ng-template>

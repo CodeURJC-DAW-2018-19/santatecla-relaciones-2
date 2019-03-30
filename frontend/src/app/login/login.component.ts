@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import {MatSnackBar, MatDialogRef, MatDialog} from '@angular/material';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,18 +9,46 @@ import {MatSnackBar} from '@angular/material';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+  @ViewChild('loginDialog') loginDialog: TemplateRef<any>;
+  dialogRef: MatDialogRef<any, any>;
 
-  constructor(private snackBar: MatSnackBar) { 
-    
+  constructor(public dialog: MatDialog,private snackBar: MatSnackBar, private loginService:LoginService, private router:Router) { 
   }
+
+  openLoginDialog() {
+    this.dialogRef = this.dialog.open(this.loginDialog, {
+        width: '50%',
+        height: '50%',
+    });
+}
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
 
-  ngOnInit() {
-  }
+  logIn(event: any, user: string, pass: string) {
+    event.preventDefault();
+
+    this.loginService.logIn(user, pass).subscribe(
+        (u) => {
+            console.log(u);
+            this.dialogRef.close();
+        },
+        (error) => alert('Invalid user or password'),
+    );
+}
+
+logOut() {
+    this.loginService.logOut().subscribe(
+        (response) => {
+            this.router.navigate(['/']);
+        },
+        (error) => console.log('Error when trying to log out: ' + error),
+    );
+}
+
 
 }
