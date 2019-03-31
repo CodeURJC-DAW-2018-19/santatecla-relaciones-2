@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Unit } from './unit.model';
 import { UnitService } from './unit.service';
+import { LoginService } from '../login/login.service';
 
 import { Router } from '@angular/router';
 import { Page } from '../page.module';
@@ -18,7 +19,7 @@ export class IndexComponent implements OnInit {
   pageNumber:number;
   searchInputTerm:string;
 
-  constructor(private router: Router, private service: UnitService) { }
+  constructor(private router: Router, private service: UnitService, private loginService:LoginService) { }
 
   ngOnInit() {
     this.pageNumber = 0;
@@ -33,6 +34,13 @@ export class IndexComponent implements OnInit {
   getPage() {
     this.service.getUnits(this.searchInputTerm,this.pageNumber).subscribe(
       page => this.addToPage(page),
+      error => console.log(error)
+    );
+  }
+
+  getPageSearch(){
+    this.service.getUnitSearch(this.searchInputTerm).subscribe(
+      page => this.units = page.content,
       error => console.log(error)
     );
   }

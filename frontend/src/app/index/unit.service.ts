@@ -18,10 +18,18 @@ export class UnitService {
 
 	
 	getUnits(search: string, page: number | string): Observable<Page> {
-		let url: string = BASE_URL + "units?page=" + page;
-		if(search != null){
-			url += "&search=" + search;
-		}
+			let url: string = BASE_URL + "units?page=" + page;
+			if(search != null){
+				url += "&search=" + search;
+			}
+		return this.http.get(url)
+			.map(response => response.json())
+			.catch(error => this.handleError(error));
+
+	}
+
+	getUnitSearch(search: string): Observable<Page> {
+		let url: string = BASE_URL + "units?search="+search;
 		return this.http.get(url)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
