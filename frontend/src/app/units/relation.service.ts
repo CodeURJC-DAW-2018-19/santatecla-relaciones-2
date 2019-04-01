@@ -4,13 +4,15 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Relation } from './relation.model';
+import { LoginService } from '../login/login.service';
+import { HttpHeaders } from '@angular/common/http';
 
 const BASE_URL = 'https://localhost:8080/api/unit/';
 
 @Injectable()
 export class RelationService {
 
-	constructor(private http: Http) { }
+	constructor(private http: Http, private loginService:LoginService) { }
 
 	getContext(unitName: string, page: number | string) {
 		return this.http.get(BASE_URL + unitName + "/context?page=" + page)
@@ -19,6 +21,7 @@ export class RelationService {
 	}
 
 	getRelationsByType(unitName: string, type: string, page: number | string) {
+		let url =BASE_URL + unitName + "/relations/" + type + "?page=" + page;
 		return this.http.get(BASE_URL + unitName + "/relations/" + type + "?page=" + page)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));

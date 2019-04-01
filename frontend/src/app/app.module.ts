@@ -9,8 +9,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { ErrorInterceptor } from './login/error.interceptor';
-import { BasicAuthInterceptor } from './login/auth.interceptor';
+import { ErrorInterceptor } from '../error.interceptor';
+import { BasicAuthInterceptor } from '../auth.interceptor';
 
 import { AppComponent } from './app.component';
 
@@ -72,6 +72,7 @@ import { UnitService } from './index/unit.service';
 import { LoginService } from './login/login.service';
 import { RegisterService } from './register/register.service';
 
+import { RelationService } from './units/relation.service';
 
 @NgModule({
     imports: [
@@ -131,7 +132,7 @@ import { RegisterService } from './register/register.service';
     ],
     declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
-    providers:[UnitService, LoginService, RegisterService,{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    providers:[UnitService, LoginService, RegisterService,RelationService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },]
 })
 export class AppModule {

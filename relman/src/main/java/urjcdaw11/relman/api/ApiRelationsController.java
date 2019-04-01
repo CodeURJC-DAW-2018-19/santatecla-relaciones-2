@@ -52,7 +52,7 @@ public class ApiRelationsController {
 	}
 
 	@PostMapping(value = "/relations")
-	public ResponseEntity<Relation> postRelation(@RequestBody Relation relation, @PathVariable String unitName, Pageable page) {
+	public ResponseEntity<Relation> postRelation(@RequestBody Relation relation, @PathVariable String unitName) {
 		String type = relation.getType();
 		Unit destination = unitServ.findByName((relation.getDestiny().getName()));
 		Unit origin = unitServ.findByName((relation.getOrigin().getName()));

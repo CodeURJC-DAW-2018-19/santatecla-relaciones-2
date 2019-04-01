@@ -1,0 +1,24 @@
+@startuml 
+ set namespaceSeparator none
+SGML <|-- HTML
+MAQUETACIÓN_WEB <|-- HTML
+SGML <|-- HTML
+HTML <|-- HTML
+CSS *-- HTML
+ETIQUETAS *-- HTML
+ATRIBUTOS *-- HTML
+JAVASCRIPT <-- HTML
+ANGULAR <-- HTML
+CSS -- HTML
+XML -- HTML
+HTML <|-- HTML2.1
+HTML <|-- HTML4.0
+HTML <|-- HTML
+HTML *-- DISEÑO_WEB
+HTML *-- ETIQUETAS
+HTML *-- VIDEOS
+HTML <-- CSS
+HTML <-- XML
+HTML -- CSS
+HTML -- XML
+@enduml

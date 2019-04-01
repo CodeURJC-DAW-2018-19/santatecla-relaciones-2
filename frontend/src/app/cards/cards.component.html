@@ -23,15 +23,11 @@
                       </mat-card-title>
                       <mat-card-content layout="row" layout-align="space-between">
                           <mat-list>
-        
-                                
-                                  <mat-list-item>
-                                      <a matListAvatar mat-icon-button matTooltip="Delete" color="primary"><mat-icon>delete</mat-icon></a>
-                                      <h3 matLine><a  [routerLink]="['/cards']">Elemento</a></h3>
-                                      
-                                  </mat-list-item>
-                                
-                            </mat-list>
+                            <mat-list-item *ngFor="let relation of inheritance">
+                              <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
+                              <h3 matLine><a  [routerLink]="['/cards']" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
+                            </mat-list-item>
+                          </mat-list>
                             
                           <div></div>
                           <mat-card-actions >
@@ -120,40 +116,21 @@
     <mat-dialog-content flex>
       <form class="pad">
         <div layout="row" layout-margin>
-          <mat-form-field flex>
-            <input matInput placeholder="Nombre" value="" type="text">
+          <mat-form-field class="example-user-input">
+            <mat-select [(value)]="selected" placeholder="Elige una">
+              <mat-option *ngFor="let relation of inheritance" [value]="relation">
+                {{relation.origin.name}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
-         
+          
         </div>
       </form>
     </mat-dialog-content>
     <mat-divider></mat-divider>
     <mat-dialog-actions>
       <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-      <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Guardar</button>
-    </mat-dialog-actions>
-  </div>
-</ng-template>
-<ng-template #close let-dialogRef="close">
-  <div layout="column" layout-fill>
-    <h2 mat-dialog-title>
-      Card Settings
-    </h2>
-    <mat-divider></mat-divider>
-    <mat-dialog-content flex>
-      <form class="pad">
-        <div layout="row" layout-margin>
-          
-          <mat-form-field flex>
-            <input matInput placeholder="Card width" value="100" type="number">
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-dialog-content>
-    <mat-divider></mat-divider>
-    <mat-dialog-actions>
-      <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Close</button>
-      <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Save</button>
+      <button type="button"  class="text-upper" (click)="addRelation('HTML',selected)">Guardar</button>
     </mat-dialog-actions>
   </div>
 </ng-template>
