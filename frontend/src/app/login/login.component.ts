@@ -50,5 +50,10 @@ logOut() {
     );
 }
 
+register(){
+  this.dialogRef.close();
+  this.router.navigate(['/register']);
+}
+
 
 }

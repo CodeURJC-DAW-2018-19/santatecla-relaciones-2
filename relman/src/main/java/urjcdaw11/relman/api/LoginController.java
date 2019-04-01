@@ -1,5 +1,8 @@
 package urjcdaw11.relman.api;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -7,12 +10,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import urjcdaw11.relman.users.User;
 import urjcdaw11.relman.users.UserComponent;
+import urjcdaw11.relman.users.UserService;
 
 /**
  * This class is used to provide REST endpoints to logIn and logOut to the
@@ -28,6 +36,9 @@ public class LoginController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+	private UserService userServ;
 
 	@RequestMapping("/api/logIn")
 	public ResponseEntity<User> logIn() { 
@@ -52,6 +63,25 @@ public class LoginController {
 			log.info("Logged out");
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
+	}
+	
+	@RequestMapping(value="/api/register/{user}/{pass1}/{pass2}", method= RequestMethod.POST)
+	public ResponseEntity<User> register(Model model, @PathVariable String user, @PathVariable String pass1,
+			@PathVariable String pass2, HttpServletRequest request, HttpServletResponse httpServletResponse) {
+		User newUser =userServ.findByName(user);
+		if ((pass1.equals(pass2)) && (newUser == null)) {
+			userServ.save(new User(user, pass1, "ROLE_USER"));
+			try {
+				request.login(user, pass1);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			}
+			return new ResponseEntity<User>(newUser, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<User>(newUser, HttpStatus.CONFLICT);
+		}
+		
+		
 	}
 
 }

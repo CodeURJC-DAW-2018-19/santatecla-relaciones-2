@@ -7,17 +7,17 @@
                           <h4>Introduce tu usuario</h4>
                           <mat-form-field>
                               <mat-label>Usuario</mat-label>
-                                  <input matInput placeholder="Usuario">
+                                  <input #user matInput placeholder="Usuario">
                           </mat-form-field>
                           <h4>Introduce tu contraseña</h4>
                           <mat-form-field>
                               <mat-label>Contraseña</mat-label>
-                                  <input matInput placeholder="Contraseña">
+                                  <input #pass1 matInput placeholder="Contraseña">
                           </mat-form-field>
                           <h4>Confirma la contraseña</h4>
                           <mat-form-field>
                               <mat-label>Contraseña</mat-label>
-                                  <input matInput placeholder="Contraseña">
+                                  <input #pass2 matInput placeholder="Contraseña">
                           </mat-form-field>
                           
                           
@@ -29,7 +29,7 @@
                       </mat-card-content>        
               <mat-card-actions>
                   <div layout="column">
-                      <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
+                      <a mat-raised-button (click)="register(user.value,pass1.value,pass2.value)" class="text-upper" color="primary" [routerLink]="['/login']">
                         <span>Crear usuario</span>
                     </a>
                   </div>

@@ -15,7 +15,7 @@ import { Page } from '../page.module';
 
 export class IndexComponent implements OnInit {
   units:Unit[];
-  lastRequestedPage:Page;
+  lastRequestedPage?:Page;
   pageNumber:number;
   searchInputTerm:string;
 
@@ -40,7 +40,7 @@ export class IndexComponent implements OnInit {
 
   getPageSearch(){
     this.service.getUnitSearch(this.searchInputTerm).subscribe(
-      page => this.units = page.content,
+      page => {this.units = page.content;this.pageNumber=0;},
       error => console.log(error)
     );
   }

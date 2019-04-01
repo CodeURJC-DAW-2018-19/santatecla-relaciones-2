@@ -70,6 +70,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UnitService } from './index/unit.service';
 import { LoginService } from './login/login.service';
+import { RegisterService } from './register/register.service';
 
 
 @NgModule({
@@ -130,7 +131,7 @@ import { LoginService } from './login/login.service';
     ],
     declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
     bootstrap: [AppComponent],
-    providers:[UnitService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    providers:[UnitService, LoginService, RegisterService,{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },]
 })
 export class AppModule {
