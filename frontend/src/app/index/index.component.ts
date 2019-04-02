@@ -40,7 +40,10 @@ export class IndexComponent implements OnInit {
 
   getPageSearch(){
     this.service.getUnitSearch(this.searchInputTerm).subscribe(
-      page => {this.units = page.content;this.pageNumber=0;},
+      page => {
+        this.units = page.content;
+        this.pageNumber=0;
+        this.lastRequestedPage = page;},
       error => console.log(error)
     );
   }

@@ -30,7 +30,7 @@
                   <h3 matLine>{{ unit.name }}</h3>
                 </mat-list-item>
                </mat-nav-list>
-              <mat-card-actions>
+              <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
                   <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
                       <span>Ver más</span>
                   </a>

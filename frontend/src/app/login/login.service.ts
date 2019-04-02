@@ -53,7 +53,6 @@ export class LoginService {
         
         return this.http.get(URL + '/logOut').pipe(
             map(response => {
-                console.log("fuera");
                 this.removeCurrentUser();
                 return response;
             }),

@@ -4,7 +4,6 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Card } from './card.model';
-import { ActivatedRoute } from '@angular/router';
 
 const BASE_URL = '/api/unit/';
 
@@ -15,7 +14,7 @@ export class CardService {
 	 }
 
 	getCards(unitName: string, page: number | string) {
-		return this.http.get(BASE_URL + unitName + "/cards?page=" + page)
+		return this.http.get(BASE_URL + unitName + "/cards?size=5&page=" + page)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
