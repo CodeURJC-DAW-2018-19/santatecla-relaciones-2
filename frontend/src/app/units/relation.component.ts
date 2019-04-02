@@ -26,7 +26,8 @@ export class RelationComponent implements OnInit {
     width: '50%',
     height: '50%',
   };
-
+  
+  units:Unit[];
   unitName:string;
   inheritance:Relation[];
   selected:Relation;
@@ -47,6 +48,8 @@ export class RelationComponent implements OnInit {
   
   ngOnInit() {
     this.inheritancePageNumber = 0;
+    this.getUnits();
+    
     this.getPageRelation(this.unitName,'parents',this.inheritancePageNumber);
   }
 
@@ -57,10 +60,11 @@ export class RelationComponent implements OnInit {
 
 
 
-  addRelation(name:string, relation:Relation){
-    console.log(name);
-    console.log(relation);
-    this.relationService.addRelation(name,relation).subscribe(
+  addRelation(name:string, nameOrigin:string, nameDestiny:string){
+    let origin:Unit ={name: nameOrigin, photoComp: false, photoClas: false};
+    let destiny:Unit ={name: nameDestiny, photoComp: false, photoClas: false};
+    let rel:Relation = {type:"inheritance",origin:origin,destiny:destiny}; 
+    this.relationService.addRelation(name,rel).subscribe(
       page => {this.inheritance = page.content;
                this.inheritancePageNumber = 0;
                this.getPageRelation(this.unitName,'parents',this.inheritancePageNumber); 
@@ -75,6 +79,13 @@ export class RelationComponent implements OnInit {
   getPageRelation(unitName:string, relationName:string,pageNumber:number){
     this.relationService.getRelationsByType(unitName,relationName,pageNumber).subscribe(
       page => {this.dialog.closeAll();this.addToPage(page)},
+      error => console.log(error)
+    );
+  }
+
+  getUnits(){
+    this.unitService.getAllUnits().subscribe(
+      page => {this.units = page.content; console.log(this.units.length)},
       error => console.log(error)
     );
   }

@@ -28,6 +28,16 @@ export class UnitService {
 
 	}
 
+	getAllUnits(): Observable<Page> {
+		let url: string = BASE_URL + "units" + '?size=99999';
+
+	return this.http.get(url)
+		.map(response => response.json())
+		.catch(error => this.handleError(error));
+
+	}
+
+
 	getUnitSearch(search: string): Observable<Page> {
 		let url: string = BASE_URL + "units?search="+search;
 		return this.http.get(url)

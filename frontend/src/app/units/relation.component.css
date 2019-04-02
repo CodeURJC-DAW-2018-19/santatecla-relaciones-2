@@ -4,7 +4,7 @@
     display: inline-flex;
     flex-flow: row wrap;
     background: grey;
-    height: 150px;
+    height: auto;
     width: 200px;
     
 }

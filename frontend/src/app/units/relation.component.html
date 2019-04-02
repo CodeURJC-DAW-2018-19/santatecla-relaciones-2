@@ -80,8 +80,8 @@
         <div layout="row" layout-margin>
           <mat-form-field class="example-user-input">
             <mat-select [(value)]="selected" placeholder="Elige una">
-              <mat-option *ngFor="let relation of inheritance" [value]="relation">
-                {{relation.origin.name}}
+              <mat-option *ngFor="let unit of units" [value]="unit">
+                {{unit.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -92,7 +92,7 @@
     <mat-divider></mat-divider>
     <mat-dialog-actions>
       <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-      <button type="button"  class="text-upper" (click)="addRelation('HTML',selected)">Guardar</button>
+      <button type="button"  class="text-upper" (click)="addRelation('HTML',selected.name,'HTML')">Guardar</button>
     </mat-dialog-actions>
   </div>
 </ng-template>
