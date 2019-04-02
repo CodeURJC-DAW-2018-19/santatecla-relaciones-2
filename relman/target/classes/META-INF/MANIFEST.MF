@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: KIKIT
+Build-Jdk: 11.0.2
 Implementation-Title: relman
 Implementation-Version: 1.0.2
-Built-By: KIKEAJANI
 Implementation-Vendor-Id: urjc-daw-11
-Build-Jdk: 1.8.0_161
-Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/relman
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/relman
 Created-By: Maven Integration for Eclipse
 

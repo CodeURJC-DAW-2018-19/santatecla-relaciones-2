@@ -47,13 +47,13 @@
               <mat-card>
                   <mat-card-title>
                     <div>
-                      <h3>Card with image</h3>                     
+                      <h3>Jerarquía de Composición</h3>                     
                     </div>
                   </mat-card-title>
                   <mat-card-content layout="row" layout-align="space-between">
                     <div></div>
                     <mat-card-actions layout="column">
-                        <a mat-raised-button (click)="openSnackBar('Usuario creado','Cerrar')" class="text-upper" color="primary" [routerLink]="['/login']">
+                        <a mat-raised-button (click)="openDialog(unitName,'composition')" class="text-upper" color="primary">
                           <span>Cargar diagrama</span>
                       </a>
                     </mat-card-actions>
