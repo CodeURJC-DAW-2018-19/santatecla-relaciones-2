@@ -14,10 +14,14 @@ export class RelationService {
 
 	constructor(private http: Http, private loginService:LoginService) { }
 
+	compUrl:string;
+
+	getDiagrama(unitName:string,type:string){
+		return this.http.get(BASE_URL + unitName + "/image/" + type);
+	}
+
 	getContext(unitName: string, page: number | string) {
-		return this.http.get(BASE_URL + unitName + "/context?page=" + page)
-			.map(response => response.json())
-			.catch(error => this.handleError(error));
+		return this.http.get(BASE_URL + unitName + "/context?page=" + page);
 	}
 
 	getRelationsByType(unitName: string, type: string, page: number | string) {

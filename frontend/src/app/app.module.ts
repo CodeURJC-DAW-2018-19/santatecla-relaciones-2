@@ -40,6 +40,7 @@ import {
     MatSliderModule,
     MatAutocompleteModule,
     MatSnackBar,
+    MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material';
 
 import {
@@ -75,6 +76,8 @@ import { RelationService } from './units/relation.service';
 import { CardComponent } from './cards/card.component';
 import { CardService } from './cards/card.service';
 import { RelationComponent } from './units/relation.component';
+import { DialogUmlComponent } from './dialogs/dialog-uml.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -132,10 +135,14 @@ import { RelationComponent } from './units/relation.component';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, CardComponent, LoginComponent, RegisterComponent,RelationComponent],
+    declarations: [AppComponent, IndexComponent, CardComponent, LoginComponent, RegisterComponent,RelationComponent, DialogUmlComponent],
     bootstrap: [AppComponent],
-    providers:[UnitService, LoginService, RegisterService,RelationService,CardService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },]
+    entryComponents: [
+        DialogUmlComponent,
+    ],
+    providers:[DialogUmlComponent,UnitService, LoginService, RegisterService,RelationService,CardService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },{ provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },]
 })
 export class AppModule {
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {

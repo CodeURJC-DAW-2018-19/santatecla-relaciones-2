@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry, MatDialog } from '@angular/material';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { MatIconRegistry, MatDialog, MatDialogConfig } from '@angular/material';
 
 import { ChangeDetectorRef, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
 import { Unit } from '../index/unit.model';
@@ -9,7 +9,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Page } from '../page.module';
 import { LoginService } from '../login/login.service';
 import { Relation } from './relation.model';
-import { TdDialogActionsDirective } from '@covalent/core';
+import {  TdDialogService } from '@covalent/core';
+import { TdDialogActionsDirective } from '@covalent/core/dialogs';
+import { DialogUmlComponent } from '../dialogs/dialog-uml.component';
 
 @Component({
   selector: 'app-relation',
@@ -31,9 +33,11 @@ export class RelationComponent implements OnInit {
   inheritancePageNumber:number;
   inheritancelastRequestPage?:Page;
   typeRel:string;
+
+  urlPrueba:string;
   
 
-  constructor(private activeRoute:ActivatedRoute,public dialog: MatDialog, private unitService: UnitService, private relationService: RelationService,private loginService:LoginService) {
+  constructor(private dialogCom:DialogUmlComponent,private activeRoute:ActivatedRoute,public dialog: MatDialog, private unitService: UnitService, private relationService: RelationService,private loginService:LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
     this.setType("PADRES");
    }
@@ -78,6 +82,11 @@ export class RelationComponent implements OnInit {
 
   openTemplate() {
     this.dialog.open(this.template, this.config);
+  }
+
+  
+  openDialog(unitName: string, type:string): void {
+    this.dialog.open(DialogUmlComponent, {data: {imgUrl:'https://localhost:8080/api/unit/' + unitName + "/image/" + type},});
   }
 
   addToPage(page: Page): void {
