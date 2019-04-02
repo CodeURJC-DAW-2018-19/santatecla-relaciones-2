@@ -12,18 +12,24 @@
           </mat-card-title>
           <mat-card-content layout="row" layout-align="space-between">
           <mat-divider></mat-divider>
-               <mat-nav-list *ngIf="loginService.isLogged">
+               <mat-nav-list *ngIf="loginService.isAdmin">
                   <mat-list-item *ngFor="let unit of units">
                     <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
                     <h3 matLine><a  [routerLink]="['/unit/',unit.name]" [ngStyle]="{ cursor: 'auto' }" >{{ unit.name }}</a></h3>
                   </mat-list-item>
                </mat-nav-list>
 
+               <mat-nav-list *ngIf="!loginService.isAdmin && loginService.isLogged">
+                <mat-list-item *ngFor="let unit of units">
+                  <h3 matLine><a  [routerLink]="['/unit/',unit.name]" [ngStyle]="{ cursor: 'auto' }" >{{ unit.name }}</a></h3>
+                </mat-list-item>
+               </mat-nav-list>
+
                <mat-nav-list *ngIf="!loginService.isLogged">
                 <mat-list-item *ngFor="let unit of units">
                   <h3 matLine>{{ unit.name }}</h3>
                 </mat-list-item>
-             </mat-nav-list>
+               </mat-nav-list>
               <mat-card-actions>
                   <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
                       <span>Ver más</span>

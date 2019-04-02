@@ -1,6 +1,6 @@
   <nav mat-tab-nav-bar>
     <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Unidad</a>
-    <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Fichas</a>
+    <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">Fichas</a>
   </nav>
       <div  flex="95" layout-wrap >
         <mat-grid-list cols="3" gutterSize="1">
@@ -9,7 +9,7 @@
                   <mat-card >
                       <mat-card-title >
                         <div layout="row" layout-align="start center">
-                          <span flex>Card title</span>
+                          <span flex>{{ typeRel }}</span>
                           <span>
                             <button mat-icon-button
                                     matTooltip="Card settings"
@@ -26,7 +26,7 @@
                           <mat-list>
                             <mat-list-item *ngFor="let relation of inheritance">
                               <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
-                              <h3 matLine><a  [routerLink]="['/cards']" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
+                              <h3 matLine><a style="color:white;"[routerLink]="['/cards']" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
                             </mat-list-item>
                           </mat-list>
                             

@@ -15,7 +15,7 @@ import { Page } from '../page.module';
 
 export class IndexComponent implements OnInit {
   units:Unit[];
-  lastRequestedPage?:Page;
+  lastRequestedPage:Page;
   pageNumber:number;
   searchInputTerm:string;
 

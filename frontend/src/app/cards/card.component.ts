@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   })
   export class CardComponent {
     unitName:string;
+    activeLinkIndex=-1;
     constructor(private activeRoute:ActivatedRoute){
       this.unitName = this.activeRoute.snapshot.params.name;
     }

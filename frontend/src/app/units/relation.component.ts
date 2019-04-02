@@ -30,11 +30,16 @@ export class RelationComponent implements OnInit {
   selected:Relation;
   inheritancePageNumber:number;
   inheritancelastRequestPage?:Page;
+  typeRel:string;
   
 
   constructor(private activeRoute:ActivatedRoute,public dialog: MatDialog, private unitService: UnitService, private relationService: RelationService,private loginService:LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
+    this.setType("PADRES");
    }
+
+  
+  setType(type:string){this.typeRel=type;}
   
   ngOnInit() {
     this.inheritancePageNumber = 0;
