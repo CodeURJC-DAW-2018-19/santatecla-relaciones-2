@@ -1,0 +1,10 @@
+:mycard{
+    border: 1px solid deeppink;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-flow: row wrap;
+    background: grey;
+    height: 150px;
+    width: 200px;
+    
+}

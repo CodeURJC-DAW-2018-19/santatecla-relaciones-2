@@ -29,6 +29,11 @@
                               <h3 matLine><a style="color:white;"[routerLink]="['/cards']" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
                             </mat-list-item>
                           </mat-list>
+                          <mat-card-actions>
+                            <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
+                                <span>Ver más</span>
+                            </a>
+                           </mat-card-actions>
                             
                           <div></div>
                           <mat-card-actions >

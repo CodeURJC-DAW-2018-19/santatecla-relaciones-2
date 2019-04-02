@@ -22,7 +22,7 @@ export class RelationService {
 
 	getRelationsByType(unitName: string, type: string, page: number | string) {
 		let url =BASE_URL + unitName + "/relations/" + type + "?page=" + page;
-		return this.http.get(BASE_URL + unitName + "/relations/" + type + "?page=" + page)
+		return this.http.get(BASE_URL + unitName + "/relations/" + type + "?page=" + page + '&size=5')
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}

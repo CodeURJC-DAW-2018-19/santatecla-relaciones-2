@@ -70,7 +70,7 @@ export class RelationComponent implements OnInit {
 
   getPageRelation(unitName:string, relationName:string,pageNumber:number){
     this.relationService.getRelationsByType(unitName,relationName,pageNumber).subscribe(
-      page => {this.dialog.closeAll();this.inheritance = page.content},
+      page => {this.dialog.closeAll();this.addToPage(page)},
       error => console.log(error)
     );
   }
@@ -78,6 +78,15 @@ export class RelationComponent implements OnInit {
 
   openTemplate() {
     this.dialog.open(this.template, this.config);
+  }
+
+  addToPage(page: Page): void {
+    this.inheritancelastRequestPage = page;
+    if(this.inheritancePageNumber === 0) {
+      this.inheritance = page.content;
+    } else {
+      this.inheritance = this.inheritance.concat(page.content);
+    }
   }
 
 }
