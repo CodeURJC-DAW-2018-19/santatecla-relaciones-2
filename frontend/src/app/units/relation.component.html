@@ -1,6 +1,7 @@
-<mat-card class="card" >
-  <mat-tab-group dynamicHeight>
-    <mat-tab label="Relaciones">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Unidad</a>
+    <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Fichas</a>
+  </nav>
       <div  flex="95" layout-wrap >
         <mat-grid-list cols="3" gutterSize="1">
           <mat-grid-tile>
@@ -62,50 +63,6 @@
           </mat-grid-tile>
         </mat-grid-list>   
       </div>
-    </mat-tab>
-    <mat-tab label="Unidades">
-        <div>
-            <mat-grid-list cols="1" rowHeight="5:1">
-              <mat-grid-tile>
-                <div class="mycard" flex-gt-sm="95">
-                    <mat-card >
-                        <mat-card-title >
-                          <div layout="row" layout-align="start center">
-                            <span flex>Card title</span>
-                            <span>
-                              <button mat-icon-button
-                                      matTooltip="Card settings"
-                                      [mat-menu-trigger-for]="settings1">
-                                <mat-icon>add</mat-icon>
-                              </button>
-                              <mat-menu xPosition="before" #settings1="matMenu">
-                                <button mat-menu-item (click)="openTemplate()">Añadir</button>
-                              </mat-menu>
-                            </span>
-                          </div>
-                        </mat-card-title>
-                        <mat-card-content layout="row" layout-align="space-between">
-                            
-                              
-                            <div></div>
-                            <mat-card-actions >
-                              <div layout="row" LayoutAlign="center">
-                                <a mat-raised-button class="text-upper" color="primary">
-                                  Añadir imagen
-                              </a>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card-content>
-                      </mat-card>
-                  </div>
-            </mat-grid-tile>
-          
-             
-            </mat-grid-list>   
-          </div>
-    </mat-tab>
-  </mat-tab-group>
-</mat-card>
 
 <ng-template #dialogContent let-dialogRef="dialogRef">
   <div layout="column" layout-fill>

@@ -4,13 +4,15 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Card } from './card.model';
+import { ActivatedRoute } from '@angular/router';
 
-const BASE_URL = 'https://localhost:8080/api/unit/';
+const BASE_URL = '/api/unit/';
 
 @Injectable()
 export class CardService {
 
-	constructor(private http: Http) { }
+	constructor(private http: Http) {
+	 }
 
 	getCards(unitName: string, page: number | string) {
 		return this.http.get(BASE_URL + unitName + "/cards?page=" + page)

@@ -27,6 +27,6 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(userName,pass1,pass2).subscribe(
         user=>this.router.navigate(["/"]),
         (error)=>alert('Error en el registro.'),
-    )
+    ) 
   }
 }

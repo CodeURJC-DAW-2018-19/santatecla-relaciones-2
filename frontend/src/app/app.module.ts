@@ -65,7 +65,6 @@ import { routing } from './app.routing';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IndexComponent } from './index/index.component';
-import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UnitService } from './index/unit.service';
@@ -73,6 +72,9 @@ import { LoginService } from './login/login.service';
 import { RegisterService } from './register/register.service';
 
 import { RelationService } from './units/relation.service';
+import { CardComponent } from './cards/card.component';
+import { CardService } from './cards/card.service';
+import { RelationComponent } from './units/relation.component';
 
 @NgModule({
     imports: [
@@ -130,9 +132,9 @@ import { RelationService } from './units/relation.service';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, CardsComponent, LoginComponent, RegisterComponent],
+    declarations: [AppComponent, IndexComponent, CardComponent, LoginComponent, RegisterComponent,RelationComponent],
     bootstrap: [AppComponent],
-    providers:[UnitService, LoginService, RegisterService,RelationService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    providers:[UnitService, LoginService, RegisterService,RelationService,CardService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },]
 })
 export class AppModule {

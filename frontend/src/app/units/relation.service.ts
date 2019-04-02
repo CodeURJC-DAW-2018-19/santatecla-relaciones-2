@@ -7,7 +7,7 @@ import { Relation } from './relation.model';
 import { LoginService } from '../login/login.service';
 import { HttpHeaders } from '@angular/common/http';
 
-const BASE_URL = 'https://localhost:8080/api/unit/';
+const BASE_URL = '/api/unit/';
 
 @Injectable()
 export class RelationService {
