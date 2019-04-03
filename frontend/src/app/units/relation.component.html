@@ -1,15 +1,9 @@
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Unidad</a>
-    <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">Fichas</a>
-  </nav>
-      <div  flex="95" layout-wrap >
-        <mat-grid-list cols="3" gutterSize="1">
-          <mat-grid-tile>
-              <div class="mycard" flex-gt-sm="95">
+
+     <div  flex="95" layout-wrap >
                   <mat-card >
                       <mat-card-title >
                         <div layout="row" layout-align="start center">
-                          <span flex>{{ typeRel }}</span>
+                          <span flex>{{ typeTitle }}</span>
                           <span>
                             <button mat-icon-button
                                     matTooltip="Card settings"
@@ -23,51 +17,27 @@
                         </div>
                       </mat-card-title>
                       <mat-card-content layout="row" layout-align="space-between">
-                          <mat-list>
+                          <mat-list *ngIf="!reverse">
                             <mat-list-item *ngFor="let relation of inheritance">
                               <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
-                              <h3 matLine><a style="color:white;"[routerLink]="['/cards']" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
+                              <h3 matLine><a [routerLink]="['/unit/',relation.origin.name]" style="color:white;" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
                             </mat-list-item>
                           </mat-list>
-                          <mat-card-actions>
+                          <mat-list *ngIf="reverse">
+                              <mat-list-item *ngFor="let relation of inheritance">
+                                <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
+                                <h3 matLine><a style="color:white;"[routerLink]="['/unit/',relation.destiny.name]" [ngStyle]="{ cursor: 'auto' }" >{{ relation.destiny.name }}</a></h3>
+                              </mat-list-item>
+                            </mat-list>
+                          <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
                             <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
                                 <span>Ver más</span>
                             </a>
                            </mat-card-actions>
-                            
-                          <div></div>
-                          <mat-card-actions >
-                            <div layout="row" LayoutAlign="center">
-                              <a mat-raised-button class="text-upper" color="primary">
-                                Cargar Diagrama
-                            </a>
-                            </div>
-                          </mat-card-actions>
                         </mat-card-content>
                     </mat-card>
                 </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-              <div  flex-gt-sm="95">
-              <mat-card>
-                  <mat-card-title>
-                    <div>
-                      <h3>Jerarquía de Composición</h3>                     
-                    </div>
-                  </mat-card-title>
-                  <mat-card-content layout="row" layout-align="space-between">
-                    <div></div>
-                    <mat-card-actions layout="column">
-                        <a mat-raised-button (click)="openDialog(unitName,'composition')" class="text-upper" color="primary">
-                          <span>Cargar diagrama</span>
-                      </a>
-                    </mat-card-actions>
-                  </mat-card-content>
-                </mat-card>
-                </div>
-          </mat-grid-tile>
-        </mat-grid-list>   
-      </div>
+
 
 <ng-template #dialogContent let-dialogRef="dialogRef">
   <div layout="column" layout-fill>
@@ -92,7 +62,35 @@
     <mat-divider></mat-divider>
     <mat-dialog-actions>
       <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-      <button type="button"  class="text-upper" (click)="addRelation('HTML',selected.name,'HTML')">Guardar</button>
+      <button type="button"  class="text-upper" (click)="addRelation(unitName,selected.name,unitName)">Guardar</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
+
+<ng-template #dialogContentReverse let-dialogRef="dialogRefReverse">
+  <div layout="column" layout-fill>
+    <h2 mat-dialog-title>
+      Añadir
+    </h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content flex>
+      <form class="pad">
+        <div layout="row" layout-margin>
+          <mat-form-field class="example-user-input">
+            <mat-select [(value)]="selected" placeholder="Elige una">
+              <mat-option *ngFor="let unit of units" [value]="unit">
+                {{unit.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions>
+      <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
+      <button type="button"  class="text-upper" (click)="addRelation(unitName,unitName,selected.name)">Guardar</button>
     </mat-dialog-actions>
   </div>
 </ng-template>

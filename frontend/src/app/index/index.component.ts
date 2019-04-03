@@ -58,7 +58,6 @@ export class IndexComponent implements OnInit {
   }
 
   removeUnit(unit: Unit){
-    console.log(unit);
     this.service.removeUnit(unit)
     .subscribe((_) => this.getPage(), (error) => console.error(error));
   }

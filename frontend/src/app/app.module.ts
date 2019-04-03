@@ -78,6 +78,8 @@ import { CardService } from './cards/card.service';
 import { RelationComponent } from './units/relation.component';
 import { DialogUmlComponent } from './dialogs/dialog-uml.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UnitComponent } from './units/unit.component';
+import { HierarchyComponent } from './units/hierarchy.component';
 
 @NgModule({
     imports: [
@@ -135,10 +137,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, IndexComponent, CardComponent, LoginComponent, RegisterComponent,RelationComponent, DialogUmlComponent],
+    declarations: [AppComponent, IndexComponent, CardComponent, LoginComponent, RegisterComponent,RelationComponent, DialogUmlComponent, UnitComponent,HierarchyComponent],
     bootstrap: [AppComponent],
     entryComponents: [
-        DialogUmlComponent,
+        DialogUmlComponent, UnitComponent, RelationComponent
     ],
     providers:[DialogUmlComponent,UnitService, LoginService, RegisterService,RelationService,CardService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },{ provide: MAT_DIALOG_DATA, useValue: {} },
