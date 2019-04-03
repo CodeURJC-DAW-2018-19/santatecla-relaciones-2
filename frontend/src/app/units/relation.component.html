@@ -1,42 +1,42 @@
 
-     <div  flex="95" layout-wrap >
-                  <mat-card >
-                      <mat-card-title >
-                        <div layout="row" layout-align="start center">
-                          <span flex>{{ typeTitle }}</span>
-                          <span>
-                            <button mat-icon-button
-                                    matTooltip="Card settings"
-                                    [mat-menu-trigger-for]="settings1">
-                              <mat-icon>add</mat-icon>
-                            </button>
-                            <mat-menu xPosition="before" #settings1="matMenu">
-                              <button mat-menu-item (click)="openTemplate()">Añadir</button>
-                            </mat-menu>
-                          </span>
-                        </div>
-                      </mat-card-title>
-                      <mat-card-content layout="row" layout-align="space-between">
-                          <mat-list *ngIf="!reverse">
-                            <mat-list-item *ngFor="let relation of inheritance">
-                              <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
-                              <h3 matLine><a [routerLink]="['/unit/',relation.origin.name]" style="color:white;" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
-                            </mat-list-item>
-                          </mat-list>
-                          <mat-list *ngIf="reverse">
-                              <mat-list-item *ngFor="let relation of inheritance">
-                                <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
-                                <h3 matLine><a style="color:white;"[routerLink]="['/unit/',relation.destiny.name]" [ngStyle]="{ cursor: 'auto' }" >{{ relation.destiny.name }}</a></h3>
-                              </mat-list-item>
-                            </mat-list>
-                          <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
-                            <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
-                                <span>Ver más</span>
-                            </a>
-                           </mat-card-actions>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
+<div  flex="95" layout-wrap >
+      <mat-card >
+          <mat-card-title >
+            <div layout="row" layout-align="start center">
+              <span flex>{{ typeTitle }}</span>
+              <span>
+                <button mat-icon-button
+                        matTooltip="Card settings"
+                        [mat-menu-trigger-for]="settings1">
+                  <mat-icon>add</mat-icon>
+                </button>
+                <mat-menu xPosition="before" #settings1="matMenu">
+                  <button mat-menu-item (click)="openTemplate()">Añadir</button>
+                </mat-menu>
+              </span>
+            </div>
+          </mat-card-title>
+          <mat-card-content layout="row" layout-align="space-between">
+              <mat-list *ngIf="!reverse">
+                <mat-list-item *ngFor="let relation of inheritance">
+                  <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeRelation(unitName,typeRelLinksConcrete,relation.origin.name)"><mat-icon>delete</mat-icon></a>
+                  <h3 matLine><a [routerLink]="['/unit/',relation.origin.name]" style="color:white;" [ngStyle]="{ cursor: 'auto' }" >{{ relation.origin.name }}</a></h3>
+                </mat-list-item>
+              </mat-list>
+              <mat-list *ngIf="reverse">
+                  <mat-list-item *ngFor="let relation of inheritance">
+                    <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeRelation(unitName,typeRelLinksConcrete,relation.destiny.name)"><mat-icon>delete</mat-icon></a>
+                    <h3 matLine><a style="color:white;"[routerLink]="['/unit/',relation.destiny.name]" [ngStyle]="{ cursor: 'auto' }" >{{ relation.destiny.name }}</a></h3>
+                  </mat-list-item>
+                </mat-list>
+              <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
+                <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
+                    <span>Ver más</span>
+                </a>
+              </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+</div>
 
 
 <ng-template #dialogContent let-dialogRef="dialogRef">

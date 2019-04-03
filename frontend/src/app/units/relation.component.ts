@@ -125,4 +125,11 @@ export class RelationComponent implements OnInit {
     }
   }
 
+  removeRelation(unitName: string, type: string, unitRelated: string){
+    this.relationService.removeRelation(unitName,type,unitRelated).subscribe(
+      (_) => {this.getUnits(); this.getPageRelation(this.unitName,this.pageNumber)} , 
+      (error) => console.error(error)
+    )
+  }
+
 }
