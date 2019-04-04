@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {MatSnackBar, MatDialogRef, MatDialog} from '@angular/material';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent  {
   @ViewChild('loginDialog') loginDialog: TemplateRef<any>;
   dialogRef: MatDialogRef<any, any>;
 
-  constructor(public dialog: MatDialog,private snackBar: MatSnackBar, public loginService:LoginService, private router:Router) { 
+  constructor(public dialog: MatDialog,private snackBar: MatSnackBar, public loginService:LoginService, private router:Router, private appComponent: AppComponent) { 
   }
 
   openLoginDialog() {
@@ -45,6 +46,7 @@ logOut() {
     this.loginService.logOut().subscribe(
         (response) => {
             this.router.navigate(['/']);
+            this.appComponent.deleteAllTabs();
         },
         (error) => console.log('Error when trying to log out: ' + error),
     );

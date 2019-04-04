@@ -4,6 +4,7 @@ import { Card } from './card.model';
 import { Page } from '../page.module';
 import { CardService } from './card.service';
 import { LoginService } from '../login/login.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-component',
@@ -38,13 +39,14 @@ export class CardComponent implements OnInit {
   toggleDisabled(): void {
     this.disabled = !this.disabled;
   }
-  constructor(private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService) {
+  constructor(private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 
   ngOnInit(): void {
     this.pageNumber = 0;
     this.getPage();
+    this.appComponent.addTab(this.unitName);
   }
 
   requestNextPage() {

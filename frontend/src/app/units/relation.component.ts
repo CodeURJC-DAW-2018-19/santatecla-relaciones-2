@@ -44,7 +44,7 @@ export class RelationComponent implements OnInit {
   urlPrueba:string;
   
 
-  constructor(private router: Router,private dialogCom:DialogUmlComponent,private activeRoute:ActivatedRoute,public dialog: MatDialog, private unitService: UnitService, private relationService: RelationService,private loginService:LoginService) {
+  constructor(private router: Router,private dialogCom:DialogUmlComponent,private activeRoute:ActivatedRoute,public dialog: MatDialog, private relationService: RelationService,private loginService:LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
    }
 
@@ -62,7 +62,6 @@ export class RelationComponent implements OnInit {
   
   
       this.pageNumber = 0;
-      this.getUnits();
   
       this.getPageRelation(this.unitName,this.pageNumber);  });
 
@@ -108,14 +107,6 @@ export class RelationComponent implements OnInit {
     );
   }
 
-  getUnits(){
-    this.unitService.getAllUnits().subscribe(
-      page => {this.units = page.content;},
-      error => console.log(error)
-    );
-
-  }
-
   addToPage(page: Page): void {
     this.lastRequestedPage = page;
     if(this.pageNumber === 0) {
@@ -127,7 +118,7 @@ export class RelationComponent implements OnInit {
 
   removeRelation(unitName: string, type: string, unitRelated: string){
     this.relationService.removeRelation(unitName,type,unitRelated).subscribe(
-      (_) => {this.getUnits(); this.getPageRelation(this.unitName,this.pageNumber)} , 
+      (_) => {this.getPageRelation(this.unitName,this.pageNumber)} , 
       (error) => console.error(error)
     )
   }

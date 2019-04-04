@@ -1,8 +1,15 @@
-<div >
+<div>
   <td-layout-nav>
-    <div  td-toolbar-content layout="row" layout-align="start center" flex >
-      <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan"><mat-icon>home</mat-icon></a>
-      <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan">PONER AQUI LAS UNIDADES</a>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan">
+        <mat-icon>home</mat-icon>
+      </a>
+      <div *ngFor="let tab of tabs">
+        <a mat-button [routerLink]="['/unit/',tab]" matTooltip="{{tab}}">
+          {{tab}}
+        </a>
+        <button *ngIf="router.url.includes(tab)==false" mat-raised-button (click)="deleteTab(tab)">X</button>
+      </div>
       <span flex></span>
       <a mat-icon-button>{{mode}}</a>
       <span flex></span>
@@ -11,5 +18,3 @@
     <router-outlet></router-outlet>
   </td-layout-nav>
 </div>
-
-
