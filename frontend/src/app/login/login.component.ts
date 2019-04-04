@@ -13,7 +13,7 @@ export class LoginComponent  {
   @ViewChild('loginDialog') loginDialog: TemplateRef<any>;
   dialogRef: MatDialogRef<any, any>;
 
-  constructor(public dialog: MatDialog,private snackBar: MatSnackBar, private loginService:LoginService, private router:Router) { 
+  constructor(public dialog: MatDialog,private snackBar: MatSnackBar, public loginService:LoginService, private router:Router) { 
   }
 
   openLoginDialog() {

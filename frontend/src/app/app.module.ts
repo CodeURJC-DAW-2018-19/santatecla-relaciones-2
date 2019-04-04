@@ -80,6 +80,7 @@ import { DialogUmlComponent } from './dialogs/dialog-uml.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UnitComponent } from './units/unit.component';
 import { HierarchyComponent } from './units/hierarchy.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -143,9 +144,13 @@ import { HierarchyComponent } from './units/hierarchy.component';
     entryComponents: [
         DialogUmlComponent, UnitComponent, RelationComponent
     ],
-    providers:[DialogUmlComponent,UnitService, LoginService, RegisterService,RelationService,CardService, { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },{ provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} },]
+    providers:[DialogUmlComponent,UnitService, LoginService, RegisterService,RelationService,CardService, 
+        { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+        ,]
 })
 export class AppModule {
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {

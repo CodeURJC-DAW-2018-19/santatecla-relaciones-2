@@ -38,7 +38,7 @@ export class CardComponent implements OnInit {
   toggleDisabled(): void {
     this.disabled = !this.disabled;
   }
-  constructor(private activeRoute: ActivatedRoute, private service: CardService, private loginService: LoginService) {
+  constructor(private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 

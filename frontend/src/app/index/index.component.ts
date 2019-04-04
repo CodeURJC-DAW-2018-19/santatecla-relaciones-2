@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit {
   pageNumber:number;
   searchInputTerm:string;
 
-  constructor(private router: Router, private service: UnitService, private loginService:LoginService) { }
+  constructor(private router: Router, private service: UnitService, public loginService:LoginService) { }
 
   ngOnInit() {
     this.pageNumber = 0;
