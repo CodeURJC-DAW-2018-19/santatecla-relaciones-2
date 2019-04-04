@@ -1,21 +1,16 @@
-<td-layout>
+<div>
   <td-layout-nav>
     <div  td-toolbar-content layout="row" layout-align="start center" flex >
       <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan"><mat-icon>home</mat-icon></a>
-      <div layout="row" layout-align="space-between" flex>
-        <mat-list-item>
-          HTML 
-        </mat-list-item>
-        
-        <mat-list-item>
-         CSS 
-        </mat-list-item>
-      </div>
+      <a mat-icon-button [routerLink]="['/']" matTooltip="RelMan">PONER AQUI LAS UNIDADES</a>
+      
+      
+
       <span flex></span>
       <app-login></app-login>
     </div>
     <router-outlet></router-outlet>
   </td-layout-nav>
-</td-layout>
+</div>
 
 

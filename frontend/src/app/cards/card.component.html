@@ -20,12 +20,21 @@
               <textarea matInput cdkTextareaAutosize value="{{card.desc}}"></textarea>
             </mat-form-field>
             <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
+            
+            <td-file-upload color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="files" (select)="selectEvent($event)" (upload)="uploadEvent($event)" (cancel)="cancelEvent()" [disabled]="disabled">
+              <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
+              <ng-template td-file-input-label>
+                <mat-icon>attach_file</mat-icon>
+                  Subir imagen
+              </ng-template>
+            </td-file-upload>
+
             <mat-card-actions *ngIf="loginService.isAdmin">
-              <div layout="row" LayoutAlign="center">
+              
                 <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card.type)">
                   Guardar
                 </button>
-              </div>
+              
             </mat-card-actions>
           </mat-card-content>
         </mat-card>

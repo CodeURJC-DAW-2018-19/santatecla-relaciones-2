@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { JsonpModule, HttpModule } from '@angular/http';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
-
+import { CovalentFileModule } from '@covalent/core/file';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -92,6 +92,7 @@ import { HierarchyComponent } from './units/hierarchy.component';
         RouterModule.forRoot([]),
         HttpClientModule,
         JsonpModule,
+        CovalentFileModule,
         MatSnackBarModule,
         CovalentTabSelectModule,
         /** Material Modules */

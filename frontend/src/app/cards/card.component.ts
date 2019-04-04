@@ -18,6 +18,26 @@ export class CardComponent implements OnInit {
   lastRequestedPage: Page;
   pageNumber: number;
 
+  fileSelectMsg: string = 'No file selected yet.';
+  fileUploadMsg: string = 'No file uploaded yet.';
+  disabled: boolean = false;
+
+  selectEvent(file: File): void {
+    this.fileSelectMsg = file.name;
+  }
+
+  uploadEvent(file: File): void {
+    this.fileUploadMsg = file.name;
+  }
+
+  cancelEvent(): void {
+    this.fileSelectMsg = 'No file selected yet.';
+    this.fileUploadMsg = 'No file uploaded yet.';
+  }
+
+  toggleDisabled(): void {
+    this.disabled = !this.disabled;
+  }
   constructor(private activeRoute: ActivatedRoute, private service: CardService, private loginService: LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
