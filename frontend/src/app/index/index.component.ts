@@ -5,6 +5,7 @@ import { LoginService } from '../login/login.service';
 
 import { Router } from '@angular/router';
 import { Page } from '../page.module';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-index',
@@ -18,8 +19,11 @@ export class IndexComponent implements OnInit {
   lastRequestedPage:Page;
   pageNumber:number;
   searchInputTerm:string;
+  pulsado = false;
+  nameUnit : string;
 
-  constructor(private router: Router, private service: UnitService, public loginService:LoginService) { }
+  constructor(private router: Router, private service: UnitService, public loginService:LoginService, public appComponent : AppComponent) {
+   }
 
   ngOnInit() {
     this.pageNumber = 0;
@@ -53,14 +57,41 @@ export class IndexComponent implements OnInit {
     if(this.pageNumber === 0) {
       this.units = page.content;
     } else {
+      for(let i of page.content){
+        if(this.units.includes(i)){
+          this.units.push(i);
+        }
+      }
       this.units = this.units.concat(page.content);
     }
   }
 
   removeUnit(unit: Unit){
+    this.appComponent.deleteTab(unit.name);
+    const index: number = this.units.indexOf(unit);
+        if (index !== -1) {
+            this.units.splice(index, 1);
+    }
     this.service.removeUnit(unit)
-    .subscribe((_) => this.getPage(), (error) => console.error(error));
+    .subscribe((_) => {}, (error) => console.error(error));
   }
 
+  addUnitToIndex(){
+    this.changePulsado();
+    let unit: Unit;
+    unit = {name : this.nameUnit , photoClas : false , photoComp : false};
+    this.service.addUnit(unit).subscribe(
+      error => console.log(error)
+    );
+  }
+
+  changePulsado(){
+    if(this.pulsado){
+      this.pulsado = false;
+    }
+    else{
+      this.pulsado = true;
+    }
+  }
 
 }

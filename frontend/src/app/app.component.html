@@ -8,7 +8,9 @@
         <a mat-button [routerLink]="['/unit/',tab]" matTooltip="{{tab}}">
           {{tab}}
         </a>
-        <button *ngIf="router.url.includes(tab)==false" mat-raised-button (click)="deleteTab(tab)">X</button>
+        <button mat-icon-button color="accent" (click)="deleteTab(tab)">
+          <mat-icon>clear</mat-icon>
+        </button>
       </div>
       <span flex></span>
       <a mat-icon-button>{{mode}}</a>
