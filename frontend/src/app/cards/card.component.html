@@ -4,10 +4,10 @@
   <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive"
     [active]="rla2.isActive">Fichas</a>
 </nav>
-<div>
+<div flex="96" layout-wrap>
   <mat-grid-list cols="1" rowHeight="5:1">
     <mat-grid-tile>
-      <div class="mycard" *ngFor="let card of cards" flex-gt-sm="95">
+      <div class="mycard" *ngFor="let card of cards" flex="95" layout-wrap>
         <mat-card>
           <mat-card-title>
             <div layout="row" layout-align="start center">
@@ -31,8 +31,9 @@
               </ng-template>
             </td-file-upload>
 
-            <mat-card-actions *ngIf="loginService.isAdmin">
+            <img *ngIf="card.photo" src="api/unit/{{unitName}}/card/{{card.type}}/image" width="100" height="100">
 
+            <mat-card-actions *ngIf="loginService.isAdmin">
               <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card.type)">
                 Guardar
               </button>

@@ -33,6 +33,7 @@ public class Card {
 		this.photo = false;
 	}
 
+
 	public boolean isPhoto() {
 		return photo;
 	}

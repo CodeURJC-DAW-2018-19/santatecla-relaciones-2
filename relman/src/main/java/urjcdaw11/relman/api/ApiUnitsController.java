@@ -28,7 +28,7 @@ public class ApiUnitsController {
 	@Autowired
 	private RelationService relationServ;
 
-	@GetMapping(value = "/units")
+	@GetMapping(value = "/units")   
 	@ResponseStatus(HttpStatus.OK)
 	public Page<Unit> getUnits(Pageable page, @RequestParam Optional<String> search) {
 		if (!search.isPresent()) {
@@ -88,7 +88,7 @@ public class ApiUnitsController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
+	} 
 
 	@PostMapping(value = "/unit")
 	public ResponseEntity<Unit> postUnit(@RequestBody Unit unit) {
@@ -112,3 +112,4 @@ public class ApiUnitsController {
 		}
 	}
 }
+ 

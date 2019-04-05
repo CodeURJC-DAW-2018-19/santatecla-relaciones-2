@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, ResponseContentType } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Card } from './card.model';
+import { Page } from '../page.module';
 
 const BASE_URL = '/api/unit/';
 
