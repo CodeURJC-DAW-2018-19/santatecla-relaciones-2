@@ -35,6 +35,15 @@
                       <span>Ver más</span>
                   </a>
               </mat-card-actions>
+              <mat-nav-list *ngIf="loginService.isAdmin">
+                <mat-list-item>
+                  <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()"><mat-icon>add</mat-icon></a>
+                  <span *ngIf = "pulsado">
+                    <input type="text" [(ngModel)] = "nameUnit">
+                    <button (click) = "addUnitToIndex()" > Añadir </button>
+                  </span>
+                </mat-list-item>
+             </mat-nav-list>
           </mat-card-content>
         </mat-card>
   </div>
