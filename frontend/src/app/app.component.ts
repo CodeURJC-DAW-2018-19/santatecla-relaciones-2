@@ -34,6 +34,9 @@ export class AppComponent {
         if (index !== -1) {
             this.tabs.splice(index, 1);
         }
+        if(this.router.url.includes(tabName)){
+            this.router.navigate(['/']);
+        }
     }
 
     deleteAllTabs() {
