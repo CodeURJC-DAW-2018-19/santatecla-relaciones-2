@@ -44,15 +44,11 @@ export class CardService {
 			.catch(error => this.handleError(error));
 	}
 
-	addImage(unitName: string, type: string) {
-		//TODO post image
-		//TODO response => image
-		/*
-		return this.http.post(BASE_URL + unitName + "/card/" + type + "/image")
-			.map(response => response.json())
-			.catch(error => this.handleError(error));
-		*/
-	}
+	addImage(file:File,unitName: string, type: string) {
+		let formdata: FormData = new FormData();
+    	formdata.append('file', file);
+        return this.http.post(BASE_URL + unitName + "/card/" + type + "/image",formdata);
+    }
 
 	private handleError(error: any) {
 		console.error(error);

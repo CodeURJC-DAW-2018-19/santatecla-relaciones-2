@@ -21,10 +21,10 @@
             </mat-form-field>
             <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
 
-            <td-file-upload color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="files"
-              (select)="selectEvent($event)" (upload)="uploadEvent($event)" (cancel)="cancelEvent()"
-              [disabled]="disabled">
-              <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
+            <td-file-upload id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
+              (select)="selectEvent($event,card)" (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)"
+              [disabled]="card.disabled">
+                <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
               <ng-template td-file-input-label>
                 <mat-icon>attach_file</mat-icon>
                 Subir imagen
