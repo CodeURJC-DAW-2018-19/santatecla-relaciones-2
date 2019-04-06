@@ -5,6 +5,8 @@ import { Page } from '../page.module';
 import { CardService } from './card.service';
 import { LoginService } from '../login/login.service';
 import { AppComponent } from '../app.component';
+import { UnitService } from '../index/unit.service';
+import { Unit } from '../index/unit.model';
 
 @Component({
   selector: 'app-component',
@@ -18,6 +20,8 @@ export class CardComponent implements OnInit {
   cards: Card[];
   lastRequestedPage: Page;
   pageNumber: number;
+  pulsado  = false;
+  cardName : string;
 
 
   selectEvent(file:File, card:Card): void {
@@ -44,7 +48,7 @@ export class CardComponent implements OnInit {
   }
 
 
-  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
+  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private unitService: UnitService, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 
@@ -69,6 +73,11 @@ export class CardComponent implements OnInit {
         if (this.pageNumber === 0) {
           this.cards = page.content;
         } else {
+          for (let i of page.content){
+            if (this.cards.includes(i)){
+              this.cards.push(i);
+            }
+          }
           this.cards = this.cards.concat(page.content);
         }
       },
@@ -102,5 +111,26 @@ export class CardComponent implements OnInit {
   saveChanges(type: string) {
     //TODO
     console.log(type);
+  }
+
+  addCardToList(){
+    this.changePulsado();
+    let card : Card;
+    let unit : Unit;
+    unit = {name: this.activeRoute.snapshot.params.name , photoClas: this.activeRoute.snapshot.params.photoClas, photoComp: false};
+    card = {type : this.cardName , unitAsoc : unit , desc : "" , photo : false , fileSelectMsg : "" , fileUploadMsg : "" , disabled : false , files : null , imgUrl : "" };
+    this.service.addCard(this.unitName,card).subscribe(
+      u => this.cards = this.cards.concat([card]),
+      error => console.log(error)
+    );
+  }
+
+  changePulsado(){
+    if(this.pulsado){
+      this.pulsado = false;
+    }
+    else{
+      this.pulsado = true;
+    }
   }
 }
