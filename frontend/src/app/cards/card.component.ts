@@ -20,6 +20,22 @@ export class CardComponent implements OnInit {
   pageNumber: number;
 
 
+  
+
+
+  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
+    this.unitName = this.activeRoute.snapshot.params.name;
+  }
+
+  ngOnInit(): void {
+    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
+      this.unitName = params.get('name')});
+      this.pageNumber = 0;
+      this.getPage();
+      this.appComponent.addTab(this.unitName);
+    
+  }
+
   selectEvent(file:File, card:Card): void {
     card.fileSelectMsg=file.name;
   }
@@ -42,21 +58,6 @@ export class CardComponent implements OnInit {
   toggleDisabled(card:Card): void {
     card.disabled = !card.disabled;
   }
-
-
-  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
-    this.unitName = this.activeRoute.snapshot.params.name;
-  }
-
-  ngOnInit(): void {
-    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
-      this.unitName = params.get('name')});
-      this.pageNumber = 0;
-      this.getPage();
-      this.appComponent.addTab(this.unitName);
-    
-  }
-
   requestNextPage() {
     this.pageNumber++;
     this.getPage();

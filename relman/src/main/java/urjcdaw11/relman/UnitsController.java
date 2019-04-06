@@ -23,9 +23,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import urjcdaw11.relman.cards.Card;
 import urjcdaw11.relman.cards.CardService;
+import urjcdaw11.relman.configurations.AdditionalResourceWebConfiguration;
 import urjcdaw11.relman.relations.Relation;
 import urjcdaw11.relman.relations.RelationService;
 import urjcdaw11.relman.units.Unit;
@@ -33,7 +36,7 @@ import urjcdaw11.relman.units.UnitService;
 import urjcdaw11.relman.users.UserComponent;
 
 @Controller
-public class UnitsController {
+public class UnitsController extends AdditionalResourceWebConfiguration{
 
 	@Autowired
 	private UnitService unitServ;
@@ -59,8 +62,10 @@ public class UnitsController {
 	}
 
 	@RequestMapping("/{unit}")
-	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
-
+	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {		
+		if(unit.equals("new")) {
+			return "/new/index.html";
+		}
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
 
