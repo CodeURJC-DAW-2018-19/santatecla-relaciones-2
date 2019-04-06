@@ -3,7 +3,7 @@ cd /Users/KIKEPINA\ 1/Desktop/UNIVERSIDAD2/DAWPractica/santatecla-relaciones-2/f
 docker run --rm --name angular-cli -v ${PWD}:/frontend -w /frontend node:8.15.1 /bin/bash -c "npm install -g @angular/cli; npm install; npm rebuild; ng build --prod --baseHref=/new/"
 cd dist
 mv my-app /Users/KIKEPINA\ 1/Desktop/UNIVERSIDAD2/DAWPractica/santatecla-relaciones-2/relman/src/main/resources/static
-cd $HOME/santatecla-relaciones-2/relman/src/main/resources/static
+cd /Users/KIKEPINA\ 1/Desktop/UNIVERSIDAD2/DAWPractica/santatecla-relaciones-2/santatecla-relaciones-2/relman/src/main/resources/static
 sudo rm -r new
 mv my-app new
 cd /Users/KIKEPINA\ 1/Desktop/UNIVERSIDAD2/DAWPractica/santatecla-relaciones-2/relman

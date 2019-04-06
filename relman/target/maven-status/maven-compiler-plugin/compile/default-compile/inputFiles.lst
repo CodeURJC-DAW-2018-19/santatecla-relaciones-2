@@ -30,4 +30,3 @@
 /relman/src/main/java/urjcdaw11/relman/api/ApiRelationsController.java
 /relman/src/main/java/urjcdaw11/relman/UMLCreator.java
 /relman/src/main/java/urjcdaw11/relman/configurations/SecurityConfigRest.java
-/relman/src/main/java/urjcdaw11/relman/CustomWebMvcConfigurerAdapter.java
