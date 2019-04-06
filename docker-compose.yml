@@ -21,7 +21,7 @@ services:
             sql:
                condition: service_healthy
         ports:
-            - "8080:8443"
+            - "8080:8080"
         restart: always
         environment:
             SPRING_DATASOURCE_URL: jdbc:mysql://sql/relman?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC

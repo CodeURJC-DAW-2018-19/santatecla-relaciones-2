@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 
-
 @Order(1)
 @Configuration
 public class SecurityConfigRest extends WebSecurityConfigurerAdapter{

@@ -1,6 +1,6 @@
 <nav mat-tab-nav-bar>
   <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive"
-    [active]="activeLinkIndex === i" (click)="activeLinkIndex = i">Unidad</a>
+    [active]="activeLinkIndex === 1" (click)="activeLinkIndex = 1">Unidad</a>
   <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive"
     [active]="rla2.isActive">Fichas</a>
 </nav>
@@ -22,7 +22,7 @@
           </div>
             <p *ngIf="!loginService.isAdmin && loginService.isLogged" layout-fill>{{card.desc}}</p>
 
-            <td-file-upload id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
+            <td-file-upload accept=".jpg,.png" id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
               (select)="selectEvent($event,card)" (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)"
               [disabled]="card.disabled">
                 <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
@@ -32,10 +32,10 @@
               </ng-template>
             </td-file-upload>
 
-            <img *ngIf="card.photo" src="api/unit/{{unitName}}/card/{{card.type}}/image" width="100" height="100">
+            <img *ngIf="card.photo" src="https://localhost:8080/api/unit/{{unitName}}/card/{{card.type}}/image" width="100" height="100">
 
             <mat-card-actions *ngIf="loginService.isAdmin">
-              <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card.type)">
+              <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card)">
                 Guardar
               </button>
 
@@ -49,4 +49,13 @@
       <span>Ver más</span>
     </a></div>
   </mat-card-actions>
+  <mat-nav-list *ngIf="loginService.isAdmin">
+    <mat-list-item>
+      <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click) = "changePulsado()"><mat-icon>add</mat-icon></a>
+      <span *ngIf = "pulsado">
+        <input type="text" [(ngModel)] = "cardName">
+        <button (click) = "addCardToList()"> Añadir </button>
+      </span>
+    </mat-list-item>
+ </mat-nav-list>
 </div>
