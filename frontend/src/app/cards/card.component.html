@@ -18,12 +18,12 @@
             <div flex="95">
             <mat-form-field *ngIf="loginService.isAdmin" appearance="outline">
               <mat-label></mat-label>
-              <textarea matInput cdkTextareaAutosize value="{{card.desc}}"  flex="95"></textarea>
+              <textarea matInput cdkTextareaAutosize value="{{card.desc}}" [(ngModel)]="card.desc" flex="95"></textarea>
             </mat-form-field>
           </div>
             <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
 
-            <td-file-upload id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
+            <td-file-upload accept=".jpg,.png" id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
               (select)="selectEvent($event,card)" (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)"
               [disabled]="card.disabled">
                 <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
@@ -36,7 +36,7 @@
             <img *ngIf="card.photo" src="https://localhost:8080/api/unit/{{unitName}}/card/{{card.type}}/image" width="100" height="100">
 
             <mat-card-actions *ngIf="loginService.isAdmin">
-              <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card.type)">
+              <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card)">
                 Guardar
               </button>
 

@@ -108,9 +108,12 @@ export class CardComponent implements OnInit {
     return sol;
   }
 
-  saveChanges(type: string) {
-    //TODO
-    console.log(type);
+  saveChanges(card: Card) {
+    this.service.saveCard(this.unitName,card).subscribe(
+      copyCard => {this.getOneCard(this.unitName,card.type)} ,
+      error=> console.log(error),
+    )
+
   }
 
   addCardToList(){
