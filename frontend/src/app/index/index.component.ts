@@ -81,7 +81,9 @@ export class IndexComponent implements OnInit {
     let unit: Unit;
     unit = {name : this.nameUnit , photoClas : false , photoComp : false};
     this.service.addUnit(unit).subscribe(
-      u => this.units = this.units.concat([unit]),
+      u => {if (this.lastRequestedPage.last){
+        this.units = this.units.concat([unit])
+      }},
       error => console.log(error)
     );
   }

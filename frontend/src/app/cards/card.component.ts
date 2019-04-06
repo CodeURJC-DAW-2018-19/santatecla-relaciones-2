@@ -24,20 +24,9 @@ export class CardComponent implements OnInit {
   cardName : string;
 
 
-  
 
-
-  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
+  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private unitService: UnitService, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
     this.unitName = this.activeRoute.snapshot.params.name;
-  }
-
-  ngOnInit(): void {
-    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
-      this.unitName = params.get('name')});
-      this.pageNumber = 0;
-      this.getPage();
-      this.appComponent.addTab(this.unitName);
-    
   }
 
   selectEvent(file:File, card:Card): void {
@@ -61,12 +50,6 @@ export class CardComponent implements OnInit {
 
   toggleDisabled(card:Card): void {
     card.disabled = !card.disabled;
-  }
-
-
-
-  constructor(private cdRef: ChangeDetectorRef,private router:Router,private activeRoute: ActivatedRoute, private unitService: UnitService, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
-    this.unitName = this.activeRoute.snapshot.params.name;
   }
 
   ngOnInit(): void {
@@ -137,7 +120,9 @@ export class CardComponent implements OnInit {
     unit = {name: this.activeRoute.snapshot.params.name , photoClas: this.activeRoute.snapshot.params.photoClas, photoComp: false};
     card = {type : this.cardName , unitAsoc : unit , desc : "" , photo : false , fileSelectMsg : "" , fileUploadMsg : "" , disabled : false , files : null , imgUrl : "" };
     this.service.addCard(this.unitName,card).subscribe(
-      u => this.cards = this.cards.concat([card]),
+      u=> {if (this.lastRequestedPage.last){
+        this.cards = this.cards.concat([card])
+      }},
       error => console.log(error)
     );
   }
