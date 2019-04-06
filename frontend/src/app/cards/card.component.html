@@ -10,7 +10,8 @@
         <mat-card>
           <mat-card-title>
             <div layout="row" layout-align="start center">
-              <span flex>{{card.type}}</span>
+                <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
+                <span flex>{{card.type}}</span>
             </div>
           </mat-card-title>
           <mat-card-content cols="1" layout-align="space-between" layout-fill>
