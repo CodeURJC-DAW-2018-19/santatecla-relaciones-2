@@ -62,7 +62,7 @@
     <mat-divider></mat-divider>
     <mat-dialog-actions>
       <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-      <button type="button"  class="text-upper" (click)="addRelation(unitName,selected.name,unitName)">Guardar</button>
+      <button type="button" mat-button color="primary" class="text-upper" (click)="addRelation(unitName,selected.name,unitName)">Guardar</button>
     </mat-dialog-actions>
   </div>
 </ng-template>
@@ -90,7 +90,7 @@
     <mat-divider></mat-divider>
     <mat-dialog-actions>
       <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-      <button type="button"  class="text-upper" (click)="addRelation(unitName,unitName,selected.name)">Guardar</button>
+      <button type="button" mat-button class="text-upper" color="primary" (click)="addRelation(unitName,unitName,selected.name)">Guardar</button>
     </mat-dialog-actions>
   </div>
 </ng-template>
