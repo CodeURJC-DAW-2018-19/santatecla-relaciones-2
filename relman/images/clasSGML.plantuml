@@ -1,0 +1,6 @@
+@startuml 
+ set namespaceSeparator none
+SGML <|-- HTML
+HTML <|-- HTML2.1
+HTML <|-- HTML4.0
+@enduml
