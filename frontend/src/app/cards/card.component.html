@@ -5,9 +5,9 @@
     [active]="rla2.isActive">Fichas</a>
 </nav>
 <div flex="96" layout-wrap>
-  <mat-grid-list cols="1" rowHeight="5:1">
-    <mat-grid-tile *ngFor="let card of cards">
-      <div class="mycard"  flex="100" layout-wrap>
+  <mat-list>
+    
+      <div class="mycard" *ngFor="let card of cards" flex="100" layout-wrap>
         <mat-card>
           <mat-card-title>
             <div layout="row" layout-align="start center">
@@ -17,7 +17,7 @@
           </mat-card-title>
           <mat-card-content cols="1" layout-align="space-between">
             <div flex="95">
-            <mat-form-field *ngIf="loginService.isAdmin" appearance="outline">
+            <mat-form-field *ngIf="loginService.isAdmin" appearance="outline"  layout-fill>
               <mat-label></mat-label>
               <textarea matInput cdkTextareaAutosize value="{{card.desc}}" [(ngModel)]="card.desc" flex="95"></textarea>
             </mat-form-field>
@@ -45,20 +45,17 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
-    <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
-      <span>Ver más</span>
-    </a>
-  </mat-card-actions>
-  <mat-nav-list *ngIf="loginService.isAdmin">
-    <mat-list-item>
-      <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click) = "changePulsado()"><mat-icon>add</mat-icon></a>
-      <span *ngIf = "pulsado">
-        <input type="text" [(ngModel)] = "cardName">
-        <button (click) = "addCardToList()"> Añadir </button>
-      </span>
-    </mat-list-item>
- </mat-nav-list>
+      <mat-list-item>
+        <a mat-button color="primary" class="text-upper" (click)="requestNextPage()" *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
+          <span>Ver más</span>
+        </a>
+        <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click) = "changePulsado()" *ngIf="loginService.isAdmin"><mat-icon>add</mat-icon></a>
+        <span layout="row" *ngIf = "pulsado">
+          <input matInput placeholder="Nueva unidad" type="text" [(ngModel)] = "cardName">
+          <button mat-button color="primary"(click) = "addCardToList()"> Añadir </button>
+        </span>
+      </mat-list-item>  
+    </mat-list>
+  
+  
 </div>
