@@ -1,4 +1,4 @@
-# RELMAN #
+﻿# RELMAN #
 
 ## GRUPO 11 ##
 
@@ -115,3 +115,26 @@
 **API**
 
 [API.md](API.md)
+
+**Diagrama de Clases y Templates Angular**
+
+ * Los componentes HTML irán de color naranja
+ * Los componentes TS irán de color azul, las relaciones que se pueden apreciar entre diagrama serán entre este tipo de componentes
+ * Los servicios TS irán de color verde
+ * Los CSS irán de color morado
+ * Los modelos TS irán de color rosa
+ 
+ 
+ ![Screenshot]( https://github.com/CodeURJC-DAW-2018-19/santatecla-relaciones-2/blob/master/capturas/DiagramaClasesTemplateAngular.PNG?raw=true)
+ 
+ **Instrucciones de ejecución con Angular**
+ 
+ 1. Descargar e instalar [Node.js y npm](https://nodejs.org/en/)
+ 2. Descargar e instalar Angular CLI: Poner `npm install -g @angular/cli` en la consola de comandos
+ 3. Descargar e instalar [Visual Studio Code](https://code.visualstudio.com/)
+ 4. Abrir el proyecto Angular de la aplicación (carpeta frontend)
+ 5. Abrir el terminal dentro de VSC y poner `npm install` y `npm install rxjs-compat`
+ 6. Poner `npm start` en el terminal para abrir la app en el puerto 4200 (Se debe ejecutar junto con el proyecto Spring)
+ 
+* Si se quiere usar la aplicación dentro del proyecto Spring poner `npm build` y copiar los contenido de la carpeta dist en /relman/src/main/resources/static/new/. La app será accesible desde localhost:8080/new/.
+* También se pueden seguir las instrucciones de ejecución de Docker para ejecutarla app entera dentro del contenedor.
