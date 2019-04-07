@@ -39,7 +39,6 @@ export class CardService {
 	}
 
 	getImage(unitName: string, type: string) {
-		//TODO response => image
 		return this.http.get(BASE_URL + unitName + "/card/" + type + "/image")
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
@@ -49,7 +48,11 @@ export class CardService {
 		let formdata: FormData = new FormData();
     	formdata.append('file', file);
         return this.http.post(BASE_URL + unitName + "/card/" + type + "/image",formdata);
-    }
+	}
+	
+	saveCard(unitName:string,card:Card){
+		return this.http.put(BASE_URL + unitName+"/card",card);
+	}
 
 	private handleError(error: any) {
 		console.error(error);
