@@ -2,6 +2,7 @@
  set namespaceSeparator none
 SGML <|-- HTML
 MAQUETACIÓN_WEB <|-- HTML
+HTML4.0 <|-- HTML
 CSS *-- HTML
 ETIQUETAS *-- HTML
 ATRIBUTOS *-- HTML
@@ -14,6 +15,7 @@ HTML <|-- HTML4.0
 HTML *-- DISEÑO_WEB
 HTML *-- ETIQUETAS
 HTML *-- VIDEOS
+HTML *-- ANGULAR
 HTML <-- CSS
 HTML <-- XML
 HTML -- CSS

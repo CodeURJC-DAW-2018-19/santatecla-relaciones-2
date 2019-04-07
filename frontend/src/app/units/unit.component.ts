@@ -77,7 +77,7 @@ import { Unit } from '../index/unit.model';
             this.parents.units=this.units;
             this.children.units=this.units;
             this.associatedBy.units=this.units;
-            this.associatedTo.units=this.units;
+            this.associatedBy.units=this.units;
             this.uses.units=this.units;
             this.usedBy.units=this.units;
             this.composites.units=this.units;
