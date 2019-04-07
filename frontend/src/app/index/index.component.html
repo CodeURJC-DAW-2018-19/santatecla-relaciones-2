@@ -21,7 +21,7 @@
 
                <mat-nav-list *ngIf="!loginService.isAdmin && loginService.isLogged">
                 <mat-list-item *ngFor="let unit of units">
-                 <a mat-button [routerLink]="['/unit/',unit.name]" [ngStyle]="{ cursor: 'auto' }" >{{ unit.name }}</a>
+                 <a mat-icon-button [routerLink]="['/unit/',unit.name]" [ngStyle]="{ cursor: 'auto' }" >{{ unit.name }}</a>
                 </mat-list-item>
                </mat-nav-list>
 
@@ -37,35 +37,14 @@
               </mat-card-actions>
               <mat-nav-list *ngIf="loginService.isAdmin">
                 <mat-list-item>
-
-                  <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="openTemplate()"><mat-icon>add</mat-icon></a>
-                  
+                  <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()"><mat-icon>add</mat-icon></a>
+                  <span *ngIf = "pulsado">
+                    <input type="text" [(ngModel)] = "nameUnit">
+                    <button (click) = "addUnitToIndex()" > Añadir </button>
+                  </span>
                 </mat-list-item>
              </mat-nav-list>
           </mat-card-content>
         </mat-card>
   </div>
 </div>
-<ng-template #dialogContent let-dialogRef="dialogRef">
-    <div layout="column" layout-fill>
-      <h2 mat-dialog-title>
-        Añadir
-      </h2>
-      <mat-divider></mat-divider>
-      <mat-dialog-content flex>
-        <form class="pad">
-          <div layout="row" layout-margin>
-            <mat-form-field class="example-user-input">
-                <input matInput type="text" [(ngModel)] = "nameUnit">
-            </mat-form-field>
-            
-          </div>
-        </form>
-      </mat-dialog-content>
-      <mat-divider></mat-divider>
-      <mat-dialog-actions>
-        <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Cerrar</button>
-        <button type="button"  mat-button class="text-upper" color="primary" (click)="addUnitToIndex()">Añadir</button>
-      </mat-dialog-actions>
-    </div>
-  </ng-template>

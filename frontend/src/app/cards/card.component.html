@@ -5,22 +5,21 @@
     [active]="rla2.isActive">Fichas</a>
 </nav>
 <div flex="96" layout-wrap>
-  <mat-list>
-      <div class="mycard" *ngFor="let card of cards" flex="100" layout-wrap>
+  <mat-grid-list cols="1" rowHeight="5:1">
+    <mat-grid-tile>
+      <div class="mycard" *ngFor="let card of cards" flex="95" layout-wrap>
         <mat-card>
           <mat-card-title>
             <div layout="row" layout-align="start center">
               <span flex>{{card.type}}</span>
             </div>
           </mat-card-title>
-          <mat-card-content cols="1" layout-align="space-between" layout-fill>
-            <div flex="95">
-            <mat-form-field *ngIf="loginService.isAdmin" appearance="outline" layout-fill>
+          <mat-card-content layout="row" layout-align="space-between">
+            <mat-form-field *ngIf="loginService.isAdmin" appearance="outline">
               <mat-label></mat-label>
-              <textarea matInput cdkTextareaAutosize value="{{card.desc}}"  flex="95"></textarea>
+              <textarea matInput cdkTextareaAutosize value="{{card.desc}}"></textarea>
             </mat-form-field>
-          </div>
-            <p *ngIf="!loginService.isAdmin && loginService.isLogged" layout-fill>{{card.desc}}</p>
+            <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
 
             <td-file-upload id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
               (select)="selectEvent($event,card)" (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)"
@@ -43,10 +42,11 @@
           </mat-card-content>
         </mat-card>
       </div>
-  </mat-list>
+    </mat-grid-tile>
+  </mat-grid-list>
   <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
-    <div><a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
+    <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
       <span>Ver más</span>
-    </a></div>
+    </a>
   </mat-card-actions>
 </div>

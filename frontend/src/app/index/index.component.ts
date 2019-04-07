@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Unit } from './unit.model';
 import { UnitService } from './unit.service';
 import { LoginService } from '../login/login.service';
@@ -6,7 +6,6 @@ import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 import { Page } from '../page.module';
 import { AppComponent } from '../app.component';
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-index',
@@ -16,19 +15,14 @@ import { MatDialog } from '@angular/material';
 })
 
 export class IndexComponent implements OnInit {
-  @ViewChild('dialogContent') private template: TemplateRef<object>;
   units:Unit[];
   lastRequestedPage:Page;
   pageNumber:number;
   searchInputTerm:string;
   pulsado = false;
   nameUnit : string;
-  config = {
-    width: '50%',
-    height: '50%',
-  };
 
-  constructor(private router: Router, private service: UnitService, public loginService:LoginService, public appComponent : AppComponent,public dialog: MatDialog) {
+  constructor(private router: Router, private service: UnitService, public loginService:LoginService, public appComponent : AppComponent) {
    }
 
   ngOnInit() {
@@ -99,9 +93,5 @@ export class IndexComponent implements OnInit {
       this.pulsado = true;
     }
   }
-  openTemplate() {
-    
-      this.dialog.open(this.template, this.config);
-    
-  }
+
 }
