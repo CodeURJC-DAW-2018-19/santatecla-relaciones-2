@@ -55,10 +55,11 @@ export class UnitService {
 	
 
 	addUnit(unit: Unit) {
-		console.log("se esta añadiendo la unidad de nombre " + unit.name)
-		return this.http.post(BASE_URL + "unit", unit)
+		if (unit.name !== undefined || unit !== null){
+			return this.http.post(BASE_URL + "unit", unit)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
+		}
 	}
 
 	removeUnit(unit: Unit) {

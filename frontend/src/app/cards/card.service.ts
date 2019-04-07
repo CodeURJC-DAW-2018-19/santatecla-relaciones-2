@@ -27,9 +27,11 @@ export class CardService {
 	}
 
 	addCard(unitName: string, card: Card) {
-		return this.http.post(BASE_URL + unitName + "/card", card)
+		if(unitName !== undefined || card !== null){
+			return this.http.post(BASE_URL + unitName + "/card", card)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
+		}
 	}
 
 	removeCard(unitName: string, type: string) {

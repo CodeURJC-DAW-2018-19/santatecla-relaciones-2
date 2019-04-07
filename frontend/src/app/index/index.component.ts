@@ -78,14 +78,18 @@ export class IndexComponent implements OnInit {
 
   addUnitToIndex(){
     this.changePulsado();
-    let unit: Unit;
-    unit = {name : this.nameUnit , photoClas : false , photoComp : false};
-    this.service.addUnit(unit).subscribe(
-      u => {if (this.lastRequestedPage.last){
-        this.units = this.units.concat([unit])
-      }},
-      error => console.log(error)
-    );
+    if(this.nameUnit !== undefined){
+      let unit: Unit;
+      unit = {name : this.nameUnit , photoClas : false , photoComp : false};
+        this.service.addUnit(unit).subscribe(
+          u => {if (this.lastRequestedPage.last){
+            this.units = this.units.concat([unit])
+          }},
+          error => console.log(error)
+        );
+    }
+    this.nameUnit = undefined;
+
   }
 
   changePulsado(){
@@ -96,5 +100,5 @@ export class IndexComponent implements OnInit {
       this.pulsado = true;
     }
   }
-
+ 
 }

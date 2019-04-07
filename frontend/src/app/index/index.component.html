@@ -39,7 +39,7 @@
                 <mat-list-item>
                   <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()"><mat-icon>add</mat-icon></a>
                   <span *ngIf = "pulsado">
-                    <input type="text" [(ngModel)] = "nameUnit">
+                    <input type="text" [(ngModel)] = "nameUnit" >
                     <button (click) = "addUnitToIndex()" > Añadir </button>
                   </span>
                 </mat-list-item>

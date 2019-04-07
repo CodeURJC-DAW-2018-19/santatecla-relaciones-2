@@ -113,22 +113,35 @@ export class CardComponent implements OnInit {
       copyCard => {this.getOneCard(this.unitName,card.type)} ,
       error=> console.log(error),
     )
-
   }
 
   addCardToList(){
     this.changePulsado();
-    let card : Card;
-    let unit : Unit;
-    unit = {name: this.activeRoute.snapshot.params.name , photoClas: this.activeRoute.snapshot.params.photoClas, photoComp: false};
-    card = {type : this.cardName , unitAsoc : unit , desc : "" , photo : false , fileSelectMsg : "" , fileUploadMsg : "" , disabled : false , files : null , imgUrl : "" };
-    this.service.addCard(this.unitName,card).subscribe(
-      u=> {if (this.lastRequestedPage.last){
-        this.cards = this.cards.concat([card])
-      }},
-      error => console.log(error)
-    );
+    if(this.unitName !== undefined && this.cardName !== undefined ){
+      let card : Card;
+      let unit : Unit;
+      unit = {name: this.activeRoute.snapshot.params.name , photoClas: this.activeRoute.snapshot.params.photoClas, photoComp: false};
+      card = {type : this.cardName , unitAsoc : unit , desc : "" , photo : false , fileSelectMsg : "" , fileUploadMsg : "" , disabled : false , files : null , imgUrl : "" };
+      this.service.addCard(this.unitName,card).subscribe(
+        u=> {if (this.lastRequestedPage.last){
+          this.cards = this.cards.concat([card])
+        }},
+        error => console.log(error)
+      );
+    }
+    this.cardName = undefined;
   }
+
+  removeCardOfList(card : Card){
+    console.log("se borrara la unidad " + card);
+    const index: number = this.cards.indexOf(card);
+        if (index !== -1) {
+            this.cards.splice(index, 1);
+        }
+    this.service.removeCard(this.unitName,card.type).
+    subscribe((_) => {}, (error) => console.error(error));
+  }
+  
 
   changePulsado(){
     if(this.pulsado){

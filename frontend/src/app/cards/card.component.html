@@ -11,6 +11,7 @@
         <mat-card>
           <mat-card-title>
             <div layout="row" layout-align="start center">
+              <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeCardOfList(card)"><mat-icon>delete</mat-icon></a>
               <span flex>{{card.type}}</span>
             </div>
           </mat-card-title>
