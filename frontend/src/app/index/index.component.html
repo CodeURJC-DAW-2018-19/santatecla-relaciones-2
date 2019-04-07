@@ -12,17 +12,20 @@
           </mat-card-title>
           <mat-card-content layout="row" layout-align="space-between">
           <mat-divider></mat-divider>
+
                <mat-nav-list *ngIf="loginService.isAdmin">
                   <mat-list-item *ngFor="let unit of units">
                     <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeUnit(unit)"><mat-icon>delete</mat-icon></a>
                     <a  mat-icon-button [routerLink]="['/unit/',unit.name]" [ngStyle]="{ cursor: 'auto' }" >{{ unit.name }}</a>
                   </mat-list-item>
                   <mat-list-item>
-                    <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()"><mat-icon>add</mat-icon></a>
-                    <span *ngIf = "pulsado" layout="row">
-                      <input matInput placeholder="Nueva unidad" type="text" [(ngModel)] = "nameUnit" >
-                      <button mat-button color="primary" (click) = "addUnitToIndex()" > Añadir </button>
-                    </span>
+                            <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()"><mat-icon>add</mat-icon></a>
+                            <span *ngIf = "pulsado">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)] = "nameUnit" >
+                                </mat-form-field>
+                                <button mat-raised-button color="primary" (click) = "addUnitToIndex()" > AÑADIR </button>
+                            </span>
                   </mat-list-item>
                </mat-nav-list>
 

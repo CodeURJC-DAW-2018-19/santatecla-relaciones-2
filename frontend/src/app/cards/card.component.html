@@ -1,61 +1,84 @@
-<nav mat-tab-nav-bar>
-  <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive"
-    [active]="activeLinkIndex === 1" (click)="activeLinkIndex = 1">Unidad</a>
-  <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive"
-    [active]="rla2.isActive">Fichas</a>
-</nav>
-<div flex="96" layout-wrap>
-  <mat-list>
-    
-      <div class="mycard" *ngFor="let card of cards" flex="100" layout-wrap>
-        <mat-card>
-          <mat-card-title>
-            <div layout="row" layout-align="start center">
-              <a matListAvatar mat-icon-button matTooltip="Delete" color="primary" (click)="removeCardOfList(card)"><mat-icon>delete</mat-icon></a>
-              <span flex>{{card.type}}</span>
-            </div>
-          </mat-card-title>
-          <mat-card-content cols="1" layout-align="space-between">
-            <div flex="95">
-            <mat-form-field *ngIf="loginService.isAdmin" appearance="outline"  layout-fill>
-              <mat-label></mat-label>
-              <textarea matInput cdkTextareaAutosize value="{{card.desc}}" [(ngModel)]="card.desc" flex="95"></textarea>
-            </mat-form-field>
-          </div>
-            <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
+<div *ngIf="loginService.isLogged">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['/unit/',unitName]" routerLinkActive #rla="routerLinkActive"
+      [active]="activeLinkIndex === 1" (click)="activeLinkIndex = 1">Unidad</a>
+    <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive"
+      [active]="rla2.isActive">Fichas</a>
+  </nav>
 
-            <td-file-upload accept=".jpg,.png" id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin" #singleFileUpload [(ngModel)]="card.files"
-              (select)="selectEvent($event,card)" (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)"
-              [disabled]="card.disabled">
-                <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <mat-card class="card-picture" *ngFor="let card of cards">
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+        <mat-grid-list cols="4" rowHeight="3:1">
+          <mat-grid-tile>
+            <span fxFlex="80%">{{card.type}}</span>
+          </mat-grid-tile>
+          <mat-grid-tile>
+
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-icon-button *ngIf = "loginService.isAdmin" (click)="removeCardOfList(card)">
+              <mat-icon fxFlex="10%">delete</mat-icon>
+            </button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <td-file-upload accept=".jpg,.png" id="{{card.type}}" color="accent" *ngIf="loginService.isAdmin"
+              #singleFileUpload [(ngModel)]="card.files" (select)="selectEvent($event,card)"
+              (upload)="uploadEvent($event, card)" (cancel)="cancelEvent(card)" [disabled]="card.disabled">
+              <mat-icon>file_upload</mat-icon><span>{{ singleFileUpload.value?.name }}</span>
               <ng-template td-file-input-label>
                 <mat-icon>attach_file</mat-icon>
                 Subir imagen
               </ng-template>
             </td-file-upload>
+          </mat-grid-tile>
+        </mat-grid-list>
 
-            <img *ngIf="card.photo" src="https://localhost:8080/api/unit/{{unitName}}/card/{{card.type}}/image" width="100" height="100">
+      </mat-card-title>
+      <mat-card-content fxLayout.gt-xs="row" fxLayout.xs="column">
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>
+            <form class="example-form" *ngIf="loginService.isAdmin">
+              <mat-form-field class="example-full-width">
+                <textarea style="resize: none;" matInput placeholder="Descripcion" value="{{card.desc}}"
+                  [(ngModel)]="card.desc" [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
+            </form>
 
-            <mat-card-actions *ngIf="loginService.isAdmin">
-              <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card)">
-                Guardar
-              </button>
+            <p *ngIf="!loginService.isAdmin && loginService.isLogged">{{card.desc}}</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <img mat-card-avatar *ngIf="card.photo"
+              src="https://localhost:8080/api/unit/{{unitName}}/card/{{card.type}}/image">
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-card-footer fxLayout.gt-xs="row" fxLayout.xs="column">
+          <mat-card-actions *ngIf="loginService.isAdmin">
+            <button mat-raised-button class="text-upper" color="primary" (click)="saveChanges(card)">
+              Guardar
+            </button>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-            </mat-card-actions>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <mat-list-item>
-        <a mat-button color="primary" class="text-upper" (click)="requestNextPage()" *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
-          <span>Ver más</span>
-        </a>
-        <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click) = "changePulsado()" *ngIf="loginService.isAdmin"><mat-icon>add</mat-icon></a>
-        <span layout="row" *ngIf = "pulsado">
-          <input matInput placeholder="Nueva unidad" type="text" [(ngModel)] = "cardName">
-          <button mat-button color="primary"(click) = "addCardToList()"> Añadir </button>
-        </span>
-      </mat-list-item>  
-    </mat-list>
-  
-  
+  <mat-card-actions *ngIf="lastRequestedPage!=undefined && !lastRequestedPage.last">
+    <a mat-button color="primary" class="text-upper" (click)="requestNextPage()">
+      <span>Ver más</span>
+    </a>
+  </mat-card-actions>
+  <mat-nav-list *ngIf="loginService.isAdmin">
+    <mat-list-item>
+      <a matListAvatar mat-icon-button matTooltip="add" color="primary" (click)="changePulsado()">
+        <mat-icon>add</mat-icon>
+      </a>
+      <span *ngIf="pulsado">
+        <mat-form-field>
+          <input matInput [(ngModel)]="cardName">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addCardToList()"> AÑADIR </button>
+      </span>
+    </mat-list-item>
+  </mat-nav-list>
 </div>

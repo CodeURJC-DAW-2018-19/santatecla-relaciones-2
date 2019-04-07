@@ -22,7 +22,6 @@ export class LoginService {
     constructor(private http: HttpClient) {
         let user = JSON.parse(localStorage.getItem('currentUser'));
         if (user) {
-            console.log('Logged user');
             this.setCurrentUser(user);
         }
     }
