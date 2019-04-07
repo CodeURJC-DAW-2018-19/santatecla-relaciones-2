@@ -61,6 +61,9 @@ public class UnitsController {
 	@RequestMapping("/{unit}")
 	public String openConcreteUnit(Model model, @PathVariable String unit, HttpServletRequest request) {
 
+		if(unit.equals("new")) {
+			return "/new/index.html";
+		}
 		userComponent.addTab(unit);
 		model.addAttribute("tabs", userComponent.getTabs());
 
