@@ -25,6 +25,8 @@
 
 ## INFO ##
 
+[Vídeo Fase 4 Relman (Youtube)] [https://youtu.be/py74H9wWN2o]
+
 [Trello Grupo 11](https://trello.com/b/7mBmoTZa/daw11)
 
 [Google Docs Grupo 11](https://docs.google.com/document/d/1dOFhYoHVeqbiS_8xWnMKT5sNLMF60pURrx-0x542xg8/edit)
