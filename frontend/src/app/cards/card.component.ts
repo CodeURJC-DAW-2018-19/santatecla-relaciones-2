@@ -23,9 +23,7 @@ export class CardComponent implements OnInit {
   pulsado = false;
   cardName: string;
 
-
-
-  constructor(private cdRef: ChangeDetectorRef, private router: Router, private activeRoute: ActivatedRoute, private unitService: UnitService, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private unitService: UnitService, private service: CardService, public loginService: LoginService, private appComponent: AppComponent) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 
@@ -39,7 +37,6 @@ export class CardComponent implements OnInit {
       u => { this.getOneCard(this.unitName, card.type) },
       error => console.log(error)
     );
-
   }
 
   cancelEvent(card: Card): void {
@@ -52,13 +49,16 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
-      this.unitName = params.get('name')
-    });
-    this.pageNumber = 0;
-    this.getPage();
-    this.appComponent.addTab(this.unitName);
-
+    if(!this.loginService.isLogged){
+      this.router.navigate(["/"]);
+    } else {
+      this.activeRoute.paramMap.subscribe((params: ParamMap) => {
+        this.unitName = params.get('name');
+      });
+      this.pageNumber = 0;
+      this.getPage();
+      this.appComponent.addTab(this.unitName);
+    }
   }
 
   requestNextPage() {

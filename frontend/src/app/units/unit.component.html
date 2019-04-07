@@ -5,57 +5,55 @@
         <a mat-tab-link [routerLink]="['/unit/',unitName, 'cards']" routerLinkActive #rla2="routerLinkActive"
             [active]="rla2.isActive">Fichas</a>
     </nav>
-
     <router-outlet></router-outlet>
-    <div class="row">
-        <div class="column">
-            <app-hierarchy #compComposition></app-hierarchy>
-        </div>
-        <div class="column">
-            <app-hierarchy #compContext></app-hierarchy>
-        </div>
-        <div class="column">
-            <app-hierarchy #compClassification></app-hierarchy>
+</div>
+<div class="row">
+    <div class="column">
+        <app-hierarchy #compComposition></app-hierarchy>
+    </div>
+    <div class="column">
+        <app-hierarchy #compContext></app-hierarchy>
+    </div>
+    <div class="column">
+        <app-hierarchy #compClassification></app-hierarchy>
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+        <app-relation #parentsComp></app-relation>
+    </div>
+    <div class="column">
+        <app-relation #compositesComp></app-relation>
+    </div>
+    <div class="column">
+        <app-relation #usesComp></app-relation>
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+        <app-relation #associatedByComp></app-relation>
+    </div>
+    <div class="column unit ">
+        <div flex="95" layout-wrap class="columnSpecial">
+            <mat-card>
+                <mat-card-content>
+                    <p class="script"><span>{{ unitName }}</span></p>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
-    <div class="row">
-        <div class="column">
-            <app-relation #parentsComp></app-relation>
-        </div>
-        <div class="column">
-            <app-relation #compositesComp></app-relation>
-        </div>
-        <div class="column">
-            <app-relation #usesComp></app-relation>
-        </div>
+    <div class="column">
+        <app-relation #associatedToComp></app-relation>
     </div>
-    <div class="row">
-        <div class="column">
-            <app-relation #associatedByComp></app-relation>
-        </div>
-        <div class="column unit ">
-            <div flex="95" layout-wrap class="columnSpecial">
-                <mat-card>
-
-                    <mat-card-content>
-                        <p class="script"><span>{{ unitName }}</span></p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-        <div class="column">
-            <app-relation #associatedToComp></app-relation>
-        </div>
+</div>
+<div class="row">
+    <div class="column">
+        <app-relation #usedByComp></app-relation>
     </div>
-    <div class="row">
-        <div class="column">
-            <app-relation #usedByComp></app-relation>
-        </div>
-        <div class="column">
-            <app-relation #partsComp></app-relation>
-        </div>
-        <div class="column">
-            <app-relation #childrenComp></app-relation>
-        </div>
+    <div class="column">
+        <app-relation #partsComp></app-relation>
+    </div>
+    <div class="column">
+        <app-relation #childrenComp></app-relation>
     </div>
 </div>
