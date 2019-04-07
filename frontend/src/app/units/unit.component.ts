@@ -30,7 +30,7 @@ export class UnitComponent implements OnInit {
   unitName: string;
   units: Unit[];
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private appComponent: AppComponent, private unitService: UnitService, private loginService: LoginService) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private appComponent: AppComponent, private unitService: UnitService, public loginService: LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 

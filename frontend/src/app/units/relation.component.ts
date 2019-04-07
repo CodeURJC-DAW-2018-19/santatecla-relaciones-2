@@ -36,7 +36,7 @@ export class RelationComponent implements OnInit {
 
   reverse: boolean;
 
-  constructor(private activeRoute: ActivatedRoute, public dialog: MatDialog, private relationService: RelationService, private loginService: LoginService) {
+  constructor(private activeRoute: ActivatedRoute, public dialog: MatDialog, private relationService: RelationService, public loginService: LoginService) {
     this.unitName = this.activeRoute.snapshot.params.name;
   }
 

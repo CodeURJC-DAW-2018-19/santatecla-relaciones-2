@@ -23,7 +23,7 @@ export class HierarchyComponent implements OnInit {
     }
   }
 
-  constructor(public dialog: MatDialog, private activeRoute: ActivatedRoute, private loginService: LoginService) { }
+  constructor(public dialog: MatDialog, private activeRoute: ActivatedRoute, public loginService: LoginService) { }
 
   openDialog(unitName: string, type: string): void {
     this.dialog.open(DialogUmlComponent, { data: { imgUrl: 'https://localhost:8080/api/unit/' + unitName + "/image/" + type }, });
