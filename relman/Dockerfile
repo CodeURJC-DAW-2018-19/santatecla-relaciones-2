@@ -12,7 +12,7 @@ COPY /target/relman-1.0.2.jar $HOME/santatecla-relaciones-2/relman/
 COPY images $HOME/santatecla-relaciones-2/relman/images
 
 # Expose port number
-EXPOSE 8080 
+EXPOSE 8443
 
 #  Run app
 CMD java -jar relman-1.0.2.jar
