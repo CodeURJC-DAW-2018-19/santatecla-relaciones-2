@@ -5,18 +5,17 @@ import { Observable } from 'rxjs';
 
 import { Relation } from './relation.model';
 import { LoginService } from '../login/login.service';
-import { HttpHeaders } from '@angular/common/http';
 
 const BASE_URL = '/api/unit/';
 
 @Injectable()
 export class RelationService {
 
-	constructor(private http: Http, private loginService:LoginService) { }
+	constructor(private http: Http) { }
 
-	compUrl:string;
+	compUrl: string;
 
-	getDiagrama(unitName:string,type:string){
+	getDiagrama(unitName: string, type: string) {
 		return this.http.get(BASE_URL + unitName + "/image/" + type);
 	}
 
@@ -25,7 +24,7 @@ export class RelationService {
 	}
 
 	getRelationsByType(unitName: string, type: string, page: number | string) {
-		let url =BASE_URL + unitName + "/relations/" + type + "?page=" + page;
+		let url = BASE_URL + unitName + "/relations/" + type + "?page=" + page;
 		return this.http.get(BASE_URL + unitName + "/relations/" + type + "?page=" + page + '&size=5')
 			.map(response => response.json())
 			.catch(error => this.handleError(error));

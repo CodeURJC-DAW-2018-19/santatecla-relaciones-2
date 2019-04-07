@@ -1,5 +1,5 @@
-<div class="but">
+<div *ngIf="loginService.isLogged" class="but">
   <button mat-raised-button (click)="openDialog(unitName,type)" class="text-upper" color="primary">
-      <span>{{title}}</span>
+    <span>{{title}}</span>
   </button>
 </div>

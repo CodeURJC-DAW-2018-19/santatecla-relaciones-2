@@ -35,7 +35,6 @@ export class LoginComponent  {
 
     this.loginService.logIn(user, pass).subscribe(
         (u) => {
-            console.log(u);
             this.dialogRef.close();
         },
         (error) => alert('Invalid user or password'),

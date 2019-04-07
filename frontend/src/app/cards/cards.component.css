@@ -1,2 +1,32 @@
-
+.img {
+    width: 100%;
+    margin-bottom: 18%;
+   }
+    .card-picture {
+      width: 50%;
+      margin-bottom: 2%;
+    }
+    .container {
+      min-height: 100%;
+      width: 50%;
+      border-radius: 25px;
+    }
+    .search-form {
+      width: 90%;
+    }
+  
+    .example-full-width {
+      width: 80%;
+      height: 50%;
+      font-size: 1.5em;
+    }
+  
+    .example-form {
+      width: 100%;
+    }
+  
+    .mat-card-avatar {
+      height: 150px;
+      width: 150px;
+    }
 
